@@ -103,7 +103,6 @@ public class Player extends Creature {
             yMove *= dampingFactor;
             if (yMove > -MIN_SPEED * 2) {
                 yMove = SPEED_CHANGE; // start falling
-                canPoop = false;
             }
         }
         else { // falling or still
@@ -112,7 +111,6 @@ public class Player extends Creature {
                 yMove += SPEED_CHANGE;
                 if (yMove > FALL_SPEED) {
                     yMove = FALL_SPEED;
-                    canPoop = false;
                 }
             }
             else if (xMove == 0 && yMove >= 0) {
