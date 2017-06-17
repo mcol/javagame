@@ -69,6 +69,9 @@ public class Poop extends Creature {
     public void setImpact() {
         impact = true;
         animation.setFrames(Assets.poop_impact, 100);
+
+        // avoid further collisions
+        setBounds(0, 0, 0, 0);
     }
 
     public void setExplosion() {
