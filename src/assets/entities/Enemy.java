@@ -65,9 +65,11 @@ public class Enemy extends Creature {
         int dx = getMovementX();
 
         // switch direction if no movement is possible or there is a collision with another entity
-        if (dx == 0 || collidesWithEntity(xMove, 0f)) {
+        if ((dx == 0 || collidesWithEntity(xMove, 0f)) &&
+                System.currentTimeMillis() - switchTime > 150) {
             facingRight = !facingRight;
             xMove = -xMove;
+            switchTime = System.currentTimeMillis();
         }
         else
             x += dx;

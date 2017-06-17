@@ -18,6 +18,9 @@ public abstract class Creature extends Entity {
 
     protected int health;
 
+    /** Time of the last switch of direction. */
+    protected long switchTime;
+
     // movement
     protected float xMove, yMove;
     protected float speed;
@@ -34,6 +37,7 @@ public abstract class Creature extends Entity {
         falling = true;
         facingRight = true;
         spawnTime = System.currentTimeMillis();
+        switchTime = System.currentTimeMillis();
 
         // placeholder empty animation
         animation = new Animation(new BufferedImage[1], 1);
