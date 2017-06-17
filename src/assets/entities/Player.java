@@ -119,6 +119,10 @@ public class Player extends Creature {
         if (handler.getKeyManager().space) {
             firePoop();
         }
+
+        if (handler.getKeyManager().help) {
+            help();
+        }
     }
 
     private void firePoop() {
@@ -162,5 +166,8 @@ public class Player extends Creature {
             animation = animFalling;
         else
             animation = animStill;
+    }
+
+    private void help() {
     }
 }

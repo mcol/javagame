@@ -5,8 +5,8 @@ import java.awt.event.KeyEvent;
 
 public class KeyManager extends KeyAdapter {
 
-    private boolean[] keys;
-    public boolean up, down, left, right, space;
+    private final boolean[] keys;
+    public boolean up, down, left, right, space, help;
 
     /** Constructor. */
     public KeyManager() {
@@ -19,6 +19,7 @@ public class KeyManager extends KeyAdapter {
         left = keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_RIGHT];
         space = keys[KeyEvent.VK_SPACE];
+        help = keys[KeyEvent.VK_H];
     }
 
     @Override
