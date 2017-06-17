@@ -58,19 +58,10 @@ public class Poop extends Creature {
                 continue;
 
             float enemyMove = enemy.getxMove();
-            float yOffset = 10f;
-            if (getCollisionRectangle(0f, yOffset)
+            if (getCollisionRectangle(0f, yMove)
                     .intersects(enemy.getCollisionRectangle(enemyMove, 0f))) {
                 enemy.setDamage(poopDamage);
                 setExplosion();
-
-                // set the coordinates of the explosion to match those used in computing
-                // the collision, and ensure that a front explosion doesn't get hidden by
-                // the enemy moving horizontally
-                if (!enemy.isDead()) {
-                    x += enemyMove * 8;
-                    y += yOffset;
-                }
             }
         }
     }
