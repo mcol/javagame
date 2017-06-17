@@ -34,7 +34,7 @@ public class Poop extends Creature {
             return;
 
         int dy = getMovementY();
-        if (collidesWithEntity(0f, yMove) || dy == 0)
+        if (dy == 0 || collidesWithEntity(0f, yMove) || collisionWithPlayer())
            setImpact();
         y += dy;
         checkPoopDamage();
@@ -43,6 +43,15 @@ public class Poop extends Creature {
     @Override
     public void render(Graphics g) {
         super.render(g);
+    }
+
+    private boolean collisionWithPlayer() {
+        Entity player = handler.getEntityManager().getPlayer();
+        if (player.getCollisionRectangle(0f, 0f)
+                  .intersects(getCollisionRectangle(0f, -yMove))) {
+            return true;
+        }
+        return false;
     }
 
     private void checkPoopDamage() {
