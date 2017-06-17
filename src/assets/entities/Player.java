@@ -37,11 +37,12 @@ public class Player extends Creature {
 
     private void getInput() {
 
+        canPoop = true;
+
         //
         // horizontal movement
         //
         if (handler.getKeyManager().left) {
-            canPoop = true;
             if (facingRight) { // switched direction
                 facingRight = false;
                 xMove = -xMove / 2;
@@ -53,7 +54,6 @@ public class Player extends Creature {
             yMove = -liftspeed; // lift up
         }
         else if (handler.getKeyManager().right) {
-            canPoop = true;
             if (!facingRight) { // switched direction
                 facingRight = true;
                 xMove = -xMove / 2;
@@ -65,11 +65,9 @@ public class Player extends Creature {
             yMove = -liftspeed; // lift up
         }
         else if (xMove != 0) { // slow down the horizontal movement
-            canPoop = true;
             xMove *= dampingFactor;
             if (Math.abs(xMove) < MIN_SPEED) {
                 xMove = 0;
-                canPoop = false;
             }
 
             // gradual descent unless trying to go up
@@ -81,7 +79,6 @@ public class Player extends Creature {
         // vertical movement
         //
         if (handler.getKeyManager().up) {
-            canPoop = true;
             if (!goingUp) { // switched direction
                 goingUp = true;
                 yMove = -yMove / 2;
@@ -103,7 +100,6 @@ public class Player extends Creature {
             }
         }
         else if (yMove < 0) { // slow down the vertical movement
-            canPoop = true;
             yMove *= dampingFactor;
             if (yMove > -MIN_SPEED * 2) {
                 yMove = SPEED_CHANGE; // start falling
@@ -111,7 +107,6 @@ public class Player extends Creature {
             }
         }
         else { // falling or still
-            canPoop = true; // let it poop while still slowing down
             goingUp = false;
             if (isFalling()) {
                 yMove += SPEED_CHANGE;
@@ -120,8 +115,9 @@ public class Player extends Creature {
                     canPoop = false;
                 }
             }
-            if (xMove == 0) // completely still
+            else if (xMove == 0 && yMove >= 0) {
                 canPoop = false;
+            }
         }
 
         if (handler.getKeyManager().space) {
@@ -140,6 +136,12 @@ public class Player extends Creature {
                                facingRight ? x + width / 6 : x + width - width / 2,
                                 y + height / 3 * 2 + 5));
             lastPoopTime = poopTime;
+
+            // lift the player up when pooping
+            goingUp = true;
+            yMove -= DEFAULT_SPEED;
+            if (yMove < - MAX_SPEED)
+                yMove = -MAX_SPEED;
         }
     }
 
