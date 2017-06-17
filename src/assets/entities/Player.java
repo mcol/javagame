@@ -135,7 +135,7 @@ public class Player extends Creature {
             Poop p = new Poop(handler,
                               facingRight ? x + width / 6 : x + width - width / 2,
                               y + height / 3 * 2 + 5);
-            handler.getWorld().getEntityManager().addEntity(p);
+            handler.getEntityManager().addEntity(p);
             lastPoopTime = poopTime;
 
             // lift the player up when pooping

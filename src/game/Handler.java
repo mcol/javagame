@@ -1,5 +1,8 @@
 package game;
 
+import java.util.ArrayList;
+import assets.entities.Entity;
+import assets.entities.EntityManager;
 import game.input.KeyManager;
 import gfx.Camera;
 import worlds.World;
@@ -48,5 +51,13 @@ public class Handler {
 
     public void setWorld(World world) {
         this.world = world;
+    }
+
+    public EntityManager getEntityManager() {
+        return world.getEntityManager();
+    }
+
+    public ArrayList<Entity> getEntities() {
+        return world.getEntityManager().getEntities();
     }
 }

@@ -47,7 +47,7 @@ public class Poop extends Creature {
 
     private void checkPoopDamage() {
 
-        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+        for (Entity e : handler.getEntities()) {
             if (!(e instanceof Enemy))
                 continue;
 

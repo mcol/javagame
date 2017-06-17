@@ -43,7 +43,7 @@ public abstract class Entity {
     public abstract void render(Graphics g);
 
     public boolean collidesWithEntity(float xOffset, float yOffset) {
-        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+        for (Entity e : handler.getEntities()) {
             // don't check for collisions against itself
             if (e.equals(this)) {
                 continue;
