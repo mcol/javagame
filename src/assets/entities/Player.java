@@ -1,7 +1,6 @@
 package assets.entities;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
 import assets.Assets;
 import game.Handler;
 import gfx.Animation;
@@ -17,7 +16,6 @@ public class Player extends Creature {
     private Animation animFlying, animFalling, animStill;
 
     // Pooping
-    ArrayList<Poop> poops = new ArrayList<Poop>();
     long lastPoopTime = 0;
     long lastPoopCheck = 0;
 
@@ -130,9 +128,10 @@ public class Player extends Creature {
         // don't allow continuous pooping
         long poopTime = System.currentTimeMillis();
         if (poopTime - lastPoopTime > 200) {
-            poops.add(new Poop(handler,
-                               facingRight ? x + width / 6 : x + width - width / 2,
-                                y + height / 3 * 2 + 5));
+            Poop p = new Poop(handler,
+                              facingRight ? x + width / 6 : x + width - width / 2,
+                              y + height / 3 * 2 + 5);
+            handler.getWorld().getEntityManager().addEntity(p);
             lastPoopTime = poopTime;
 
             // lift the player up when pooping
@@ -154,26 +153,6 @@ public class Player extends Creature {
         getInput();
         move();
         handler.getCamera().centreOnEntity(this);
-
-        // poop
-        for (Poop p : poops)
-            p.tick();
-
-        for (int i = poops.size() - 1; i >= 0; i--) {
-            if (poops.get(i).shouldRemove())
-                poops.remove(i);
-        }
-    }
-
-    @Override
-    public void render(Graphics g) {
-
-        // render the player
-        super.render(g);
-
-        // render the poop
-        for (Poop p : poops)
-            p.render(g);
     }
 
     private void chooseAnimation() {
