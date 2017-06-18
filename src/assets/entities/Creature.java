@@ -28,7 +28,7 @@ public abstract class Creature extends Entity {
     private boolean falling;
 
     /** Constructor. */
-    public Creature(Handler handler, int x, int y, int width, int height) {
+    public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         health = DEFAULT_HEALTH;
         speed = DEFAULT_SPEED;
@@ -55,7 +55,7 @@ public abstract class Creature extends Entity {
     }
 
     /** Computes the allowed movement in the horizontal direction. */
-    public int getMovementX() {
+    public float getMovementX() {
 
         if (xMove > 0) { // moving right
 
@@ -72,7 +72,7 @@ public abstract class Creature extends Entity {
             // check tiles at top right and bottom right corners of the creature's bounding box
             if (!collisionWithTile(tx, (y + bounds.y) / Tile.TILEHEIGHT) &&
                 !collisionWithTile(tx, (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
-                return (int) xMove;
+                return xMove;
             }
 
             // align the bounding box of the creature to the edge of the tile
@@ -93,7 +93,7 @@ public abstract class Creature extends Entity {
             // check tiles at the top left and bottom left corners of the creature's bounding box
             if (!collisionWithTile(tx, (y + bounds.y) / Tile.TILEHEIGHT) &&
                 !collisionWithTile(tx, (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
-                return (int) xMove;
+                return xMove;
             }
 
             // align the bounding box of the creature to the edge of the tile
@@ -105,7 +105,7 @@ public abstract class Creature extends Entity {
     }
 
     /** Computes the allowed movement in the vertical direction. */
-    public int getMovementY() {
+    public float getMovementY() {
 
         if (yMove < 0) { // moving up
 
@@ -122,7 +122,7 @@ public abstract class Creature extends Entity {
             // check tiles at the top left and top right corners of the creature's bounding box
             if (!collisionWithTile((x + bounds.x) / Tile.TILEWIDTH, ty) &&
                 !collisionWithTile((x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
-                return (int) yMove;
+                return yMove;
             } else {
                 // align the bounding box of the creature to the edge of the tile
                 return (int) ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y - y;
@@ -143,7 +143,7 @@ public abstract class Creature extends Entity {
             // check tiles at bottom left and bottom right corners of the creature's bounding box
             if (!collisionWithTile((x + bounds.x) / Tile.TILEWIDTH, ty) &&
                 !collisionWithTile((x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
-                return (int) yMove;
+                return yMove;
             }
             else {
                 // align the bounding box of the creature to the edge of the tile

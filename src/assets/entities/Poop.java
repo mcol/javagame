@@ -13,7 +13,7 @@ public class Poop extends Creature {
     private static final int poopDamage = 4;
 
     /** Constructor. */
-    public Poop(Handler handler, int x, int y) {
+    public Poop(Handler handler, float x, float y) {
         super(handler, x, y, 25, 25);
 
         // animation
@@ -33,7 +33,7 @@ public class Poop extends Creature {
         if (impact)
             return;
 
-        int dy = getMovementY();
+        float dy = getMovementY();
         if (dy == 0 || collidesWithEntity(0f, yMove) || collisionWithPlayer())
            setImpact();
         y += dy;

@@ -10,7 +10,7 @@ public abstract class Entity {
     protected Handler handler;
 
     /** Coordinates of the entity in pixels. */
-    protected int x, y;
+    protected float x, y;
 
     /** Size of the entity in pixels. */
     protected int width, height;
@@ -25,7 +25,7 @@ public abstract class Entity {
     protected Animation animation;
 
     /** Constructor. */
-    public Entity(Handler handler, int  x, int y, int width, int height) {
+    public Entity(Handler handler, float x, float y, int width, int height) {
         this.handler = handler;
         this.x = x;
         this.y = y;
@@ -77,7 +77,7 @@ public abstract class Entity {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
@@ -86,7 +86,7 @@ public abstract class Entity {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
     }
 

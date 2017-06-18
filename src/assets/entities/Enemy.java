@@ -47,7 +47,7 @@ public class Enemy extends Creature {
 
         // find solid ground
         if (justSpawned) {
-            int dy = getMovementY();
+            float dy = getMovementY();
             while (dy != 0) {
                 y += dy;
                 dy = getMovementY();
@@ -62,7 +62,7 @@ public class Enemy extends Creature {
         }
 
         // compute the allowed horizontal movement
-        int dx = getMovementX();
+        float dx = getMovementX();
 
         // switch direction if no movement is possible or there is a collision with another entity
         if ((dx == 0 || collidesWithEntity(xMove, 0f)) &&
