@@ -62,7 +62,7 @@ public abstract class Creature extends Entity {
     }
 
     /** Computes the allowed movement in the horizontal direction. */
-    public float getMovementX() {
+    protected float getMovementX() {
 
         if (xMove > 0) { // moving right
 
@@ -112,7 +112,7 @@ public abstract class Creature extends Entity {
     }
 
     /** Computes the allowed movement in the vertical direction. */
-    public float getMovementY() {
+    protected float getMovementY() {
 
         if (yMove < 0) { // moving up
 
