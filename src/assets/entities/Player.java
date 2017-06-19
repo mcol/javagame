@@ -165,6 +165,12 @@ public class Player extends Creature {
             animation = animStill;
     }
 
+    /** The player is always visible by default. */
+    @Override
+    public boolean offScreen() {
+        return false;
+    }
+
     private void help() {
     }
 }
