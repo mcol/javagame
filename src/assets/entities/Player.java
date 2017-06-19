@@ -15,9 +15,6 @@ public class Player extends Creature {
     // Animations
     private Animation animFlying, animFalling, animStill;
 
-    // Pooping
-    long lastPoopTime = 0;
-    long lastPoopCheck = 0;
 
     /** Constructor. */
     public Player(Handler handler, int x, int y) {
@@ -130,13 +127,13 @@ public class Player extends Creature {
             return;
 
         // don't allow continuous pooping
-        long poopTime = System.currentTimeMillis();
-        if (poopTime - lastPoopTime > 200) {
+        long now = System.currentTimeMillis();
+        if (now - damageCheckTime > 200) {
             Poop p = new Poop(handler,
                               facingRight ? x + width / 6 : x + width - width / 2,
                               y + height / 3 * 2 + 5);
             handler.getEntityManager().addEntity(p);
-            lastPoopTime = poopTime;
+            damageCheckTime = now;
 
             // lift the player up when pooping
             goingUp = true;

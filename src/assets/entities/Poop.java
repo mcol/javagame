@@ -10,8 +10,6 @@ public class Poop extends Creature {
     /** Whether the poop needs to show the impact animation. */
     private boolean impact;
 
-    private static final int poopDamage = 4;
-
     /** Constructor. */
     public Poop(Handler handler, float x, float y) {
         super(handler, x, y, 25, 25);
@@ -21,6 +19,9 @@ public class Poop extends Creature {
 
         // bounding box
         setBounds(5, 5, 15, 18);
+
+        // poop damage
+        damage = 3;
 
         impact = false;
         yMove = FALL_SPEED;
@@ -69,7 +70,7 @@ public class Poop extends Creature {
             float enemyMove = enemy.getxMove();
             if (getCollisionRectangle(0f, yMove)
                     .intersects(enemy.getCollisionRectangle(enemyMove, 0f))) {
-                enemy.setDamage(poopDamage);
+                enemy.setDamage(damage);
                 setExplosion();
             }
         }

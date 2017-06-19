@@ -10,6 +10,7 @@ import gfx.Animation;
 public abstract class Creature extends Entity {
 
     public static final int DEFAULT_HEALTH = 10;
+    public static final int DEFAULT_DAMAGE = 5;
     public static final float DEFAULT_SPEED = 3.0f,
                               MIN_SPEED = 0.5f,
                               MAX_SPEED = 4.0f,
@@ -17,6 +18,10 @@ public abstract class Creature extends Entity {
                               SPEED_CHANGE = 0.1f;
 
     protected int health;
+    protected int damage;
+
+    /** Time of the last check for damage. */
+    protected long damageCheckTime;
 
     /** Time of the last switch of direction. */
     protected long switchTime;
@@ -31,12 +36,14 @@ public abstract class Creature extends Entity {
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         health = DEFAULT_HEALTH;
+        damage = DEFAULT_DAMAGE;
         speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;
         falling = true;
         facingRight = true;
         spawnTime = System.currentTimeMillis();
+        damageCheckTime = 0;
         switchTime = System.currentTimeMillis();
 
         // placeholder empty animation
