@@ -2,17 +2,17 @@ package game;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
 public class Display {
     private JFrame frame;
     private Canvas canvas;
 
-    private String title;
+    /** The title string to be displayed. */
+    private final String title;
 
     /** Dimensions of the window in pixels. */
-    private int width, height;
+    private final int width, height;
 
     /** Constructor. */
     public Display(String title, int width, int height) {

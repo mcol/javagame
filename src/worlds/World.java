@@ -11,7 +11,7 @@ import utils.Utils;
 
 public class World {
 
-    private Handler handler;
+    private final Handler handler;
 
     /** Array of tiles that define the world. */
     private int[][] tiles;

@@ -10,25 +10,27 @@ import gfx.Camera;
 
 public class Game implements Runnable {
 
-    private Display display;
-
     /** Dimensions of the game window in pixels. */
-    private int width, height;
-    public String title;
+    private final int width, height;
+
+    /** The name of the game. */
+    private final String title;
 
     private boolean running = false;
     private Thread thread;
 
+    private final Display display;
     private BufferStrategy bs;
     private Graphics g;
 
-    private int fps = 60;
+    /** The number of frames per seconds to be rendered. */
+    private final int fps = 60;
 
     // States
     private State gameState;
 
     // Input
-    private KeyManager keyManager;
+    private final KeyManager keyManager;
 
     // Camera
     private Camera camera;
@@ -41,12 +43,12 @@ public class Game implements Runnable {
         this.width = width;
         this.height = height;
         this.title = title;
+        display = new Display(title, width, height);
         keyManager = new KeyManager();
+        display.getFrame().addKeyListener(keyManager);
     }
 
     private void init() {
-        display = new Display(title, width, height);
-        display.getFrame().addKeyListener(keyManager);
         Assets.init();
 
         handler = new Handler(this);

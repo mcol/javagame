@@ -13,8 +13,7 @@ public class Player extends Creature {
     private boolean canPoop = false;
 
     // Animations
-    private Animation animFlying, animFalling, animStill;
-
+    private final Animation animFlying, animFalling, animStill;
 
     /** Constructor. */
     public Player(Handler handler, int x, int y) {

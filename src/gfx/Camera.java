@@ -7,7 +7,7 @@ import utils.Utils;
 
 public class Camera {
 
-    private Handler handler;
+    private final Handler handler;
 
     /** Offset of the camera in pixels with respect to the game coordinates. */
     private float xOffset, yOffset;

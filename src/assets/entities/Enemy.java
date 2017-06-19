@@ -10,7 +10,7 @@ public class Enemy extends Creature {
     private boolean justSpawned;
 
     // Animations
-    private Animation animMoving, animFurious;
+    private final Animation animMoving, animFurious;
 
     /** Constructor. */
     public Enemy(Handler handler, int x, int y) {

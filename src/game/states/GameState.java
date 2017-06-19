@@ -1,13 +1,12 @@
 package game.states;
 
 import java.awt.Graphics;
-
 import game.Handler;
 import worlds.World;
 
 public class GameState extends State {
 
-    private World world;
+    private final World world;
 
     /** Constructor. */
     public GameState(Handler handler) {
