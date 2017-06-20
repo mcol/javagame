@@ -45,4 +45,9 @@ public class Tile {
     public boolean isSolid() {
         return false;
     }
+
+    /** Returns whether the tile can be destroyed. */
+    public boolean isBreakable() {
+        return false;
+    }
 }

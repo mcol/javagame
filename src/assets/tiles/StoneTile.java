@@ -2,10 +2,10 @@ package assets.tiles;
 
 import assets.Assets;
 
-public class StoneTile extends Tile {
+public class StoneTile extends BreakableTile {
 
     /** Constructor. */
     public StoneTile() {
-        super(Assets.stone);
+        super(Assets.stone, Assets.dirt);
     }
 }
