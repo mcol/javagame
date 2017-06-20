@@ -2,6 +2,7 @@ package assets.entities;
 
 import java.awt.Graphics;
 import assets.Assets;
+import assets.tiles.Tile;
 import game.Handler;
 import gfx.Animation;
 
@@ -57,7 +58,10 @@ public class Poop extends Creature {
 
     private void checkPoopDamage() {
 
+        // enemies
         for (Entity e : handler.getEntities()) {
+
+            // can only damage enemies
             if (!(e instanceof Enemy))
                 continue;
 
@@ -74,6 +78,15 @@ public class Poop extends Creature {
                 setExplosion();
             }
         }
+
+        // breakable tiles
+        int ty = (int) (getBottomBound() + yMove + 1) / Tile.TILEHEIGHT;
+        if (handler.getWorld()
+                   .getTile((int) getLeftBound() / Tile.TILEWIDTH, ty).isBreakable())
+            setImpact();
+        if (handler.getWorld()
+                   .getTile((int) getRightBound() / Tile.TILEWIDTH, ty).isBreakable())
+            setImpact();
     }
 
     public void setImpact() {
