@@ -1,6 +1,5 @@
 package assets.entities;
 
-import java.awt.Graphics;
 import assets.Assets;
 import assets.tiles.Tile;
 import game.Handler;
@@ -40,11 +39,6 @@ public class Poop extends Creature {
            setImpact();
         y += dy;
         checkPoopDamage();
-    }
-
-    @Override
-    public void render(Graphics g) {
-        super.render(g);
     }
 
     private boolean collisionWithPlayer() {
