@@ -222,8 +222,14 @@ public abstract class Creature extends Entity {
         this.speed = speed;
     }
 
+    /** Returns the desired movement in the horizontal direction. */
     public float getxMove() {
         return xMove;
+    }
+
+    /** Returns the desired movement in the vertical direction. */
+    public float getyMove() {
+        return yMove;
     }
 
     public boolean isFalling() {

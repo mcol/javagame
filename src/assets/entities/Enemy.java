@@ -73,6 +73,8 @@ public class Enemy extends Creature {
         }
         else
             x += dx;
+
+        checkPlayerDamage();
     }
 
     @Override
@@ -90,6 +92,20 @@ public class Enemy extends Creature {
 
             // avoid generating collisions
             setBounds(0, 0, 0, 0);
+        }
+    }
+
+    private void checkPlayerDamage() {
+
+        long now = System.currentTimeMillis();
+        if (now - damageCheckTime < 150)
+            return;
+
+        Player p = handler.getEntityManager().getPlayer();
+        if (p.getCollisionRectangle(p.getxMove(), p.getyMove())
+             .intersects(getCollisionRectangle(xMove, yMove))) {
+            p.setDamage(damage);
+            damageCheckTime = now;
         }
     }
 }
