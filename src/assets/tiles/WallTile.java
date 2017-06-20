@@ -5,9 +5,8 @@ import assets.Assets;
 public class WallTile extends Tile {
 
     /** Constructor. */
-    public WallTile(int id) {
-        super(Assets.wall, id);
-    }
+    public WallTile() {
+        super(Assets.wall);
 
     @Override
     public boolean isSolid() {

@@ -8,23 +8,31 @@ public class Tile {
     /** Size of a tile in pixels. */
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
 
-    /** Array of all instantiated tiles. */
-    public static Tile[] tileset = new Tile[64];
+    /** Tile with no texture. */
+    public static Tile voidTile = new Tile(null);
 
-    public static Tile grassTile = new GrassTile(0);
-    public static Tile dirtTile = new DirtTile(1);
-    public static Tile wallTile = new WallTile(2);
-    public static Tile stoneTile = new StoneTile(3);
-
+    /** The texture to be used for the tile. */
     protected BufferedImage texture;
-    protected final int id;
 
     /** Constructor. */
-    public Tile(BufferedImage texture, int id) {
+    protected Tile(BufferedImage texture) {
         this.texture = texture;
-        this.id = id;
+    }
 
-        tileset[id] = this;
+    /** Create a new tile corresponding to the id used in the world file. */
+    public static Tile getTile(int id) {
+        switch (id) {
+        case 0:
+            return new GrassTile();
+        case 1:
+            return new DirtTile();
+        case 2:
+            return new WallTile();
+        case 3:
+            return new StoneTile();
+        default:
+            return voidTile;
+        }
     }
 
     public void tick() { /* nothing to do */ }
@@ -36,9 +44,5 @@ public class Tile {
     /** Returns whether the tile can collide with an entity. */
     public boolean isSolid() {
         return false;
-    }
-
-    public int getId() {
-        return id;
     }
 }

@@ -14,7 +14,7 @@ public class World {
     private final Handler handler;
 
     /** Array of tiles that define the world. */
-    private int[][] tiles;
+    private Tile[][] tiles;
 
     /** Dimensions of the world in tiles. */
     private int width, height;
@@ -79,12 +79,12 @@ public class World {
 
         // prevent errors going past the boundaries of the map
         if (x < 0 || y < 0 || x >= width || y >= height) {
-            return Tile.grassTile;
+            return Tile.voidTile;
         }
 
-        Tile t = Tile.tileset[tiles[x][y]];
+        Tile t = tiles[x][y];
         if (t == null)
-            t = Tile.wallTile;
+            t = Tile.voidTile;
         return t;
     }
 
@@ -97,10 +97,10 @@ public class World {
         spawnCoords[0] = Utils.parseInt(tokens[2]);
         spawnCoords[1] = Utils.parseInt(tokens[3]);
 
-        tiles = new int[width][height];
+        tiles = new Tile[width][height];
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++)
-                tiles[x][y] = Utils.parseInt(tokens[x + y * width + 4]);
+                tiles[x][y] = Tile.getTile(Utils.parseInt(tokens[x + y * width + 4]));
         return spawnCoords;
     }
 
