@@ -100,6 +100,26 @@ public abstract class Entity {
         return height;
     }
 
+    /** Returns the left coordinate of the entity's bounding box in pixels. */
+    protected float getLeftBound() {
+        return x + bounds.x;
+    }
+
+    /** Returns the right coordinate of the entity's bounding box in pixels. */
+    protected float getRightBound() {
+        return x + bounds.x + bounds.width;
+    }
+
+    /** Returns the top coordinate of the entity's bounding box in pixels. */
+    protected float getTopBound() {
+        return y + bounds.y;
+    }
+
+    /** Returns the bottom coordinate of the entity's bounding box in pixels. */
+    protected float getBottomBound() {
+        return y + bounds.y + bounds.height;
+    }
+
     /** Whether the entity should be removed. */
     public boolean shouldRemove() {
         return false;

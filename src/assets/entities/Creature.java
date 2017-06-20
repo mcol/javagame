@@ -69,42 +69,42 @@ public abstract class Creature extends Entity {
             falling = true;
 
             // right coordinate of bounding box in tiles
-            float tx = (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
+            float tx = (getRightBound() + xMove) / Tile.TILEWIDTH;
 
             // check the right edge of the map and align to it
             if (tx > handler.getWorld().getWidth()) {
-                return (int) tx * Tile.TILEWIDTH - x - bounds.x - bounds.width;
+                return (int) tx * Tile.TILEWIDTH - getRightBound();
             }
 
             // check tiles at top right and bottom right corners of the creature's bounding box
-            if (!collisionWithTile(tx, (y + bounds.y) / Tile.TILEHEIGHT) &&
-                !collisionWithTile(tx, (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
+            if (!collisionWithTile(tx, getTopBound() / Tile.TILEHEIGHT) &&
+                !collisionWithTile(tx, getBottomBound() / Tile.TILEHEIGHT)) {
                 return xMove;
             }
 
             // align the bounding box of the creature to the edge of the tile
-            return (int) tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1 - x;
+            return (int) tx * Tile.TILEWIDTH - getRightBound() - 1;
         }
         else if (xMove < 0) { // moving left
 
             falling = true;
 
             // left coordinate of bounding box in tiles
-            float tx = (x + xMove + bounds.x) / Tile.TILEWIDTH;
+            float tx = (getLeftBound() + xMove) / Tile.TILEWIDTH;
 
             // check the left edge of the map and align to it
             if (tx < 0) {
-                return 0 - x - bounds.x;
+                return -getLeftBound();
             }
 
             // check tiles at the top left and bottom left corners of the creature's bounding box
-            if (!collisionWithTile(tx, (y + bounds.y) / Tile.TILEHEIGHT) &&
-                !collisionWithTile(tx, (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
+            if (!collisionWithTile(tx, getTopBound() / Tile.TILEHEIGHT) &&
+                !collisionWithTile(tx, getBottomBound() / Tile.TILEHEIGHT)) {
                 return xMove;
             }
 
             // align the bounding box of the creature to the edge of the tile
-            return (int) tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x - x;
+            return (int) tx * Tile.TILEWIDTH + Tile.TILEWIDTH - getLeftBound();
         }
 
         // no horizontal movement
@@ -119,44 +119,44 @@ public abstract class Creature extends Entity {
             falling = true;
 
             // top coordinate of bounding box in tiles
-            float ty = (y + yMove + bounds.y) / Tile.TILEHEIGHT;
+            float ty = (getTopBound() + yMove) / Tile.TILEHEIGHT;
 
             // check the top edge of the map and align to it
             if (ty < 0) {
-                return 0 - y - bounds.y;
+                return -getTopBound();
             }
 
             // check tiles at the top left and top right corners of the creature's bounding box
-            if (!collisionWithTile((x + bounds.x) / Tile.TILEWIDTH, ty) &&
-                !collisionWithTile((x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
+            if (!collisionWithTile(getLeftBound() / Tile.TILEWIDTH, ty) &&
+                !collisionWithTile(getRightBound() / Tile.TILEWIDTH, ty)) {
                 return yMove;
             } else {
                 // align the bounding box of the creature to the edge of the tile
-                return (int) ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y - y;
+                return (int) ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - getTopBound();
             }
         }
         else if (yMove > 0) { // moving down
 
             // bottom coordinate of bounding box in tiles
-            float ty = (y + yMove + bounds.y + bounds.height) / Tile.TILEHEIGHT;
+            float ty = (getBottomBound() + yMove) / Tile.TILEHEIGHT;
 
             // check the bottom edge of the map and align to it
             if (ty > handler.getWorld().getHeight()) {
                 yMove = 0;
                 falling = false;
-                return (int) ty * Tile.TILEHEIGHT - y - bounds.y - bounds.height;
+                return (int) ty * Tile.TILEHEIGHT - getBottomBound();
             }
 
             // check tiles at bottom left and bottom right corners of the creature's bounding box
-            if (!collisionWithTile((x + bounds.x) / Tile.TILEWIDTH, ty) &&
-                !collisionWithTile((x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
+            if (!collisionWithTile(getLeftBound() / Tile.TILEWIDTH, ty) &&
+                !collisionWithTile(getRightBound() / Tile.TILEWIDTH, ty)) {
                 return yMove;
             }
             else {
                 // align the bounding box of the creature to the edge of the tile
                 yMove = 0;
                 falling = false;
-                return (int) ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1 - y;
+                return (int) ty * Tile.TILEHEIGHT - getBottomBound() - 1;
             }
         }
 
