@@ -3,11 +3,15 @@ package assets.entities;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
+import assets.hud.HUD;
 
 public class EntityManager {
 
     private Player player;
     private ArrayList<Entity> entities;
+
+    /** Heads-up display. */
+    private final HUD hud;
 
     /** Class to decide render order of entities. */
     private Comparator<Entity> renderSorter = new Comparator<Entity>() {
@@ -23,6 +27,7 @@ public class EntityManager {
     public EntityManager(Player player) {
         entities = new ArrayList<Entity>();
         addEntity(player);
+        hud = new HUD(player);
         this.player = player;
     }
 
@@ -41,6 +46,7 @@ public class EntityManager {
     public void render(Graphics g) {
         for (Entity e : entities)
             e.render(g);
+        hud.render(g);
     }
 
     public void addEntity(Entity e) {
@@ -59,6 +65,7 @@ public class EntityManager {
 
     public void setPlayer(Player player) {
         this.player = player;
+        hud.setPlayer(player);
     }
 
     public ArrayList<Entity> getEntities() {

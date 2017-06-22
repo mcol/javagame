@@ -9,7 +9,7 @@ import gfx.Animation;
 
 public abstract class Creature extends Entity {
 
-    public static final int DEFAULT_HEALTH = 10;
+    public static final int DEFAULT_HEALTH = 40;
     public static final int DEFAULT_DAMAGE = 5;
     public static final float DEFAULT_SPEED = 3.0f,
                               MIN_SPEED = 0.5f,
