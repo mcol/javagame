@@ -29,11 +29,28 @@ public class HUD {
     }
 
     public void render(Graphics g) {
+
+        // shift to hide the rounded corners on the left side of the bars
+        final int barOffset = 20;
+
+        // diameter of the arc for the corners
+        final int roundness = 25;
+
         // health bar
-        float hbar = (float) player.getHealth() / Player.DEFAULT_HEALTH * width;
-        g.drawImage(image, 0, 20, width, height, null);
+        float hbar = (float) player.getHealth() / Player.DEFAULT_HEALTH
+                     * (width - barOffset);
+        g.drawImage(image, -barOffset, 20, width, height, null);
         g.setColor(new Color(0xcc0000));
-        g.fillRoundRect(-20, 20, (int) hbar - 10, height, 30, 30);
+        g.fillRoundRect(-barOffset, 20, (int) hbar + barOffset, height,
+                        roundness, roundness);
+
+        // poop bar
+        float pbar = (float) player.getPoop() / Player.MAX_POOP
+                     * (width - barOffset);
+        g.drawImage(image, -barOffset, 65, width, height, null);
+        g.setColor(new Color(0x774824));
+        g.fillRoundRect(-barOffset, 65, (int) pbar + barOffset, height,
+                        roundness, roundness);
     }
 
     public void setPlayer(Player player) {

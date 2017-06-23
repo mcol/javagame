@@ -7,6 +7,8 @@ import gfx.Animation;
 
 public class Player extends Creature {
 
+    /** Maximum amount of poop that the player can carry. */
+    public static final int MAX_POOP = 25;
     private static final float dampingFactor = 0.96f;
     private static final float liftspeed = 1.4f;
     private boolean goingUp = false;
@@ -14,6 +16,9 @@ public class Player extends Creature {
 
     // Animations
     private final Animation animFlying, animFalling, animStill;
+
+    /** Current available poop. */
+    private int poop;
 
     /** Constructor. */
     public Player(Handler handler, int x, int y) {
@@ -27,6 +32,8 @@ public class Player extends Creature {
         animFlying = new Animation(Assets.player_flying, 100);
         animStill = new Animation(Assets.player_still, 500);
         animFalling = new Animation(Assets.player_falling, 150);
+
+        poop = MAX_POOP;
     }
 
     private void getInput() {
@@ -122,7 +129,13 @@ public class Player extends Creature {
     }
 
     private void firePoop() {
+
+        // not in a position for pooping
         if (!canPoop)
+            return;
+
+        // out of poop
+        if (poop == 0)
             return;
 
         // don't allow continuous pooping
@@ -131,6 +144,7 @@ public class Player extends Creature {
             Poop p = new Poop(handler,
                               facingRight ? x + width / 6 : x + width - width / 2,
                               y + height / 3 * 2 + 5);
+            poop--;
             handler.getEntityManager().addEntity(p);
             damageCheckTime = now;
 
@@ -171,5 +185,10 @@ public class Player extends Creature {
     }
 
     private void help() {
+    }
+
+    /** Returns the amount of available poop. */
+    public int getPoop() {
+        return poop;
     }
 }
