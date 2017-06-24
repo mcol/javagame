@@ -24,7 +24,7 @@ public class Camera {
         xOffset = e.getX() - handler.getWidth() / 2 + e.getWidth() / 2;
         yOffset = e.getY() - handler.getHeight() / 2 + e.getHeight() / 2;
 
-        // check the map bounds to avoid showing blank space outsie of the map
+        // check the map bounds to avoid showing blank space outside of the map
         xOffset = Utils.clampValue(xOffset, 0, handler.getWorld().getWidth() * Tile.TILEWIDTH - handler.getWidth());
         yOffset = Utils.clampValue(yOffset, 0, handler.getWorld().getHeight() * Tile.TILEHEIGHT - handler.getHeight());
     }

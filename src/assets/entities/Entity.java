@@ -9,7 +9,7 @@ public abstract class Entity {
 
     protected Handler handler;
 
-    /** Coordinates of the entity in pixels. */
+    /** Coordinates of the top left corner of the entity in pixels. */
     protected float x, y;
 
     /** Size of the entity in pixels. */
@@ -18,7 +18,7 @@ public abstract class Entity {
     /** Collision bounding box. */
     protected Rectangle bounds;
 
-    /** When the entity was generated. */
+    /** Time when the entity was generated. */
     protected long spawnTime;
 
     /** Animation representing the entity. */
@@ -42,6 +42,7 @@ public abstract class Entity {
 
     public abstract void render(Graphics g);
 
+    /** Whether the entity collides with another at the given position offset. */
     public boolean collidesWithEntity(float xOffset, float yOffset) {
         for (Entity e : handler.getEntities()) {
             // don't check for collisions against itself
@@ -56,13 +57,14 @@ public abstract class Entity {
         return false;
     }
 
+    /** Returns the collision rectangle at the given position offset. */
     public Rectangle getCollisionRectangle(float xOffset, float yOffset) {
         return new Rectangle((int) (x + bounds.x + xOffset),
                              (int) (y + bounds.y + yOffset),
                              bounds.width, bounds.height);
     }
 
-    /** Whether the entity is currently not visible. */
+    /** Whether the entity is currently outside of the visible screen. */
     public boolean offScreen() {
         return  x - handler.getCamera().getxOffset() + width < 0 ||
                 x - handler.getCamera().getxOffset() > handler.getGame().getWidth() ||

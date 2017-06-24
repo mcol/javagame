@@ -196,6 +196,7 @@ public abstract class Creature extends Entity {
         return handler.getWorld().getTile((int) x, (int) y).isSolid();
     }
 
+    /** Decreases the creature's health according to the damage received. */
     protected void setDamage(int damage) {
         health -= damage;
         if (health < 0) {
@@ -206,6 +207,7 @@ public abstract class Creature extends Entity {
 
     // getters and setters
 
+    /** Returns the current health of the creature. */
     public int getHealth() {
         return health;
     }

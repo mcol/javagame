@@ -8,6 +8,8 @@ import assets.hud.HUD;
 public class EntityManager {
 
     private Player player;
+
+    /** List of alive entities. */
     private ArrayList<Entity> entities;
 
     /** Heads-up display. */
@@ -24,6 +26,7 @@ public class EntityManager {
         }
     };
 
+    /** Constructor. */
     public EntityManager(Player player) {
         entities = new ArrayList<Entity>();
         addEntity(player);
@@ -49,10 +52,12 @@ public class EntityManager {
         hud.render(g);
     }
 
+    /** Add an entity to the list of alive entities. */
     public void addEntity(Entity e) {
         entities.add(e);
     }
 
+    /** Remove an entity from the list of alive entities. */
     public void removeEntity(Entity e) {
         entities.remove(e);
     }
@@ -68,6 +73,7 @@ public class EntityManager {
         hud.setPlayer(player);
     }
 
+    /** Returns the list of alive entities. */
     public ArrayList<Entity> getEntities() {
         return entities;
     }

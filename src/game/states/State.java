@@ -1,7 +1,6 @@
 package game.states;
 
 import java.awt.Graphics;
-
 import game.Handler;
 
 public abstract class State {
@@ -19,11 +18,12 @@ public abstract class State {
 
     // getters and setters
 
-    /** Returns the current state */
+    /** Returns the current state. */
     public static State getState() {
         return currentState;
     }
 
+    /** Sets the current state. */
     public static void setState(State state) {
         currentState = state;
     }

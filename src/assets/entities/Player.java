@@ -1,6 +1,5 @@
 package assets.entities;
 
-import java.awt.Graphics;
 import assets.Assets;
 import game.Handler;
 import gfx.Animation;
@@ -169,6 +168,7 @@ public class Player extends Creature {
         handler.getCamera().centreOnEntity(this);
     }
 
+    /** Decides which animation should be shown. */
     private void chooseAnimation() {
         if (xMove != 0 || yMove < 0)
             animation = animFlying;
