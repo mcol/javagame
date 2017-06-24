@@ -10,13 +10,13 @@ public class EntityManager {
     private Player player;
 
     /** List of alive entities. */
-    private ArrayList<Entity> entities;
+    private final ArrayList<Entity> entities;
 
     /** Heads-up display. */
     private final HUD hud;
 
     /** Class to decide render order of entities. */
-    private Comparator<Entity> renderSorter = new Comparator<Entity>() {
+    private final Comparator<Entity> renderSorter = new Comparator<Entity>() {
         @Override
         public int compare(Entity e1, Entity e2) {
             if (e1.getY() + e1.getHeight() / 2 < e2.getY() + e2.getHeight() / 2)
