@@ -56,7 +56,7 @@ public class Enemy extends Creature {
         }
 
         // check if it's possible to move down
-        if (!collidesWithEntity(0f, FALL_SPEED) ) {
+        if (!collisionWithEntity(0f, FALL_SPEED)) {
             yMove = FALL_SPEED;
             y += getMovementY();
         }
@@ -65,7 +65,7 @@ public class Enemy extends Creature {
         float dx = getMovementX();
 
         // switch direction if no movement is possible or there is a collision with another entity
-        if ((dx == 0 || collidesWithEntity(xMove, 0f)) &&
+        if ((dx == 0 || collisionWithEntity(xMove, 0f)) &&
                 System.currentTimeMillis() - switchTime > 150) {
             facingRight = !facingRight;
             xMove = -xMove;

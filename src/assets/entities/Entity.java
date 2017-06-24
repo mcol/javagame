@@ -43,7 +43,7 @@ public abstract class Entity {
     public abstract void render(Graphics g);
 
     /** Whether the entity collides with another at the given position offset. */
-    public boolean collidesWithEntity(float xOffset, float yOffset) {
+    protected boolean collisionWithEntity(float xOffset, float yOffset) {
         for (Entity e : handler.getEntities()) {
             // don't check for collisions against itself
             if (e.equals(this)) {
@@ -58,7 +58,7 @@ public abstract class Entity {
     }
 
     /** Returns the collision rectangle at the given position offset. */
-    public Rectangle getCollisionRectangle(float xOffset, float yOffset) {
+    protected Rectangle getCollisionRectangle(float xOffset, float yOffset) {
         return new Rectangle((int) (x + bounds.x + xOffset),
                              (int) (y + bounds.y + yOffset),
                              bounds.width, bounds.height);

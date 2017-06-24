@@ -51,9 +51,9 @@ public abstract class Creature extends Entity {
     }
 
     public void move() {
-        if (!collidesWithEntity(xMove, 0f))
+        if (!collisionWithEntity(xMove, 0f))
             x += getMovementX();
-        if (!collidesWithEntity(0f, yMove))
+        if (!collisionWithEntity(0f, yMove))
             y += getMovementY();
         else if (yMove > 0) {
             // stop falling when colliding vertically with an entity
