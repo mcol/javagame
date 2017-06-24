@@ -32,8 +32,8 @@ public class Camera {
     // getters and setters
 
     /** Returns the horizontal camera offset in pixels. */
-    public float getxOffset() {
-        return xOffset;
+    public int getxOffset() {
+        return (int) xOffset;
     }
 
     public void setxOffset(float xOffset) {
@@ -41,8 +41,8 @@ public class Camera {
     }
 
     /** Returns the vertical camera offset in pixels. */
-    public float getyOffset() {
-        return yOffset;
+    public int getyOffset() {
+        return (int) yOffset;
     }
 
     public void setyOffset(float yOffset) {
