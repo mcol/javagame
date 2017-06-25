@@ -14,6 +14,12 @@ public class HUD {
     /** Height of the displayed graphics. */
     private static final int height = 40;
 
+    /** Bar colours. */
+    private static final Color healthColor = new Color(0xcc0000);
+    private static final Color healthTransparentColor = new Color(0x99cc0000, true);
+    private static final Color poopColor = new Color(0x774824);
+    private static final Color poopTransparentColor = new Color(0x99774824, true);
+
     private Player player;
     private BufferedImage image;
 
@@ -39,11 +45,14 @@ public class HUD {
         // diameter of the arc for the corners
         final int roundness = 25;
 
+        // make the hud transparent when the player gets in the top left corner
+        boolean transparent = player.getX() < 115 && player.getY() < 90;
+
         // health bar
         float hbar = (float) player.getHealth() / Player.DEFAULT_HEALTH
                      * (width - barOffset);
         g.drawImage(image, -barOffset, 20, width, height, null);
-        g.setColor(new Color(0xcc0000));
+        g.setColor(transparent ? healthTransparentColor : healthColor);
         g.fillRoundRect(-barOffset, 20 + border,
                         (int) hbar + barOffset - border, height - 2 * border,
                         roundness, roundness);
@@ -52,7 +61,7 @@ public class HUD {
         float pbar = (float) player.getPoop() / Player.MAX_POOP
                      * (width - barOffset);
         g.drawImage(image, -barOffset, 65, width, height, null);
-        g.setColor(new Color(0x774824));
+        g.setColor(transparent ? poopTransparentColor : poopColor);
         g.fillRoundRect(-barOffset, 65 + border,
                         (int) pbar + barOffset - border, height - 2 * border,
                         roundness, roundness);
