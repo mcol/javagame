@@ -35,6 +35,8 @@ public class Poop extends Creature {
             return;
 
         float dy = getMovementY();
+        if (dy < 0) // the poop can't go up
+            dy = 1;
         if (dy == 0 || collisionWithEntity(0f, yMove) || collisionWithPlayer())
            setImpact();
         y += dy;
