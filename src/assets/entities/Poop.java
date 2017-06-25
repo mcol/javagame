@@ -18,7 +18,7 @@ public class Poop extends Creature {
         animation = new Animation(Assets.poop_falling, 100);
 
         // bounding box
-        setBounds(5, 5, 15, 18);
+        setBounds(5, 10, 15, 14);
 
         // poop damage
         damage = 3;
