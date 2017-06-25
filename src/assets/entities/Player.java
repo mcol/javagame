@@ -8,6 +8,10 @@ public class Player extends Creature {
 
     /** Maximum amount of poop that the player can carry. */
     public static final int MAX_POOP = 25;
+
+    /** Interval between each poop increase in milliseconds. */
+    public static final long POOP_RESTORE_INTERVAL = 15000;
+
     private static final float dampingFactor = 0.96f;
     private static final float liftspeed = 1.4f;
     private boolean goingUp = false;
@@ -18,6 +22,9 @@ public class Player extends Creature {
 
     /** Current available poop. */
     private int poop;
+
+    /** Time of the last poop increase. */
+    private long poopRestoreTime = 0;
 
     /** Constructor. */
     public Player(Handler handler, int x, int y) {
@@ -166,6 +173,8 @@ public class Player extends Creature {
         getInput();
         move();
         handler.getCamera().centreOnEntity(this);
+
+        restorePoop();
     }
 
     /** Decides which animation should be shown. */
@@ -184,8 +193,19 @@ public class Player extends Creature {
         return false;
     }
 
+    /** Increase the player's poop load. */
+    private void restorePoop() {
+        long now = System.currentTimeMillis();
+        if (now - poopRestoreTime > POOP_RESTORE_INTERVAL) {
+            poop = Math.min(poop + 1, MAX_POOP);
+            poopRestoreTime = now;
+        }
+    }
+
     private void help() {
     }
+
+    // getters and setters
 
     /** Returns the amount of available poop. */
     public int getPoop() {
