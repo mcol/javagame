@@ -225,4 +225,11 @@ public class Player extends Creature {
     public int getPoop() {
         return poop;
     }
+
+    /** Increase the amount of available poop. */
+    public void increasePoop() {
+        poop++;
+        if (poop > MAX_POOP)
+            poop = MAX_POOP;
+    }
 }
