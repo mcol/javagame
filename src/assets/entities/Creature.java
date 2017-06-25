@@ -9,7 +9,8 @@ import gfx.Animation;
 
 public abstract class Creature extends Entity {
 
-    public static final int DEFAULT_HEALTH = 40;
+    public static final int DEFAULT_HEALTH = 40,
+                            LOW_HEALTH = 10;
     public static final int DEFAULT_DAMAGE = 5;
     public static final float DEFAULT_SPEED = 3.0f,
                               MIN_SPEED = 0.5f,
@@ -181,7 +182,7 @@ public abstract class Creature extends Entity {
                         (int) (y - handler.getCamera().getyOffset()),
                         -width, height, null);
 
-        g.setColor(health < 10 ? Color.RED : Color.WHITE);
+        g.setColor(health < LOW_HEALTH ? Color.RED : Color.WHITE);
 //        g.fillRect((int) (x + bounds.x - handler.getCamera().getxOffset()),
 //                   (int) (y + bounds.y - handler.getCamera().getyOffset()),
 //                   bounds.width, bounds.height);

@@ -44,7 +44,7 @@ public class Enemy extends Creature {
             return;
 
         // animation
-        if (health < 15) {
+        if (health < LOW_HEALTH) {
             animation = animFurious;
             xMove *= 1.03;
             xMove = Utils.clampValue(xMove, -2 * (int) DEFAULT_SPEED, 2 * (int) DEFAULT_SPEED);
