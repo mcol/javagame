@@ -33,6 +33,9 @@ public class HUD {
         // shift to hide the rounded corners on the left side of the bars
         final int barOffset = 20;
 
+        // size of the border in pixels
+        final int border = 3;
+
         // diameter of the arc for the corners
         final int roundness = 25;
 
@@ -41,7 +44,8 @@ public class HUD {
                      * (width - barOffset);
         g.drawImage(image, -barOffset, 20, width, height, null);
         g.setColor(new Color(0xcc0000));
-        g.fillRoundRect(-barOffset, 20, (int) hbar + barOffset, height,
+        g.fillRoundRect(-barOffset, 20 + border,
+                        (int) hbar + barOffset - border, height - 2 * border,
                         roundness, roundness);
 
         // poop bar
@@ -49,7 +53,8 @@ public class HUD {
                      * (width - barOffset);
         g.drawImage(image, -barOffset, 65, width, height, null);
         g.setColor(new Color(0x774824));
-        g.fillRoundRect(-barOffset, 65, (int) pbar + barOffset, height,
+        g.fillRoundRect(-barOffset, 65 + border,
+                        (int) pbar + barOffset - border, height - 2 * border,
                         roundness, roundness);
     }
 
