@@ -132,7 +132,7 @@ public abstract class Creature extends Entity {
                 return yMove;
             } else {
                 // align the bounding box of the creature to the edge of the tile
-                return (int) ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - getTopBound();
+                return (int) ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - y - bounds.y;
             }
         }
         else if (yMove > 0) { // moving down
