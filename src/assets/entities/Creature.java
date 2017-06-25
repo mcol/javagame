@@ -181,7 +181,7 @@ public abstract class Creature extends Entity {
                         (int) (y - handler.getCamera().getyOffset()),
                         -width, height, null);
 
-        g.setColor(Color.RED);
+        g.setColor(health < 10 ? Color.RED : Color.WHITE);
 //        g.fillRect((int) (x + bounds.x - handler.getCamera().getxOffset()),
 //                   (int) (y + bounds.y - handler.getCamera().getyOffset()),
 //                   bounds.width, bounds.height);

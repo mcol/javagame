@@ -1,11 +1,16 @@
 package assets.entities;
 
+import java.awt.Font;
+import java.awt.Graphics;
 import assets.Assets;
 import game.Handler;
 import gfx.Animation;
 import utils.Utils;
 
 public class Enemy extends Creature {
+
+    /** Font used in reporting the health. */
+    private static final Font healthFont = new Font(Font.MONOSPACED, Font.BOLD, 17);
 
     private boolean justSpawned;
 
@@ -75,6 +80,18 @@ public class Enemy extends Creature {
             x += dx;
 
         checkPlayerDamage();
+    }
+
+    @Override
+    public void render(Graphics g) {
+        super.render(g);
+
+        // health status
+        final int xAdj = facingRight ? width / 2 : width / 4;
+        g.setFont(healthFont);
+        g.drawString("" + health,
+                     (int) (x - handler.getCamera().getxOffset() + xAdj),
+                     (int) (y - handler.getCamera().getyOffset() + bounds.y / 3));
     }
 
     @Override
