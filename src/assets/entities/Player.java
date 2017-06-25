@@ -195,9 +195,15 @@ public class Player extends Creature {
 
     /** Increase the player's poop load. */
     private void restorePoop() {
+
+        // nothing to restore
+        if (poop == MAX_POOP)
+            return;
+
+        // check if it's time to restore some poop
         long now = System.currentTimeMillis();
         if (now - poopRestoreTime > POOP_RESTORE_INTERVAL) {
-            poop = Math.min(poop + 1, MAX_POOP);
+            poop++;
             poopRestoreTime = now;
         }
     }
