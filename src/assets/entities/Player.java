@@ -23,6 +23,9 @@ public class Player extends Creature {
     /** Current available poop. */
     private int poop;
 
+    /** Whether the player has fired any poop. */
+    private boolean hasPooped = false;
+
     /** Time of the last poop increase. */
     private long poopRestoreTime = 0;
 
@@ -159,6 +162,11 @@ public class Player extends Creature {
             yMove -= DEFAULT_SPEED;
             if (yMove < - MAX_SPEED)
                 yMove = -MAX_SPEED;
+        }
+
+        if (!hasPooped) {
+            poopRestoreTime = now;
+            hasPooped = true;
         }
     }
 
