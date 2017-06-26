@@ -42,6 +42,9 @@ public class Player extends Creature {
         animStill = new Animation(Assets.player_still, 500);
         animFalling = new Animation(Assets.player_falling, 150);
 
+        // current animation
+        animation = animFalling;
+
         poop = MAX_POOP;
     }
 

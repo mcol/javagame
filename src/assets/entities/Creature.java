@@ -2,10 +2,8 @@ package assets.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import assets.tiles.Tile;
 import game.Handler;
-import gfx.Animation;
 
 public abstract class Creature extends Entity {
 
@@ -46,9 +44,6 @@ public abstract class Creature extends Entity {
         spawnTime = System.currentTimeMillis();
         damageCheckTime = 0;
         switchTime = System.currentTimeMillis();
-
-        // placeholder empty animation
-        animation = new Animation(new BufferedImage[1], 1);
     }
 
     public void move() {
