@@ -172,12 +172,12 @@ public abstract class Creature extends Entity {
             return;
 
         if (facingRight)
-            g.drawImage(getCurrentAnimationFrame(),
+            g.drawImage(animation.getCurrentFrame(),
                         (int) (x - handler.getCamera().getxOffset()),
                         (int) (y - handler.getCamera().getyOffset()),
                         width, height, null);
         else
-            g.drawImage(getCurrentAnimationFrame(),
+            g.drawImage(animation.getCurrentFrame(),
                         (int) (x - handler.getCamera().getxOffset() + width),
                         (int) (y - handler.getCamera().getyOffset()),
                         -width, height, null);
@@ -187,10 +187,6 @@ public abstract class Creature extends Entity {
 //                   (int) (y + bounds.y - handler.getCamera().getyOffset()),
 //                   bounds.width, bounds.height);
     }
-
-    protected BufferedImage getCurrentAnimationFrame() {
-        return animation.getCurrentFrame();
-    };
 
     /** Returns whether there is a collision with a solid tile. */
     protected boolean collisionWithTile(float x, float y) {
