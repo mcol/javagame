@@ -140,6 +140,17 @@ public class Player extends Creature {
         }
     }
 
+    private void move() {
+        if (!collisionWithEntity(xMove, 0f))
+            x += getMovementX();
+        if (!collisionWithEntity(0f, yMove))
+            y += getMovementY();
+        else if (yMove > 0) {
+            // stop falling when colliding vertically with an entity
+            setFalling(false);
+        }
+    }
+
     private void firePoop() {
 
         // not in a position for pooping

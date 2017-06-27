@@ -46,17 +46,6 @@ public abstract class Creature extends Entity {
         switchTime = System.currentTimeMillis();
     }
 
-    public void move() {
-        if (!collisionWithEntity(xMove, 0f))
-            x += getMovementX();
-        if (!collisionWithEntity(0f, yMove))
-            y += getMovementY();
-        else if (yMove > 0) {
-            // stop falling when colliding vertically with an entity
-            falling = false;
-        }
-    }
-
     /** Computes the allowed movement in the horizontal direction. */
     protected float getMovementX() {
 
@@ -228,6 +217,10 @@ public abstract class Creature extends Entity {
 
     public boolean isFalling() {
         return falling;
+    }
+
+    public void setFalling(boolean falling) {
+        this.falling = falling;
     }
 
     /** Whether the creature is dead. */
