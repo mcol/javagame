@@ -12,6 +12,9 @@ public class Enemy extends Creature {
     /** Font used in reporting the health. */
     private static final Font healthFont = new Font(Font.MONOSPACED, Font.BOLD, 17);
 
+    /** Time of the last switch of direction. */
+    protected long switchTime;
+
     private boolean justSpawned;
 
     // Animations
@@ -33,6 +36,7 @@ public class Enemy extends Creature {
         yMove = FALL_SPEED;
         xMove = DEFAULT_SPEED;
         health = 25;
+        switchTime = 0;
     }
 
     @Override

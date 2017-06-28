@@ -22,9 +22,6 @@ public abstract class Creature extends Entity {
     /** Time of the last check for damage. */
     protected long damageCheckTime;
 
-    /** Time of the last switch of direction. */
-    protected long switchTime;
-
     // movement
     protected float xMove, yMove;
     protected float speed;
@@ -43,7 +40,6 @@ public abstract class Creature extends Entity {
         facingRight = true;
         spawnTime = System.currentTimeMillis();
         damageCheckTime = 0;
-        switchTime = System.currentTimeMillis();
     }
 
     /** Computes the allowed movement in the horizontal direction. */
