@@ -3,13 +3,19 @@ package assets.tiles;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public class Tile {
+public abstract class Tile {
+
+    private static class VoidTile extends Tile {
+        protected VoidTile() {
+            super(null);
+        }
+    }
 
     /** Size of a tile in pixels. */
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
 
     /** Tile with no texture. */
-    public static Tile voidTile = new Tile(null);
+    public static final Tile voidTile = new VoidTile();
 
     /** The texture to be used for the tile. */
     protected BufferedImage texture;
