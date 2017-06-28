@@ -20,7 +20,7 @@ public class World {
     private int width, height;
 
     /** Container for all entities. */
-    protected EntityManager entityManager;
+    private final EntityManager entityManager;
 
     /** Constructor. */
     public World(Handler handler, String path) {

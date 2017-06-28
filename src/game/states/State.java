@@ -6,7 +6,7 @@ import game.Handler;
 public abstract class State {
 
     private static State currentState = null;
-    protected Handler handler;
+    protected final Handler handler;
 
     /** Constructor. */
     public State(Handler handler) {

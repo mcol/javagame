@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public abstract class BreakableTile extends Tile {
 
     protected boolean broken = false;
-    protected BufferedImage brokenTexture;
+    protected final BufferedImage brokenTexture;
 
     public BreakableTile(BufferedImage initialTexture,
                          BufferedImage brokenTexture) {

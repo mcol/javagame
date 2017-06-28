@@ -34,10 +34,10 @@ public class Game implements Runnable {
     private final KeyManager keyManager;
 
     // Camera
-    private Camera camera;
+    private static Camera camera;
 
     // Handler
-    private Handler handler;
+    private static Handler handler;
 
     /** Constructor. */
     public Game(String title, int width, int height) {

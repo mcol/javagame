@@ -7,7 +7,7 @@ import gfx.Animation;
 
 public abstract class Entity {
 
-    protected Handler handler;
+    protected final Handler handler;
 
     /** Coordinates of the top left corner of the entity in pixels. */
     protected float x, y;
