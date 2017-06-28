@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 import assets.Assets;
 import game.input.KeyManager;
 import game.states.GameState;
+import game.states.MenuState;
 import game.states.State;
 import gfx.Camera;
 
@@ -27,7 +28,7 @@ public class Game implements Runnable {
     private final int fps = 60;
 
     // States
-    private State gameState;
+    private static State menuState;
 
     // Input
     private final KeyManager keyManager;
@@ -54,8 +55,8 @@ public class Game implements Runnable {
         handler = new Handler(this);
         camera = new Camera(handler);
 
-        gameState = new GameState(handler);
-        State.setState(gameState);
+        menuState = new MenuState(handler);
+        State.setState(menuState);
     }
 
     private void tick() {
@@ -158,5 +159,18 @@ public class Game implements Runnable {
     /** Returns the height of the game window in pixels. */
     public int getHeight() {
         return height;
+    }
+
+    /** Returns the title of the game. */
+    public String getTitle() {
+        return title;
+    }
+
+    public void setGameState() {
+        State.setState(new GameState(handler));
+    }
+
+    public void setMenuState() {
+        State.setState(menuState);
     }
 }
