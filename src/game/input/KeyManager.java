@@ -1,38 +1,49 @@
 package game.input;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.KeyStroke;
 
-public class KeyManager extends KeyAdapter {
+public class KeyManager {
 
-    private final boolean[] keys;
-    public boolean up, down, left, right, space, help;
+    /** Associates actions to a keystroke press and release. */
+    public static void addKeyBinding(JFrame frame, int keyStroke,
+                                     ActionListener actionPressed,
+                                     ActionListener actionReleased) {
 
-    /** Constructor. */
-    public KeyManager() {
-        keys = new boolean[100];
-    }
+        InputMap im = frame.getRootPane()
+                           .getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap am = frame.getRootPane().getActionMap();
 
-    public void tick() {
-        up = keys[KeyEvent.VK_UP];
-        down = keys[KeyEvent.VK_DOWN];
-        left = keys[KeyEvent.VK_LEFT];
-        right = keys[KeyEvent.VK_RIGHT];
-        space = keys[KeyEvent.VK_SPACE];
-        help = keys[KeyEvent.VK_H];
-    }
+        if (actionPressed != null) {
+            String id = keyStroke + "pressed";
+            im.put(KeyStroke.getKeyStroke(keyStroke, 0, false), id);
+            am.put(id, new AbstractAction() {
+                private static final long serialVersionUID = 1L;
 
-    @Override
-    public void keyPressed(KeyEvent event) {
-        try{
-            keys[event.getKeyCode()] = true;
-        } catch (ArrayIndexOutOfBoundsException e) {}
-    }
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    actionPressed.actionPerformed(e);
+                }
+            });
+        }
 
-    @Override
-    public void keyReleased(KeyEvent event) {
-        try {
-            keys[event.getKeyCode()] = false;
-        } catch (ArrayIndexOutOfBoundsException e) {}
+        if (actionReleased != null) {
+            String id = keyStroke + "released";
+            im.put(KeyStroke.getKeyStroke(keyStroke, 0, true), id);
+            am.put(id, new AbstractAction() {
+                private static final long serialVersionUID = 1L;
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    actionReleased.actionPerformed(e);
+                }
+            });
+        }
     }
 }

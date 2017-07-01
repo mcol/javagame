@@ -1,9 +1,9 @@
 package game;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import assets.entities.Entity;
 import assets.entities.EntityManager;
-import game.input.KeyManager;
 import gfx.Camera;
 import worlds.World;
 
@@ -23,8 +23,8 @@ public class Handler {
         return game.getCamera();
     }
 
-    public KeyManager getKeyManager() {
-        return game.getKeyManager();
+    public JFrame getFrame() {
+        return game.getDisplay().getFrame();
     }
 
     /** Returns the width of the game in pixels. */

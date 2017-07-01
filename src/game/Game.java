@@ -3,7 +3,6 @@ package game;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import assets.Assets;
-import game.input.KeyManager;
 import game.states.GameState;
 import game.states.MenuState;
 import game.states.State;
@@ -30,9 +29,6 @@ public class Game implements Runnable {
     // States
     private static State menuState;
 
-    // Input
-    private final KeyManager keyManager;
-
     // Camera
     private static Camera camera;
 
@@ -45,8 +41,6 @@ public class Game implements Runnable {
         this.height = height;
         this.title = title;
         display = new Display(title, width, height);
-        keyManager = new KeyManager();
-        display.getFrame().addKeyListener(keyManager);
     }
 
     private void init() {
@@ -60,8 +54,6 @@ public class Game implements Runnable {
     }
 
     private void tick() {
-        keyManager.tick();
-
         if (State.getState() != null)
             State.getState().tick();
     }
@@ -143,8 +135,8 @@ public class Game implements Runnable {
 
     // getters and setters
 
-    public KeyManager getKeyManager() {
-        return keyManager;
+    public Display getDisplay() {
+        return display;
     }
 
     public Camera getCamera() {

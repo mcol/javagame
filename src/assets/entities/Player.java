@@ -1,7 +1,9 @@
 package assets.entities;
 
+import java.awt.event.KeyEvent;
 import assets.Assets;
 import game.Handler;
+import game.input.KeyManager;
 import gfx.Animation;
 
 public class Player extends Creature {
@@ -14,6 +16,10 @@ public class Player extends Creature {
 
     private static final float dampingFactor = 0.96f;
     private static final float liftspeed = 1.4f;
+
+    /** Keys pressed. */
+    private boolean up, down, left, right, space, help;
+
     private boolean goingUp = false;
     private boolean canPoop = false;
 
@@ -55,7 +61,7 @@ public class Player extends Creature {
         //
         // horizontal movement
         //
-        if (handler.getKeyManager().left) {
+        if (left) {
             if (facingRight) { // switched direction
                 facingRight = false;
                 xMove = -xMove / 2;
@@ -66,7 +72,7 @@ public class Player extends Creature {
             goingUp = true;
             yMove = -liftspeed; // lift up
         }
-        else if (handler.getKeyManager().right) {
+        else if (right) {
             if (!facingRight) { // switched direction
                 facingRight = true;
                 xMove = -xMove / 2;
@@ -84,14 +90,14 @@ public class Player extends Creature {
             }
 
             // gradual descent unless trying to go up
-            if (!handler.getKeyManager().up)
+            if (!up)
                 yMove += SPEED_CHANGE;
         }
 
         //
         // vertical movement
         //
-        if (handler.getKeyManager().up) {
+        if (up) {
             if (!goingUp) { // switched direction
                 goingUp = true;
                 yMove = -yMove / 2;
@@ -100,7 +106,7 @@ public class Player extends Creature {
             if (yMove < -MAX_SPEED)
                 yMove = -MAX_SPEED;
         }
-        else if (handler.getKeyManager().down) {
+        else if (down) {
             canPoop = false;
             if (goingUp) { // switched direction
                 goingUp = false;
@@ -131,11 +137,11 @@ public class Player extends Creature {
             }
         }
 
-        if (handler.getKeyManager().space) {
+        if (space) {
             firePoop();
         }
 
-        if (handler.getKeyManager().help) {
+        if (help) {
             help();
         }
     }
@@ -227,6 +233,28 @@ public class Player extends Creature {
     }
 
     private void help() {
+    }
+
+    /** Add the key bindings to control the player. */
+    public void addKeyBindings() {
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_UP,
+                                 (e) -> up = true, (e) -> up = false);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_DOWN,
+                                 (e) -> down = true, (e) -> down = false);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_LEFT,
+                                 (e) -> left = true, (e) -> left = false);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_RIGHT,
+                                 (e) -> right = true, (e) -> right = false);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_SPACE,
+                                 (e) -> space = true, (e) -> space = false);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_H,
+                                 (e) -> help = true, (e) -> help = false);
     }
 
     // getters and setters

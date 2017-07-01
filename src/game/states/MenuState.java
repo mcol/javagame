@@ -3,7 +3,9 @@ package game.states;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import game.Handler;
+import game.input.KeyManager;
 
 public class MenuState extends State {
 
@@ -20,14 +22,7 @@ public class MenuState extends State {
     }
 
     @Override
-    public void tick() {
-        if (handler.getGame().getKeyManager().up)
-            chooseOption(true);
-        else if (handler.getGame().getKeyManager().down)
-            chooseOption(false);
-        else if (handler.getGame().getKeyManager().space)
-            activateChoice();
-    }
+    public void tick() {}
 
     @Override
     public void render(Graphics g) {
@@ -47,6 +42,18 @@ public class MenuState extends State {
             g.setColor(i == currentChoice ? Color.WHITE : Color.GRAY);
             g.drawString(options[i], 100, 150 + 100 * (1 + i));
         }
+    }
+
+    @Override
+    public void setKeyBindings() {
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_UP,
+                                 (e) -> chooseOption(true), null);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_DOWN,
+                                 (e) -> chooseOption(false), null);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_SPACE,
+                                 (e) -> activateChoice(), null);
     }
 
     /** Selects the menu option. */

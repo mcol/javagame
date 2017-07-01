@@ -26,5 +26,9 @@ public abstract class State {
     /** Sets the current state. */
     public static void setState(State state) {
         currentState = state;
+        currentState.setKeyBindings();
     }
+
+    /** Sets the key bindings for the state. */
+    public abstract void setKeyBindings();
 }
