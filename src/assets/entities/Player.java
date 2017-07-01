@@ -153,12 +153,8 @@ public class Player extends Creature {
 
     private void firePoop() {
 
-        // not in a position for pooping
-        if (!canPoop)
-            return;
-
-        // out of poop
-        if (poop == 0)
+        // not in a position for pooping or out of poop
+        if (!canPoop || poop == 0)
             return;
 
         // don't allow continuous pooping
