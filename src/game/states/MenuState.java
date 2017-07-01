@@ -21,17 +21,10 @@ public class MenuState extends State {
 
     @Override
     public void tick() {
-
-        if (handler.getGame().getKeyManager().up) {
-            currentChoice--;
-            if (currentChoice < 0)
-                currentChoice = options.length - 1;
-        }
-        else if (handler.getGame().getKeyManager().down) {
-            currentChoice++;
-            if (currentChoice > options.length - 1)
-                currentChoice = 0;
-        }
+        if (handler.getGame().getKeyManager().up)
+            chooseOption(true);
+        else if (handler.getGame().getKeyManager().down)
+            chooseOption(false);
         else if (handler.getGame().getKeyManager().space)
             activateChoice();
     }
@@ -54,6 +47,14 @@ public class MenuState extends State {
             g.setColor(i == currentChoice ? Color.WHITE : Color.GRAY);
             g.drawString(options[i], 100, 150 + 100 * (1 + i));
         }
+    }
+
+    /** Selects the menu option. */
+    private void chooseOption(boolean up) {
+        currentChoice = up ? currentChoice - 1
+                           : (currentChoice  + 1) % options.length;
+        if (currentChoice < 0)
+            currentChoice = options.length - 1;
     }
 
     /** Activates the menu choice. */
