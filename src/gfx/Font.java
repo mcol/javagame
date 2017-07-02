@@ -22,7 +22,12 @@ public class Font {
     private static final int fontsize = charsize * 3;
 
     /** Renders a message using the font characters. */
-    public static void renderMessage(Graphics g, String msg, int x, int y) {
+    public static void renderMessage(Graphics g, String msg, int x, int y,
+                                     boolean leftAligned) {
+
+        // adjust the position if the message is right aligned
+        if (!leftAligned)
+            x -= msg.length() * fontsize;
 
         for (int i = 0; i < msg.length(); i++) {
             int charIndex = chars.indexOf(msg.charAt(i));
