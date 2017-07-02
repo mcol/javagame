@@ -1,15 +1,12 @@
 package assets.entities;
 
 import assets.Assets;
-import game.Handler;
 
 public class Tree extends StaticEntity {
 
     /** Constructor. */
-    public Tree(Handler handler, int x, int y) {
-        super(handler, x, y, Assets.tree, 128, 128);
-
-        // bounding box
+    public Tree(int x, int y) {
+        super(Assets.tree, x, y, 128, 128);
         setBounds(62, 5, 18, 90);
     }
 }

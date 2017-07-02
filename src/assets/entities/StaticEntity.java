@@ -3,15 +3,15 @@ package assets.entities;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import game.Handler;
 
 public abstract class StaticEntity extends Entity {
 
+    /** Image representing the entity. */
     protected BufferedImage image;
 
     /** Constructor. */
-    public StaticEntity(Handler handler, int x, int y,
-                        BufferedImage image, int width, int height) {
+    public StaticEntity(BufferedImage image, int x, int y,
+                        int width, int height) {
         super(handler, x, y, width, height);
         this.image = image;
     }

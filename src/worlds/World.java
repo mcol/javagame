@@ -37,9 +37,9 @@ public class World {
     /** Adds entities to the  world. */
     protected void addEntities() {
         // trees
-        entityManager.addEntity(new Tree(handler, 150, 300));
-        entityManager.addEntity(new Tree(handler, 225, 350));
-        entityManager.addEntity(new Tree(handler, 620, 350));
+        entityManager.addEntity(new Tree(150, 300));
+        entityManager.addEntity(new Tree(225, 350));
+        entityManager.addEntity(new Tree(525, 350));
 
         // enemies
         entityManager.addEntity(new Enemy(handler, 350, 500));

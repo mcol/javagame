@@ -7,7 +7,7 @@ import gfx.Animation;
 
 public abstract class Entity {
 
-    protected final Handler handler;
+    protected static Handler handler;
 
     /** Coordinates of the top left corner of the entity in pixels. */
     protected float x, y;
@@ -26,7 +26,7 @@ public abstract class Entity {
 
     /** Constructor. */
     public Entity(Handler handler, float x, float y, int width, int height) {
-        this.handler = handler;
+        Entity.handler = handler;
         this.x = x;
         this.y = y;
         this.width = width;
