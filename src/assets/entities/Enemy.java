@@ -1,6 +1,6 @@
 package assets.entities;
 
-import java.awt.Font;
+import java.awt.Color;
 import java.awt.Graphics;
 import assets.Assets;
 import game.Handler;
@@ -9,8 +9,11 @@ import utils.Utils;
 
 public class Enemy extends Creature {
 
-    /** Font used in reporting the health. */
-    private static final Font healthFont = new Font(Font.MONOSPACED, Font.BOLD, 17);
+    /** Health when spawned. */
+    private static final int spawnHealth = 25;
+
+    /** Health bar colour. */
+    private static final Color healthColor = new Color(0x555555);
 
     /** Time of the last switch of direction. */
     protected long switchTime;
@@ -35,7 +38,7 @@ public class Enemy extends Creature {
         justSpawned = true;
         yMove = FALL_SPEED;
         xMove = DEFAULT_SPEED;
-        health = 25;
+        health = spawnHealth;
         switchTime = 0;
     }
 
@@ -91,11 +94,12 @@ public class Enemy extends Creature {
         super.render(g);
 
         // health status
-        final int xAdj = facingRight ? width / 2 : width / 4;
-        g.setFont(healthFont);
-        g.drawString("" + health,
-                     (int) (x - handler.getCamera().getxOffset() + xAdj),
-                     (int) (y - handler.getCamera().getyOffset() + bounds.y / 3));
+        final int xAdj = facingRight ? width / 2 : width / 8;
+        double hbar = (double) getHealth() / spawnHealth * 35;
+        g.setColor(healthColor);
+        g.fillRect((int) (x - handler.getCamera().getxOffset() + xAdj),
+                   (int) (y - handler.getCamera().getyOffset() - 10),
+                   (int) hbar, 10);
     }
 
     @Override
