@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import assets.entities.Player;
+import gfx.Font;
 
 public class HUD {
 
@@ -65,6 +66,9 @@ public class HUD {
         g.fillRoundRect(-barOffset, 65 + border,
                         (int) pbar + barOffset - border, height - 2 * border,
                         roundness, roundness);
+
+        // score
+        Font.renderMessage(g, "" + player.getScore(), 725, 20, false);
     }
 
     public void setPlayer(Player player) {

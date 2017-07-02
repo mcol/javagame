@@ -26,6 +26,9 @@ public class Player extends Creature {
     // Animations
     private final Animation animFlying, animFalling, animStill;
 
+    /** Current score. */
+    private static int score;
+
     /** Current available poop. */
     private int poop;
 
@@ -51,6 +54,7 @@ public class Player extends Creature {
         // current animation
         animation = animFalling;
 
+        score = 0;
         poop = MAX_POOP;
     }
 
@@ -235,6 +239,11 @@ public class Player extends Creature {
     private void help() {
     }
 
+    /** Update the player's score. */
+    public static void increaseScore(int points) {
+        score += points;
+    }
+
     /** Add the key bindings to control the player. */
     public void addKeyBindings() {
 
@@ -258,6 +267,11 @@ public class Player extends Creature {
     }
 
     // getters and setters
+
+    /** Returns the current score. */
+    public int getScore() {
+        return score;
+    }
 
     /** Returns the amount of available poop. */
     public int getPoop() {
