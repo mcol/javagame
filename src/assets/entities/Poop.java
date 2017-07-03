@@ -47,7 +47,7 @@ public class Poop extends Creature {
         Player player = handler.getEntityManager().getPlayer();
         if (player.getCollisionRectangle(0f, 0f)
                   .intersects(getCollisionRectangle(0f, -yMove))) {
-            player.increasePoop();
+            player.increasePoop(1);
             return true;
         }
         return false;

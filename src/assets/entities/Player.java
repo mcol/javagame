@@ -236,12 +236,19 @@ public class Player extends Creature {
         }
     }
 
-    private void help() {
-    }
-
     /** Update the player's score. */
     public static void increaseScore(int points) {
         score += points;
+    }
+
+    /** Increase the amount of available poop. */
+    public void increasePoop(int amount) {
+        poop += amount;
+        if (poop > MAX_POOP)
+            poop = MAX_POOP;
+    }
+
+    private void help() {
     }
 
     /** Add the key bindings to control the player. */
@@ -276,12 +283,5 @@ public class Player extends Creature {
     /** Returns the amount of available poop. */
     public int getPoop() {
         return poop;
-    }
-
-    /** Increase the amount of available poop. */
-    public void increasePoop() {
-        poop++;
-        if (poop > MAX_POOP)
-            poop = MAX_POOP;
     }
 }
