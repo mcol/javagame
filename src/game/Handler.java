@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import assets.entities.Entity;
 import assets.entities.EntityManager;
+import assets.entities.Player;
 import gfx.Camera;
 import worlds.World;
 
@@ -59,5 +60,10 @@ public class Handler {
 
     public ArrayList<Entity> getEntities() {
         return world.getEntityManager().getEntities();
+    }
+
+    /** Returns the player. */
+    public Player getPlayer() {
+        return world.getEntityManager().getPlayer();
     }
 }

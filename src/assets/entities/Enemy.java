@@ -127,7 +127,7 @@ public class Enemy extends Creature {
         if (now - damageCheckTime < 150)
             return;
 
-        Player p = handler.getEntityManager().getPlayer();
+        Player p = handler.getPlayer();
         if (p.getCollisionRectangle(p.getxMove(), p.getyMove())
              .intersects(getCollisionRectangle(xMove, yMove))) {
             p.setDamage(damage);
