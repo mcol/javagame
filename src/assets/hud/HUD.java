@@ -50,7 +50,7 @@ public class HUD {
         boolean transparent = player.getX() < 115 && player.getY() < 90;
 
         // health bar
-        float hbar = (float) player.getHealth() / Player.DEFAULT_HEALTH
+        float hbar = (float) player.getHealth() / Player.MAX_HEALTH
                      * (width - barOffset);
         g.drawImage(image, -barOffset, 20, width, height, null);
         g.setColor(transparent ? healthTransparentColor : healthColor);

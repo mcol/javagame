@@ -8,6 +8,9 @@ import gfx.Animation;
 
 public class Player extends Creature {
 
+    /** Maximum amount of health of the player. */
+    public static final int MAX_HEALTH = 40;
+
     /** Maximum amount of poop that the player can carry. */
     public static final int MAX_POOP = 25;
 
@@ -55,6 +58,7 @@ public class Player extends Creature {
         animation = animFalling;
 
         score = 0;
+        health = MAX_HEALTH;
         poop = MAX_POOP;
     }
 
