@@ -114,7 +114,7 @@ public class Enemy extends Creature {
             health = 0;
             xMove = 0;
             animation.setFrames(Assets.enemy_dying, 100);
-            Player.increaseScore(6);
+            handler.getPlayer().increaseScore(6);
 
             // avoid generating collisions
             setBounds(0, 0, 0, 0);

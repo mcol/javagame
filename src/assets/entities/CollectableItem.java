@@ -20,7 +20,7 @@ public class CollectableItem extends StaticEntity {
     /** Collects the item. */
     public void collectItem(Player player) {
         collected = true;
-        Player.increaseScore(item.getValue());
+        player.increaseScore(item.getValue());
         player.increaseHealth(item.getHealth());
         player.increasePoop(item.getPoop());
     }

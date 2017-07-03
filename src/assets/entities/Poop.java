@@ -73,7 +73,7 @@ public class Poop extends Creature {
                     .intersects(enemy.getCollisionRectangle(enemyMove, 0f))) {
                 enemy.setDamage(damage);
                 setExplosion();
-                Player.increaseScore(1);
+                handler.getPlayer().increaseScore(1);
             }
         }
 

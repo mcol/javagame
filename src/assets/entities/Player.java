@@ -30,7 +30,7 @@ public class Player extends Creature {
     private final Animation animFlying, animFalling, animStill;
 
     /** Current score. */
-    private static int score;
+    private int score;
 
     /** Current available poop. */
     private int poop;
@@ -241,7 +241,7 @@ public class Player extends Creature {
     }
 
     /** Update the player's score. */
-    public static void increaseScore(int points) {
+    public void increaseScore(int points) {
         score += points;
     }
 
