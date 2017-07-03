@@ -1,11 +1,13 @@
 package assets;
 
 import java.awt.image.BufferedImage;
+import assets.entities.Items;
 import gfx.SpriteSheet;
 
 public class Assets {
 
     private static final int tilewidth = 62, tileheight = 62;
+    private static final int itemsize = 32;
     private static final int playerwidth = 185, playerheight = 175;
     private static final int poopwidth = 25, poopheight = 25;
     private static final int enemywidth = 90, enemyheight = 64;
@@ -15,6 +17,9 @@ public class Assets {
 
     // entities
     public static BufferedImage tree;
+
+    // items
+    public static BufferedImage items[] = new BufferedImage[Items.values().length];
 
     // player
     public static BufferedImage[] player_flying;
@@ -48,6 +53,15 @@ public class Assets {
         //
         SpriteSheet trees = new SpriteSheet("/textures/trees.png");
         tree = trees.crop(240, 0, 80, 120);
+
+        //
+        // items
+        //
+        SpriteSheet itemSheet = new SpriteSheet("/textures/items.png");
+        for (int i = 0; i < items.length; i++)
+            items[i] = itemSheet.crop((i % Items.rowlength) * itemsize,
+                                      (i / Items.rowlength) * itemsize,
+                                      itemsize, itemsize);
 
         //
         // player animations

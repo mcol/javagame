@@ -1,8 +1,10 @@
 package worlds;
 
 import java.awt.Graphics;
+import assets.entities.CollectableItem;
 import assets.entities.Enemy;
 import assets.entities.EntityManager;
+import assets.entities.Items;
 import assets.entities.Player;
 import assets.entities.Tree;
 import assets.tiles.Tile;
@@ -44,6 +46,15 @@ public class World {
         // enemies
         entityManager.addEntity(new Enemy(handler, 350, 500));
         entityManager.addEntity(new Enemy(handler, 300, 50));
+
+        // items
+        entityManager.addEntity(new CollectableItem(Items.BOX, 123, 66));
+        entityManager.addEntity(new CollectableItem(Items.ICE, 190, 540));
+        entityManager.addEntity(new CollectableItem(Items.JAM, 1025, 510));
+        entityManager.addEntity(new CollectableItem(Items.SPOON, 196, 386));
+        entityManager.addEntity(new CollectableItem(Items.LETTER, 710, 255));
+        entityManager.addEntity(new CollectableItem(Items.MAGNET, 960, 130));
+        entityManager.addEntity(new CollectableItem(Items.CUPCAKE, 0, 190));
     }
 
     public void tick() {

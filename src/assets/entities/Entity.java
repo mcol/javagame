@@ -51,6 +51,7 @@ public abstract class Entity {
             }
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(getCollisionRectangle(xOffset, yOffset))) {
+
                 return true;
             }
         }
