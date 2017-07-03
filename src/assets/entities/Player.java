@@ -245,6 +245,13 @@ public class Player extends Creature {
         score += points;
     }
 
+    /** Increase the health of the player. */
+    public void increaseHealth(int amount) {
+        health += amount;
+        if (health > MAX_HEALTH)
+            health = MAX_HEALTH;
+    }
+
     /** Increase the amount of available poop. */
     public void increasePoop(int amount) {
         poop += amount;

@@ -52,6 +52,10 @@ public abstract class Entity {
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(getCollisionRectangle(xOffset, yOffset))) {
 
+                // collect the item
+                if (this instanceof Player && e instanceof CollectableItem)
+                    ((CollectableItem) e).collectItem((Player) this);
+
                 return true;
             }
         }
