@@ -1,6 +1,6 @@
 package assets.entities;
 
-import java.util.Random;
+import game.Handler;
 
 public enum Items {
 
@@ -70,9 +70,6 @@ public enum Items {
     /** Total amount available across all items. */
     private static final int totalAvailability = sumAmounts();
 
-    /** Random number generator. */
-    private static final Random random = new Random();
-
     /** Value of the item. */
     private final int value;
 
@@ -103,7 +100,7 @@ public enum Items {
 
     /** Returns an item at random according to its availability. */
     public static Items randomItem() {
-        int rnd = random.nextInt(totalAvailability);
+        int rnd = Handler.randomInteger(0, totalAvailability);
         int sum = 0;
         Items chosenItem = APPLE;
         for (Items item : values()) {

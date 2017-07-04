@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JFrame;
 import assets.entities.Entity;
 import assets.entities.EntityManager;
@@ -13,9 +14,17 @@ public class Handler {
     private Game game;
     private World world;
 
+    /** Random number generator. */
+    private static final Random random = new Random();
+
     /** Constructor. */
     public Handler(Game game) {
         this.game = game;
+    }
+
+    /** Returns a random integer between two values. */
+    public static int randomInteger(int min, int max) {
+        return min + random.nextInt(max - min);
     }
 
     // getters and setters
