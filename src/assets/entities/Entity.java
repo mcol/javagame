@@ -42,7 +42,7 @@ public abstract class Entity {
 
     public abstract void render(Graphics g);
 
-    /** Whether the entity collides with another at the given position offset. */
+    /** Returns whether the entity collides with another at the given offset. */
     protected boolean collisionWithEntity(float xOffset, float yOffset) {
         for (Entity e : handler.getEntities()) {
             // don't check for collisions against itself
@@ -69,7 +69,7 @@ public abstract class Entity {
                              bounds.width, bounds.height);
     }
 
-    /** Whether the entity is currently outside of the visible screen. */
+    /** Returns whether the entity is currently outside of the visible area. */
     public boolean offScreen() {
         return  x - handler.getCamera().getxOffset() + width < 0 ||
                 x - handler.getCamera().getxOffset() > handler.getGame().getWidth() ||
@@ -127,7 +127,7 @@ public abstract class Entity {
         return y + bounds.y + bounds.height;
     }
 
-    /** Whether the entity should be removed. */
+    /** Returns whether the entity should be removed. */
     public boolean shouldRemove() {
         return false;
     };

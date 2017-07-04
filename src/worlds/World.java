@@ -27,12 +27,13 @@ public class World {
     /** Constructor. */
     public World(Handler handler, String path) {
 
+        this.handler = handler;
+
         // load world data from file
         int[] spawnCoords = loadWorld(path);
 
-        this.handler = handler;
+        // add the entities
         entityManager = new EntityManager(new Player(handler, spawnCoords[0], spawnCoords[1]));
-
         addEntities();
     }
 
@@ -99,6 +100,7 @@ public class World {
         return t;
     }
 
+    /** Loads a world file. */
     private int[] loadWorld(String path) {
         String file = Utils.loadFileAsString(path);
         String[] tokens = file.split("\\s+");
@@ -125,6 +127,7 @@ public class World {
         return height;
     }
 
+    /** Returns the entity manager. */
     public EntityManager getEntityManager() {
         return entityManager;
     }

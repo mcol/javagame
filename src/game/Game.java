@@ -65,16 +65,18 @@ public class Game implements Runnable {
             return;
         }
 
+        // get the current graphics context
         g = bs.getDrawGraphics();
 
-        // clear screen
+        // draw graphics
         g.clearRect(0, 0, width, height);
-
-        // draw
         if (State.getState() != null)
             State.getState().render(g);
 
+        // display the buffer
         bs.show();
+
+        // dispose the graphics context
         g.dispose();
     }
 

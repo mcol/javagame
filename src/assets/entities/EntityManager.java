@@ -64,10 +64,12 @@ public class EntityManager {
 
     // getters and setters
 
+    /** Returns the player. */
     public Player getPlayer() {
         return player;
     }
 
+    /** Sets the player. */
     public void setPlayer(Player player) {
         this.player = player;
         hud.setPlayer(player);

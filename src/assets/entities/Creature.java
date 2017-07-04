@@ -25,7 +25,11 @@ public abstract class Creature extends Entity {
     // movement
     protected float xMove, yMove;
     protected float speed;
+
+    /** Whether the creature faces right. */
     protected boolean facingRight;
+
+    /** Whether the creature is falling. */
     private boolean falling;
 
     /** Constructor. */
@@ -211,10 +215,12 @@ public abstract class Creature extends Entity {
         return yMove;
     }
 
+    /** Returns whether the creature is falling. */
     public boolean isFalling() {
         return falling;
     }
 
+    /** Sets the creature's falling status. */
     public void setFalling(boolean falling) {
         this.falling = falling;
     }
@@ -224,7 +230,7 @@ public abstract class Creature extends Entity {
         return health == 0;
     }
 
-    /** Whether the creature should be removed. */
+    /** Returns whether the creature should be removed. */
     @Override
     public boolean shouldRemove() {
         return isDead() && animation.hasPlayedOnce();

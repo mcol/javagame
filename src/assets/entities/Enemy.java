@@ -18,9 +18,10 @@ public class Enemy extends Creature {
     /** Time of the last switch of direction. */
     protected long switchTime;
 
+    /** Whether the enemy has just been spawned. */
     private boolean justSpawned;
 
-    // Animations
+    /** Animations. */
     private final Animation animMoving, animFurious;
 
     /** Constructor. */
@@ -121,6 +122,7 @@ public class Enemy extends Creature {
         }
     }
 
+    /** Checks if the enemy collides with the player. */
     private void checkPlayerDamage() {
 
         long now = System.currentTimeMillis();

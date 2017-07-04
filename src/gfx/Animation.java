@@ -56,7 +56,7 @@ public class Animation {
         playedOnce = false;
     }
 
-    /** Whether the animation has played at least once. */
+    /** Returns whether the animation has played at least once. */
     public boolean hasPlayedOnce() {
         return playedOnce;
     }

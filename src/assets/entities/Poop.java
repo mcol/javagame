@@ -43,6 +43,7 @@ public class Poop extends Creature {
         checkPoopDamage();
     }
 
+    /** Returns whether the player collides with the poop. */
     private boolean collisionWithPlayer() {
         Player player = handler.getEntityManager().getPlayer();
         if (player.getCollisionRectangle(0f, 0f)
@@ -53,6 +54,7 @@ public class Poop extends Creature {
         return false;
     }
 
+    /** Checks if the poop damages an enemy. */
     private void checkPoopDamage() {
 
         // enemies
@@ -87,6 +89,7 @@ public class Poop extends Creature {
             setImpact();
     }
 
+    /** Sets the impact animation. */
     public void setImpact() {
         impact = true;
         animation.setFrames(Assets.poop_impact, 100);
@@ -95,12 +98,13 @@ public class Poop extends Creature {
         setBounds(0, 0, 0, 0);
     }
 
+    /** Sets the explosion animation. */
     public void setExplosion() {
         impact = true;
         animation.setFrames(Assets.poop_explosion, 100);
     }
 
-    /** Whether the poop should be removed. */
+    /** Returns whether the poop should be removed. */
     @Override
     public boolean shouldRemove() {
         return impact && animation.hasPlayedOnce();

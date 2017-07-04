@@ -23,6 +23,7 @@ public class Display {
         createDisplay();
     }
 
+    /** Set up the display. */
     private void createDisplay() {
         Dimension size = new Dimension(width, height);
         canvas = new Canvas();
@@ -39,6 +40,8 @@ public class Display {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+
+    // getters and setters
 
     public Canvas getCanvas() {
         return canvas;
