@@ -161,9 +161,6 @@ public class Game implements Runnable {
     }
 
     public void setGameState() {
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {}
         State.setState(new GameState(handler));
     }
 
