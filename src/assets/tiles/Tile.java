@@ -12,7 +12,7 @@ public abstract class Tile {
     }
 
     /** Size of a tile in pixels. */
-    public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
+    public static final int TILESIZE = 64;
 
     /** Tile with no texture. */
     public static final Tile voidTile = new VoidTile();
@@ -44,7 +44,7 @@ public abstract class Tile {
     public void tick() { /* nothing to do */ }
 
     public void render(Graphics g, int x, int y) {
-        g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
+        g.drawImage(texture, x, y, TILESIZE, TILESIZE, null);
     }
 
     /** Returns whether the tile can collide with an entity. */

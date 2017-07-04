@@ -35,7 +35,7 @@ public class Poop extends Creature {
             return;
 
         float dy = getMovementY();
-        if (dy < -Tile.TILEHEIGHT / 2) // don't let it reach the tile above
+        if (dy < -Tile.TILESIZE / 2) // don't let it reach the tile above
             dy = 1;
         if (dy == 0 || collisionWithEntity(0f, yMove) || collisionWithPlayer())
            setImpact();
@@ -80,12 +80,14 @@ public class Poop extends Creature {
         }
 
         // breakable tiles
-        int ty = (int) (getBottomBound() + yMove + 1) / Tile.TILEHEIGHT;
+        int ty = (int) (getBottomBound() + yMove + 1) / Tile.TILESIZE;
         if (handler.getWorld()
-                   .getTile((int) getLeftBound() / Tile.TILEWIDTH, ty).isBreakable())
+                   .getTile((int) getLeftBound() / Tile.TILESIZE, ty)
+                   .isBreakable())
             setImpact();
         if (handler.getWorld()
-                   .getTile((int) getRightBound() / Tile.TILEWIDTH, ty).isBreakable())
+                   .getTile((int) getRightBound() / Tile.TILESIZE, ty)
+                   .isBreakable())
             setImpact();
     }
 

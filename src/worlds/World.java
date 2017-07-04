@@ -24,6 +24,9 @@ public class World {
     /** Container for all entities. */
     private final EntityManager entityManager;
 
+    /** Time of the next item spawn. */
+    private long nextItemSpawnTime;
+
     /** Constructor. */
     public World(Handler handler, String path) {
 
@@ -67,19 +70,19 @@ public class World {
         float camera_yOffset = handler.getCamera().getyOffset();
 
         // range of coordinates of the visible tiles
-        int xStart = (int) Math.max(camera_xOffset / Tile.TILEWIDTH, 0);
-        int xEnd = (int) Math.min((camera_xOffset + handler.getWidth()) / Tile.TILEWIDTH + 1,
+        int xStart = (int) Math.max(camera_xOffset / Tile.TILESIZE, 0);
+        int xEnd = (int) Math.min((camera_xOffset + handler.getWidth()) / Tile.TILESIZE + 1,
                                   width);
-        int yStart = (int) Math.max(camera_yOffset / Tile.TILEHEIGHT, 0);
-        int yEnd = (int) Math.min((camera_yOffset + handler.getHeight()) / Tile.TILEHEIGHT + 1,
+        int yStart = (int) Math.max(camera_yOffset / Tile.TILESIZE, 0);
+        int yEnd = (int) Math.min((camera_yOffset + handler.getHeight()) / Tile.TILESIZE + 1,
                                   height);
 
         // draw only the visible tiles
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++)
                 getTile(x, y).render(g,
-                                     (int) (x * Tile.TILEWIDTH - camera_xOffset),
-                                     (int) (y * Tile.TILEHEIGHT - camera_yOffset));
+                                     (int) (x * Tile.TILESIZE - camera_xOffset),
+                                     (int) (y * Tile.TILESIZE - camera_yOffset));
         }
 
         // draw all entities
