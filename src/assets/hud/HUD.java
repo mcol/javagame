@@ -10,10 +10,10 @@ import gfx.Font;
 public class HUD {
 
     /** Width of the displayed graphics. */
-    private static final int width = 150;
+    private static final int width = 120;
 
     /** Height of the displayed graphics. */
-    private static final int height = 40;
+    private static final int height = 25;
 
     /** Bar colours. */
     private static final Color healthColor = new Color(0xcc0000);
@@ -44,7 +44,10 @@ public class HUD {
         final int border = 3;
 
         // diameter of the arc for the corners
-        final int roundness = 25;
+        final int roundness = 12;
+
+        // vertical distance between the bars
+        final int gap = 3;
 
         // make the hud transparent when the player gets in the top left corner
         boolean transparent = player.getX() < 115 && player.getY() < 90;
@@ -61,9 +64,9 @@ public class HUD {
         // poop bar
         float pbar = (float) player.getPoop() / Player.MAX_POOP
                      * (width - barOffset);
-        g.drawImage(image, -barOffset, 65, width, height, null);
+        g.drawImage(image, -barOffset, 20 + height + gap, width, height, null);
         g.setColor(transparent ? poopTransparentColor : poopColor);
-        g.fillRoundRect(-barOffset, 65 + border,
+        g.fillRoundRect(-barOffset, 20 + height + gap + border,
                         (int) pbar + barOffset - border, height - 2 * border,
                         roundness, roundness);
 
