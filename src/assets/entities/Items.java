@@ -1,5 +1,7 @@
 package assets.entities;
 
+import java.util.Random;
+
 public enum Items {
 
     // Row 1
@@ -65,6 +67,12 @@ public enum Items {
     /** Number of items in each row of the spritesheet. */
     public static final int rowlength = 10;
 
+    /** Total amount available across all items. */
+    private static final int totalAvailability = sumAmounts();
+
+    /** Random number generator. */
+    private static final Random random = new Random();
+
     /** Value of the item. */
     private final int value;
 
@@ -83,6 +91,30 @@ public enum Items {
         this.health = health;
         this.poop = poop;
         this.amount = amount;
+    }
+
+    /** Compute the total rarity across all items. */
+    private static int sumAmounts() {
+        int sum = 0;
+        for (Items item : values())
+            sum += item.amount;
+        return sum;
+    }
+
+    /** Returns an item at random according to its availability. */
+    public static Items randomItem() {
+        int rnd = random.nextInt(totalAvailability);
+        int sum = 0;
+        Items chosenItem = APPLE;
+        for (Items item : values()) {
+            sum += item.amount;
+            if (sum > rnd) {
+                chosenItem = item;
+                break;
+            }
+        }
+
+        return chosenItem;
     }
 
     // getters and setters

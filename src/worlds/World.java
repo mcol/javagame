@@ -49,13 +49,13 @@ public class World {
         entityManager.addEntity(new Enemy(handler, 300, 50));
 
         // items
-        entityManager.addEntity(new CollectableItem(Items.BOX, 123, 66));
-        entityManager.addEntity(new CollectableItem(Items.ICE, 190, 540));
-        entityManager.addEntity(new CollectableItem(Items.JAM, 1025, 510));
-        entityManager.addEntity(new CollectableItem(Items.SPOON, 196, 386));
-        entityManager.addEntity(new CollectableItem(Items.LETTER, 710, 255));
-        entityManager.addEntity(new CollectableItem(Items.MAGNET, 960, 130));
-        entityManager.addEntity(new CollectableItem(Items.CUPCAKE, 0, 190));
+        entityManager.addEntity(new CollectableItem(Items.randomItem(), 0, 190));
+        entityManager.addEntity(new CollectableItem(Items.randomItem(), 123, 66));
+        entityManager.addEntity(new CollectableItem(Items.randomItem(), 190, 540));
+        entityManager.addEntity(new CollectableItem(Items.randomItem(), 196, 386));
+        entityManager.addEntity(new CollectableItem(Items.randomItem(), 710, 255));
+        entityManager.addEntity(new CollectableItem(Items.randomItem(), 960, 130));
+        entityManager.addEntity(new CollectableItem(Items.randomItem(), 1025, 510));
     }
 
     public void tick() {
