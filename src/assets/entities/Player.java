@@ -174,8 +174,8 @@ public class Player extends Creature {
         // don't allow continuous pooping
         long now = System.currentTimeMillis();
         if (now - damageCheckTime > 200) {
-            Poop p = new Poop(handler,
-                              facingRight ? x + width / 6 : x + width - width / 2,
+            Poop p = new Poop(facingRight ? x + width / 6
+                                          : x + width - width / 2,
                               y + height / 3 * 2 + 5);
             poop--;
             handler.getEntityManager().addEntity(p);

@@ -2,7 +2,6 @@ package assets.entities;
 
 import assets.Assets;
 import assets.tiles.Tile;
-import game.Handler;
 import gfx.Animation;
 
 public class Poop extends Creature {
@@ -11,7 +10,7 @@ public class Poop extends Creature {
     private boolean impact;
 
     /** Constructor. */
-    public Poop(Handler handler, float x, float y) {
+    public Poop(float x, float y) {
         super(handler, x, y, 25, 25);
 
         // animation
@@ -45,7 +44,7 @@ public class Poop extends Creature {
 
     /** Returns whether the player collides with the poop. */
     private boolean collisionWithPlayer() {
-        Player player = handler.getEntityManager().getPlayer();
+        Player player = handler.getPlayer();
         if (player.getCollisionRectangle(0f, 0f)
                   .intersects(getCollisionRectangle(0f, -yMove))) {
             player.increasePoop(1);
