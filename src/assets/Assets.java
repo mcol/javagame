@@ -6,14 +6,14 @@ import gfx.SpriteSheet;
 
 public class Assets {
 
-    private static final int tilewidth = 62, tileheight = 62;
+    private static final int tilesize = 64;
     private static final int itemsize = 32;
     private static final int playerwidth = 185, playerheight = 175;
     private static final int poopwidth = 25, poopheight = 25;
     private static final int enemywidth = 90, enemyheight = 64;
 
     // tiles
-    public static BufferedImage wall, dirt, grass, stone;
+    public static BufferedImage tiles[] = new BufferedImage[4];
 
     // entities
     public static BufferedImage tree;
@@ -42,11 +42,9 @@ public class Assets {
         //
         // tiles
         //
-        SpriteSheet tiles = new SpriteSheet("/textures/tileset.png");
-        wall = tiles.crop(0, tileheight * 0, tilewidth, tileheight);
-        dirt = tiles.crop(0, tileheight * 1, tilewidth, tileheight);
-        grass = tiles.crop(0, tileheight * 2, tilewidth, tileheight);
-        stone = tiles.crop(0, tileheight * 3, tilewidth, tileheight);
+        SpriteSheet tileSheet = new SpriteSheet("/textures/tiles.png");
+        for (int i = 0; i < tiles.length; i++)
+            tiles[i] = tileSheet.crop(tilesize * i, 0, tilesize, tilesize);
 
         //
         // trees

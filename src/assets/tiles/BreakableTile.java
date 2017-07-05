@@ -1,16 +1,23 @@
 package assets.tiles;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public abstract class BreakableTile extends Tile {
+public class BreakableTile extends Tile {
 
     protected boolean broken = false;
     protected final BufferedImage brokenTexture;
 
-    public BreakableTile(BufferedImage initialTexture,
+    public BreakableTile(Tiles tile,
                          BufferedImage brokenTexture) {
-        super(initialTexture);
+        super(tile);
         this.brokenTexture = brokenTexture;
+    }
+
+    @Override
+    public void render(Graphics g, int x, int y) {
+        g.drawImage(broken ? brokenTexture : tile.getTexture(),
+                    x, y, TILESIZE, TILESIZE, null);
     }
 
     @Override
@@ -23,7 +30,6 @@ public abstract class BreakableTile extends Tile {
         if (broken)
             return false;
         broken = true;
-        this.texture = brokenTexture;
         return true;
     }
 }
