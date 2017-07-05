@@ -38,6 +38,8 @@ public class World {
         // add the entities
         entityManager = new EntityManager(new Player(handler, spawnCoords[0], spawnCoords[1]));
         addEntities();
+        nextItemSpawnTime = System.currentTimeMillis()
+                          + Handler.randomInteger(10, 15) * 1000;
     }
 
     /** Adds entities to the  world. */
@@ -50,19 +52,11 @@ public class World {
         // enemies
         entityManager.addEntity(new Enemy(handler, 350, 500));
         entityManager.addEntity(new Enemy(handler, 300, 50));
-
-        // items
-        entityManager.addEntity(new CollectableItem(Items.randomItem(), 0, 190));
-        entityManager.addEntity(new CollectableItem(Items.randomItem(), 123, 66));
-        entityManager.addEntity(new CollectableItem(Items.randomItem(), 190, 540));
-        entityManager.addEntity(new CollectableItem(Items.randomItem(), 196, 386));
-        entityManager.addEntity(new CollectableItem(Items.randomItem(), 710, 255));
-        entityManager.addEntity(new CollectableItem(Items.randomItem(), 960, 130));
-        entityManager.addEntity(new CollectableItem(Items.randomItem(), 1025, 510));
     }
 
     public void tick() {
         entityManager.tick();
+        spawnItem();
     }
 
     public void render(Graphics g) {
@@ -119,6 +113,31 @@ public class World {
                 tiles[x][y] = Tile.getTile(Utils.parseInt(tokens[x + y * width + 4]));
         return spawnCoords;
     }
+
+    /** Places a new item in the world. */
+    private void spawnItem() {
+
+        // check if it's time to spawn a new item
+        long now = System.currentTimeMillis();
+        if (now < nextItemSpawnTime)
+            return;
+
+        int x, y;
+
+        // avoid solid tiles
+        do {
+            x = Handler.randomInteger(0, width);
+            y = Handler.randomInteger(0, height);
+        } while (getTile(x, y).isSolid());
+
+        // add the item to the list of alive entities
+        entityManager.addEntity(new CollectableItem(Items.randomItem(),
+                                                    x  * Tile.TILESIZE,
+                                                    y  * Tile.TILESIZE));
+        nextItemSpawnTime = now + Handler.randomInteger(10, 20) * 1000;
+    }
+
+    // getters and setters
 
     /** Returns the width of the world in tiles. */
     public int getWidth() {
