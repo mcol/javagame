@@ -208,6 +208,12 @@ public class Player extends Creature {
         move();
         handler.getCamera().centreOnEntity(this);
 
+        // check if the player is on a damage tile
+        if (now - damageCheckTime > 150) {
+            setDamage(handler.getWorld().getTile(x, y).getDamage());
+            damageCheckTime = now;
+        }
+
         restorePoop();
     }
 

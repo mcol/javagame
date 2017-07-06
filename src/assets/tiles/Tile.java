@@ -16,6 +16,7 @@ public class Tile {
         WALL    (Assets.tiles[2], true ),
         STONE   (Assets.tiles[3], false),
         WATER   (Assets.tiles[4], false),
+        FIRE    (Assets.tiles[5], false),
         CARPET  (Assets.tiles[6], false),
         METAL   (Assets.tiles[7], true ),
         VOID    (null, false);
@@ -46,6 +47,7 @@ public class Tile {
     public static final Tile dirtTile = new Tile(Tiles.DIRT);
     public static final Tile wallTile = new Tile(Tiles.WALL);
     public static final Tile waterTile = new Tile(Tiles.WATER);
+    public static final Tile fireTile = new DamageTile(Tiles.FIRE, 1);
     public static final Tile carpetTile = new Tile(Tiles.CARPET);
     public static final Tile metalTile = new Tile(Tiles.METAL);
     public static final Tile voidTile = new Tile(Tiles.VOID);
@@ -71,6 +73,8 @@ public class Tile {
             return new BreakableTile(Tiles.STONE, Assets.tiles[1]);
         case 4:
             return waterTile;
+        case 5:
+            return fireTile;
         case 6:
             return carpetTile;
         case 7:
@@ -94,5 +98,10 @@ public class Tile {
     /** Returns whether the tile can be destroyed. */
     public boolean isBreakable() {
         return false;
+    }
+
+    /** Returns the damage produced by the tile. */
+    public int getDamage() {
+        return 0;
     }
 }
