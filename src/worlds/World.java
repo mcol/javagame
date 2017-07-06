@@ -97,6 +97,11 @@ public class World {
         return t;
     }
 
+    /** Returns the tile at the given world coordinates. */
+    public Tile getTile(float x, float y) {
+        return getTile((int) x / Tile.TILESIZE, (int) y / Tile.TILESIZE);
+    }
+
     /** Loads a world file. */
     private int[] loadWorld(String path) {
         String file = Utils.loadFileAsString(path);

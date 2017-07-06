@@ -79,13 +79,12 @@ public class Poop extends Creature {
         }
 
         // breakable tiles
-        int ty = (int) (getBottomBound() + yMove + 1) / Tile.TILESIZE;
         if (handler.getWorld()
-                   .getTile((int) getLeftBound() / Tile.TILESIZE, ty)
+                   .getTile(getLeftBound(), getBottomBound() + yMove + 1)
                    .isBreakable())
             setImpact();
         if (handler.getWorld()
-                   .getTile((int) getRightBound() / Tile.TILESIZE, ty)
+                   .getTile(getRightBound(), getBottomBound() + yMove + 1)
                    .isBreakable())
             setImpact();
     }
