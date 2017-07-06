@@ -2,6 +2,7 @@ package assets;
 
 import java.awt.image.BufferedImage;
 import assets.entities.Items;
+import assets.tiles.Tile.Tiles;
 import gfx.SpriteSheet;
 
 public class Assets {
@@ -13,7 +14,7 @@ public class Assets {
     private static final int enemywidth = 90, enemyheight = 64;
 
     // tiles
-    public static BufferedImage tiles[] = new BufferedImage[4];
+    public static BufferedImage tiles[] = new BufferedImage[8];
 
     // entities
     public static BufferedImage tree;
@@ -44,7 +45,9 @@ public class Assets {
         //
         SpriteSheet tileSheet = new SpriteSheet("/textures/tiles.png");
         for (int i = 0; i < tiles.length; i++)
-            tiles[i] = tileSheet.crop(tilesize * i, 0, tilesize, tilesize);
+            tiles[i] = tileSheet.crop((i % Tiles.rowlength) * tilesize,
+                                      (i / Tiles.rowlength) * tilesize,
+                                      tilesize, tilesize);
 
         //
         // trees

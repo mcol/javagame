@@ -15,7 +15,13 @@ public class Tile {
         DIRT    (Assets.tiles[1], false),
         WALL    (Assets.tiles[2], true ),
         STONE   (Assets.tiles[3], false),
+        WATER   (Assets.tiles[4], false),
+        CARPET  (Assets.tiles[6], false),
+        METAL   (Assets.tiles[7], true ),
         VOID    (null, false);
+
+        /** Number of items in each row of the spritesheet. */
+        public static final int rowlength = 4;
 
         /** The texture to be used for the tile. */
         private BufferedImage texture;
@@ -39,6 +45,9 @@ public class Tile {
     public static final Tile grassTile = new Tile(Tiles.GRASS);
     public static final Tile dirtTile = new Tile(Tiles.DIRT);
     public static final Tile wallTile = new Tile(Tiles.WALL);
+    public static final Tile waterTile = new Tile(Tiles.WATER);
+    public static final Tile carpetTile = new Tile(Tiles.CARPET);
+    public static final Tile metalTile = new Tile(Tiles.METAL);
     public static final Tile voidTile = new Tile(Tiles.VOID);
 
     /** The type of this tile. */
@@ -60,6 +69,12 @@ public class Tile {
             return wallTile;
         case 3:
             return new BreakableTile(Tiles.STONE, Assets.tiles[1]);
+        case 4:
+            return waterTile;
+        case 6:
+            return carpetTile;
+        case 7:
+            return metalTile;
         default:
             return voidTile;
         }
