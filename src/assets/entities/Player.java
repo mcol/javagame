@@ -38,6 +38,9 @@ public class Player extends Creature {
     /** Whether the player has fired any poop. */
     private boolean hasPooped = false;
 
+    /** Time of the last poop fire. */
+    private long poopFireTime = 0;
+
     /** Time of the last poop increase. */
     private long poopRestoreTime = 0;
 
@@ -172,13 +175,13 @@ public class Player extends Creature {
             return;
 
         // don't allow continuous pooping
-        if (now - damageCheckTime > 200) {
+        if (now - poopFireTime > 200) {
             Poop p = new Poop(facingRight ? x + width / 6
                                           : x + width - width / 2,
                               y + height / 3 * 2 + 5);
             poop--;
             handler.getEntityManager().addEntity(p);
-            damageCheckTime = now;
+            poopFireTime = now;
 
             // lift the player up when pooping
             goingUp = true;
