@@ -125,7 +125,6 @@ public class Enemy extends Creature {
     /** Checks if the enemy collides with the player. */
     private void checkPlayerDamage() {
 
-        long now = System.currentTimeMillis();
         if (now - damageCheckTime < 150)
             return;
 

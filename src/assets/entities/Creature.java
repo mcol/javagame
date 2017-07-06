@@ -19,6 +19,9 @@ public abstract class Creature extends Entity {
     protected int health;
     protected int damage;
 
+    /** Current time in milliseconds. */
+    protected long now;
+
     /** Time of the last check for damage. */
     protected long damageCheckTime;
 
@@ -146,6 +149,12 @@ public abstract class Creature extends Entity {
         }
 
         return 0;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        now = System.currentTimeMillis();
     }
 
     @Override

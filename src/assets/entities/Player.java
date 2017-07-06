@@ -172,7 +172,6 @@ public class Player extends Creature {
             return;
 
         // don't allow continuous pooping
-        long now = System.currentTimeMillis();
         if (now - damageCheckTime > 200) {
             Poop p = new Poop(facingRight ? x + width / 6
                                           : x + width - width / 2,
@@ -233,7 +232,6 @@ public class Player extends Creature {
             return;
 
         // check if it's time to restore some poop
-        long now = System.currentTimeMillis();
         if (now - poopRestoreTime > POOP_RESTORE_INTERVAL) {
             poop++;
             poopRestoreTime = now;
