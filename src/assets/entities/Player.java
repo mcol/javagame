@@ -210,7 +210,19 @@ public class Player extends Creature {
 
         // check if the player is on a damage tile
         if (now - damageCheckTime > 150) {
-            setDamage(handler.getWorld().getTile(x, y).getDamage());
+            int damage = handler.getWorld().getTile(getLeftBound(),
+                                                    getTopBound())
+                                           .getDamage() +
+                         handler.getWorld().getTile(getLeftBound(),
+                                                    getBottomBound())
+                                           .getDamage() +
+                         handler.getWorld().getTile(getRightBound(),
+                                                    getTopBound())
+                                           .getDamage() +
+                         handler.getWorld().getTile(getRightBound(),
+                                                    getBottomBound())
+                                           .getDamage();
+            setDamage((int) Math.ceil((double) damage / 2));
             damageCheckTime = now;
         }
 
