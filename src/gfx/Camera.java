@@ -12,6 +12,9 @@ public class Camera {
     /** Offset of the camera in pixels with respect to the game coordinates. */
     private float xOffset, yOffset;
 
+    /** Speed at which the camera follows the player. */
+    private final float tween = 0.05f;
+
     /** Constructor. */
     public Camera(Handler handler) {
         this.handler = handler;
@@ -21,16 +24,22 @@ public class Camera {
 
     /** Moves the camera so that the entity is at the centre. */
     public void centreOnEntity(Entity e) {
-        xOffset = e.getX() - handler.getWidth() / 2 + e.getWidth() / 2;
-        yOffset = e.getY() - handler.getHeight() / 2 + e.getHeight() / 2;
+
+        // position the camera is aiming to move to
+        float xTarget = e.getX() - handler.getWidth() / 2 + e.getWidth() / 2;
+        float yTarget = e.getY() - handler.getHeight() / 2 + e.getHeight() / 2;
 
         // check the map bounds to avoid showing blank space outside of the map
-        xOffset = Utils.clampValue(xOffset, 0,
+        xTarget = Utils.clampValue(xTarget, 0,
                                    handler.getWorld().getWidth() * Tile.TILESIZE -
                                    handler.getWidth());
-        yOffset = Utils.clampValue(yOffset, 0,
+        yTarget = Utils.clampValue(yTarget, 0,
                                    handler.getWorld().getHeight() * Tile.TILESIZE -
                                    handler.getHeight());
+
+        // move gradually towards the target
+        xOffset += tween * (xTarget - xOffset);
+        yOffset += tween * (yTarget - yOffset);
     }
 
     // getters and setters
