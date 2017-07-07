@@ -57,7 +57,9 @@ public class Poop extends Creature {
     private void checkPoopDamage() {
 
         // enemies
-        for (Entity e : handler.getEntities()) {
+        for (int i = 0; i < handler.getEntities().size(); i++) {
+
+            Entity e = handler.getEntities().get(i);
 
             // can only damage enemies
             if (!(e instanceof Enemy))

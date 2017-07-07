@@ -119,6 +119,12 @@ public class Enemy extends Creature {
 
             // avoid generating collisions
             setBounds(0, 0, 0, 0);
+
+            // drop an item
+            handler.getWorld()
+                   .getEntityManager()
+                   .addEntity(new CollectableItem(Items.randomItem(),
+                                                  (int) x, (int) y));
         }
     }
 
