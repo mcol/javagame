@@ -119,12 +119,6 @@ public class Enemy extends Creature {
 
             // avoid generating collisions
             setBounds(0, 0, 0, 0);
-
-            // drop an item
-            handler.getWorld()
-                   .getEntityManager()
-                   .addEntity(new CollectableItem(Items.randomItem(),
-                                                  (int) x, (int) y));
         }
     }
 
@@ -140,5 +134,21 @@ public class Enemy extends Creature {
             p.setDamage(damage);
             damageCheckTime = now;
         }
+    }
+
+    /** Returns whether the creature should be removed. */
+    @Override
+    public boolean shouldRemove() {
+        if (isDead() && animation.hasPlayedOnce()) {
+
+            // drop an item
+            handler.getWorld()
+                   .getEntityManager()
+                   .addEntity(new CollectableItem(Items.randomItem(),
+                                                  (int) x, (int) y));
+            return true;
+        }
+
+        return false;
     }
 }
