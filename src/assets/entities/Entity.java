@@ -84,6 +84,11 @@ public abstract class Entity {
         return x;
     }
 
+    /** Returns the horizontal game coordinate of the entity in pixels. */
+    public float getGameX() {
+        return x - handler.getCamera().getxOffset();
+    }
+
     public void setX(float x) {
         this.x = x;
     }
@@ -91,6 +96,11 @@ public abstract class Entity {
     /** Returns the vertical coordinate of the entity in pixels. */
     public float getY() {
         return y;
+    }
+
+    /** Returns the vertical game coordinate of the entity in pixels. */
+    public float getGameY() {
+        return y - handler.getCamera().getyOffset();
     }
 
     public void setY(float y) {
