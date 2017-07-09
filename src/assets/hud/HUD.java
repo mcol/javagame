@@ -10,10 +10,19 @@ import gfx.Font;
 public class HUD {
 
     /** Width of the displayed graphics. */
-    private static final int width = 120;
+    private static final int width = 100;
 
     /** Height of the displayed graphics. */
     private static final int height = 25;
+
+    /** Distance from the left side of the display. */
+    private static final int offset = 560;
+
+    /** Distance between the bars. */
+    private static final int gap = 20;
+
+    /** Size of the border. */
+    private static final int border = 3;
 
     /** Bar colours. */
     private static final Color healthColor = new Color(0xcc0000);
@@ -37,41 +46,27 @@ public class HUD {
 
     public void render(Graphics g) {
 
-        // shift to hide the rounded corners on the left side of the bars
-        final int barOffset = 20;
-
-        // size of the border in pixels
-        final int border = 3;
-
-        // diameter of the arc for the corners
-        final int roundness = 12;
-
-        // vertical distance between the bars
-        final int gap = 3;
-
-        // make the hud transparent when the player gets in the top left corner
-        boolean transparent = player.getX() < 115 && player.getY() < 90;
+        // make the hud transparent when the player goes under it
+        boolean transparent = player.getGameX() + player.getWidth() > offset &&
+                              player.getY() < 25;
 
         // health bar
-        float hbar = (float) player.getHealth() / Player.MAX_HEALTH
-                     * (width - barOffset);
-        g.drawImage(image, -barOffset, 20, width, height, null);
+        int hbar = player.getHealth() * (width - border) / Player.MAX_HEALTH;
+        g.drawImage(image, offset, 20, width, height, null);
         g.setColor(transparent ? healthTransparentColor : healthColor);
-        g.fillRoundRect(-barOffset, 20 + border,
-                        (int) hbar + barOffset - border, height - 2 * border,
-                        roundness, roundness);
+        g.fillRect(offset + border, 20 + border,
+                   hbar - border, height - 2 * border);
 
         // poop bar
-        float pbar = (float) player.getPoop() / Player.MAX_POOP
-                     * (width - barOffset);
-        g.drawImage(image, -barOffset, 20 + height + gap, width, height, null);
+        int pbar = player.getPoop() * (width - border) / Player.MAX_POOP;
+        g.drawImage(image, offset + width + gap, 20, width, height, null);
         g.setColor(transparent ? poopTransparentColor : poopColor);
-        g.fillRoundRect(-barOffset, 20 + height + gap + border,
-                        (int) pbar + barOffset - border, height - 2 * border,
-                        roundness, roundness);
+        g.fillRect(offset + width + gap + border, 20 + border,
+                   pbar - border, height - 2 * border);
 
         // score
-        Font.renderMessage(g, "" + player.getScore(), 725, 20, false);
+        Font.renderMessage(g, "" + player.getScore(),
+                           offset - gap, 17, false);
     }
 
     public void setPlayer(Player player) {
