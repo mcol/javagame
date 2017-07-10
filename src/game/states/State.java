@@ -2,18 +2,25 @@ package game.states;
 
 import java.awt.Graphics;
 import game.Handler;
+import gfx.Background;
 
 public abstract class State {
 
     private static State currentState = null;
     protected final Handler handler;
 
+    /** Background image. */
+    protected Background bg;
+
     /** Constructor. */
     public State(Handler handler) {
         this.handler = handler;
     }
 
-    public abstract void tick();
+    public void tick() {
+        bg.tick();
+    }
+
     public abstract void render(Graphics g);
 
     // getters and setters

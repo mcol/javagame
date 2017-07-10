@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import game.Handler;
 import game.input.KeyManager;
+import gfx.Background;
 
 public class MenuState extends State {
 
@@ -19,17 +20,16 @@ public class MenuState extends State {
     /** Constructor. */
     public MenuState(Handler handler) {
         super(handler);
+        bg = new Background("/textures/menubg.png", -0.1f,
+                            handler.getGame().getWidth(),
+                            handler.getGame().getHeight());
     }
-
-    @Override
-    public void tick() {}
 
     @Override
     public void render(Graphics g) {
 
         // background
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 800, 800 / 16 * 9);
+        bg.render(g);
 
         // title
         g.setFont(titleFont);
@@ -39,7 +39,7 @@ public class MenuState extends State {
         // options
         g.setFont(font);
         for (int i = 0; i < options.length; i++) {
-            g.setColor(i == currentChoice ? Color.WHITE : Color.GRAY);
+            g.setColor(i == currentChoice ? Color.WHITE : Color.DARK_GRAY);
             g.drawString(options[i], 100, 150 + 100 * (1 + i));
         }
     }
