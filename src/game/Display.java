@@ -1,12 +1,15 @@
 package game;
 
-import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import game.states.State;
 
-public class Display {
+public class Display extends JPanel {
+
+    private static final long serialVersionUID = 1L;
     private JFrame frame;
-    private Canvas canvas;
 
     /** The title string to be displayed. */
     private final String title;
@@ -14,11 +17,19 @@ public class Display {
     /** Dimensions of the window in pixels. */
     private final int width, height;
 
+    /** The current game state. */
+    private State state;
+
+    /** Number of frames rendered per second. */
+    public int frames;
+
     /** Constructor. */
     public Display(String title, int width, int height) {
         this.title = title;
         this.width = width;
         this.height = height;
+        this.state = null;
+        this.frames = 0;
 
         createDisplay();
     }
@@ -26,26 +37,29 @@ public class Display {
     /** Set up the display. */
     private void createDisplay() {
         Dimension size = new Dimension(width, height);
-        canvas = new Canvas();
-        canvas.setPreferredSize(size);
-        canvas.setMaximumSize(size);
-        canvas.setMinimumSize(size);
-        canvas.setFocusable(false);
+        this.setPreferredSize(size);
+        this.setMaximumSize(size);
+        this.setMinimumSize(size);
+        this.setFocusable(false);
 
         frame = new JFrame(title);
         frame.setResizable(false);
-        frame.add(canvas);
+        frame.add(this);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
-    // getters and setters
-
-    public Canvas getCanvas() {
-        return canvas;
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (state != null)
+            state.render(g);
+        frames++;
     }
+
+    // getters and setters
 
     public JFrame getFrame() {
         return frame;
@@ -54,5 +68,10 @@ public class Display {
     /** Sets the title string. */
     public void setTitle(String title) {
         frame.setTitle(title);
+    }
+
+    /** Sets the current state. */
+    public void setState(State state) {
+        this.state = state;
     }
 }

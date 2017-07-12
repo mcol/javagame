@@ -1,7 +1,5 @@
 package game;
 
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
 import assets.Assets;
 import game.states.GameState;
 import game.states.MenuState;
@@ -20,8 +18,6 @@ public class Game implements Runnable {
     private Thread thread;
 
     private final Display display;
-    private BufferStrategy bs;
-    private Graphics g;
 
     /** The number of frames per seconds to be rendered. */
     private final int fps = 60;
@@ -56,28 +52,11 @@ public class Game implements Runnable {
     private void tick() {
         if (State.getState() != null)
             State.getState().tick();
+        display.setState(State.getState());
     }
 
     private void render() {
-        bs = display.getCanvas().getBufferStrategy();
-        if (bs == null) {
-            display.getCanvas().createBufferStrategy(3);
-            return;
-        }
-
-        // get the current graphics context
-        g = bs.getDrawGraphics();
-
-        // draw graphics
-        g.clearRect(0, 0, width, height);
-        if (State.getState() != null)
-            State.getState().render(g);
-
-        // display the buffer
-        bs.show();
-
-        // dispose the graphics context
-        g.dispose();
+        display.repaint();
     }
 
     @Override
@@ -89,7 +68,6 @@ public class Game implements Runnable {
         long lastTime = System.nanoTime(), now;
         long timer = 0;
         int ticks = 0;
-        int frames = 0;
 
         while (running) {
             now = System.nanoTime();
@@ -103,13 +81,13 @@ public class Game implements Runnable {
                 delta--;
             }
             render();
-            frames++;
 
             if (timer > 1_000_000_000) {
-                display.setTitle(title + " | " + ticks + " ups, " + frames + " fps");
+                display.setTitle(title + " | " + ticks + " ups, " +
+                                 display.frames + " fps");
                 ticks = 0;
                 timer = 0;
-                frames = 0;
+                display.frames = 0;
             }
         }
 
