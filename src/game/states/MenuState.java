@@ -54,6 +54,9 @@ public class MenuState extends State {
 
         KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_SPACE,
                                  (e) -> activateChoice(), null);
+
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_ENTER,
+                                 (e) -> activateChoice(), null);
     }
 
     /** Selects the menu option. */
