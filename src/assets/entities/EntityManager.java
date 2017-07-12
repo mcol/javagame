@@ -3,7 +3,6 @@ package assets.entities;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
-import assets.hud.HUD;
 
 public class EntityManager {
 
@@ -11,9 +10,6 @@ public class EntityManager {
 
     /** List of alive entities. */
     private final ArrayList<Entity> entities;
-
-    /** Heads-up display. */
-    private final HUD hud;
 
     /** Class to decide render order of entities. */
     private final Comparator<Entity> renderSorter = new Comparator<Entity>() {
@@ -28,10 +24,9 @@ public class EntityManager {
 
     /** Constructor. */
     public EntityManager(Player player) {
+        this.player = player;
         entities = new ArrayList<Entity>();
         addEntity(player);
-        hud = new HUD(player);
-        this.player = player;
     }
 
     public void tick() {
@@ -51,7 +46,6 @@ public class EntityManager {
             Entity e = entities.get(i);
             e.render(g);
         }
-        hud.render(g);
     }
 
     /** Add an entity to the list of alive entities. */
@@ -74,7 +68,6 @@ public class EntityManager {
     /** Sets the player. */
     public void setPlayer(Player player) {
         this.player = player;
-        hud.setPlayer(player);
     }
 
     /** Returns the list of alive entities. */
