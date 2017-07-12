@@ -15,9 +15,6 @@ public class HUD {
     /** Height of the displayed graphics. */
     private static final int height = 25;
 
-    /** Distance from the left side of the display. */
-    private static final int offset = 560;
-
     /** Distance between the bars. */
     private static final int gap = 20;
 
@@ -30,11 +27,14 @@ public class HUD {
     private static final Color poopColor = new Color(0x774824);
     private static final Color poopTransparentColor = new Color(0x99774824, true);
 
+    /** Distance from the left side of the display. */
+    private final int offset;
+
     private Player player;
     private BufferedImage image;
 
     /** Constructor. */
-    public HUD(Player player) {
+    public HUD(Player player, int gameWidth) {
         this.player = player;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/textures/hud.png"));
@@ -42,6 +42,7 @@ public class HUD {
         catch(Exception e) {
             e.printStackTrace();
         }
+        offset = gameWidth - (2 * width + 2 * gap);
     }
 
     public void render(Graphics g) {

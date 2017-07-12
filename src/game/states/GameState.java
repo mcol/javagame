@@ -17,7 +17,7 @@ public class GameState extends State {
         super(handler);
         world = new World(handler, "res/worlds/world1.txt");
         handler.setWorld(world);
-        hud = new HUD(handler.getPlayer());
+        hud = new HUD(handler.getPlayer(), handler.getGame().getWidth());
     }
 
     @Override
