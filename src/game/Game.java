@@ -9,10 +9,10 @@ import gfx.Camera;
 public class Game implements Runnable {
 
     /** Dimensions of the game window in pixels. */
-    private final int width, height;
+    private final int width = 800, height = width / 16 * 9;
 
     /** The name of the game. */
-    private final String title;
+    private final String title = "Poop game";
 
     private boolean running = false;
     private Thread thread;
@@ -31,11 +31,14 @@ public class Game implements Runnable {
     // Handler
     private static Handler handler;
 
+    /** Main function. */
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.start();
+    }
+
     /** Constructor. */
-    public Game(String title, int width, int height) {
-        this.width = width;
-        this.height = height;
-        this.title = title;
+    public Game() {
         display = new Display(title, width, height);
     }
 
