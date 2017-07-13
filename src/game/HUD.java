@@ -30,7 +30,8 @@ public class HUD {
     /** Distance from the left side of the display. */
     private final int offset;
 
-    private Player player;
+    /** The active player. */
+    private final Player player;
     private BufferedImage image;
 
     /** Constructor. */
@@ -68,9 +69,5 @@ public class HUD {
         // score
         Font.renderMessage(g, "" + player.getScore(),
                            offset - gap, 17, false);
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 }
