@@ -15,6 +15,12 @@ public class Background {
     /** Vertical dimension of the game in pixels. */
     private final int gameHeight;
 
+    /** Dimensions of the background image. */
+    private final int imageWidth, imageHeight;
+
+    /** Minimum dimensions between the background image and the game window. */
+    private final int minWidth, minHeight;
+
     /** Current position of the background. */
     private float x, y;
 
@@ -30,17 +36,24 @@ public class Background {
         catch(Exception e) {
             e.printStackTrace();
         }
+        finally {
+            imageWidth = image.getWidth();
+            imageHeight = image.getHeight();
+        }
+        this.dx = dx;
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-        this.dx = dx;
+        this.minWidth = Math.min(gameWidth, imageWidth);
+        this.minHeight = Math.min(gameHeight, imageHeight);
     }
 
     public void tick() {
-        x = (gameWidth + x - dx) % gameWidth;
+        // limit the movement to the available image size
+        x = (x - dx) % (imageWidth - minWidth);
     }
 
     public void render(Graphics g) {
-        g.drawImage(image.getSubimage((int) x, (int) y, gameWidth, gameHeight),
+        g.drawImage(image.getSubimage((int) x, (int) y, minWidth, minHeight),
                     0, 0, gameWidth, gameHeight, null);
     }
 }
