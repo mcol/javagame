@@ -15,7 +15,7 @@ public class GameState extends State {
     private final HUD hud;
 
     /** Keys pressed. */
-    private boolean pause, quit;
+    private boolean help, pause, quit;
 
     /** Constructor. */
     public GameState(Handler handler) {
@@ -23,6 +23,11 @@ public class GameState extends State {
         world = new World(handler, "res/worlds/world1.txt");
         handler.setWorld(world);
         hud = new HUD(handler.getPlayer(), handler.getGame().getWidth());
+    }
+
+    /** Shows the help page. */
+    private void help() {
+        handler.getGame().setHelpState();
     }
 
     /** Quits the current game. */
@@ -37,6 +42,9 @@ public class GameState extends State {
 
         if (handler.getPlayer().isDead() || quit)
             quit();
+
+        if (help)
+            help();
     }
 
     @Override
@@ -48,6 +56,8 @@ public class GameState extends State {
     @Override
     public void setKeyBindings() {
         world.getEntityManager().getPlayer().addKeyBindings();
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_H,
+                                 (e) -> help = true, (e) -> help = false);
         KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_P,
                                  (e) -> pause = !pause, null);
         KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_Q,

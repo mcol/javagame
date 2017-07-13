@@ -10,7 +10,7 @@ import gfx.Background;
 
 public class MenuState extends State {
 
-    private static final String[] options = { "Start", "Quit" };
+    private static final String[] options = { "Start", "Help", "Quit" };
     private static final Font titleFont = new Font("Century Gothic", Font.BOLD, 96);
     private static final Font font = new Font("Century Gothic", Font.BOLD, 72);
 
@@ -40,7 +40,7 @@ public class MenuState extends State {
         g.setFont(font);
         for (int i = 0; i < options.length; i++) {
             g.setColor(i == currentChoice ? Color.WHITE : Color.DARK_GRAY);
-            g.drawString(options[i], 100, 150 + 100 * (1 + i));
+            g.drawString(options[i], 100, 130 + 90 * (1 + i));
         }
     }
 
@@ -73,6 +73,8 @@ public class MenuState extends State {
         if (currentChoice == 0)
             handler.getGame().setGameState();
         else if (currentChoice == 1)
+            handler.getGame().setHelpState();
+        else if (currentChoice == 2)
             System.exit(0);
     }
 }

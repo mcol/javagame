@@ -2,6 +2,7 @@ package game;
 
 import assets.Assets;
 import game.states.GameState;
+import game.states.HelpState;
 import game.states.MenuState;
 import game.states.State;
 import gfx.Camera;
@@ -143,6 +144,10 @@ public class Game implements Runnable {
 
     public void setGameState() {
         State.setState(new GameState(handler));
+    }
+
+    public void setHelpState() {
+        State.setState(new HelpState(handler, State.getState()));
     }
 
     public void setMenuState() {
