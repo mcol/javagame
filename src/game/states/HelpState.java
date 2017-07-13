@@ -65,6 +65,8 @@ public class HelpState extends State {
                                  (e) -> exit(), null);
         KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_ENTER,
                                  (e) -> exit(), null);
+        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_P,
+                                 (e) -> KeyManager.noaction(), null);
     }
 
     /** Leaves the help page to return to the previous state. */

@@ -46,4 +46,7 @@ public class KeyManager {
             });
         }
     }
+
+    /** Function to disable the action associated to a keystroke. */
+    public static void noaction() { /* do nothing */ }
 }
