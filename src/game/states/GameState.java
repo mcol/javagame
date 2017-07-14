@@ -56,11 +56,11 @@ public class GameState extends State {
     @Override
     public void setKeyBindings() {
         world.getEntityManager().getPlayer().addKeyBindings();
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_H,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_H,
                                  (e) -> help = true, (e) -> help = false);
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_P,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_P,
                                  (e) -> pause = !pause, null);
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_Q,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
                                  (e) -> quit = true, (e) -> quit = false);
     }
 }

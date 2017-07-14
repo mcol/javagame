@@ -277,19 +277,19 @@ public class Player extends Creature {
     /** Add the key bindings to control the player. */
     public void addKeyBindings() {
 
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_UP,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_UP,
                                  (e) -> up = true, (e) -> up = false);
 
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_DOWN,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_DOWN,
                                  (e) -> down = true, (e) -> down = false);
 
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_LEFT,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_LEFT,
                                  (e) -> left = true, (e) -> left = false);
 
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_RIGHT,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_RIGHT,
                                  (e) -> right = true, (e) -> right = false);
 
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_SPACE,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_SPACE,
                                  (e) -> space = true, (e) -> space = false);
     }
 

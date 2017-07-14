@@ -57,15 +57,15 @@ public class HelpState extends State {
 
     @Override
     public void setKeyBindings() {
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_H,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_H,
                                  (e) -> exit(), null);
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_Q,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
                                  (e) -> exit(), null);
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_SPACE,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_SPACE,
                                  (e) -> exit(), null);
-        KeyManager.addKeyBinding(handler.getFrame(), KeyEvent.VK_ENTER,
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_ENTER,
                                  (e) -> exit(), null);
-        KeyManager.removeKeyBindings(handler.getFrame(),
+        KeyManager.removeKeyBindings(handler.getDisplay(),
                                      new int[] { KeyEvent.VK_P,
                                                  KeyEvent.VK_UP,
                                                  KeyEvent.VK_DOWN});

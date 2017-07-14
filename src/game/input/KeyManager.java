@@ -5,20 +5,18 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 public class KeyManager {
 
     /** Associates actions to a keystroke press and release. */
-    public static void addKeyBinding(JFrame frame, int keyStroke,
+    public static void addKeyBinding(JPanel panel, int keyStroke,
                                      ActionListener actionPressed,
                                      ActionListener actionReleased) {
 
-        InputMap im = frame.getRootPane()
-                           .getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap am = frame.getRootPane().getActionMap();
+        InputMap im = panel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap am = panel.getActionMap();
 
         if (actionPressed != null) {
             String id = keyStroke + "pressed";
@@ -48,9 +46,8 @@ public class KeyManager {
     }
 
     /** Disables the actions associated to the given keystrokes. */
-    public static void removeKeyBindings(JFrame frame, int[] keyStrokes) {
-        InputMap im = frame.getRootPane()
-                           .getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    public static void removeKeyBindings(JPanel panel, int[] keyStrokes) {
+        InputMap im = panel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         for (int keyStroke : keyStrokes)
             im.put(KeyStroke.getKeyStroke(keyStroke, 0, false), "none");
     }
