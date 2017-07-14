@@ -29,6 +29,9 @@ public class Font {
         if (!leftAligned)
             x -= msg.length() * fontsize;
 
+        // convert to uppercase before matching
+        msg = msg.toUpperCase();
+
         for (int i = 0; i < msg.length(); i++) {
             int charIndex = chars.indexOf(msg.charAt(i));
 
