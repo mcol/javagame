@@ -47,6 +47,11 @@ public class KeyManager {
         }
     }
 
-    /** Function to disable the action associated to a keystroke. */
-    public static void noaction() { /* do nothing */ }
+    /** Disables the actions associated to the given keystrokes. */
+    public static void removeKeyBindings(JFrame frame, int[] keyStrokes) {
+        InputMap im = frame.getRootPane()
+                           .getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        for (int keyStroke : keyStrokes)
+            im.put(KeyStroke.getKeyStroke(keyStroke, 0, false), "none");
+    }
 }
