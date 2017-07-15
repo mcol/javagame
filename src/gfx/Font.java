@@ -23,12 +23,32 @@ public class Font {
     /** Size of each character in the font sheet. */
     private static final int charsize = 8;
 
-    /** Size of each character when rendered. */
-    private static final int fontsize = charsize * 3;
+    /** Available font sizes. */
+    public enum Size {
+
+        /** Available sizes */
+        TITLE(9), LARGE(7), MEDIUM(5), SMALL(3);
+
+        /** Scaling factor. */
+        private final int scale;
+
+        /** Constructor. */
+        Size(int scale) {
+            this.scale = scale;
+        }
+
+        /** Returns the scaling to be applied to the font. */
+        private int getScale() {
+            return scale;
+        }
+    }
 
     /** Renders a message using the font characters. */
     public static void renderMessage(Graphics g, String msg, int x, int y,
-                                     boolean leftAligned) {
+                                     Size size, boolean leftAligned) {
+
+        // size of the font in pixels
+        int fontsize = charsize * size.getScale();
 
         // adjust the position if the message is right aligned
         if (!leftAligned)

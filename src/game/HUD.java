@@ -67,7 +67,7 @@ public class HUD {
                    pbar - border, height - 2 * border);
 
         // score
-        Font.renderMessage(g, "" + player.getScore(),
-                           offset - gap, 17, false);
+        Font.renderMessage(g, "" + player.getScore(), offset - gap, 17,
+                           Font.Size.SMALL, false);
     }
 }
