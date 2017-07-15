@@ -1,18 +1,16 @@
 package game.states;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import game.Handler;
 import game.input.KeyManager;
 import gfx.Background;
+import gfx.Font;
 
 public class MenuState extends State {
 
     private static final String[] options = { "Start", "Help", "Quit" };
-    private static final Font titleFont = new Font("Century Gothic", Font.BOLD, 96);
-    private static final Font font = new Font("Century Gothic", Font.BOLD, 72);
 
     /** Current menu choice. */
     private int currentChoice;
@@ -32,15 +30,15 @@ public class MenuState extends State {
         bg.render(g);
 
         // title
-        g.setFont(titleFont);
-        g.setColor(Color.ORANGE);
-        g.drawString(handler.getGame().getTitle(), 100, 125);
+        Font.setColour(Color.ORANGE);
+        Font.renderMessage(g, handler.getGame().getTitle(), 100, 70,
+                           Font.Size.TITLE, true);
 
         // options
-        g.setFont(font);
         for (int i = 0; i < options.length; i++) {
-            g.setColor(i == currentChoice ? Color.WHITE : Color.DARK_GRAY);
-            g.drawString(options[i], 100, 130 + 90 * (1 + i));
+            Font.setColour((i == currentChoice) ? Color.WHITE : Color.DARK_GRAY);
+            Font.renderMessage(g, options[i], 100, 90 + 90 * (1 + i),
+                               Font.Size.LARGE, true);
         }
     }
 

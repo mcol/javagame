@@ -1,17 +1,14 @@
 package game.states;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import game.Handler;
 import game.input.KeyManager;
 import gfx.Background;
+import gfx.Font;
 
 public class HelpState extends State {
-
-    private static final Font titleFont = new Font("Century Gothic", Font.BOLD, 96);
-    private static final Font font = new Font("Century Gothic", Font.BOLD, 48);
 
     /** Keys used in the game. */
     private static final String[] keys = { "Arrows", "Space", "H", "P", "Q" };
@@ -41,18 +38,21 @@ public class HelpState extends State {
         bg.render(g);
 
         // title
-        g.setFont(titleFont);
-        g.setColor(Color.ORANGE);
-        g.drawString("Help", 100, 125);
+        Font.setColour(Color.ORANGE);
+        Font.renderMessage(g, "Help", 100, 70,
+                           Font.Size.LARGE, true);
 
         // keys
-        g.setFont(font);
-        for (int i = 0; i < keys.length; i++) {
-            g.setColor(Color.WHITE);
-            g.drawString(keys[i], 100, 140 + 56 * (1 + i));
-            g.setColor(Color.DARK_GRAY);
-            g.drawString(help[i], 350, 140 + 56 * (1 + i));
-        }
+        Font.setColour(Color.WHITE);
+        for (int i = 0; i < keys.length; i++)
+            Font.renderMessage(g, keys[i], 100, 100 + 56 * (1 + i),
+                               Font.Size.MEDIUM, true);
+
+        // help message
+        Font.setColour(Color.DARK_GRAY);
+        for (int i = 0; i < help.length; i++)
+            Font.renderMessage(g, help[i], 450, 100 + 56 * (1 + i),
+                               Font.Size.MEDIUM, true);
     }
 
     @Override

@@ -67,6 +67,7 @@ public class HUD {
                    pbar - border, height - 2 * border);
 
         // score
+        Font.setColour(Color.WHITE);
         Font.renderMessage(g, "" + player.getScore(), offset - gap, 17,
                            Font.Size.SMALL, false);
     }
