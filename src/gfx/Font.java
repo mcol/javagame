@@ -1,5 +1,6 @@
 package gfx;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -14,6 +15,10 @@ public class Font {
 
     /** Font sheet. */
     private static final SpriteSheet font = new SpriteSheet("/textures/font.png");
+
+    /** Dimensions of the font sheet. */
+    private static final int width = font.getSheet().getWidth();
+    private static final int height = font.getSheet().getHeight();
 
     /** Size of each character in the font sheet. */
     private static final int charsize = 8;
@@ -46,4 +51,19 @@ public class Font {
         }
     }
 
+    /** Sets the colour of the font. */
+    public static void setColour(Color colour) {
+        int rgb = colour.getRGB();
+        BufferedImage sheet = font.getSheet();
+        int[] pixels = sheet.getRGB(0, 0, width, height, null, 0, width);
+        for (int i = 0; i < pixels.length; i++)
+            pixels[i] = toRGB(pixels[i], rgb);
+        sheet.setRGB(0, 0, width, height, pixels, 0, width);
+    }
+
+    /** Changes the colour of a non-transparent pixel. */
+    private static int toRGB(int pixel, int rgb) {
+        int alpha = ((pixel >> 24) & 0xff) << 24;
+        return alpha | (rgb ^ 0xff000000);
+    }
 }
