@@ -23,9 +23,6 @@ public class Game implements Runnable {
     /** The number of frames per seconds to be rendered. */
     private final int fps = 60;
 
-    // States
-    private static State menuState;
-
     // Camera
     private static Camera camera;
 
@@ -49,8 +46,7 @@ public class Game implements Runnable {
         handler = new Handler(this);
         camera = new Camera(handler);
 
-        menuState = new MenuState(handler);
-        State.setState(menuState);
+        State.setState(new MenuState(handler, title));
     }
 
     private void tick() {
@@ -151,6 +147,7 @@ public class Game implements Runnable {
     }
 
     public void setMenuState() {
-        State.setState(menuState);
+        State.setState(new MenuState(handler,
+                                     "Score: " + handler.getPlayer().getScore()));
     }
 }

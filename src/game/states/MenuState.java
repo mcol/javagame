@@ -10,17 +10,22 @@ import gfx.Font;
 
 public class MenuState extends State {
 
+    /** Menu choices. */
     private static final String[] options = { "Start", "Help", "Quit" };
+
+    /** Menu title. */
+    private final String title;
 
     /** Current menu choice. */
     private int currentChoice;
 
     /** Constructor. */
-    public MenuState(Handler handler) {
+    public MenuState(Handler handler, String title) {
         super(handler);
         bg = new Background("/textures/menubg.png", -0.1f,
                             handler.getGame().getWidth(),
                             handler.getGame().getHeight());
+        this.title = title;
     }
 
     @Override
@@ -31,7 +36,7 @@ public class MenuState extends State {
 
         // title
         Font.setColour(Color.ORANGE);
-        Font.renderMessage(g, handler.getGame().getTitle(), 100, 70,
+        Font.renderMessage(g, title, 100, 70,
                            Font.Size.TITLE, true);
 
         // options
@@ -73,7 +78,6 @@ public class MenuState extends State {
 
     /** Activates the menu choice. */
     private void activateChoice() {
-
         if (currentChoice == 0)
             handler.getGame().setGameState();
         else if (currentChoice == 1)
