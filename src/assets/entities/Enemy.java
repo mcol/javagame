@@ -96,11 +96,12 @@ public class Enemy extends Creature {
 
         // health status
         final int xAdj = facingRight ? width / 2 : width / 8;
-        double hbar = (double) getHealth() / spawnHealth * 35;
+        final int health = getHealth();
+        final double hbar = (double) health / spawnHealth * 35;
         g.setColor(healthColor);
         g.fillRect((int) (x - handler.getCamera().getxOffset() + xAdj),
                    (int) (y - handler.getCamera().getyOffset() - 10),
-                   (int) hbar, 10);
+                   health > 0 ? (int) hbar + 5 : 0, 10);
     }
 
     @Override
