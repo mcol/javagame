@@ -21,13 +21,13 @@ public class Font {
     private static final int height = font.getSheet().getHeight();
 
     /** Size of each character in the font sheet. */
-    private static final int charsize = 8;
+    private static final int charsize = 9;
 
     /** Available font sizes. */
     public enum Size {
 
         /** Available sizes */
-        TITLE(9), LARGE(7), MEDIUM(5), SMALL(3);
+        TITLE(8), LARGE(6), MEDIUM(4), SMALL(3);
 
         /** Scaling factor. */
         private final int scale;
