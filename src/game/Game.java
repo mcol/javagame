@@ -50,9 +50,7 @@ public class Game implements Runnable {
     }
 
     private void tick() {
-        if (State.getState() != null)
-            State.getState().tick();
-        display.setState(State.getState());
+        State.getState().tick();
     }
 
     private void render() {

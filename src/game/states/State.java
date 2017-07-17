@@ -40,6 +40,7 @@ public abstract class State {
     public static void setState(State state) {
         currentState = state;
         currentState.setKeyBindings();
+        display.setState(State.getState());
     }
 
     /** Sets the key bindings for the state. */
