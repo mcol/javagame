@@ -49,22 +49,22 @@ public class MenuState extends State {
 
     @Override
     public void setKeyBindings() {
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_UP,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_UP,
                                  (e) -> chooseOption(true), null);
 
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_DOWN,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_DOWN,
                                  (e) -> chooseOption(false), null);
 
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_SPACE,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
                                  (e) -> activateChoice(), null);
 
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_ENTER,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
                                  (e) -> activateChoice(), null);
 
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_H,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_H,
                                  (e) -> handler.getGame().setHelpState(), null);
 
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
                                  (e) -> System.exit(0), null);
     }
 
