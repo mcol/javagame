@@ -25,7 +25,7 @@ public class World {
     /** Container for all entities. */
     private final EntityManager entityManager;
 
-    /** Time of the next item spawn. */
+    /** Time of the next item spawn in ticks. */
     private long nextItemSpawnTime;
 
     /** Constructor. */
@@ -39,8 +39,8 @@ public class World {
         // add the entities
         entityManager = new EntityManager(new Player(handler, spawnCoords[0], spawnCoords[1]));
         addEntities();
-        nextItemSpawnTime = System.currentTimeMillis()
-                          + Handler.randomInteger(10, 15) * 1000;
+        nextItemSpawnTime = handler.getGame().getTicksTime() +
+                            Handler.randomInteger(10, 15) * Game.FPS;
     }
 
     /** Adds entities to the  world. */
@@ -124,7 +124,7 @@ public class World {
     private void spawnItem() {
 
         // check if it's time to spawn a new item
-        long now = System.currentTimeMillis();
+        long now = handler.getGame().getTicksTime();
         if (now < nextItemSpawnTime)
             return;
 
@@ -140,7 +140,7 @@ public class World {
         entityManager.addEntity(new CollectableItem(Items.randomItem(),
                                                     x  * Tile.TILESIZE,
                                                     y  * Tile.TILESIZE));
-        nextItemSpawnTime = now + Handler.randomInteger(10, 20) * 1000;
+        nextItemSpawnTime = now + Handler.randomInteger(10, 20) * Game.FPS;
     }
 
     // getters and setters

@@ -79,10 +79,10 @@ public class Enemy extends Creature {
 
         // switch direction if no movement is possible or there is a collision with another entity
         if ((dx == 0 || collisionWithEntity(xMove, 0f)) &&
-                System.currentTimeMillis() - switchTime > 150) {
+                now - switchTime > 5) {
             facingRight = !facingRight;
             xMove = -xMove;
-            switchTime = System.currentTimeMillis();
+            switchTime = now;
         }
         else
             x += dx;
@@ -126,7 +126,7 @@ public class Enemy extends Creature {
     /** Checks if the enemy collides with the player. */
     private void checkPlayerDamage() {
 
-        if (now - damageCheckTime < 150)
+        if (now - damageCheckTime < 3)
             return;
 
         Player p = handler.getPlayer();

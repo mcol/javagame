@@ -19,10 +19,7 @@ public abstract class Creature extends Entity {
     protected int health;
     protected int damage;
 
-    /** Current time in milliseconds. */
-    protected long now;
-
-    /** Time of the last check for damage. */
+    /** Time of the last check for damage in ticks. */
     protected long damageCheckTime;
 
     // movement
@@ -45,7 +42,7 @@ public abstract class Creature extends Entity {
         yMove = 0;
         falling = true;
         facingRight = true;
-        spawnTime = System.currentTimeMillis();
+        spawnTime = now;
         damageCheckTime = 0;
     }
 
@@ -149,12 +146,6 @@ public abstract class Creature extends Entity {
         }
 
         return 0;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        now = System.currentTimeMillis();
     }
 
     @Override

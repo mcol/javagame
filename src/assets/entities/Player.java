@@ -2,6 +2,7 @@ package assets.entities;
 
 import java.awt.event.KeyEvent;
 import assets.Assets;
+import game.Game;
 import game.Handler;
 import game.input.KeyManager;
 import gfx.Animation;
@@ -14,8 +15,8 @@ public class Player extends Creature {
     /** Maximum amount of poop that the player can carry. */
     public static final int MAX_POOP = 25;
 
-    /** Interval between each poop increase in milliseconds. */
-    public static final long POOP_RESTORE_INTERVAL = 15000;
+    /** Interval between each poop increase in ticks. */
+    private static final long POOP_RESTORE_INTERVAL = 15 * Game.FPS;
 
     private static final float dampingFactor = 0.96f;
     private static final float liftspeed = 1.4f;
@@ -38,10 +39,10 @@ public class Player extends Creature {
     /** Whether the player has fired any poop. */
     private boolean hasPooped = false;
 
-    /** Time of the last poop fire. */
+    /** Time of the last poop fire in ticks. */
     private long poopFireTime = 0;
 
-    /** Time of the last poop increase. */
+    /** Time of the last poop increase in ticks. */
     private long poopRestoreTime = 0;
 
     /** Constructor. */
@@ -171,7 +172,7 @@ public class Player extends Creature {
             return;
 
         // don't allow continuous pooping
-        if (now - poopFireTime > 200) {
+        if (now - poopFireTime > 5) {
             Poop p = new Poop(facingRight ? x + width / 6
                                           : x + width - width / 2,
                               y + height / 3 * 2 + 5);
@@ -205,7 +206,7 @@ public class Player extends Creature {
         handler.getCamera().centreOnEntity(this);
 
         // check if the player is on a damage tile
-        if (now - damageCheckTime > 150) {
+        if (now - damageCheckTime > 8) {
             int damage = handler.getWorld().getTile(getLeftBound(),
                                                     getTopBound())
                                            .getDamage() +

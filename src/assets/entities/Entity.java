@@ -19,7 +19,10 @@ public abstract class Entity {
     /** Collision bounding box. */
     protected Rectangle bounds;
 
-    /** Time when the entity was generated. */
+    /** Current time in ticks. */
+    protected long now;
+
+    /** Time when the entity was generated in ticks. */
     protected long spawnTime;
 
     /** Animation representing the entity. */
@@ -39,6 +42,7 @@ public abstract class Entity {
 
     public void tick() {
         animation.tick();
+        now = handler.getGame().getTicksTime();
     }
 
     public abstract void render(Graphics g);
