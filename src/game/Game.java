@@ -10,7 +10,10 @@ import gfx.Camera;
 public class Game implements Runnable {
 
     /** Dimensions of the game window in pixels. */
-    private final int width = 800, height = width / 16 * 9;
+    public static final int WIDTH = 800, HEIGHT = WIDTH / 16 * 9;
+
+    /** Number of frames to be rendered per second. */
+    public static final int FPS = 60;
 
     /** The name of the game. */
     private final String title = "Poop game";
@@ -19,9 +22,6 @@ public class Game implements Runnable {
     private Thread thread;
 
     private final Display display;
-
-    /** The number of frames per seconds to be rendered. */
-    private final int fps = 60;
 
     // Camera
     private static Camera camera;
@@ -37,7 +37,7 @@ public class Game implements Runnable {
 
     /** Constructor. */
     public Game() {
-        display = new Display(title, width, height);
+        display = new Display(title, WIDTH, HEIGHT);
     }
 
     private void init() {
@@ -61,7 +61,7 @@ public class Game implements Runnable {
     public void run() {
         init();
 
-        final double timePerTick = 1_000_000_000.0 / fps;
+        final double timePerTick = 1_000_000_000.0 / FPS;
         double delta = 0.0;
         long lastTime = System.nanoTime(), now;
         long timer = 0;
@@ -119,16 +119,6 @@ public class Game implements Runnable {
 
     public Camera getCamera() {
         return camera;
-    }
-
-    /** Returns the width of the game window in pixels. */
-    public int getWidth() {
-        return width;
-    }
-
-    /** Returns the height of the game window in pixels. */
-    public int getHeight() {
-        return height;
     }
 
     /** Returns the title of the game. */

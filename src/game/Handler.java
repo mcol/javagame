@@ -36,16 +36,6 @@ public class Handler {
         return game.getDisplay();
     }
 
-    /** Returns the width of the game in pixels. */
-    public int getWidth() {
-        return game.getWidth();
-    }
-
-    /** Returns the height of the game in pixels. */
-    public int getHeight() {
-        return game.getHeight();
-    }
-
     public Game getGame() {
         return game;
     }

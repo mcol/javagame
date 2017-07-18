@@ -8,6 +8,7 @@ import assets.entities.Items;
 import assets.entities.Player;
 import assets.entities.Tree;
 import assets.tiles.Tile;
+import game.Game;
 import game.Handler;
 import utils.Utils;
 
@@ -65,10 +66,10 @@ public class World {
 
         // range of coordinates of the visible tiles
         int xStart = (int) Math.max(camera_xOffset / Tile.TILESIZE, 0);
-        int xEnd = (int) Math.min((camera_xOffset + handler.getWidth()) / Tile.TILESIZE + 1,
+        int xEnd = (int) Math.min((camera_xOffset + Game.WIDTH) / Tile.TILESIZE + 1,
                                   width);
         int yStart = (int) Math.max(camera_yOffset / Tile.TILESIZE, 0);
-        int yEnd = (int) Math.min((camera_yOffset + handler.getHeight()) / Tile.TILESIZE + 1,
+        int yEnd = (int) Math.min((camera_yOffset + Game.HEIGHT) / Tile.TILESIZE + 1,
                                   height);
 
         // draw only the visible tiles

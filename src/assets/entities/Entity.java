@@ -2,6 +2,7 @@ package assets.entities;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import game.Game;
 import game.Handler;
 import gfx.Animation;
 
@@ -78,9 +79,9 @@ public abstract class Entity {
     /** Returns whether the entity is currently outside of the visible area. */
     public boolean offScreen() {
         return  x - handler.getCamera().getxOffset() + width < 0 ||
-                x - handler.getCamera().getxOffset() > handler.getGame().getWidth() ||
+                x - handler.getCamera().getxOffset() > Game.WIDTH ||
                 y - handler.getCamera().getyOffset() + height < 0 ||
-                y - handler.getCamera().getyOffset() >  handler.getGame().getHeight();
+                y - handler.getCamera().getyOffset() > Game.HEIGHT;
     }
 
     // getters and setters

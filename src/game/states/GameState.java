@@ -2,6 +2,7 @@ package game.states;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import game.Game;
 import game.HUD;
 import game.Handler;
 import game.input.KeyManager;
@@ -22,7 +23,7 @@ public class GameState extends State {
         super(handler);
         world = new World(handler, "res/worlds/world1.txt");
         handler.setWorld(world);
-        hud = new HUD(handler.getPlayer(), handler.getGame().getWidth());
+        hud = new HUD(handler.getPlayer(), Game.WIDTH);
     }
 
     /** Shows the help page. */

@@ -2,6 +2,7 @@ package gfx;
 
 import assets.entities.Entity;
 import assets.tiles.Tile;
+import game.Game;
 import game.Handler;
 import utils.Utils;
 
@@ -26,16 +27,16 @@ public class Camera {
     public void centreOnEntity(Entity e) {
 
         // position the camera is aiming to move to
-        float xTarget = e.getX() - handler.getWidth() / 2 + e.getWidth() / 2;
-        float yTarget = e.getY() - handler.getHeight() / 2 + e.getHeight() / 2;
+        float xTarget = e.getX() - Game.WIDTH / 2 + e.getWidth() / 2;
+        float yTarget = e.getY() - Game.HEIGHT / 2 + e.getHeight() / 2;
 
         // check the map bounds to avoid showing blank space outside of the map
         xTarget = Utils.clampValue(xTarget, 0,
                                    handler.getWorld().getWidth() * Tile.TILESIZE -
-                                   handler.getWidth());
+                                   Game.WIDTH);
         yTarget = Utils.clampValue(yTarget, 0,
                                    handler.getWorld().getHeight() * Tile.TILESIZE -
-                                   handler.getHeight());
+                                   Game.HEIGHT);
 
         // move gradually towards the target
         xOffset += tween * (xTarget - xOffset);

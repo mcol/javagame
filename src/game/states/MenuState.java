@@ -3,6 +3,7 @@ package game.states;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import game.Game;
 import game.Handler;
 import game.input.KeyManager;
 import gfx.Background;
@@ -23,8 +24,7 @@ public class MenuState extends State {
     public MenuState(Handler handler, String title) {
         super(handler);
         bg = new Background("/textures/menubg.png", -0.1f,
-                            handler.getGame().getWidth(),
-                            handler.getGame().getHeight());
+                            Game.WIDTH, Game.HEIGHT);
         this.title = title;
     }
 
