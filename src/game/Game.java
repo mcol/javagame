@@ -24,7 +24,7 @@ public class Game implements Runnable {
     private final Display display;
 
     /** Current time in ticks. */
-    private long now = 0;
+    private static long now = 0;
 
     // Camera
     private static Camera camera;
@@ -126,7 +126,7 @@ public class Game implements Runnable {
     }
 
     /** Returns the time of the game in ticks. */
-    public long getTicksTime() {
+    public static long getTicksTime() {
         return now;
     }
 

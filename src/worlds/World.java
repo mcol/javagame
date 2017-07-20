@@ -39,7 +39,7 @@ public class World {
         // add the entities
         entityManager = new EntityManager(new Player(handler, spawnCoords[0], spawnCoords[1]));
         addEntities();
-        nextItemSpawnTime = handler.getGame().getTicksTime() +
+        nextItemSpawnTime = Game.getTicksTime() +
                             Handler.randomInteger(10, 15) * Game.FPS;
     }
 
@@ -124,7 +124,7 @@ public class World {
     private void spawnItem() {
 
         // check if it's time to spawn a new item
-        long now = handler.getGame().getTicksTime();
+        long now = Game.getTicksTime();
         if (now < nextItemSpawnTime)
             return;
 

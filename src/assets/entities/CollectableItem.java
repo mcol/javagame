@@ -19,12 +19,12 @@ public class CollectableItem extends StaticEntity {
         super(Assets.items[item.ordinal()], x, y, 64, 64);
         this.item = item;
         setBounds(18, 18, 32, 32);
-        spawnTime = handler.getGame().getTicksTime();;
+        spawnTime = Game.getTicksTime();;
     }
 
     @Override
     public void tick() {
-        now = handler.getGame().getTicksTime();
+        now = Game.getTicksTime();
         if (now - spawnTime > DISPLAY_INTERVAL)
             collected = true;
     }

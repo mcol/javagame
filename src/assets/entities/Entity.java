@@ -42,7 +42,7 @@ public abstract class Entity {
 
     public void tick() {
         animation.tick();
-        now = handler.getGame().getTicksTime();
+        now = Game.getTicksTime();
     }
 
     public abstract void render(Graphics g);
