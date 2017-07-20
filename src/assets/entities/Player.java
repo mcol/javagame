@@ -15,6 +15,9 @@ public class Player extends Creature {
     /** Maximum amount of poop that the player can carry. */
     public static final int MAX_POOP = 25;
 
+    /** Interval between each poop fire in ticks. */
+    private static final long POOP_FIRE_INTERVAL = 15;
+
     /** Interval between each poop increase in ticks. */
     private static final long POOP_RESTORE_INTERVAL = 15 * Game.FPS;
 
@@ -172,7 +175,7 @@ public class Player extends Creature {
             return;
 
         // don't allow continuous pooping
-        if (now - poopFireTime > 5) {
+        if (now - poopFireTime > POOP_FIRE_INTERVAL) {
             Poop p = new Poop(facingRight ? x + width / 6
                                           : x + width - width / 2,
                               y + height / 3 * 2 + 5);
