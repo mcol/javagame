@@ -70,7 +70,7 @@ public class Tile {
         case 2:
             return wallTile;
         case 3:
-            return new BreakableTile(Tiles.STONE, Assets.tiles[1]);
+            return new BreakableTile(Tiles.STONE, Tiles.DIRT);
         case 4:
             return waterTile;
         case 5:
