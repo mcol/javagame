@@ -39,8 +39,8 @@ public class HelpState extends State {
 
         // title
         Font.setColour(Color.ORANGE);
-        Font.renderMessage(g, "Help", 100, 70,
-                           Font.Size.LARGE, true);
+        Font.renderMessage(g, "Help", 40, 50,
+                           Font.Size.TITLE, true);
 
         // keys
         Font.setColour(Color.WHITE);

@@ -36,7 +36,7 @@ public class MenuState extends State {
 
         // title
         Font.setColour(Color.ORANGE);
-        Font.renderMessage(g, title, 100, 70,
+        Font.renderMessage(g, title, 40, 50,
                            Font.Size.TITLE, true);
 
         // options
