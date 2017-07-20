@@ -9,6 +9,9 @@ import utils.Utils;
 
 public class Enemy extends Creature {
 
+    /** Interval between each damage check in ticks. */
+    private static final int DAMAGE_CHECK_INTERVAL = 25;
+
     /** Health when spawned. */
     private static final int spawnHealth = 25;
 
@@ -126,7 +129,7 @@ public class Enemy extends Creature {
     /** Checks if the enemy collides with the player. */
     private void checkPlayerDamage() {
 
-        if (now - damageCheckTime < 3)
+        if (now - damageCheckTime < DAMAGE_CHECK_INTERVAL)
             return;
 
         Player p = handler.getPlayer();
