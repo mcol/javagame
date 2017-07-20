@@ -61,10 +61,6 @@ public class Display extends JPanel {
 
     // getters and setters
 
-    public JFrame getFrame() {
-        return frame;
-    }
-
     /** Sets the title string. */
     public void setTitle(String title) {
         frame.setTitle(title);
