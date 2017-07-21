@@ -34,10 +34,10 @@ public class World {
         this.handler = handler;
 
         // load world data from file
-        int[] spawnCoords = loadWorld(path);
+        loadWorld(path);
 
         // add the entities
-        entityManager = new EntityManager(new Player(handler, spawnCoords[0], spawnCoords[1]));
+        entityManager = new EntityManager(new Player(handler, 0, 0));
         addEntities();
         nextItemSpawnTime = Game.getTicksTime() +
                             Handler.randomInteger(10, 15) * Game.FPS;
@@ -104,20 +104,16 @@ public class World {
     }
 
     /** Loads a world file. */
-    private int[] loadWorld(String path) {
+    private void loadWorld(String path) {
         String file = Utils.loadFileAsString(path);
         String[] tokens = file.split("\\s+");
         width = Utils.parseInt(tokens[0]);
         height = Utils.parseInt(tokens[1]);
-        int[] spawnCoords = new int[2];
-        spawnCoords[0] = Utils.parseInt(tokens[2]);
-        spawnCoords[1] = Utils.parseInt(tokens[3]);
 
         tiles = new Tile[width][height];
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++)
-                tiles[x][y] = Tile.getTile(Utils.parseInt(tokens[x + y * width + 4]));
-        return spawnCoords;
+                tiles[x][y] = Tile.getTile(Utils.parseInt(tokens[x + y * width + 2]));
     }
 
     /** Places a new item in the world. */
