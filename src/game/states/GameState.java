@@ -71,5 +71,6 @@ public class GameState extends State {
                                  (e) -> pause = !pause, null);
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
                                  (e) -> quit = true, (e) -> quit = false);
+        KeyManager.removeKeyBindings(display, new int[] { KeyEvent.VK_ENTER });
     }
 }
