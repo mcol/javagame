@@ -33,6 +33,9 @@ public class Player extends Creature {
     // Animations
     private final Animation animFlying, animFalling, animStill;
 
+    /** Current level. */
+    private int level;
+
     /** Current score. */
     private int score;
 
@@ -64,6 +67,7 @@ public class Player extends Creature {
         // current animation
         animation = animFalling;
 
+        level = 1;
         score = 0;
         health = MAX_HEALTH;
         poop = MAX_POOP;
@@ -259,6 +263,11 @@ public class Player extends Creature {
         }
     }
 
+    /** Increases the current level. */
+    public void increaseLevel() {
+        level += 1;
+    }
+
     /** Update the player's score. */
     public void increaseScore(int points) {
         score += points;
@@ -298,6 +307,11 @@ public class Player extends Creature {
     }
 
     // getters and setters
+
+    /** Returns the current level. */
+    public int getLevel() {
+        return level;
+    }
 
     /** Returns the current score. */
     public int getScore() {

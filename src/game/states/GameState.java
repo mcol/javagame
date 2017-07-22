@@ -18,9 +18,6 @@ public class GameState extends State {
     /** Heads-up display. */
     private final HUD hud;
 
-    /** The current level. */
-    private int level;
-
     /** Keys pressed. */
     private boolean help, pause, quit;
 
@@ -31,7 +28,6 @@ public class GameState extends State {
                             Game.WIDTH, Game.HEIGHT);
         world = new World(handler, new Player(handler, 0, 0));
         hud = new HUD(handler.getPlayer(), Game.WIDTH);
-        level = 1;
     }
 
     /** Shows the help page. */
@@ -55,8 +51,8 @@ public class GameState extends State {
             quit();
 
         if (world.isCleared()) {
-            level += 1;
-            world.loadWorld(level);
+            handler.getPlayer().increaseLevel();
+            world.loadWorld(handler.getPlayer().getLevel());
         }
 
         if (help)
