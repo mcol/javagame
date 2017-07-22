@@ -75,6 +75,7 @@ public class Poop extends Creature {
                 enemy.setDamage(damage);
                 setExplosion();
                 handler.getPlayer().increaseScore(1);
+                return;
             }
         }
 
