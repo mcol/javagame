@@ -52,7 +52,7 @@ public class HUD {
     public void render(Graphics g) {
 
         // make the hud transparent when the player goes under it
-        boolean transparent = player.getGameX() + player.getWidth() > offset &&
+        boolean transparent = player.getGameX() + player.getWidth() > offset - gap &&
                               player.getY() < 25;
 
         // health bar
@@ -72,7 +72,7 @@ public class HUD {
                    poop > 0 ? pbar - border : 0, height - 2 * border);
 
         // score
-        Font.setColour(Color.WHITE);
+        Font.setColour(Color.WHITE, transparent);
         Font.renderMessage(g, "" + player.getScore(), offset - gap, 17,
                            Font.Size.SMALL, false);
     }

@@ -73,17 +73,22 @@ public class Font {
 
     /** Sets the colour of the font. */
     public static void setColour(Color colour) {
+        setColour(colour, false);
+    }
+
+    /** Sets the colour of the font with an optional alpha. */
+    public static void setColour(Color colour, boolean transparent) {
         int rgb = colour.getRGB();
         BufferedImage sheet = font.getSheet();
         int[] pixels = sheet.getRGB(0, 0, width, height, null, 0, width);
         for (int i = 0; i < pixels.length; i++)
-            pixels[i] = toRGB(pixels[i], rgb);
+            pixels[i] = toRGB(pixels[i], rgb, transparent ? 0x88000000 : 0);
         sheet.setRGB(0, 0, width, height, pixels, 0, width);
     }
 
     /** Changes the colour of a non-transparent pixel. */
-    private static int toRGB(int pixel, int rgb) {
-        int alpha = ((pixel >> 24) & 0xff) << 24;
-        return alpha | (rgb ^ 0xff000000);
+    private static int toRGB(int pixel, int rgb, int alpha) {
+        boolean transparent = (pixel & 0xff000000) == 0;
+        return transparent ? 0 : rgb ^ alpha;
     }
 }
