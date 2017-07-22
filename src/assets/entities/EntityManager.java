@@ -11,6 +11,9 @@ public class EntityManager {
     /** List of alive entities. */
     private final ArrayList<Entity> entities;
 
+    /** Number of alive enemies. */
+    private int enemyCount;
+
     /** Class to decide render order of entities. */
     private final Comparator<Entity> renderSorter = new Comparator<Entity>() {
         @Override
@@ -26,6 +29,7 @@ public class EntityManager {
     public EntityManager(Player player) {
         this.player = player;
         entities = new ArrayList<Entity>();
+        enemyCount = 0;
         addEntity(player);
     }
 
@@ -34,7 +38,7 @@ public class EntityManager {
             Entity e = entities.get(i);
             e.tick();
             if (e.shouldRemove()) {
-                entities.remove(i);
+                removeEntity(e);
                 i--;
             }
         }
@@ -51,11 +55,15 @@ public class EntityManager {
     /** Add an entity to the list of alive entities. */
     public void addEntity(Entity e) {
         entities.add(e);
+        if (e instanceof Enemy)
+            enemyCount++;
     }
 
     /** Remove an entity from the list of alive entities. */
     public void removeEntity(Entity e) {
         entities.remove(e);
+        if (e instanceof Enemy)
+            enemyCount--;
     }
 
     // getters and setters
@@ -73,5 +81,10 @@ public class EntityManager {
     /** Returns the list of alive entities. */
     public ArrayList<Entity> getEntities() {
         return entities;
+    }
+
+    /** Returns the number of alive enemies. */
+    public int getEnemyCount() {
+        return enemyCount;
     }
 }

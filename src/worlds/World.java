@@ -13,6 +13,9 @@ import utils.Utils;
 
 public class World {
 
+    /** Number of available worlds. */
+    public static final int MAX_WORLDS = 1;
+
     private final Handler handler;
 
     /** The player. */
@@ -45,13 +48,21 @@ public class World {
         entityManager = new EntityManager(player);
 
         // load the world data from file
-        readWorldFile("res/worlds/world" + level + ".txt");
+        int world = (level - 1) % MAX_WORLDS + 1;
+        readWorldFile("res/worlds/world" + world + ".txt");
 
         // add the entities
         addEntities();
         player.setPosition(0, 0);
         nextItemSpawnTime = Game.getTicksTime() +
                             Handler.randomInteger(10, 15) * Game.FPS;
+
+        // bonus
+        if (level > 1) {
+            player.increaseScore(50);
+            player.increaseHealth(Player.MAX_HEALTH / 2);
+            player.increasePoop(Player.MAX_POOP / 2);
+        }
     }
 
     /** Adds entities to the  world. */
@@ -161,5 +172,10 @@ public class World {
     /** Returns the entity manager. */
     public static EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    /** Returns whether the current world has been cleared. */
+    public boolean isCleared() {
+        return entityManager.getEnemyCount() == 0;
     }
 }
