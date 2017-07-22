@@ -60,14 +60,13 @@ public class World {
         // bonus
         if (level > 1) {
             player.increaseScore(50);
-            player.increaseHealth(Player.MAX_HEALTH / 2);
-            player.increasePoop(Player.MAX_POOP / 2);
+            player.increaseHealth(Player.MAX_HEALTH / 4);
+            player.increasePoop(Player.MAX_POOP / 4);
         }
     }
 
     /** Adds entities to the  world. */
     protected void addEntities() {
-
         // enemies
         entityManager.addEntity(new Enemy(handler, 50, 300));
         entityManager.addEntity(new Enemy(handler, 300, 50));
