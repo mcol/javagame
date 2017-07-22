@@ -2,6 +2,7 @@ package game.states;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import assets.entities.Player;
 import game.Game;
 import game.HUD;
 import game.Handler;
@@ -21,7 +22,8 @@ public class GameState extends State {
     /** Constructor. */
     public GameState(Handler handler) {
         super(handler);
-        world = new World(handler, "res/worlds/world1.txt");
+        world = new World(handler, "res/worlds/world1.txt",
+                          new Player(handler, 0, 0));
         handler.setWorld(world);
         hud = new HUD(handler.getPlayer(), Game.WIDTH);
     }

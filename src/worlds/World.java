@@ -16,6 +16,9 @@ public class World {
 
     private final Handler handler;
 
+    /** The player. */
+    private final Player player;
+
     /** Array of tiles that define the world. */
     private Tile[][] tiles;
 
@@ -29,15 +32,15 @@ public class World {
     private long nextItemSpawnTime;
 
     /** Constructor. */
-    public World(Handler handler, String path) {
-
+    public World(Handler handler, String path, Player player) {
         this.handler = handler;
+        this.player = player;
 
         // load world data from file
         loadWorld(path);
 
         // add the entities
-        entityManager = new EntityManager(new Player(handler, 0, 0));
+        entityManager = new EntityManager(player);
         addEntities();
         nextItemSpawnTime = Game.getTicksTime() +
                             Handler.randomInteger(10, 15) * Game.FPS;
