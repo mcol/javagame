@@ -26,8 +26,7 @@ public class GameState extends State {
         super(handler);
         bg = new Background("/textures/gamebg.png", -0.1f,
                             Game.WIDTH, Game.HEIGHT);
-        world = new World(handler, "res/worlds/world1.txt",
-                          new Player(handler, 0, 0));
+        world = new World(handler, new Player(handler, 0, 0));
         hud = new HUD(handler.getPlayer(), Game.WIDTH);
     }
 

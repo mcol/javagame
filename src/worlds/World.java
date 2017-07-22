@@ -31,21 +31,21 @@ public class World {
     private long nextItemSpawnTime;
 
     /** Constructor. */
-    public World(Handler handler, String path, Player player) {
+    public World(Handler handler, Player player) {
         this.handler = handler;
         this.player = player;
         handler.setWorld(this);
-        loadWorld(path);
+        loadWorld(1);
     }
 
     /** Loads a new world. */
-    public void loadWorld(String path) {
+    public void loadWorld(int level) {
 
         // initialize the list of alive entities
         entityManager = new EntityManager(player);
 
         // load the world data from file
-        readWorldFile(path);
+        readWorldFile("res/worlds/world" + level + ".txt");
 
         // add the entities
         addEntities();
