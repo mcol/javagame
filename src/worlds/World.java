@@ -6,7 +6,6 @@ import assets.entities.Enemy;
 import assets.entities.EntityManager;
 import assets.entities.Items;
 import assets.entities.Player;
-import assets.entities.Tree;
 import assets.tiles.Tile;
 import game.Game;
 import game.Handler;
@@ -57,13 +56,9 @@ public class World {
 
     /** Adds entities to the  world. */
     protected void addEntities() {
-        // trees
-        entityManager.addEntity(new Tree(150, 300));
-        entityManager.addEntity(new Tree(225, 350));
-        entityManager.addEntity(new Tree(525, 350));
 
         // enemies
-        entityManager.addEntity(new Enemy(handler, 350, 500));
+        entityManager.addEntity(new Enemy(handler, 50, 300));
         entityManager.addEntity(new Enemy(handler, 300, 50));
     }
 

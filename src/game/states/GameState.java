@@ -7,10 +7,12 @@ import game.Game;
 import game.HUD;
 import game.Handler;
 import game.input.KeyManager;
+import gfx.Background;
 import worlds.World;
 
 public class GameState extends State {
 
+    /** The world currently loaded. */
     private final World world;
 
     /** Heads-up display. */
@@ -22,6 +24,8 @@ public class GameState extends State {
     /** Constructor. */
     public GameState(Handler handler) {
         super(handler);
+        bg = new Background("/textures/gamebg.png", -0.1f,
+                            Game.WIDTH, Game.HEIGHT);
         world = new World(handler, "res/worlds/world1.txt",
                           new Player(handler, 0, 0));
         hud = new HUD(handler.getPlayer(), Game.WIDTH);
@@ -39,8 +43,10 @@ public class GameState extends State {
 
     @Override
     public void tick() {
-        if (!pause)
+        if (!pause) {
+            super.tick();
             world.tick();
+        }
 
         if (handler.getPlayer().isDead() || quit)
             quit();
@@ -51,6 +57,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+        bg.render(g);
         world.render(g);
         hud.render(g);
     }
