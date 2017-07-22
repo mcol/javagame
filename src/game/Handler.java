@@ -45,15 +45,15 @@ public class Handler {
     }
 
     public EntityManager getEntityManager() {
-        return world.getEntityManager();
+        return World.getEntityManager();
     }
 
     public ArrayList<Entity> getEntities() {
-        return world.getEntityManager().getEntities();
+        return World.getEntityManager().getEntities();
     }
 
     /** Returns the player. */
     public Player getPlayer() {
-        return world.getEntityManager().getPlayer();
+        return World.getEntityManager().getPlayer();
     }
 }

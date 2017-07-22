@@ -57,7 +57,7 @@ public class GameState extends State {
 
     @Override
     public void setKeyBindings() {
-        world.getEntityManager().getPlayer().addKeyBindings();
+        World.getEntityManager().getPlayer().addKeyBindings();
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_H,
                                  (e) -> help = true, (e) -> help = false);
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_P,

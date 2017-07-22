@@ -26,7 +26,7 @@ public class World {
     private int width, height;
 
     /** Container for all entities. */
-    private EntityManager entityManager;
+    private static EntityManager entityManager;
 
     /** Time of the next item spawn in ticks. */
     private long nextItemSpawnTime;
@@ -42,11 +42,13 @@ public class World {
     /** Loads a new world. */
     public void loadWorld(String path) {
 
+        // initialize the list of alive entities
+        entityManager = new EntityManager(player);
+
         // load the world data from file
         readWorldFile(path);
 
         // add the entities
-        entityManager = new EntityManager(player);
         addEntities();
         player.setPosition(0, 0);
         nextItemSpawnTime = Game.getTicksTime() +
@@ -162,7 +164,7 @@ public class World {
     }
 
     /** Returns the entity manager. */
-    public EntityManager getEntityManager() {
+    public static EntityManager getEntityManager() {
         return entityManager;
     }
 }
