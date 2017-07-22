@@ -6,7 +6,7 @@ import game.Game;
 public class CollectableItem extends StaticEntity {
 
     /** Interval for which the item is displayed in ticks. */
-    private static final long DISPLAY_INTERVAL = 10 * Game.FPS;
+    private static final long DISPLAY_INTERVAL = 15 * Game.FPS;
 
     /** Type of item. */
     private final Items item;
@@ -19,7 +19,7 @@ public class CollectableItem extends StaticEntity {
         super(Assets.items[item.ordinal()], x, y, 64, 64);
         this.item = item;
         setBounds(18, 18, 32, 32);
-        spawnTime = Game.getTicksTime();;
+        spawnTime = Game.getTicksTime();
     }
 
     @Override
