@@ -28,12 +28,12 @@ public class GameState extends State {
 
     /** Shows the help page. */
     private void help() {
-        handler.getGame().setHelpState();
+        Game.setHelpState();
     }
 
     /** Quits the current game. */
     private void quit() {
-        handler.getGame().setMenuState();
+        Game.setMenuState();
     }
 
     @Override

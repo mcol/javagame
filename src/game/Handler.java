@@ -10,7 +10,7 @@ import worlds.World;
 
 public class Handler {
 
-    private Game game;
+    private final Game game;
     private World world;
 
     /** Random number generator. */
@@ -34,14 +34,6 @@ public class Handler {
 
     public Display getDisplay() {
         return game.getDisplay();
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
     }
 
     public World getWorld() {

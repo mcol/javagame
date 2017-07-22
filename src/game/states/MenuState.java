@@ -62,7 +62,7 @@ public class MenuState extends State {
                                  (e) -> activateChoice(), null);
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_H,
-                                 (e) -> handler.getGame().setHelpState(), null);
+                                 (e) -> Game.setHelpState(), null);
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
                                  (e) -> System.exit(0), null);
@@ -79,9 +79,9 @@ public class MenuState extends State {
     /** Activates the menu choice. */
     private void activateChoice() {
         if (currentChoice == 0)
-            handler.getGame().setGameState();
+            Game.setGameState();
         else if (currentChoice == 1)
-            handler.getGame().setHelpState();
+            Game.setHelpState();
         else if (currentChoice == 2)
             System.exit(0);
     }

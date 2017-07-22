@@ -135,15 +135,15 @@ public class Game implements Runnable {
         return title;
     }
 
-    public void setGameState() {
+    public static void setGameState() {
         State.setState(new GameState(handler));
     }
 
-    public void setHelpState() {
+    public static void setHelpState() {
         State.setState(new HelpState(handler, State.getState()));
     }
 
-    public void setMenuState() {
+    public static void setMenuState() {
         State.setState(new MenuState(handler,
                                      "Score: " + handler.getPlayer().getScore()));
     }
