@@ -100,10 +100,6 @@ public abstract class Entity {
         return x - handler.getCamera().getxOffset();
     }
 
-    public void setX(float x) {
-        this.x = x;
-    }
-
     /** Returns the vertical coordinate of the entity in pixels. */
     public float getY() {
         return y;
@@ -114,7 +110,9 @@ public abstract class Entity {
         return y - handler.getCamera().getyOffset();
     }
 
-    public void setY(float y) {
+    /** Sets the entity coordinates in pixels. */
+    public void setPosition(float x, float y) {
+        this.x = x;
         this.y = y;
     }
 
