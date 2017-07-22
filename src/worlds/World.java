@@ -123,7 +123,7 @@ public class World {
         tiles = new Tile[width][height];
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++)
-                tiles[x][y] = Tile.getTile(Utils.parseInt(tokens[x + y * width + 2]));
+                tiles[x][y] = Tile.getTile(tokens[x + y * width + 2].charAt(0));
     }
 
     /** Places a new item in the world. */

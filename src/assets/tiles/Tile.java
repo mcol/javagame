@@ -61,23 +61,23 @@ public class Tile {
     }
 
     /** Create a new tile corresponding to the id used in the world file. */
-    public static Tile getTile(int id) {
+    public static Tile getTile(char id) {
         switch (id) {
-        case 0:
+        case '0':
             return grassTile;
-        case 1:
+        case '1':
             return dirtTile;
-        case 2:
+        case '2':
             return wallTile;
-        case 3:
+        case '3':
             return new BreakableTile(Tiles.STONE, Tiles.DIRT);
-        case 4:
+        case '4':
             return waterTile;
-        case 5:
+        case '5':
             return fireTile;
-        case 6:
+        case '6':
             return carpetTile;
-        case 7:
+        case '7':
             return metalTile;
         default:
             return voidTile;
