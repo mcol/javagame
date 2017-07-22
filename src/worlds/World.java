@@ -26,7 +26,7 @@ public class World {
     private int width, height;
 
     /** Container for all entities. */
-    private final EntityManager entityManager;
+    private EntityManager entityManager;
 
     /** Time of the next item spawn in ticks. */
     private long nextItemSpawnTime;
@@ -35,13 +35,20 @@ public class World {
     public World(Handler handler, String path, Player player) {
         this.handler = handler;
         this.player = player;
-
-        // load world data from file
+        handler.setWorld(this);
         loadWorld(path);
+    }
+
+    /** Loads a new world. */
+    public void loadWorld(String path) {
+
+        // load the world data from file
+        readWorldFile(path);
 
         // add the entities
         entityManager = new EntityManager(player);
         addEntities();
+        player.setPosition(0, 0);
         nextItemSpawnTime = Game.getTicksTime() +
                             Handler.randomInteger(10, 15) * Game.FPS;
     }
@@ -107,7 +114,7 @@ public class World {
     }
 
     /** Loads a world file. */
-    private void loadWorld(String path) {
+    private void readWorldFile(String path) {
         String file = Utils.loadFileAsString(path);
         String[] tokens = file.split("\\s+");
         width = Utils.parseInt(tokens[0]);

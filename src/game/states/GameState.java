@@ -24,7 +24,6 @@ public class GameState extends State {
         super(handler);
         world = new World(handler, "res/worlds/world1.txt",
                           new Player(handler, 0, 0));
-        handler.setWorld(world);
         hud = new HUD(handler.getPlayer(), Game.WIDTH);
     }
 
