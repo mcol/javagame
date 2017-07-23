@@ -56,7 +56,7 @@ public class EntityManager {
         }
     }
 
-    /** Add an entity to the list of alive entities. */
+    /** Adds an entity to the list of alive entities. */
     public void addEntity(Entity e) {
         entities.add(e);
         if (e instanceof Enemy)
@@ -65,7 +65,7 @@ public class EntityManager {
             itemCount++;
     }
 
-    /** Remove an entity from the list of alive entities. */
+    /** Removes an entity from the list of alive entities. */
     public void removeEntity(Entity e) {
         entities.remove(e);
         if (e instanceof Enemy)

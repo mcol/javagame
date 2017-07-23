@@ -34,7 +34,7 @@ public class Display extends JPanel {
         createDisplay();
     }
 
-    /** Set up the display. */
+    /** Sets up the display. */
     private void createDisplay() {
         Dimension size = new Dimension(width, height);
         this.setPreferredSize(size);

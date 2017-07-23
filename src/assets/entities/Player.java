@@ -261,7 +261,7 @@ public class Player extends Creature {
         return false;
     }
 
-    /** Increase the player's poop load. */
+    /** Increases the player's poop load. */
     private void restorePoop() {
 
         // nothing to restore
@@ -281,26 +281,26 @@ public class Player extends Creature {
         time = MAX_TIME;
     }
 
-    /** Update the player's score. */
+    /** Updates the player's score. */
     public void increaseScore(int points) {
         score += points;
     }
 
-    /** Increase the health of the player. */
+    /** Increases the health of the player. */
     public void increaseHealth(int amount) {
         health += amount;
         if (health > MAX_HEALTH)
             health = MAX_HEALTH;
     }
 
-    /** Increase the amount of available poop. */
+    /** Increases the amount of available poop. */
     public void increasePoop(int amount) {
         poop += amount;
         if (poop > MAX_POOP)
             poop = MAX_POOP;
     }
 
-    /** Add the key bindings to control the player. */
+    /** Adds the key bindings to control the player. */
     public void addKeyBindings() {
 
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_UP,

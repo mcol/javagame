@@ -60,7 +60,7 @@ public class Tile {
         this.tile = tile;
     }
 
-    /** Create a new tile corresponding to the id used in the world file. */
+    /** Returns a new tile corresponding to the id used in the world file. */
     public static Tile getTile(char id) {
         switch (id) {
         case '0':

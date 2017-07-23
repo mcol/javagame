@@ -90,7 +90,7 @@ public enum Items {
         this.amount = amount;
     }
 
-    /** Compute the total rarity across all items. */
+    /** Computes the total rarity across all items. */
     private static int sumAmounts() {
         int sum = 0;
         for (Items item : values())

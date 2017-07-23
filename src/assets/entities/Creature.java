@@ -225,7 +225,7 @@ public abstract class Creature extends Entity {
         this.falling = falling;
     }
 
-    /** Whether the creature is dead. */
+    /** Returns whether the creature is dead. */
     public boolean isDead() {
         return health == 0;
     }
