@@ -16,9 +16,13 @@ public class Ram extends Enemy {
     /** Animations. */
     private final Animation animMoving, animFurious;
 
+    /** Threshold health below which the ram becomes furious. */
+    private final int furiousThreshold;
+
     /** Constructor. */
     public Ram(int x, int y, int spawnHealth) {
         super(x, y, 90, 64, spawnHealth, RAM_SCORE, BAR_COLOUR);
+        this.furiousThreshold = spawnHealth / 3;
 
         // bounding box
         setBounds(5, 8, width - 11, height - 10);
@@ -35,7 +39,7 @@ public class Ram extends Enemy {
         super.tick();
 
         // animation
-        if (health < LOW_HEALTH) {
+        if (health < furiousThreshold) {
             animation = animFurious;
             xMove *= 1.03;
             xMove = Utils.clampValue(xMove, (int) -FAST_SPEED, (int) FAST_SPEED);
