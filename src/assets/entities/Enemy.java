@@ -2,12 +2,8 @@ package assets.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import assets.Assets;
-import game.Handler;
-import gfx.Animation;
-import utils.Utils;
 
-public class Enemy extends Creature {
+public abstract class Enemy extends Creature {
 
     /** Interval between each damage check in ticks. */
     private static final int DAMAGE_CHECK_INTERVAL = 25;
@@ -16,7 +12,7 @@ public class Enemy extends Creature {
     protected int score;
 
     /** Health bar colour. */
-    private static final Color healthColor = new Color(0x555555);
+    protected final Color colour;
 
     /** Time of the last switch of direction. */
     protected long switchTime;
@@ -24,45 +20,26 @@ public class Enemy extends Creature {
     /** Whether the enemy has just been spawned. */
     private boolean justSpawned;
 
-    /** Animations. */
-    private final Animation animMoving, animFurious;
-
     /** Constructor. */
-    public Enemy(Handler handler, int x, int y,
-                 int health, int score) {
-        super(handler, x, y, 90, 64);
+    public Enemy(int x, int y, int width, int height,
+                 int health, int score, Color colour) {
+        super(handler, x, y, width, height);
         this.health = health;
         this.score = score;
+        this.colour = colour;
+        this.switchTime = 0;
+        this.justSpawned = true;
 
-        // bounding box
-        setBounds(5, 8, width - 11, height - 10);
-
-        // animations
-        animMoving = new Animation(Assets.enemy_moving, 125);
-        animFurious = new Animation(Assets.enemy_furious, 125);
-        animDying = new Animation(Assets.enemy_dying, 100);
-
-        animation = animMoving;
-        justSpawned = true;
         yMove = DEFAULT_SPEED;
         xMove = DEFAULT_SPEED;
-        switchTime = 0;
     }
 
     @Override
     public void tick() {
-
         super.tick();
 
         if (isDead())
             return;
-
-        // animation
-        if (health < LOW_HEALTH) {
-            animation = animFurious;
-            xMove *= 1.03;
-            xMove = Utils.clampValue(xMove, (int) -FAST_SPEED, (int) FAST_SPEED);
-        }
 
         // find solid ground
         if (justSpawned) {
@@ -109,7 +86,7 @@ public class Enemy extends Creature {
         final int xAdj = facingRight ? width / 2 : width / 8;
         final int health = getHealth();
         final double hbar = (double) health / DEFAULT_HEALTH * 35;
-        g.setColor(healthColor);
+        g.setColor(colour);
         g.fillRect((int) (x - handler.getCamera().getxOffset() + xAdj),
                    (int) (y - handler.getCamera().getyOffset() - 10),
                    health > 0 ? (int) hbar + 5 : 0, 10);
@@ -154,8 +131,7 @@ public class Enemy extends Creature {
         if (isDead() && animation.hasPlayedOnce()) {
 
             // drop an item
-            handler.getWorld()
-                   .getEntityManager()
+            handler.getEntityManager()
                    .addEntity(new CollectableItem(Items.randomItem(),
                                                   (int) x, (int) y));
             return true;

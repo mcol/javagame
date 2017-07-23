@@ -2,10 +2,10 @@ package worlds;
 
 import java.awt.Graphics;
 import assets.entities.CollectableItem;
-import assets.entities.Enemy;
 import assets.entities.EntityManager;
 import assets.entities.Items;
 import assets.entities.Player;
+import assets.entities.Ram;
 import assets.tiles.Tile;
 import game.Game;
 import game.Handler;
@@ -68,8 +68,8 @@ public class World {
     /** Adds entities to the  world. */
     protected void addEntities() {
         // enemies
-        entityManager.addEntity(new Enemy(handler, 50, 300, 10, 6));
-        entityManager.addEntity(new Enemy(handler, 300, 50, 10, 6));
+        entityManager.addEntity(new Ram(50, 300, 10));
+        entityManager.addEntity(new Ram(300, 50, 10));
     }
 
     public void tick() {
