@@ -24,6 +24,9 @@ public class Player extends Creature {
     /** Interval between each poop increase in ticks. */
     private static final long POOP_RESTORE_INTERVAL = 15 * Game.FPS;
 
+    /** Maximum speed allowed. */
+    private static final float MAX_SPEED = 4.0f;
+
     private static final float dampingFactor = 0.96f;
     private static final float liftspeed = 1.4f;
 
@@ -154,8 +157,8 @@ public class Player extends Creature {
             goingUp = false;
             if (isFalling()) {
                 yMove += SPEED_CHANGE;
-                if (yMove > FALL_SPEED) {
-                    yMove = FALL_SPEED;
+                if (yMove > SLOW_SPEED) {
+                    yMove = SLOW_SPEED;
                 }
             }
             else if (xMove == 0 && yMove >= 0) {

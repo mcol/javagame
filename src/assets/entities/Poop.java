@@ -23,7 +23,7 @@ public class Poop extends Creature {
         damage = 3;
 
         impact = false;
-        yMove = FALL_SPEED;
+        yMove = SLOW_SPEED;
     }
 
     @Override
