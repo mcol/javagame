@@ -59,7 +59,7 @@ public class World {
 
         // bonus
         if (level > 1) {
-            player.increaseScore(50);
+            player.increaseScore(25 + player.getTime() / Game.FPS);
             player.increaseHealth(Player.MAX_HEALTH / 4);
             player.increasePoop(Player.MAX_POOP / 4);
         }
