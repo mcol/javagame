@@ -6,7 +6,8 @@ import java.util.Comparator;
 
 public class EntityManager {
 
-    private Player player;
+    /** The player. */
+    private final Player player;
 
     /** List of alive entities. */
     private final ArrayList<Entity> entities;
@@ -79,11 +80,6 @@ public class EntityManager {
     /** Returns the player. */
     public Player getPlayer() {
         return player;
-    }
-
-    /** Sets the player. */
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     /** Returns the list of alive entities. */
