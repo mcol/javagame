@@ -74,7 +74,8 @@ public class World {
 
     public void tick() {
         entityManager.tick();
-        spawnItem();
+        if (!this.isSafe())
+            spawnItem();
     }
 
     public void render(Graphics g) {
@@ -173,8 +174,14 @@ public class World {
         return entityManager;
     }
 
+    /** Returns whether all enemies have been killed. */
+    public boolean isSafe() {
+        return entityManager.getEnemyCount() == 0 ;
+    }
+
     /** Returns whether the current world has been cleared. */
     public boolean isCleared() {
-        return entityManager.getEnemyCount() == 0;
+        return entityManager.getEnemyCount() == 0 &&
+               entityManager.getItemCount() == 0;
     }
 }

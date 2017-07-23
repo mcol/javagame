@@ -14,6 +14,9 @@ public class EntityManager {
     /** Number of alive enemies. */
     private int enemyCount;
 
+    /** Number of items to be collected. */
+    private int itemCount;
+
     /** Class to decide render order of entities. */
     private final Comparator<Entity> renderSorter = new Comparator<Entity>() {
         @Override
@@ -30,6 +33,7 @@ public class EntityManager {
         this.player = player;
         entities = new ArrayList<Entity>();
         enemyCount = 0;
+        itemCount = 0;
         addEntity(player);
     }
 
@@ -57,6 +61,8 @@ public class EntityManager {
         entities.add(e);
         if (e instanceof Enemy)
             enemyCount++;
+        else if (e instanceof CollectableItem)
+            itemCount++;
     }
 
     /** Remove an entity from the list of alive entities. */
@@ -64,6 +70,8 @@ public class EntityManager {
         entities.remove(e);
         if (e instanceof Enemy)
             enemyCount--;
+        else if (e instanceof CollectableItem)
+            itemCount--;
     }
 
     // getters and setters
@@ -86,5 +94,10 @@ public class EntityManager {
     /** Returns the number of alive enemies. */
     public int getEnemyCount() {
         return enemyCount;
+    }
+
+    /** Returns the number of items to be collected. */
+    public int getItemCount() {
+        return itemCount;
     }
 }
