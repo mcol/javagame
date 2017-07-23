@@ -12,8 +12,8 @@ public class Enemy extends Creature {
     /** Interval between each damage check in ticks. */
     private static final int DAMAGE_CHECK_INTERVAL = 25;
 
-    /** Health when spawned. */
-    private static final int spawnHealth = 25;
+    /** Score awarded when killed. */
+    protected int score;
 
     /** Health bar colour. */
     private static final Color healthColor = new Color(0x555555);
@@ -28,8 +28,11 @@ public class Enemy extends Creature {
     private final Animation animMoving, animFurious;
 
     /** Constructor. */
-    public Enemy(Handler handler, int x, int y) {
+    public Enemy(Handler handler, int x, int y,
+                 int health, int score) {
         super(handler, x, y, 90, 64);
+        this.health = health;
+        this.score = score;
 
         // bounding box
         setBounds(5, 8, width - 11, height - 10);
@@ -42,7 +45,6 @@ public class Enemy extends Creature {
         justSpawned = true;
         yMove = DEFAULT_SPEED;
         xMove = DEFAULT_SPEED;
-        health = spawnHealth;
         switchTime = 0;
     }
 
@@ -105,7 +107,7 @@ public class Enemy extends Creature {
         // health status
         final int xAdj = facingRight ? width / 2 : width / 8;
         final int health = getHealth();
-        final double hbar = (double) health / spawnHealth * 35;
+        final double hbar = (double) health / DEFAULT_HEALTH * 35;
         g.setColor(healthColor);
         g.fillRect((int) (x - handler.getCamera().getxOffset() + xAdj),
                    (int) (y - handler.getCamera().getyOffset() - 10),
@@ -124,7 +126,7 @@ public class Enemy extends Creature {
             health = 0;
             xMove = 0;
             animation.setFrames(Assets.enemy_dying, 100);
-            handler.getPlayer().increaseScore(6);
+            handler.getPlayer().increaseScore(score);
 
             // avoid generating collisions
             setBounds(0, 0, 0, 0);

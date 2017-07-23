@@ -68,8 +68,8 @@ public class World {
     /** Adds entities to the  world. */
     protected void addEntities() {
         // enemies
-        entityManager.addEntity(new Enemy(handler, 50, 300));
-        entityManager.addEntity(new Enemy(handler, 300, 50));
+        entityManager.addEntity(new Enemy(handler, 50, 300, 10, 6));
+        entityManager.addEntity(new Enemy(handler, 300, 50, 10, 6));
     }
 
     public void tick() {
