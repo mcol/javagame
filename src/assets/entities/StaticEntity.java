@@ -1,6 +1,5 @@
 package assets.entities;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -30,9 +29,5 @@ public abstract class StaticEntity extends Entity {
                     (int) (x - handler.getCamera().getxOffset()),
                     (int) (y - handler.getCamera().getyOffset()),
                     width, height, null);
-        g.setColor(Color.RED);
-//        g.fillRect((int) (x + bounds.x - handler.getCamera().getxOffset()),
-//                   (int) (y + bounds.y - handler.getCamera().getyOffset()),
-//                   bounds.width, bounds.height);
     }
 }

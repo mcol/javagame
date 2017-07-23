@@ -1,6 +1,5 @@
 package assets.entities;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import assets.tiles.Tile;
 import game.Handler;
@@ -165,11 +164,6 @@ public abstract class Creature extends Entity {
                         (int) (x - handler.getCamera().getxOffset() + width),
                         (int) (y - handler.getCamera().getyOffset()),
                         -width, height, null);
-
-        g.setColor(health < LOW_HEALTH ? Color.RED : Color.WHITE);
-//        g.fillRect((int) (x + bounds.x - handler.getCamera().getxOffset()),
-//                   (int) (y + bounds.y - handler.getCamera().getyOffset()),
-//                   bounds.width, bounds.height);
     }
 
     /** Returns whether there is a collision with a solid tile. */
