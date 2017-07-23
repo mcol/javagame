@@ -95,6 +95,11 @@ public class Enemy extends Creature {
 
     @Override
     public void render(Graphics g) {
+
+        // avoid unnecessary rendering
+        if (offScreen())
+            return;
+
         super.render(g);
 
         // health status
