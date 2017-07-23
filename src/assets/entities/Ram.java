@@ -28,9 +28,9 @@ public class Ram extends Enemy {
         setBounds(5, 8, width - 11, height - 10);
 
         // animations
-        animMoving = new Animation(Assets.enemy_moving, 125);
-        animFurious = new Animation(Assets.enemy_furious, 125);
-        animDying = new Animation(Assets.enemy_dying, 100);
+        animMoving = new Animation(Assets.ram_moving, 125);
+        animFurious = new Animation(Assets.ram_furious, 125);
+        animDying = new Animation(Assets.ram_dying, 100);
         animation = animMoving;
     }
 

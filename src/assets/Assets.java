@@ -11,7 +11,6 @@ public class Assets {
     private static final int itemsize = 32;
     private static final int playerwidth = 185, playerheight = 175;
     private static final int poopwidth = 25, poopheight = 25;
-    private static final int enemywidth = 90, enemyheight = 64;
 
     // tiles
     public static BufferedImage tiles[] = new BufferedImage[8];
@@ -32,11 +31,8 @@ public class Assets {
     public static BufferedImage[] poop_impact;
     public static BufferedImage[] poop_explosion;
 
-    // enemy
-    public static BufferedImage[] enemy_moving;
-    public static BufferedImage[] enemy_furious;
-    public static BufferedImage[] enemy_dying;
-    public static BufferedImage[] enemy_explosion;
+    // enemies
+    public static BufferedImage[] ram_moving, ram_furious, ram_dying;
 
     public static void init() {
 
@@ -110,22 +106,22 @@ public class Assets {
                                           poopwidth, poopheight);
 
         //
-        // enemy animations
+        // ram animations
         //
-        SpriteSheet enemy = new SpriteSheet("/textures/ram.png");
+        SpriteSheet ram = new SpriteSheet("/textures/ram.png");
+        int ramwidth = 90, ramheight = 64;
 
-        enemy_moving = new BufferedImage[3];
-        for (int i = 0; i < enemy_moving.length; i++)
-            enemy_moving[i] = enemy.crop(105 * i, 0, enemywidth, enemyheight);
+        ram_moving = new BufferedImage[3];
+        for (int i = 0; i < ram_moving.length; i++)
+            ram_moving[i] = ram.crop(105 * i, 0, ramwidth, ramheight);
 
-        enemy_furious = new BufferedImage[3];
-        for (int i = 0; i < enemy_furious.length; i++)
-            enemy_furious[i] = enemy.crop(105 * i, enemyheight, enemywidth, enemyheight);
+        ram_furious = new BufferedImage[3];
+        for (int i = 0; i < ram_furious.length; i++)
+            ram_furious[i] = ram.crop(105 * i, ramheight, ramwidth, ramheight);
 
-        enemy_dying = new BufferedImage[8];
-        for (int i = 0; i < 4; i++)
-            enemy_dying[i] = enemy.crop(105 * i, enemyheight * 2, enemywidth, enemyheight);
-        for (int i = 4; i < enemy_dying.length; i++)
-            enemy_dying[i] = enemy.crop(105 * (i - 4), enemyheight * 3, enemywidth, enemyheight);
+        ram_dying = new BufferedImage[8];
+        for (int i = 0; i < ram_dying.length; i++)
+            ram_dying[i] = ram.crop(105 * (i % 4), ramheight * (i / 4 + 2),
+                                    ramwidth, ramheight);
     }
 }
