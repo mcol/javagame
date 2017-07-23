@@ -40,7 +40,7 @@ public class Enemy extends Creature {
 
         animation = animMoving;
         justSpawned = true;
-        yMove = FALL_SPEED;
+        yMove = DEFAULT_SPEED;
         xMove = DEFAULT_SPEED;
         health = spawnHealth;
         switchTime = 0;
@@ -72,8 +72,8 @@ public class Enemy extends Creature {
         }
 
         // check if it's possible to move down
-        if (!collisionWithEntity(0f, FALL_SPEED)) {
-            yMove = FALL_SPEED;
+        if (!collisionWithEntity(0f, DEFAULT_SPEED)) {
+            yMove = DEFAULT_SPEED;
             y += getMovementY();
         }
 
