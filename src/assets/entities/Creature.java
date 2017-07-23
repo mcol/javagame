@@ -3,6 +3,7 @@ package assets.entities;
 import java.awt.Graphics;
 import assets.tiles.Tile;
 import game.Handler;
+import gfx.Animation;
 
 public abstract class Creature extends Entity {
 
@@ -30,6 +31,9 @@ public abstract class Creature extends Entity {
 
     /** Whether the creature is falling. */
     private boolean falling;
+
+    /** Animation representing the entity. */
+    protected Animation animation;
 
     /** Constructor. */
     public Creature(Handler handler, float x, float y, int width, int height) {
@@ -145,6 +149,12 @@ public abstract class Creature extends Entity {
         }
 
         return 0;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        animation.tick();
     }
 
     @Override

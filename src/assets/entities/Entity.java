@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import game.Game;
 import game.Handler;
-import gfx.Animation;
 
 public abstract class Entity {
 
@@ -25,9 +24,6 @@ public abstract class Entity {
     /** Time when the entity was generated in ticks. */
     protected long spawnTime;
 
-    /** Animation representing the entity. */
-    protected Animation animation;
-
     /** Constructor. */
     public Entity(Handler handler, float x, float y, int width, int height) {
         Entity.handler = handler;
@@ -41,7 +37,6 @@ public abstract class Entity {
     }
 
     public void tick() {
-        animation.tick();
         now = Game.getTicksTime();
     }
 
