@@ -75,5 +75,11 @@ public class HUD {
         Font.setColour(Color.WHITE, transparent);
         Font.renderMessage(g, "" + player.getScore(), offset - gap, 17,
                            Font.Size.SMALL, false);
+
+        // level
+        transparent = player.getGameX() < 125 && player.getY() < 25;
+        Font.setColour(Color.WHITE, transparent);
+        Font.renderMessage(g, "Lev " + player.getLevel(), gap, 17,
+                           Font.Size.SMALL, true);
     }
 }
