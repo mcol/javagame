@@ -48,10 +48,22 @@ public class Animation {
         return frames[index];
     }
 
+    /** Assigns the animation parameters from another animation. */
+    public void assign(Animation animation) {
+        this.frames = animation.frames;
+        this.speed = animation.speed;
+        this.reset();
+    }
+
     /** Changes the animation frames. */
     public void setFrames(BufferedImage[] frames, int speed) {
         this.frames = frames;
         this.speed = speed;
+        this.reset();
+    }
+
+    /** Resets the state of the animation. */
+    private void reset() {
         index = 0;
         playedOnce = false;
     }
