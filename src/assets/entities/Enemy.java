@@ -40,6 +40,7 @@ public class Enemy extends Creature {
         // animations
         animMoving = new Animation(Assets.enemy_moving, 125);
         animFurious = new Animation(Assets.enemy_furious, 125);
+        animDying = new Animation(Assets.enemy_dying, 100);
 
         animation = animMoving;
         justSpawned = true;
@@ -125,7 +126,7 @@ public class Enemy extends Creature {
         if (health <= 0) {
             health = 0;
             xMove = 0;
-            animation.setFrames(Assets.enemy_dying, 100);
+            animation.assign(animDying);
             handler.getPlayer().increaseScore(score);
 
             // avoid generating collisions

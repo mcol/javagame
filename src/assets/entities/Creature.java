@@ -35,6 +35,9 @@ public abstract class Creature extends Entity {
     /** Animation representing the entity. */
     protected Animation animation;
 
+    /** Animation representing the entity when dead. */
+    protected Animation animDying;
+
     /** Constructor. */
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
