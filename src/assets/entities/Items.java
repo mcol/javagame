@@ -100,7 +100,7 @@ public enum Items {
 
     /** Returns an item at random according to its availability. */
     public static Items randomItem() {
-        int rnd = Utils.randomInteger(0, totalAvailability);
+        int rnd = Utils.randomInteger(0, totalAvailability - 1);
         int sum = 0;
         Items chosenItem = APPLE;
         for (Items item : values()) {

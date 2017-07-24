@@ -205,8 +205,8 @@ public class World {
 
         // avoid solid tiles
         do {
-            x = Utils.randomInteger(0, width);
-            y = Utils.randomInteger(0, height);
+            x = Utils.randomInteger(0, width - 1);
+            y = Utils.randomInteger(0, height - 1);
         } while (getTile(x, y).isSolid());
 
         // add the item to the list of alive entities
