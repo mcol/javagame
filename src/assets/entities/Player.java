@@ -10,7 +10,7 @@ import gfx.Animation;
 public class Player extends Creature {
 
     /** Maximum amount of time available for a level. */
-    public static final int MAX_TIME = 30 * Game.FPS;
+    public static final int MAX_TIME = 60 * Game.FPS;
 
     /** Maximum amount of health of the player. */
     public static final int MAX_HEALTH = 40;
@@ -78,7 +78,7 @@ public class Player extends Creature {
 
         level = 1;
         score = 0;
-        time = MAX_TIME;
+        time = 0;
         health = MAX_HEALTH;
         poop = MAX_POOP;
     }
@@ -281,7 +281,6 @@ public class Player extends Creature {
     /** Increases the current level. */
     public void increaseLevel() {
         level += 1;
-        time = MAX_TIME;
     }
 
     /** Updates the player's score. */
@@ -337,6 +336,11 @@ public class Player extends Creature {
     /** Returns the amount of remaining time. */
     public int getTime() {
         return time;
+    }
+
+    /** Sets the amount of available time. */
+    public void setTime(int time) {
+        this.time = time * Game.FPS;
     }
 
     /** Returns the amount of available poop. */

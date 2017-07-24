@@ -129,6 +129,9 @@ public class World {
         width = Utils.parseInt(props.getProperty("width"));
         height = Utils.parseInt(props.getProperty("height"));
 
+        // time allowed
+        player.setTime(Utils.parseInt(props.getProperty("time")));
+
         // tiles
         String[] tokens = props.getProperty("tiles").split("\\s+");
         tiles = new Tile[width][height];
