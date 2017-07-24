@@ -32,7 +32,7 @@ public class Assets {
     public static BufferedImage[] poop_explosion;
 
     // enemies
-    public static BufferedImage[] ram_moving, ram_furious, ram_dying;
+    public static BufferedImage[] ram_moving, ram_frenzy, ram_dying;
 
     public static void init() {
 
@@ -115,9 +115,9 @@ public class Assets {
         for (int i = 0; i < ram_moving.length; i++)
             ram_moving[i] = ram.crop(105 * i, 0, ramwidth, ramheight);
 
-        ram_furious = new BufferedImage[3];
-        for (int i = 0; i < ram_furious.length; i++)
-            ram_furious[i] = ram.crop(105 * i, ramheight, ramwidth, ramheight);
+        ram_frenzy = new BufferedImage[3];
+        for (int i = 0; i < ram_frenzy.length; i++)
+            ram_frenzy[i] = ram.crop(105 * i, ramheight, ramwidth, ramheight);
 
         ram_dying = new BufferedImage[8];
         for (int i = 0; i < ram_dying.length; i++)

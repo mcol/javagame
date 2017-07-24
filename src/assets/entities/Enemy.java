@@ -2,6 +2,8 @@ package assets.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import gfx.Animation;
+import utils.Utils;
 
 public abstract class Enemy extends Creature {
 
@@ -17,6 +19,12 @@ public abstract class Enemy extends Creature {
     /** Time of the last switch of direction. */
     protected long switchTime;
 
+    /** Animation when in a frenzy state. */
+    protected Animation animFrenzy;
+
+    /** Threshold health below which the enemy goes into a frenzy state. */
+    protected int frenzyThreshold;
+
     /** Whether the enemy is affected by gravity. */
     protected boolean hasGravity;
 
@@ -31,6 +39,7 @@ public abstract class Enemy extends Creature {
         this.score = score;
         this.colour = colour;
         this.switchTime = 0;
+        this.frenzyThreshold = 0;
         this.hasGravity = true;
         this.findSolidGround = true;
 
@@ -61,6 +70,13 @@ public abstract class Enemy extends Creature {
                 yMove = DEFAULT_SPEED;
                 y += getMovementY();
             }
+        }
+
+        // frenzy state
+        if (health < frenzyThreshold) {
+            animation = animFrenzy;
+            xMove *= 1.03;
+            xMove = Utils.clampValue(xMove, (int) -FAST_SPEED, (int) FAST_SPEED);
         }
 
         // compute the allowed horizontal movement
@@ -106,6 +122,8 @@ public abstract class Enemy extends Creature {
             return;
 
         health -= damage;
+
+        // dying state
         if (health <= 0) {
             health = 0;
             xMove = 0;
