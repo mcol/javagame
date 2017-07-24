@@ -17,6 +17,9 @@ public abstract class Enemy extends Creature {
     /** Time of the last switch of direction. */
     protected long switchTime;
 
+    /** Whether the enemy is affected by gravity. */
+    protected boolean hasGravity;
+
     /** Whether the enemy has just been spawned. */
     private boolean justSpawned;
 
@@ -28,6 +31,7 @@ public abstract class Enemy extends Creature {
         this.score = score;
         this.colour = colour;
         this.switchTime = 0;
+        this.hasGravity = true;
         this.justSpawned = true;
 
         yMove = DEFAULT_SPEED;
@@ -52,9 +56,11 @@ public abstract class Enemy extends Creature {
         }
 
         // check if it's possible to move down
-        if (!collisionWithEntity(0f, DEFAULT_SPEED)) {
-            yMove = DEFAULT_SPEED;
-            y += getMovementY();
+        if (hasGravity) {
+            if (!collisionWithEntity(0f, DEFAULT_SPEED)) {
+                yMove = DEFAULT_SPEED;
+                y += getMovementY();
+            }
         }
 
         // compute the allowed horizontal movement
