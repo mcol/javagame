@@ -1,6 +1,5 @@
 package assets.entities;
 
-import java.awt.Color;
 import assets.Assets;
 import gfx.Animation;
 
@@ -10,7 +9,7 @@ public class Ram extends Enemy {
     private static final int RAM_SCORE = 6;
 
     /** Health bar colour. */
-    private static final Color BAR_COLOUR = new Color(0x555555);
+    private static final int BAR_COLOUR = 0x555555;
 
     /** Constructor. */
     public Ram(int x, int y, int spawnHealth) {

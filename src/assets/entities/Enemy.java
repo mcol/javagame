@@ -33,11 +33,11 @@ public abstract class Enemy extends Creature {
 
     /** Constructor. */
     public Enemy(int x, int y, int width, int height,
-                 int health, int score, Color colour) {
+                 int health, int score, int colour) {
         super(handler, x, y, width, height);
         this.health = health;
         this.score = score;
-        this.colour = colour;
+        this.colour = new Color(colour);
         this.switchTime = 0;
         this.frenzyThreshold = 0;
         this.hasGravity = true;
