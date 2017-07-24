@@ -20,8 +20,8 @@ public abstract class Enemy extends Creature {
     /** Whether the enemy is affected by gravity. */
     protected boolean hasGravity;
 
-    /** Whether the enemy has just been spawned. */
-    private boolean justSpawned;
+    /** Whether the enemy needs to find the ground. */
+    protected boolean findSolidGround;
 
     /** Constructor. */
     public Enemy(int x, int y, int width, int height,
@@ -32,7 +32,7 @@ public abstract class Enemy extends Creature {
         this.colour = colour;
         this.switchTime = 0;
         this.hasGravity = true;
-        this.justSpawned = true;
+        this.findSolidGround = true;
 
         yMove = DEFAULT_SPEED;
         xMove = DEFAULT_SPEED;
@@ -46,13 +46,13 @@ public abstract class Enemy extends Creature {
             return;
 
         // find solid ground
-        if (justSpawned) {
+        if (findSolidGround) {
             float dy = getMovementY();
             while (dy != 0) {
                 y += dy;
                 dy = getMovementY();
             }
-            justSpawned = false;
+            findSolidGround = false;
         }
 
         // check if it's possible to move down
