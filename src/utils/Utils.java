@@ -15,6 +15,16 @@ public class Utils {
         return min + random.nextInt(max - min);
     }
 
+    /** Returns a random float between two values. */
+    public static float randomFloat(float min, float max) {
+        return min + random.nextFloat() * (max - min);
+    }
+
+    /** Returns a random boolean. */
+    public static boolean randomBoolean() {
+        return random.nextBoolean();
+    }
+
     /** Reads the content of a file into a string. */
     public static String loadFileAsString(String path) {
         StringBuilder builder = new StringBuilder();
