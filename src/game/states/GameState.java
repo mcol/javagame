@@ -7,7 +7,6 @@ import game.Game;
 import game.HUD;
 import game.Handler;
 import game.input.KeyManager;
-import gfx.Background;
 import worlds.World;
 
 public class GameState extends State {
@@ -24,8 +23,6 @@ public class GameState extends State {
     /** Constructor. */
     public GameState(Handler handler) {
         super(handler);
-        bg = new Background("/textures/gamebg.png", -0.1f,
-                            Game.WIDTH, Game.HEIGHT);
         world = new World(handler, new Player(handler, 0, 0));
         hud = new HUD(handler.getPlayer(), Game.WIDTH);
     }
@@ -43,7 +40,6 @@ public class GameState extends State {
     @Override
     public void tick() {
         if (!pause) {
-            super.tick();
             world.tick();
         }
 
@@ -61,7 +57,6 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
-        bg.render(g);
         world.render(g);
         hud.render(g);
     }

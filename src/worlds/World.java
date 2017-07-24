@@ -12,6 +12,7 @@ import assets.entities.Tree;
 import assets.tiles.Tile;
 import game.Game;
 import game.Handler;
+import gfx.Background;
 import utils.Utils;
 
 public class World {
@@ -23,6 +24,9 @@ public class World {
 
     /** The player. */
     private final Player player;
+
+    /** The background image. */
+    private static Background bg;
 
     /** Array of tiles that define the world. */
     private Tile[][] tiles;
@@ -66,6 +70,7 @@ public class World {
     }
 
     public void tick() {
+        bg.tick();
         entityManager.tick();
         if (!this.isSafe())
             spawnItem();
@@ -82,6 +87,9 @@ public class World {
         int yStart = (int) Math.max(camera_yOffset / Tile.TILESIZE, 0);
         int yEnd = (int) Math.min((camera_yOffset + Game.HEIGHT) / Tile.TILESIZE + 1,
                                   height);
+
+        // background
+        bg.render(g);
 
         // draw only the visible tiles
         for (int y = yStart; y < yEnd; y++) {
@@ -131,6 +139,10 @@ public class World {
 
         // time allowed
         player.setTime(Utils.parseInt(props.getProperty("time")));
+
+        // background
+        bg = new Background(props.getProperty("background"), -0.1f,
+                            Game.WIDTH, Game.HEIGHT);
 
         // tiles
         String[] tokens = props.getProperty("tiles").split("\\s+");
