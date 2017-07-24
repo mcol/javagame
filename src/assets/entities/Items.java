@@ -1,6 +1,6 @@
 package assets.entities;
 
-import game.Handler;
+import utils.Utils;
 
 public enum Items {
 
@@ -100,7 +100,7 @@ public enum Items {
 
     /** Returns an item at random according to its availability. */
     public static Items randomItem() {
-        int rnd = Handler.randomInteger(0, totalAvailability);
+        int rnd = Utils.randomInteger(0, totalAvailability);
         int sum = 0;
         Items chosenItem = APPLE;
         for (Items item : values()) {

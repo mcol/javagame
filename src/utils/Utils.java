@@ -3,8 +3,17 @@ package utils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 public class Utils {
+
+    /** Random number generator. */
+    private static final Random random = new Random();
+
+    /** Returns a random integer between two values. */
+    public static int randomInteger(int min, int max) {
+        return min + random.nextInt(max - min);
+    }
 
     /** Reads the content of a file into a string. */
     public static String loadFileAsString(String path) {

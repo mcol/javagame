@@ -55,7 +55,7 @@ public class World {
         readWorldFile("res/worlds/world" + world + ".txt");
         player.setPosition(0, 0);
         nextItemSpawnTime = Game.getTicksTime() +
-                            Handler.randomInteger(10, 15) * Game.FPS;
+                            Utils.randomInteger(10, 15) * Game.FPS;
 
         // bonus
         if (level > 1) {
@@ -189,15 +189,15 @@ public class World {
 
         // avoid solid tiles
         do {
-            x = Handler.randomInteger(0, width);
-            y = Handler.randomInteger(0, height);
+            x = Utils.randomInteger(0, width);
+            y = Utils.randomInteger(0, height);
         } while (getTile(x, y).isSolid());
 
         // add the item to the list of alive entities
         entityManager.addEntity(new CollectableItem(Items.randomItem(),
                                                     x  * Tile.TILESIZE,
                                                     y  * Tile.TILESIZE));
-        nextItemSpawnTime = now + Handler.randomInteger(10, 20) * Game.FPS;
+        nextItemSpawnTime = now + Utils.randomInteger(10, 20) * Game.FPS;
     }
 
     // getters and setters
