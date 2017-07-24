@@ -27,18 +27,18 @@ public class Font {
     public enum Size {
 
         /** Available sizes */
-        TITLE(8), LARGE(6), MEDIUM(4), SMALL(3);
+        TITLE(8), LARGE(6), MEDIUM(4), SMALL(3), MINI(2), MICRO(1.7), TINY(1);
 
         /** Scaling factor. */
-        private final int scale;
+        private final double scale;
 
         /** Constructor. */
-        Size(int scale) {
+        Size(double scale) {
             this.scale = scale;
         }
 
         /** Returns the scaling to be applied to the font. */
-        private int getScale() {
+        private double getScale() {
             return scale;
         }
     }
@@ -48,7 +48,7 @@ public class Font {
                                      Size size, boolean leftAligned) {
 
         // size of the font in pixels
-        int fontsize = charsize * size.getScale();
+        int fontsize = (int) (charsize * size.getScale());
 
         // adjust the position if the message is right aligned
         if (!leftAligned)
