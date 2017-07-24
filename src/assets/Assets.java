@@ -32,6 +32,7 @@ public class Assets {
     public static BufferedImage[] poop_explosion;
 
     // enemies
+    public static BufferedImage[] boo_moving, boo_dying;
     public static BufferedImage[] ram_moving, ram_frenzy, ram_dying;
 
     public static void init() {
@@ -104,6 +105,19 @@ public class Assets {
         for (int i = 0; i < poop_explosion.length; i++)
             poop_explosion[i] = poop.crop(playerwidth * 4 + poopwidth * (3 + i), playerheight + poopheight,
                                           poopwidth, poopheight);
+
+        //
+        // boo animations
+        //
+        SpriteSheet boo = new SpriteSheet("/textures/boo.png");
+        int boowidth = 32, booheight = 32;
+        boo_moving = new BufferedImage[6];
+        for (int i = 0; i < boo_moving.length; i++)
+            boo_moving[i] = boo.crop(boowidth * i, 0, boowidth, booheight);
+
+        boo_dying = new BufferedImage[8];
+        for (int i = 0; i < boo_dying.length; i++)
+            boo_dying[i] = boo.crop(boowidth * i, booheight, boowidth, booheight);
 
         //
         // ram animations

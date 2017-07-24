@@ -3,6 +3,7 @@ package worlds;
 import java.awt.Graphics;
 import java.io.FileInputStream;
 import java.util.Properties;
+import assets.entities.Boo;
 import assets.entities.CollectableItem;
 import assets.entities.EntityManager;
 import assets.entities.Items;
@@ -166,6 +167,9 @@ public class World {
             int y = Utils.parseInt(tokens[i * nFields + 2]);
             int health = Utils.parseInt(tokens[i * nFields + 3]);
             switch (type) {
+                case "boo":
+                    entityManager.addEntity(new Boo(x, y, health));
+                    break;
                 case "ram":
                     entityManager.addEntity(new Ram(x, y, health));
                     break;
