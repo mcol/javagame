@@ -244,7 +244,9 @@ public class Player extends Creature {
 
         // decrease the remaining time
         time -= 1;
-        if (time < 0 && now % 25 == 0)
+
+        // decrease the health when out of time if enemies are still present
+        if (time < 0 && now % 25 == 0 && !handler.getWorld().isSafe())
             health -= 1;
     }
 
