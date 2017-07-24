@@ -1,11 +1,14 @@
 package worlds;
 
 import java.awt.Graphics;
+import java.io.FileInputStream;
+import java.util.Properties;
 import assets.entities.CollectableItem;
 import assets.entities.EntityManager;
 import assets.entities.Items;
 import assets.entities.Player;
 import assets.entities.Ram;
+import assets.entities.Tree;
 import assets.tiles.Tile;
 import game.Game;
 import game.Handler;
@@ -50,9 +53,6 @@ public class World {
         // load the world data from file
         int world = (level - 1) % MAX_WORLDS + 1;
         readWorldFile("res/worlds/world" + world + ".txt");
-
-        // add the entities
-        addEntities();
         player.setPosition(0, 0);
         nextItemSpawnTime = Game.getTicksTime() +
                             Handler.randomInteger(10, 15) * Game.FPS;
@@ -63,13 +63,6 @@ public class World {
             player.increaseHealth(Player.MAX_HEALTH / 4);
             player.increasePoop(Player.MAX_POOP / 4);
         }
-    }
-
-    /** Adds entities to the  world. */
-    protected void addEntities() {
-        // enemies
-        entityManager.addEntity(new Ram(50, 300, 10));
-        entityManager.addEntity(new Ram(300, 50, 10));
     }
 
     public void tick() {
@@ -123,15 +116,62 @@ public class World {
 
     /** Loads a world file. */
     private void readWorldFile(String path) {
-        String file = Utils.loadFileAsString(path);
-        String[] tokens = file.split("\\s+");
-        width = Utils.parseInt(tokens[0]);
-        height = Utils.parseInt(tokens[1]);
+        Properties props = new Properties();
+        try {
+            FileInputStream in = new FileInputStream(path);
+            props.load(in);
+            in.close();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
+        // number of tiles in each dimension
+        width = Utils.parseInt(props.getProperty("width"));
+        height = Utils.parseInt(props.getProperty("height"));
+
+        // tiles
+        String[] tokens = props.getProperty("tiles").split("\\s+");
         tiles = new Tile[width][height];
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++)
-                tiles[x][y] = Tile.getTile(tokens[x + y * width + 2].charAt(0));
+                tiles[x][y] = Tile.getTile(tokens[x + y * width].charAt(0));
+
+        // enemies and entities
+        addEnemies(props);
+        addEntities(props);
+    }
+
+    /** Adds enemies to the world. */
+    private void addEnemies(Properties props) {
+        String[] tokens = props.getProperty("enemies").split("\\s+");
+        int nFields = 4, nEnemies = tokens.length / nFields;
+        for (int i = 0; i < nEnemies; i++) {
+            String type = tokens[i * nFields];
+            int x = Utils.parseInt(tokens[i * nFields + 1]);
+            int y = Utils.parseInt(tokens[i * nFields + 2]);
+            int health = Utils.parseInt(tokens[i * nFields + 3]);
+            switch (type) {
+                case "ram":
+                    entityManager.addEntity(new Ram(x, y, health));
+                    break;
+            }
+        }
+    }
+
+    /** Adds entities to the world. */
+    private void addEntities(Properties props) {
+        String[] tokens = props.getProperty("entities").split("\\s+");
+        int nFields = 3, nEntities = tokens.length / nFields;
+        for (int i = 0; i < nEntities; i++) {
+            String type = tokens[i * nFields];
+            int x = Utils.parseInt(tokens[i * nFields + 1]);
+            int y = Utils.parseInt(tokens[i * nFields + 2]);
+            switch (type) {
+                case "tree":
+                    entityManager.addEntity(new Tree(x, y));
+                    break;
+            }
+        }
     }
 
     /** Places a new item in the world. */
