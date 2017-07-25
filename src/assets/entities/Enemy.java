@@ -159,6 +159,7 @@ public abstract class Enemy extends Creature {
             handler.getEntityManager()
                    .addEntity(new CollectableItem(Items.randomItem(),
                                                   (int) x, (int) y));
+            handler.addMessage("" + score, x, y);
             return true;
         }
 

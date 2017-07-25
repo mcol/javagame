@@ -35,6 +35,7 @@ public class CollectableItem extends StaticEntity {
         player.increaseScore(item.getValue());
         player.increaseHealth(item.getHealth());
         player.increasePoop(item.getPoop());
+        handler.addMessage("" + item.getValue(), x, y);
 
         // avoid further collisions
         setBounds(0, 0, 0, 0);

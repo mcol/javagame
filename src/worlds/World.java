@@ -13,6 +13,7 @@ import assets.entities.Tree;
 import assets.tiles.Tile;
 import game.Game;
 import game.Handler;
+import game.MessageManager;
 import gfx.Background;
 import utils.Utils;
 
@@ -38,6 +39,9 @@ public class World {
     /** Container for all entities. */
     private static EntityManager entityManager;
 
+    /** Container for all messages. */
+    private static MessageManager messageManager;
+
     /** Time of the next item spawn in ticks. */
     private long nextItemSpawnTime;
 
@@ -52,8 +56,9 @@ public class World {
     /** Loads a new world. */
     public void loadWorld(int level) {
 
-        // initialize the list of alive entities
+        // initialize the lists of alive entities and messages
         entityManager = new EntityManager(player);
+        messageManager = new MessageManager();
 
         // load the world data from file
         int world = (level - 1) % MAX_WORLDS + 1;
@@ -66,6 +71,7 @@ public class World {
     public void tick() {
         bg.tick();
         entityManager.tick();
+        messageManager.tick();
         if (!this.isSafe())
             spawnItem();
     }
@@ -93,8 +99,9 @@ public class World {
                                      (int) (y * Tile.TILESIZE - camera_yOffset));
         }
 
-        // draw all entities
+        // draw all entities and messages
         entityManager.render(g);
+        messageManager.render(g);
     }
 
     /** Returns the tile at the given tile coordinates. */
@@ -224,6 +231,11 @@ public class World {
     /** Returns the entity manager. */
     public static EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    /** Returns the message manager. */
+    public static MessageManager getMessageManager() {
+        return messageManager;
     }
 
     /** Returns whether all enemies have been killed. */
