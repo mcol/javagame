@@ -50,7 +50,8 @@ public class Utils {
         }
     }
 
-    public static float clampValue(float x, int min, int max) {
+    /** Enforce a value to stay between two extremes. */
+    public static float clampValue(float x, float min, float max) {
         if (x < min)
             return min;
         if (x > max)
