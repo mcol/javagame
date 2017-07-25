@@ -18,7 +18,7 @@ public class GameState extends State {
     private final HUD hud;
 
     /** Keys pressed. */
-    private boolean help, pause, quit;
+    private boolean pause;
 
     /** Constructor. */
     public GameState(Handler handler) {
@@ -43,15 +43,12 @@ public class GameState extends State {
             world.tick();
         }
 
-        if (handler.getPlayer().isDead() || quit)
+        if (handler.getPlayer().isDead())
             quit();
 
         if (world.isCleared()) {
             handler.getPlayer().increaseLevel();
         }
-
-        if (help)
-            help();
     }
 
     @Override
@@ -64,11 +61,11 @@ public class GameState extends State {
     public void setKeyBindings() {
         World.getEntityManager().getPlayer().addKeyBindings();
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_H,
-                                 (e) -> help = true, (e) -> help = false);
+                                 (e) -> help(), null);
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_P,
                                  (e) -> pause = !pause, null);
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
-                                 (e) -> quit = true, (e) -> quit = false);
+                                 (e) -> quit(), null);
         KeyManager.removeKeyBindings(display, new int[] { KeyEvent.VK_ENTER });
     }
 }

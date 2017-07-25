@@ -31,7 +31,7 @@ public class Player extends Creature {
     private static final float liftspeed = 1.4f;
 
     /** Keys pressed. */
-    private boolean up, down, left, right, space;
+    private boolean up, down, left, right;
 
     private boolean goingUp = false;
     private boolean canPoop = false;
@@ -164,10 +164,6 @@ public class Player extends Creature {
             else if (xMove == 0 && yMove >= 0) {
                 canPoop = false;
             }
-        }
-
-        if (space) {
-            firePoop();
         }
     }
 
@@ -324,7 +320,7 @@ public class Player extends Creature {
                                  (e) -> right = true, (e) -> right = false);
 
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_SPACE,
-                                 (e) -> space = true, (e) -> space = false);
+                                 (e) -> firePoop(), null);
     }
 
     // getters and setters
