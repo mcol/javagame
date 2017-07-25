@@ -41,6 +41,7 @@ public class GameState extends State {
     public void tick() {
         if (!pause) {
             world.tick();
+            hud.tick();
         }
 
         if (handler.getPlayer().isDead())

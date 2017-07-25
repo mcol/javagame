@@ -44,6 +44,9 @@ public class HUD {
     /** Images used in the hud. */
     private BufferedImage hudBar, timeIcon, healthIcon, poopIcon;
 
+    /** Values currently displayed. */
+    private int score, time, health, poop;
+
     /** Constructor. */
     public HUD(Player player, int gameWidth) {
         BufferedImage image;
@@ -61,6 +64,24 @@ public class HUD {
         offset = gameWidth - 3 * (width + icon + gap);
     }
 
+    public void tick() {
+
+        // always update score and time
+        if (score < player.getScore())
+            score++;
+        int timeTarget = player.getTime();
+        time = time < timeTarget ? time += 20 : timeTarget;
+
+        // don't update the rest at every call
+        if (Game.getTicksTime() % 5 != 0)
+            return;
+
+        int healthTarget = player.getHealth();
+        health = health < healthTarget ? health + 1 : healthTarget;
+        int poopTarget = player.getPoop();
+        poop = poop < poopTarget ? poop + 1 : poopTarget;
+    }
+
     public void render(Graphics g) {
 
         // make the hud transparent when the player goes under it
@@ -69,7 +90,6 @@ public class HUD {
         int barOffset;
 
         // time bar
-        int time = player.getTime();
         int tbar = time * (width - border) / Player.MAX_TIME + minbar;
         barOffset = offset + icon;
         g.drawImage(timeIcon, barOffset - icon - 5, 20, icon, icon, null);
@@ -79,7 +99,6 @@ public class HUD {
                    tbar - border, height - 2 * border);
 
         // health bar
-        int health = player.getHealth();
         int hbar = health * (width - border) / Player.MAX_HEALTH + minbar;
         barOffset += width + icon + gap;
         g.drawImage(healthIcon, barOffset - icon - 5, 20, icon, icon, null);
@@ -89,7 +108,6 @@ public class HUD {
                    health > 0 ? hbar - border : 0, height - 2 * border);
 
         // poop bar
-        int poop = player.getPoop();
         int pbar = poop * (width - border) / Player.MAX_POOP + minbar;
         barOffset += width + icon + gap;
         g.drawImage(poopIcon, barOffset - icon - 5, 20, icon, icon, null);
@@ -100,7 +118,7 @@ public class HUD {
 
         // score
         Font.setColour(Color.WHITE, transparent);
-        Font.renderMessage(g, "" + player.getScore(), offset - gap, 17,
+        Font.renderMessage(g, "" + score, offset - gap, 17,
                            Font.Size.SMALL, false);
 
         // level
