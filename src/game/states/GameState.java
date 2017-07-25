@@ -6,8 +6,8 @@ import assets.entities.Player;
 import game.Game;
 import game.HUD;
 import game.Handler;
+import game.World;
 import game.input.KeyManager;
-import worlds.World;
 
 public class GameState extends State {
 

@@ -1,4 +1,4 @@
-package worlds;
+package game;
 
 import java.awt.Graphics;
 import java.io.FileInputStream;
@@ -11,9 +11,6 @@ import assets.entities.Player;
 import assets.entities.Ram;
 import assets.entities.Tree;
 import assets.tiles.Tile;
-import game.Game;
-import game.Handler;
-import game.MessageManager;
 import gfx.Background;
 import utils.Utils;
 

@@ -5,7 +5,6 @@ import assets.entities.Entity;
 import assets.entities.EntityManager;
 import assets.entities.Player;
 import gfx.Camera;
-import worlds.World;
 
 public class Handler {
 
