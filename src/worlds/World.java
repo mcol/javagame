@@ -20,7 +20,7 @@ import utils.Utils;
 public class World {
 
     /** Number of available worlds. */
-    public static final int MAX_WORLDS = 4;
+    public static final int MAX_WORLDS = 7;
 
     private final Handler handler;
 
