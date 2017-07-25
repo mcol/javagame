@@ -48,7 +48,6 @@ public class GameState extends State {
 
         if (world.isCleared()) {
             handler.getPlayer().increaseLevel();
-            world.loadWorld(handler.getPlayer().getLevel());
         }
 
         if (help)

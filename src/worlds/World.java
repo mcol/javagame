@@ -61,13 +61,6 @@ public class World {
         player.setPosition(0, 0);
         nextItemSpawnTime = Game.getTicksTime() +
                             Utils.randomInteger(10, 15) * Game.FPS;
-
-        // bonus
-        if (level > 1) {
-            player.increaseScore(25 + player.getTime() / Game.FPS);
-            player.increaseHealth(Player.MAX_HEALTH / 4);
-            player.increasePoop(Player.MAX_POOP / 4);
-        }
     }
 
     public void tick() {
