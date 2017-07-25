@@ -246,6 +246,7 @@ public class World {
     /** Returns whether the current world has been cleared. */
     public boolean isCleared() {
         return entityManager.getEnemyCount() == 0 &&
-               entityManager.getItemCount() == 0;
+               entityManager.getItemCount() == 0 &&
+               messageManager.getMessageCount() == 0;
     }
 }
