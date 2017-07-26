@@ -58,4 +58,9 @@ public class Utils {
             return max;
         return x;
     }
+
+    /** Clamp in the absolute value. */
+    public static float clampAbsValue(float x, float val) {
+        return clampValue(x, -val, val);
+    }
 }

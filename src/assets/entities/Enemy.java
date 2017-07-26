@@ -79,8 +79,7 @@ public abstract class Enemy extends Creature {
         // frenzy state
         if (health < frenzyThreshold) {
             animation = animFrenzy;
-            xMove *= 1.03;
-            xMove = Utils.clampValue(xMove, -frenzySpeed, frenzySpeed);
+            xMove = Utils.clampAbsValue(xMove * 1.03f, frenzySpeed);
         }
 
         // compute the allowed horizontal movement
