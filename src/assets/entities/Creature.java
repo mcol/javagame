@@ -23,7 +23,6 @@ public abstract class Creature extends Entity {
 
     // movement
     protected float xMove, yMove;
-    protected float speed;
 
     /** Whether the creature faces right. */
     protected boolean facingRight;
@@ -42,7 +41,6 @@ public abstract class Creature extends Entity {
         super(handler, x, y, width, height);
         health = DEFAULT_HEALTH;
         damage = DEFAULT_DAMAGE;
-        speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;
         falling = true;
@@ -199,14 +197,6 @@ public abstract class Creature extends Entity {
 
     public void setHealth(int health) {
         this.health = health;
-    }
-
-    public float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
     }
 
     /** Returns the desired movement in the horizontal direction. */
