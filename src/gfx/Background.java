@@ -3,6 +3,7 @@ package gfx;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import utils.Utils;
 
 public class Background {
 
@@ -40,6 +41,7 @@ public class Background {
             imageWidth = image.getWidth();
             imageHeight = image.getHeight();
         }
+        this.x = Utils.randomFloat(0, dx > 0 ? imageWidth : -imageWidth);
         this.dx = dx;
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
