@@ -77,10 +77,8 @@ public abstract class Entity {
 
     /** Returns whether the entity is currently outside of the visible area. */
     public boolean offScreen() {
-        return  x - handler.getCamera().getxOffset() + width < 0 ||
-                x - handler.getCamera().getxOffset() > Game.WIDTH ||
-                y - handler.getCamera().getyOffset() + height < 0 ||
-                y - handler.getCamera().getyOffset() > Game.HEIGHT;
+        return  getGameX() + width < 0 || getGameX() > Game.WIDTH ||
+                getGameY() + height < 0 || getGameY() > Game.HEIGHT;
     }
 
     // getters and setters

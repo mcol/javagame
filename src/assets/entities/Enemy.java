@@ -113,8 +113,7 @@ public abstract class Enemy extends Creature {
         final int health = getHealth();
         final double hbar = (double) health / DEFAULT_HEALTH * 35;
         g.setColor(colour);
-        g.fillRect((int) (x - handler.getCamera().getxOffset() + xAdj),
-                   (int) (y - handler.getCamera().getyOffset() - 10),
+        g.fillRect((int) getGameX() + xAdj, (int) getGameY() - 10,
                    health > 0 ? (int) hbar + 5 : 0, 10);
     }
 
