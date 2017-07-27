@@ -184,6 +184,8 @@ public class Player extends Creature {
             // stop falling when colliding vertically with an entity
             setFalling(false);
         }
+        x = (int) x;
+        y = (int) y;
     }
 
     private void firePoop() {
