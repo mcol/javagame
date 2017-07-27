@@ -88,6 +88,9 @@ public class Player extends Creature {
         time = 0;
         health = MAX_HEALTH;
         poop = MAX_POOP;
+
+        // start by falling
+        yMove = MIN_SPEED;
     }
 
     /** Handle the input commands. */
@@ -263,6 +266,7 @@ public class Player extends Creature {
         increaseHealth(MAX_HEALTH / 4);
         increasePoop(MAX_POOP / 4);
         handler.getWorld().loadWorld(level);
+        yMove = MIN_SPEED;
     }
 
     /** Updates the player's score. */
