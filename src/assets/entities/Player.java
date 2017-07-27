@@ -6,6 +6,7 @@ import game.Game;
 import game.Handler;
 import game.input.KeyManager;
 import gfx.Animation;
+import utils.Utils;
 
 public class Player extends Creature {
 
@@ -24,16 +25,20 @@ public class Player extends Creature {
     /** Interval between each poop increase in ticks. */
     private static final long POOP_RESTORE_INTERVAL = 15 * Game.FPS;
 
+    /** Minimum speed allowed. */
+    private static final float MIN_SPEED = 0.4f;
+
     /** Maximum speed allowed. */
     private static final float MAX_SPEED = 4.0f;
 
-    private static final float dampingFactor = 0.96f;
-    private static final float liftspeed = 0.7f;
+    /** Incremental speed change. */
+    private static final float SPEED_CHANGE = 0.2f;
+
+    /** Speed change factor. */
+    private static final float SPEED_CHANGE_FACTOR = 1.03f;
 
     /** Keys pressed. */
     private boolean up, down, left, right;
-
-    private boolean goingUp = false;
 
     // Animations
     private final Animation animFlying, animFalling, animStill;
@@ -85,96 +90,55 @@ public class Player extends Creature {
         poop = MAX_POOP;
     }
 
+    /** Handle the input commands. */
     private void getInput() {
 
-        canPoop = true;
-
-        //
         // horizontal movement
-        //
         if (left) {
-            if (facingRight) { // switched direction
-                facingRight = false;
+            if (xMove > 0)
                 xMove = -xMove / 2;
-            }
             xMove -= SPEED_CHANGE;
-            if (xMove < -MAX_SPEED)
-                xMove = -MAX_SPEED;
-            goingUp = true;
-            yMove = -liftspeed; // lift up
         }
-        else if (right) {
-            if (!facingRight) { // switched direction
-                facingRight = true;
+        if (right) {
+            if (xMove < 0)
                 xMove = -xMove / 2;
-            }
             xMove += SPEED_CHANGE;
-            if (xMove > MAX_SPEED)
-                xMove = MAX_SPEED;
-            goingUp = true;
-            yMove = -liftspeed; // lift up
         }
-        else if (xMove != 0) { // slow down the horizontal movement
-            xMove *= dampingFactor;
-            if (Math.abs(xMove) < MIN_SPEED) {
-                xMove = 0;
-            }
+        xMove = Utils.clampAbsValue(xMove / SPEED_CHANGE_FACTOR, MAX_SPEED);
 
-            // gradual descent unless trying to go up
-            if (!up)
-                yMove += SPEED_CHANGE;
-        }
-        else {
-            if (down) {
-                goingUp = false;
-                yMove += SPEED_CHANGE;
-            }
-        }
-
-        //
         // vertical movement
-        //
         if (up) {
-            if (!goingUp) { // switched direction
-                goingUp = true;
-                yMove = -yMove / 2;
-            }
             yMove -= SPEED_CHANGE;
-            if (yMove < -MAX_SPEED)
-                yMove = -MAX_SPEED;
         }
-        else if (down) {
-            canPoop = false;
-            if (goingUp || yMove < 0) { // switched direction
-                goingUp = false;
-                yMove = -yMove / 2;
-            }
-            if (yMove > 0) { // avoid moving down when stationary
+        if (down) {
+            yMove += SPEED_CHANGE;
+        }
+        yMove = Utils.clampAbsValue(yMove / SPEED_CHANGE_FACTOR, MAX_SPEED);
+
+        // facing direction
+        if (!(left && right))
+            facingRight = xMove > 0 ? true : false;
+
+        // convergence to horizontal flight
+        if (!up && !down) {
+            if (yMove < 0)
                 yMove += SPEED_CHANGE;
-                if (yMove > MAX_SPEED)
-                    yMove = MAX_SPEED;
-            }
+            yMove /= SPEED_CHANGE_FACTOR;
         }
-        else if (yMove < 0 && !goingUp) { // slow down the vertical movement
-            yMove *= dampingFactor;
-            if (yMove > -MIN_SPEED * 2) {
-                goingUp = false;
-                yMove = SPEED_CHANGE; // start falling
-            }
+
+        // friction
+        if (!left && !right && Math.abs(xMove) < MIN_SPEED)
+            xMove = 0;
+
+        // gravity
+        if (!left && !right && !up && !down) {
+            yMove += SPEED_CHANGE;
+            if (yMove > SLOW_SPEED)
+                yMove = SLOW_SPEED;
         }
-        else { // falling or still
-            if (isFalling()) {
-                goingUp = false;
-                yMove += SPEED_CHANGE;
-                if (yMove > SLOW_SPEED) {
-                    yMove = SLOW_SPEED;
-                }
-            }
-            else if (xMove == 0 && yMove >= 0) {
-                goingUp = false;
-                canPoop = false;
-            }
-        }
+
+        // pooping
+        canPoop = (xMove == 0 && yMove > SLOW_SPEED) ? false : true;
     }
 
     private void move() {
@@ -182,9 +146,9 @@ public class Player extends Creature {
             x += getMovementX();
         if (!collisionWithEntity(0f, yMove))
             y += getMovementY();
-        else if (yMove > 0) {
+        else {
             // stop falling when colliding vertically with an entity
-            setFalling(false);
+            animation = animStill;
         }
         x = (int) x;
         y = (int) y;
@@ -206,10 +170,11 @@ public class Player extends Creature {
             poopFireTime = now;
 
             // lift the player up when pooping
-            goingUp = true;
-            yMove -= DEFAULT_SPEED;
-            if (yMove < - MAX_SPEED)
-                yMove = -MAX_SPEED;
+            if (!left && !right) {
+                yMove -= DEFAULT_SPEED;
+                if (yMove < -MAX_SPEED)
+                    yMove = -MAX_SPEED;
+            }
         }
 
         if (!hasPooped) {
@@ -225,8 +190,10 @@ public class Player extends Creature {
         super.tick();
         chooseAnimation();
 
-        // movement
+        // input handling
         getInput();
+
+        // movement
         move();
         handler.getCamera().centreOnEntity(this);
 

@@ -10,10 +10,8 @@ public abstract class Creature extends Entity {
     public static final int DEFAULT_HEALTH = 40;
     public static final int DEFAULT_DAMAGE = 5;
     public static final float DEFAULT_SPEED = 3.0f,
-                              MIN_SPEED = 0.5f,
                               SLOW_SPEED = 2.0f,
-                              FAST_SPEED = 6.0f,
-                              SPEED_CHANGE = 0.1f;
+                              FAST_SPEED = 6.0f;
 
     protected int health;
     protected int damage;
@@ -211,11 +209,6 @@ public abstract class Creature extends Entity {
     /** Returns whether the creature is falling. */
     public boolean isFalling() {
         return falling;
-    }
-
-    /** Sets the creature's falling status. */
-    public void setFalling(boolean falling) {
-        this.falling = falling;
     }
 
     /** Returns whether the creature is dead. */
