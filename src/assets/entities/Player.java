@@ -28,7 +28,7 @@ public class Player extends Creature {
     private static final float MAX_SPEED = 4.0f;
 
     private static final float dampingFactor = 0.96f;
-    private static final float liftspeed = 1.4f;
+    private static final float liftspeed = 0.7f;
 
     /** Keys pressed. */
     private boolean up, down, left, right;
@@ -122,6 +122,12 @@ public class Player extends Creature {
             if (!up)
                 yMove += SPEED_CHANGE;
         }
+        else {
+            if (down) {
+                goingUp = false;
+                yMove += SPEED_CHANGE;
+            }
+        }
 
         //
         // vertical movement
@@ -137,7 +143,7 @@ public class Player extends Creature {
         }
         else if (down) {
             canPoop = false;
-            if (goingUp) { // switched direction
+            if (goingUp || yMove < 0) { // switched direction
                 goingUp = false;
                 yMove = -yMove / 2;
             }
@@ -147,21 +153,23 @@ public class Player extends Creature {
                     yMove = MAX_SPEED;
             }
         }
-        else if (yMove < 0) { // slow down the vertical movement
+        else if (yMove < 0 && !goingUp) { // slow down the vertical movement
             yMove *= dampingFactor;
             if (yMove > -MIN_SPEED * 2) {
+                goingUp = false;
                 yMove = SPEED_CHANGE; // start falling
             }
         }
         else { // falling or still
-            goingUp = false;
             if (isFalling()) {
+                goingUp = false;
                 yMove += SPEED_CHANGE;
                 if (yMove > SLOW_SPEED) {
                     yMove = SLOW_SPEED;
                 }
             }
             else if (xMove == 0 && yMove >= 0) {
+                goingUp = false;
                 canPoop = false;
             }
         }
