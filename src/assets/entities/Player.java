@@ -132,7 +132,8 @@ public class Player extends Creature {
 
         // gravity
         if (!left && !right && !up && !down) {
-            yMove += SPEED_CHANGE;
+            if (yMove != 0 || xMove != 0) // no gravity when still
+                yMove += SPEED_CHANGE;
             if (yMove > SLOW_SPEED)
                 yMove = SLOW_SPEED;
         }
@@ -213,7 +214,7 @@ public class Player extends Creature {
     private void chooseAnimation() {
         if (xMove != 0 || yMove < 0)
             animation = animFlying;
-        else if (isFalling())
+        else if (yMove > 0)
             animation = animFalling;
         else
             animation = animStill;

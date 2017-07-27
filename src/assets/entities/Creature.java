@@ -25,9 +25,6 @@ public abstract class Creature extends Entity {
     /** Whether the creature faces right. */
     protected boolean facingRight;
 
-    /** Whether the creature is falling. */
-    private boolean falling;
-
     /** Animation representing the entity. */
     protected Animation animation;
 
@@ -41,7 +38,6 @@ public abstract class Creature extends Entity {
         damage = DEFAULT_DAMAGE;
         xMove = 0;
         yMove = 0;
-        falling = true;
         facingRight = true;
         spawnTime = now;
         damageCheckTime = 0;
@@ -51,8 +47,6 @@ public abstract class Creature extends Entity {
     protected float getMovementX() {
 
         if (xMove > 0) { // moving right
-
-            falling = true;
 
             // right coordinate of bounding box in tiles
             float tx = (getRightBound() + xMove) / Tile.TILESIZE;
@@ -72,8 +66,6 @@ public abstract class Creature extends Entity {
             return (int) tx * Tile.TILESIZE - getRightBound() - 1;
         }
         else if (xMove < 0) { // moving left
-
-            falling = true;
 
             // left coordinate of bounding box in tiles
             float tx = (getLeftBound() + xMove) / Tile.TILESIZE;
@@ -102,8 +94,6 @@ public abstract class Creature extends Entity {
 
         if (yMove < 0) { // moving up
 
-            falling = true;
-
             // top coordinate of bounding box in tiles
             float ty = (getTopBound() + yMove) / Tile.TILESIZE;
 
@@ -129,7 +119,6 @@ public abstract class Creature extends Entity {
             // check the bottom edge of the map and align to it
             if (ty > handler.getWorld().getHeight()) {
                 yMove = 0;
-                falling = false;
                 return (int) ty * Tile.TILESIZE - getBottomBound();
             }
 
@@ -141,7 +130,6 @@ public abstract class Creature extends Entity {
 
             // align the bounding box of the creature to the edge of the tile
             yMove = 0;
-            falling = false;
             return (int) ty * Tile.TILESIZE - getBottomBound() - 1;
         }
 
@@ -204,11 +192,6 @@ public abstract class Creature extends Entity {
     /** Returns the desired movement in the vertical direction. */
     public float getyMove() {
         return yMove;
-    }
-
-    /** Returns whether the creature is falling. */
-    public boolean isFalling() {
-        return falling;
     }
 
     /** Returns whether the creature is dead. */
