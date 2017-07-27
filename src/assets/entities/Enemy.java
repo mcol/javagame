@@ -36,9 +36,10 @@ public abstract class Enemy extends Creature {
 
     /** Constructor. */
     public Enemy(int x, int y, int width, int height,
-                 int health, int score, int colour) {
+                 int health, int damage, int score, int colour) {
         super(handler, x, y, width, height);
         this.health = health;
+        this.damage = damage;
         this.score = score;
         this.colour = new Color(colour);
         this.switchTime = 0;

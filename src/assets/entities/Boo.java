@@ -7,6 +7,9 @@ import utils.Utils;
 
 public class Boo extends Enemy {
 
+    /** Damage procured by the enemy. */
+    private static final int BOO_DAMAGE = 5;
+
     /** Score awarded when killed. */
     private static final int BOO_SCORE = 4;
 
@@ -15,7 +18,7 @@ public class Boo extends Enemy {
 
     /** Constructor. */
     public Boo(int x, int y, int health) {
-        super(x, y, 55, 55, health, BOO_SCORE, BAR_COLOUR);
+        super(x, y, 55, 55, health, BOO_DAMAGE, BOO_SCORE, BAR_COLOUR);
 
         // bounding box
         setBounds(3, 6, width - 6, height - 12);

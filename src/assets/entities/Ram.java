@@ -5,6 +5,9 @@ import gfx.Animation;
 
 public class Ram extends Enemy {
 
+    /** Damage procured by the enemy. */
+    private static final int RAM_DAMAGE = 5;
+
     /** Score awarded when killed. */
     private static final int RAM_SCORE = 6;
 
@@ -13,7 +16,7 @@ public class Ram extends Enemy {
 
     /** Constructor. */
     public Ram(int x, int y, int health) {
-        super(x, y, 90, 64, health, RAM_SCORE, BAR_COLOUR);
+        super(x, y, 90, 64, health, RAM_DAMAGE, RAM_SCORE, BAR_COLOUR);
 
         // bounding box
         setBounds(5, 8, width - 11, height - 10);

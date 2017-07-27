@@ -8,7 +8,6 @@ import gfx.Animation;
 public abstract class Creature extends Entity {
 
     public static final int DEFAULT_HEALTH = 40;
-    public static final int DEFAULT_DAMAGE = 5;
     public static final float DEFAULT_SPEED = 3.0f,
                               SLOW_SPEED = 2.0f,
                               FAST_SPEED = 6.0f;
@@ -35,7 +34,6 @@ public abstract class Creature extends Entity {
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         health = DEFAULT_HEALTH;
-        damage = DEFAULT_DAMAGE;
         facingRight = true;
         spawnTime = now;
         damageCheckTime = 0;
