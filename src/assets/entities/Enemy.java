@@ -28,6 +28,9 @@ public abstract class Enemy extends Creature {
     /** Speed of movement when in a frenzy state. */
     protected float frenzySpeed;
 
+    /** The damage produced when in a frenzy state. */
+    protected int frenzyDamage;
+
     /** Whether the enemy is affected by gravity. */
     protected boolean hasGravity;
 
@@ -45,6 +48,7 @@ public abstract class Enemy extends Creature {
         this.switchTime = 0;
         this.frenzyThreshold = 0;
         this.frenzySpeed = FAST_SPEED;
+        this.frenzyDamage = (int) (1.5 * damage);
         this.hasGravity = true;
         this.findSolidGround = true;
 
@@ -80,6 +84,7 @@ public abstract class Enemy extends Creature {
         // frenzy state
         if (health < frenzyThreshold) {
             animation = animFrenzy;
+            damage = frenzyDamage;
             xMove = Utils.clampAbsValue(xMove * 1.03f, frenzySpeed);
         }
 
