@@ -197,24 +197,8 @@ public class Player extends Creature {
         move();
         handler.getCamera().centreOnEntity(this);
 
-        // check if the player is on a damage tile
-        if (now - damageCheckTime > 8) {
-            int damage = handler.getWorld().getTile(getLeftBound(),
-                                                    getTopBound())
-                                           .getDamage() +
-                         handler.getWorld().getTile(getLeftBound(),
-                                                    getBottomBound())
-                                           .getDamage() +
-                         handler.getWorld().getTile(getRightBound(),
-                                                    getTopBound())
-                                           .getDamage() +
-                         handler.getWorld().getTile(getRightBound(),
-                                                    getBottomBound())
-                                           .getDamage();
-            setDamage((int) Math.ceil((double) damage / 2));
-            damageCheckTime = now;
-        }
-
+        if (handler.getWorld().hasDamageTiles())
+            checkDamageTiles();
         restorePoop();
 
         // decrease the remaining time
@@ -233,6 +217,22 @@ public class Player extends Creature {
             animation = animFalling;
         else
             animation = animStill;
+    }
+
+    /** Decrease the player's health if it touches a damage tile. */
+    private void checkDamageTiles() {
+        if (now - damageCheckTime < 8)
+            return;
+
+        float lb = getLeftBound(), rb = getRightBound();
+        float tb = getTopBound(), bb = getBottomBound();
+        int damage = handler.getWorld().getTile(lb, tb).getDamage()
+                   + handler.getWorld().getTile(lb, bb).getDamage()
+                   + handler.getWorld().getTile(rb, tb).getDamage()
+                   + handler.getWorld().getTile(rb, bb).getDamage();
+
+        setDamage((int) Math.ceil((double) damage / 2));
+        damageCheckTime = now;
     }
 
     /** The player is always visible by default. */

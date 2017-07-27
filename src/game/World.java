@@ -42,6 +42,9 @@ public class World {
     /** Time of the next item spawn in ticks. */
     private long nextItemSpawnTime;
 
+    /** Whether the world contains damage tiles. */
+    private boolean damageTiles;
+
     /** Constructor. */
     public World(Handler handler, Player player) {
         this.handler = handler;
@@ -146,8 +149,11 @@ public class World {
         String[] tokens = props.getProperty("tiles").split("\\s+");
         tiles = new Tile[width][height];
         for (int y = 0; y < height; y++)
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < width; x++) {
                 tiles[x][y] = Tile.getTile(tokens[x + y * width].charAt(0));
+                if (tiles[x][y].getDamage() > 0)
+                    damageTiles = true;
+            }
 
         // enemies and entities
         addEnemies(props);
@@ -233,6 +239,11 @@ public class World {
     /** Returns the message manager. */
     public static MessageManager getMessageManager() {
         return messageManager;
+    }
+
+    /** Returns whether the world contains damage tiles. */
+    public boolean hasDamageTiles() {
+        return damageTiles;
     }
 
     /** Returns whether all enemies have been killed. */
