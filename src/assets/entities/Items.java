@@ -5,9 +5,9 @@ import utils.Utils;
 public enum Items {
 
     // Row 1
-    APPLE       ( 2,  0,  0,  5),
+    APPLE       ( 2,  0,  1,  5),
     BALL        ( 4,  1,  3,  5),
-    BALLOON     ( 8,  4,  0, 15),
+    BALLOON     ( 8,  4,  2, 15),
     BONE        ( 7,  0,  2, 25),
     BOOK        (15, 10,  1,  5),
     BOX         ( 3,  0,  1, 30),
@@ -30,19 +30,19 @@ public enum Items {
 
     // Row 3
     HAT         ( 5,  0,  1,  5),
-    ICE         ( 2,  0,  0,  5),
+    ICE         ( 2,  0,  1,  5),
     JAM         ( 4,  5,  1, 10),
     KEY         ( 8,  1,  1,  5),
     LEAF        (35,  0,  1,  3),
     LEAK        (20,  5,  3,  3),
-    LETTER      (13,  1,  0,  5),
+    LETTER      (13,  1,  1,  5),
     MAGNET      (25, 10,  5,  5),
     EMPTY_3_2   ( 0,  0,  0,  0),
     EMPTY_3_1   ( 0,  0,  0,  0),
 
     // Row 4
     MINE        ( 3,  0,  3, 15),
-    MUSHROOM    ( 1,  0,  0, 25),
+    MUSHROOM    ( 1,  0,  1, 25),
     PILLS       ( 8,  5,  2,  5),
     POUCH       ( 5,  1,  1, 25),
     ROPE        (10,  0,  2,  5),
@@ -54,11 +54,11 @@ public enum Items {
 
     // Row 4
     STRAWBERRY  (11,  0,  2, 10),
-    SUITCASE    ( 5,  5,  0,  5),
-    SWEET       ( 9,  0,  0, 10),
+    SUITCASE    ( 5,  5,  3,  5),
+    SWEET       ( 9,  0,  2, 10),
     TICKET      (14,  0,  5,  5),
-    TOMATO      ( 7,  2,  0, 15),
-    VEST        ( 5,  0,  0, 15),
+    TOMATO      ( 7,  2,  1, 15),
+    VEST        ( 5,  0,  1, 15),
     WATCH       ( 1,  3,  3, 15),
     YARN        (17,  5,  5,  5),
     EMPTY_5_2   ( 0,  0,  0,  0),
