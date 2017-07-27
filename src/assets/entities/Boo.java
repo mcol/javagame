@@ -14,8 +14,8 @@ public class Boo extends Enemy {
     private static final int BAR_COLOUR = 0xfdfdfd;
 
     /** Constructor. */
-    public Boo(int x, int y, int spawnHealth) {
-        super(x, y, 55, 55, spawnHealth, BOO_SCORE, BAR_COLOUR);
+    public Boo(int x, int y, int health) {
+        super(x, y, 55, 55, health, BOO_SCORE, BAR_COLOUR);
 
         // bounding box
         setBounds(3, 6, width - 6, height - 12);

@@ -142,7 +142,7 @@ public abstract class Entity {
     /** Returns whether the entity should be removed. */
     public boolean shouldRemove() {
         return false;
-    };
+    }
 
     /** Sets the collision bounding box. */
     protected void setBounds(int x, int y, int width, int height) {

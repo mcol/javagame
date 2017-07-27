@@ -92,8 +92,8 @@ public class World {
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++)
                 getTile(x, y).render(g,
-                                     (int) (x * Tile.TILESIZE - camera_xOffset),
-                                     (int) (y * Tile.TILESIZE - camera_yOffset));
+                                     x * Tile.TILESIZE - (int) camera_xOffset,
+                                     y * Tile.TILESIZE - (int) camera_yOffset);
         }
 
         // draw all entities and messages
@@ -208,8 +208,8 @@ public class World {
 
         // add the item to the list of alive entities
         entityManager.addEntity(new CollectableItem(Items.randomItem(),
-                                                    x  * Tile.TILESIZE,
-                                                    y  * Tile.TILESIZE));
+                                                    x * Tile.TILESIZE,
+                                                    y * Tile.TILESIZE));
         nextItemSpawnTime = now + Utils.randomInteger(10, 20) * Game.FPS;
     }
 

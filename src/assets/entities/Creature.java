@@ -118,10 +118,10 @@ public abstract class Creature extends Entity {
             if (!collisionWithTile(getLeftBound() / Tile.TILESIZE, ty) &&
                 !collisionWithTile(getRightBound() / Tile.TILESIZE, ty)) {
                 return yMove;
-            } else {
-                // align the bounding box of the creature to the edge of the tile
-                return (int) ty * Tile.TILESIZE + Tile.TILESIZE - y - bounds.y;
             }
+
+            // align the bounding box of the creature to the edge of the tile
+            return (int) ty * Tile.TILESIZE + Tile.TILESIZE - getTopBound();
         }
         else if (yMove > 0) { // moving down
 
@@ -140,12 +140,11 @@ public abstract class Creature extends Entity {
                 !collisionWithTile(getRightBound() / Tile.TILESIZE, ty)) {
                 return yMove;
             }
-            else {
-                // align the bounding box of the creature to the edge of the tile
-                yMove = 0;
-                falling = false;
-                return (int) ty * Tile.TILESIZE - getBottomBound() - 1;
-            }
+
+            // align the bounding box of the creature to the edge of the tile
+            yMove = 0;
+            falling = false;
+            return (int) ty * Tile.TILESIZE - getBottomBound() - 1;
         }
 
         return 0;

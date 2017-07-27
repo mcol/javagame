@@ -34,7 +34,6 @@ public class Player extends Creature {
     private boolean up, down, left, right;
 
     private boolean goingUp = false;
-    private boolean canPoop = false;
 
     // Animations
     private final Animation animFlying, animFalling, animStill;
@@ -50,6 +49,9 @@ public class Player extends Creature {
 
     /** Current available poop. */
     private int poop;
+
+    /** Whether the player is allowed to poop. */
+    private boolean canPoop = false;
 
     /** Whether the player has fired any poop. */
     private boolean hasPooped = false;
