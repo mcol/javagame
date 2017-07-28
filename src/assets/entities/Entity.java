@@ -31,6 +31,8 @@ public abstract class Entity {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.now = Game.getTicksTime();
+        this.spawnTime = now;
 
         // the default bounding box corresponds to the size of the entity
         bounds = new Rectangle(0, 0, width, height);

@@ -35,7 +35,6 @@ public abstract class Creature extends Entity {
         super(handler, x, y, width, height);
         health = DEFAULT_HEALTH;
         facingRight = true;
-        spawnTime = now;
         damageCheckTime = 0;
     }
 
