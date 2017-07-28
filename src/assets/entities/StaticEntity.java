@@ -16,9 +16,6 @@ public abstract class StaticEntity extends Entity {
     }
 
     @Override
-    public void tick() { /* nothing to do */ }
-
-    @Override
     public void render(Graphics g) {
 
         // avoid unnecessary rendering

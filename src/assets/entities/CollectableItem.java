@@ -23,7 +23,7 @@ public class CollectableItem extends StaticEntity {
 
     @Override
     public void tick() {
-        now = Game.getTicksTime();
+        super.tick();
         if (now - spawnTime > DISPLAY_INTERVAL)
             collected = true;
     }
