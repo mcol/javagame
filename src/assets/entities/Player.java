@@ -142,7 +142,7 @@ public class Player extends Creature {
         }
 
         // pooping
-        canPoop = (xMove == 0 && yMove > SLOW_SPEED) ? false : true;
+        canPoop = animation == animStill || yMove > SLOW_SPEED ? false : true;
     }
 
     private void move() {
@@ -153,6 +153,7 @@ public class Player extends Creature {
         else {
             // stop falling when colliding vertically with an entity
             animation = animStill;
+            canPoop = false;
         }
         x = (int) x;
         y = (int) y;
