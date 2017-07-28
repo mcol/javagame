@@ -16,11 +16,14 @@ public abstract class Enemy extends Creature {
     /** Health bar colour. */
     protected final Color colour;
 
-    /** Time of the last switch of direction. */
-    protected long switchTime;
-
     /** Animation when in a frenzy state. */
     protected Animation animFrenzy;
+
+    /** Whether the enemy can switch direction when there is a collision. */
+    protected boolean switchOnCollision;
+
+    /** Time of the last switch of direction. */
+    private long switchTime;
 
     /** Threshold health below which the enemy goes into a frenzy state. */
     protected int frenzyThreshold;
@@ -45,6 +48,7 @@ public abstract class Enemy extends Creature {
         this.damage = damage;
         this.score = score;
         this.colour = new Color(colour);
+        this.switchOnCollision = true;
         this.switchTime = 0;
         this.frenzyThreshold = 0;
         this.frenzySpeed = FAST_SPEED;
@@ -92,7 +96,7 @@ public abstract class Enemy extends Creature {
         float dx = getMovementX();
 
         // switch direction if no movement is possible or there is a collision with another entity
-        if ((dx == 0 || collisionWithEntity(xMove, 0f)) &&
+        if (switchOnCollision && (dx == 0 || collisionWithEntity(xMove, 0f)) &&
                 now - switchTime > 5) {
             facingRight = !facingRight;
             xMove = -xMove;
