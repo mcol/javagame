@@ -1,6 +1,6 @@
 width: 13
 height: 8
-time: 30
+time: 35
 background: /textures/gamebg.png
 tiles: \
 - - - - - - - - - - - - - \

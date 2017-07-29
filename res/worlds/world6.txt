@@ -1,6 +1,6 @@
 width: 18
 height: 11
-time: 40
+time: 50
 background: /textures/nightbg.png
 tiles: \
 - - - - - - - - - - - - - - - - - - \
