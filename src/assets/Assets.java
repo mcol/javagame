@@ -33,9 +33,14 @@ public class Assets {
 
     // enemies
     public static BufferedImage[] boo_moving, boo_dying;
+    public static BufferedImage[] launcher_still, launcher_firing, launcher_dying;
+    public static BufferedImage[] missile_moving, missile_explosion;
     public static BufferedImage[] ram_moving, ram_frenzy, ram_dying;
+    public static BufferedImage[] tank_moving, tank_frenzy, tank_dying;
 
     public static void init() {
+
+        int w, h;
 
         //
         // tiles
@@ -120,6 +125,35 @@ public class Assets {
             boo_dying[i] = boo.crop(boowidth * i, booheight, boowidth, booheight);
 
         //
+        // launcher animations
+        //
+        SpriteSheet launcher = new SpriteSheet("/textures/launcher.png");
+        w = 86;
+        h = 62;
+        launcher_still = new BufferedImage[2];
+        for (int i = 0; i < launcher_still.length; i++)
+            launcher_still[i] = launcher.crop(w * i, 0, w, h);
+        launcher_firing = new BufferedImage[7];
+        for (int i = 0; i < launcher_firing.length; i++)
+            launcher_firing[i] = launcher.crop(w * i, h, w, h);
+        launcher_dying = new BufferedImage[7];
+        for (int i = 0; i < launcher_dying.length; i++)
+            launcher_dying[i] = launcher.crop(w * i, h * 2, w, h);
+
+        //
+        // missile animations
+        //
+        SpriteSheet missile = new SpriteSheet("/textures/missile.png");
+        w = 30;
+        h = 16;
+        missile_moving = new BufferedImage[3];
+        for (int i = 0; i < missile_moving.length; i++)
+            missile_moving[i] = missile.crop(w * i, 0, w, h);
+        missile_explosion = new BufferedImage[3];
+        for (int i = 0; i < missile_explosion.length; i++)
+            missile_explosion[i] = missile.crop(w * i, h, w, h);
+
+        //
         // ram animations
         //
         SpriteSheet ram = new SpriteSheet("/textures/ram.png");
@@ -137,5 +171,24 @@ public class Assets {
         for (int i = 0; i < ram_dying.length; i++)
             ram_dying[i] = ram.crop(105 * (i % 4), ramheight * (i / 4 + 2),
                                     ramwidth, ramheight);
+
+        //
+        // tank animations
+        //
+        SpriteSheet tank = new SpriteSheet("/textures/tank.png");
+        w = 75;
+        h = 64;
+
+        tank_moving = new BufferedImage[4];
+        for (int i = 0; i < tank_moving.length; i++)
+            tank_moving[i] = tank.crop(w * i, 0, w, h);
+
+        tank_frenzy = new BufferedImage[4];
+        for (int i = 0; i < tank_frenzy.length; i++)
+            tank_frenzy[i] = tank.crop(w * i, h, w, h);
+
+        tank_dying = new BufferedImage[8];
+        for (int i = 0; i < tank_dying.length; i++)
+            tank_dying[i] = tank.crop(w * (i % 4), h * (i / 4 + 2), w, h);
     }
 }

@@ -7,8 +7,10 @@ import assets.entities.Boo;
 import assets.entities.CollectableItem;
 import assets.entities.EntityManager;
 import assets.entities.Items;
+import assets.entities.Launcher;
 import assets.entities.Player;
 import assets.entities.Ram;
+import assets.entities.Tank;
 import assets.entities.Tree;
 import assets.tiles.Tile;
 import gfx.Background;
@@ -173,8 +175,14 @@ public class World {
                 case "boo":
                     entityManager.addEntity(new Boo(x, y, health));
                     break;
+                case "launcher":
+                    entityManager.addEntity(new Launcher(x, y, health));
+                    break;
                 case "ram":
                     entityManager.addEntity(new Ram(x, y, health));
+                    break;
+                case "tank":
+                    entityManager.addEntity(new Tank(x, y, health));
                     break;
             }
         }
