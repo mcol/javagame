@@ -77,7 +77,8 @@ public class HUD {
             return;
 
         int healthTarget = player.getHealth();
-        health = health < healthTarget ? health + 1 : healthTarget;
+        health = health < healthTarget ? health + 1
+               : health > healthTarget ? health - 1 : healthTarget;
         int poopTarget = player.getPoop();
         poop = poop < poopTarget ? poop + 1 : poopTarget;
     }
