@@ -72,11 +72,10 @@ public class Player extends Creature {
         super(handler, x, y, 75, 75);
 
         // bounding box
-        int hPadding = width / 4 + 10;
-        setBounds(hPadding, 26, width - hPadding * 2, height - 40);
+        setBounds(20, 28, width - 40, height - 42);
 
         // animations
-        animFlying = new Animation(Assets.player_flying, 100);
+        animFlying = new Animation(Assets.player_moving, 100);
         animStill = new Animation(Assets.player_still, 500);
         animFalling = new Animation(Assets.player_falling, 150);
 

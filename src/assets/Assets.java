@@ -9,7 +9,6 @@ public class Assets {
 
     private static final int tilesize = 64;
     private static final int itemsize = 32;
-    private static final int playerwidth = 185, playerheight = 175;
 
     // tiles
     public static BufferedImage tiles[] = new BufferedImage[8];
@@ -21,9 +20,7 @@ public class Assets {
     public static BufferedImage items[] = new BufferedImage[Items.values().length];
 
     // player
-    public static BufferedImage[] player_flying;
-    public static BufferedImage[] player_still;
-    public static BufferedImage[] player_falling;
+    public static BufferedImage[] player_moving, player_still, player_falling;
 
     // poop
     public static BufferedImage[] poop_moving, poop_impact, poop_explosion;
@@ -67,20 +64,22 @@ public class Assets {
         // player animations
         //
         SpriteSheet player = new SpriteSheet("/textures/player.png");
+        w = 185;
+        h = 175;
 
-        player_flying = new BufferedImage[5];
-        for (int i = 0; i < player_flying.length; i++)
-            player_flying[i] = player.crop(playerwidth * i, 0, playerwidth, playerheight);
+        player_moving = new BufferedImage[5];
+        for (int i = 0; i < player_moving.length; i++)
+            player_moving[i] = player.crop(w * i, 0, w, h);
 
         player_still = new BufferedImage[6];
         for (int i = 0; i < 2; i++)
-            player_still[i] = player.crop(playerwidth * i, playerheight, playerwidth, playerheight);
+            player_still[i] = player.crop(w * i, h, w, h);
         for (int i = 2; i < player_still.length; i++)
-            player_still[i] = player.crop(playerwidth * 0, playerheight, playerwidth, playerheight);
+            player_still[i] = player.crop(w * 0, h, w, h);
 
         player_falling = new BufferedImage[2];
         for (int i = 0; i < player_falling.length; i++)
-            player_falling[i] = player.crop(playerwidth * (2 + i), playerheight, playerwidth, playerheight);
+            player_falling[i] = player.crop(w * (2 + i), h, w, h);
 
         //
         // boo animations
