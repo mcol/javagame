@@ -29,15 +29,20 @@ public class CollectableItem extends StaticEntity {
     }
 
     /** Collects the item. */
-    public void collectItem(Player player) {
+    public void collectItem() {
         collected = true;
+
+        // avoid further collisions
+        setBounds(0, 0, 0, 0);
+    }
+
+    /** Collects the item and increases the player's state. */
+    public void collectItem(Player player) {
+        collectItem();
         player.increaseScore(item.getValue());
         player.increaseHealth(item.getHealth());
         player.increasePoop(item.getPoop());
         handler.addMessage("" + item.getValue(), x, y);
-
-        // avoid further collisions
-        setBounds(0, 0, 0, 0);
     }
 
     /** Returns whether the item should be removed. */
