@@ -166,9 +166,8 @@ public class Player extends Creature {
 
         // don't allow continuous pooping
         if (now - poopFireTime > POOP_FIRE_INTERVAL) {
-            Poop p = new Poop(facingRight ? x + width / 6
-                                          : x + width - width / 2,
-                              y + height / 3 * 2 + 5);
+            float xAdj = animation == animFalling ? 3 : facingRight ? 6 : 2;
+            Poop p = new Poop(x + width / xAdj, y + height / 3 * 2 + 5);
             poop--;
             handler.getEntityManager().addEntity(p);
             poopFireTime = now;
