@@ -16,9 +16,6 @@ public class Launcher extends Enemy {
     /** Health bar colour. */
     private static final int BAR_COLOUR = 0xc8c8b8;
 
-    /** Interval between each launcher fire in ticks. */
-    private static final int LAUNCHER_FIRE_INTERVAL = 3 * Game.FPS;
-
     /** Movement of the launcher. */
     private static final float LAUNCHER_SPEED = 0.00000001f;
 
@@ -28,8 +25,11 @@ public class Launcher extends Enemy {
     /** Original horizontal coordinate. */
     private final int origX;
 
-    /** Time of the last launcher fire in ticks. */
-    private long fireTime;
+    /** Time of the next launcher fire in ticks. */
+    private long nextFireTime;
+
+    /** Time of the next possible switch of direction. */
+    private long nextSwitchTime;
 
     /** Whether the launcher can switch direction. */
     private boolean canSwitch;
@@ -43,8 +43,9 @@ public class Launcher extends Enemy {
         this.switchOnCollision = false;
         this.hasGravity = false;
         this.origX = x;
-        this.fireTime = now;
         this.canSwitch = false;
+        this.nextFireTime = now + Utils.randomInteger(1, 4) * Game.FPS;
+        this.nextSwitchTime = now + (nextFireTime - now) * 2 / 3;
 
         // bounding box
         setBoundingBox();
@@ -74,11 +75,12 @@ public class Launcher extends Enemy {
 
     /** Fires a missile from the launcher. */
     private void fireLauncher() {
-        if (now - fireTime > LAUNCHER_FIRE_INTERVAL) {
+        if (now > nextFireTime) {
             animation.assign(animFiring);
             Missile m = new Missile(x, y, facingRight);
             handler.getEntityManager().addEntity(m);
-            fireTime = now;
+            nextFireTime = now + Utils.randomInteger(1, 4) * Game.FPS;
+            nextSwitchTime = now + (nextFireTime - now) * 2 / 3;
             canSwitch = true;
         }
         else if (animation.hasPlayedOnce()) {
@@ -88,7 +90,7 @@ public class Launcher extends Enemy {
 
     /** Switches the direction of the launcher at random. */
     private void switchDirection() {
-        if (canSwitch && now - fireTime > LAUNCHER_FIRE_INTERVAL / 2) {
+        if (canSwitch && now > nextSwitchTime) {
             facingRight = Utils.randomBoolean();
             setBoundingBox();
             canSwitch = false;
