@@ -59,6 +59,10 @@ public abstract class Entity {
                     if (this instanceof Player)
                         ((CollectableItem) e).collectItem((Player) this);
 
+                    // destroy the item
+                    else if (this instanceof Missile || this instanceof Poop)
+                        ((CollectableItem) e).collectItem();
+
                     // no collision between enemies and collectable items
                     else if (this instanceof Enemy)
                         return false;
