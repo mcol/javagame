@@ -14,7 +14,7 @@ public class Poop extends Creature {
         super(handler, x, y, 25, 25);
 
         // animation
-        animation = new Animation(Assets.poop_falling, 100);
+        animation = new Animation(Assets.poop_moving, 100);
 
         // bounding box
         setBounds(5, 10, 15, 14);

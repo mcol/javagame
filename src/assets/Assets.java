@@ -10,7 +10,6 @@ public class Assets {
     private static final int tilesize = 64;
     private static final int itemsize = 32;
     private static final int playerwidth = 185, playerheight = 175;
-    private static final int poopwidth = 25, poopheight = 25;
 
     // tiles
     public static BufferedImage tiles[] = new BufferedImage[8];
@@ -27,9 +26,7 @@ public class Assets {
     public static BufferedImage[] player_falling;
 
     // poop
-    public static BufferedImage[] poop_falling;
-    public static BufferedImage[] poop_impact;
-    public static BufferedImage[] poop_explosion;
+    public static BufferedImage[] poop_moving, poop_impact, poop_explosion;
 
     // enemies
     public static BufferedImage[] boo_moving, boo_dying;
@@ -86,32 +83,6 @@ public class Assets {
             player_falling[i] = player.crop(playerwidth * (2 + i), playerheight, playerwidth, playerheight);
 
         //
-        // poop animations
-        //
-        SpriteSheet poop = new SpriteSheet("/textures/player.png");
-
-        poop_falling = new BufferedImage[12];
-        for (int i = 0; i < 2; i++)
-            poop_falling[i] = poop.crop(playerwidth * 4 + poopwidth * 0, playerheight,
-                                        poopwidth, poopheight);
-        for (int i = 2; i < 5; i++)
-            poop_falling[i] = poop.crop(playerwidth * 4 + poopwidth * (i - 2), playerheight,
-                                        poopwidth, poopheight);
-        for (int i = 5; i < poop_falling.length; i++)
-            poop_falling[i] = poop.crop(playerwidth * 4 + poopwidth * 0, playerheight,
-                                        poopwidth, poopheight);
-
-        poop_impact = new BufferedImage[4];
-        for (int i = 0; i < poop_impact.length; i++)
-            poop_impact[i] = poop.crop(playerwidth * 4 + poopwidth * (3 + i), playerheight,
-                                       poopwidth, poopheight);
-
-        poop_explosion = new BufferedImage[4];
-        for (int i = 0; i < poop_explosion.length; i++)
-            poop_explosion[i] = poop.crop(playerwidth * 4 + poopwidth * (3 + i), playerheight + poopheight,
-                                          poopwidth, poopheight);
-
-        //
         // boo animations
         //
         SpriteSheet boo = new SpriteSheet("/textures/boo.png");
@@ -152,6 +123,27 @@ public class Assets {
         missile_explosion = new BufferedImage[3];
         for (int i = 0; i < missile_explosion.length; i++)
             missile_explosion[i] = missile.crop(w * i, h, w, h);
+
+        //
+        // poop animations
+        //
+        SpriteSheet poop = new SpriteSheet("/textures/poop.png");
+        w = 25;
+        h = 25;
+
+        poop_moving = new BufferedImage[12];
+        for (int i = 0; i < 2; i++)
+            poop_moving[i] = poop.crop(w * i, 0, w, h);
+        for (int i = 2; i < poop_moving.length; i++)
+            poop_moving[i] = poop.crop(w * 2, 0, w, h);
+
+        poop_impact = new BufferedImage[4];
+        for (int i = 0; i < poop_impact.length; i++)
+            poop_impact[i] = poop.crop(w * i, h, w, h);
+
+        poop_explosion = new BufferedImage[4];
+        for (int i = 0; i < poop_explosion.length; i++)
+            poop_explosion[i] = poop.crop(w * i, h * 2, w, h);
 
         //
         // ram animations
