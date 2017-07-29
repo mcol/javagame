@@ -118,11 +118,11 @@ public abstract class Enemy extends Creature {
         super.render(g);
 
         // health status
-        final int xAdj = facingRight ? width / 2 : width / 8;
+        final int xAdj = bounds.x + bounds.width / 2 + (facingRight ? 0 : -10);
         final int health = getHealth();
         final double hbar = (double) health / DEFAULT_HEALTH * 35;
         g.setColor(colour);
-        g.fillRect((int) getGameX() + xAdj, (int) getGameY() - 10,
+        g.fillRect((int) getGameX() + xAdj, (int) getGameY() + bounds.y - 20,
                    health > 0 ? (int) hbar + 5 : 0, 10);
     }
 
