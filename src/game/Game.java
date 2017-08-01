@@ -16,7 +16,7 @@ public class Game implements Runnable {
     public static final int FPS = 60;
 
     /** The name of the game. */
-    private final String title = "Poop game";
+    private static final String title = "Poop game";
 
     private boolean running = false;
     private Thread thread;
@@ -50,7 +50,7 @@ public class Game implements Runnable {
         handler = new Handler();
         camera = new Camera(handler);
 
-        State.setState(new MenuState(handler, title));
+        setMenuState(-1);
     }
 
     private void tick() {
@@ -146,8 +146,8 @@ public class Game implements Runnable {
         State.setState(new HelpState(handler, State.getState()));
     }
 
-    public static void setMenuState() {
-        State.setState(new MenuState(handler,
-                                     "Score: " + handler.getPlayer().getScore()));
+    public static void setMenuState(int score) {
+        State.setState(new MenuState(handler, score == -1 ? title
+                                                          : "Score: " + score));
     }
 }

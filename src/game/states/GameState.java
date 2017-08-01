@@ -34,7 +34,7 @@ public class GameState extends State {
 
     /** Quits the current game. */
     private void quit() {
-        Game.setMenuState();
+        Game.setMenuState(handler.getPlayer().getScore());
     }
 
     @Override
