@@ -18,12 +18,6 @@ public class Game implements Runnable {
     /** The name of the game. */
     private static final String title = "Poop game";
 
-    private boolean running = false;
-    private Thread thread;
-
-    /** Current time in ticks. */
-    private static long now = 0;
-
     /** The game display. */
     private static Display display;
 
@@ -32,6 +26,15 @@ public class Game implements Runnable {
 
     /** The camera. */
     private static Camera camera;
+
+    /** The main thread. */
+    private Thread thread;
+
+    /** Whether the game loop is running. */
+    private boolean running = false;
+
+    /** Current time in ticks. */
+    private static long now = 0;
 
     /** Main function. */
     public static void main(String[] args) {
