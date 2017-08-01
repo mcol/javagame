@@ -21,10 +21,11 @@ public class Game implements Runnable {
     private boolean running = false;
     private Thread thread;
 
-    private final Display display;
-
     /** Current time in ticks. */
     private static long now = 0;
+
+    /** The game display. */
+    private static Display display;
 
     // Camera
     private static Camera camera;
@@ -117,7 +118,8 @@ public class Game implements Runnable {
 
     // getters and setters
 
-    public Display getDisplay() {
+    /** Returns the game display. */
+    public static Display getDisplay() {
         return display;
     }
 

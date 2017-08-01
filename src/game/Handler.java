@@ -23,7 +23,7 @@ public class Handler {
     }
 
     public Display getDisplay() {
-        return game.getDisplay();
+        return Game.getDisplay();
     }
 
     public World getWorld() {
