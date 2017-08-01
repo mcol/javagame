@@ -10,7 +10,7 @@ import gfx.Camera;
 public class Game implements Runnable {
 
     /** Dimensions of the game window in pixels. */
-    public static final int WIDTH = 800, HEIGHT = WIDTH / 16 * 9;
+    public static final int WIDTH = 1100, HEIGHT = WIDTH / 16 * 9;
 
     /** Number of frames to be rendered per second. */
     public static final int FPS = 60;

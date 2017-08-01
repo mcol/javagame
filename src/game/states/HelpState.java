@@ -45,14 +45,14 @@ public class HelpState extends State {
         // keys
         Font.setColour(Color.WHITE);
         for (int i = 0; i < keys.length; i++)
-            Font.renderMessage(g, keys[i], 100, 100 + 56 * (1 + i),
-                               Font.Size.MEDIUM, true);
+            Font.renderMessage(g, keys[i], 100, 80 + 85 * (1 + i),
+                               Font.Size.LARGE, true);
 
         // help message
         Font.setColour(Color.DARK_GRAY);
         for (int i = 0; i < help.length; i++)
-            Font.renderMessage(g, help[i], 450, 100 + 56 * (1 + i),
-                               Font.Size.MEDIUM, true);
+            Font.renderMessage(g, help[i], 550, 80 + 85 * (1 + i),
+                               Font.Size.LARGE, true);
     }
 
     @Override

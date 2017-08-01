@@ -42,7 +42,7 @@ public class MenuState extends State {
         // options
         for (int i = 0; i < options.length; i++) {
             Font.setColour((i == currentChoice) ? Color.WHITE : Color.DARK_GRAY);
-            Font.renderMessage(g, options[i], 100, 90 + 90 * (1 + i),
+            Font.renderMessage(g, options[i], 100, 90 + 100 * (1 + i),
                                Font.Size.LARGE, true);
         }
     }
