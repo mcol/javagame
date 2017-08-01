@@ -27,11 +27,11 @@ public class Game implements Runnable {
     /** The game display. */
     private static Display display;
 
-    // Camera
-    private static Camera camera;
-
-    // Handler
+    /** The object handler. */
     private static Handler handler;
+
+    /** The camera. */
+    private static Camera camera;
 
     /** Main function. */
     public static void main(String[] args) {
@@ -47,7 +47,7 @@ public class Game implements Runnable {
     private void init() {
         Assets.init();
 
-        handler = new Handler(this);
+        handler = new Handler();
         camera = new Camera(handler);
 
         State.setState(new MenuState(handler, title));
@@ -123,7 +123,8 @@ public class Game implements Runnable {
         return display;
     }
 
-    public Camera getCamera() {
+    /** Returns the camera. */
+    public static Camera getCamera() {
         return camera;
     }
 

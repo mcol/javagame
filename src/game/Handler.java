@@ -8,22 +8,17 @@ import gfx.Camera;
 
 public class Handler {
 
-    private final Game game;
     private World world;
-
-    /** Constructor. */
-    public Handler(Game game) {
-        this.game = game;
-    }
 
     // getters and setters
 
-    public Camera getCamera() {
-        return game.getCamera();
-    }
-
     public Display getDisplay() {
         return Game.getDisplay();
+    }
+
+    /** Returns the camera. */
+    public Camera getCamera() {
+        return Game.getCamera();
     }
 
     public World getWorld() {
