@@ -142,11 +142,11 @@ public class Game implements Runnable {
     }
 
     public static void setGameState() {
-        State.setState(new GameState(handler));
+        State.setState(new GameState());
     }
 
     public static void setHelpState() {
-        State.setState(new HelpState(handler, State.getState()));
+        State.setState(new HelpState(State.getState()));
     }
 
     public static void setMenuState(int score) {

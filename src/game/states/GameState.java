@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 import assets.entities.Player;
 import game.Game;
 import game.HUD;
-import game.Handler;
 import game.World;
 import game.input.KeyManager;
 
@@ -21,7 +20,7 @@ public class GameState extends State {
     private boolean pause;
 
     /** Constructor. */
-    public GameState(Handler handler) {
+    public GameState() {
         super(handler);
         world = new World(handler, new Player(handler, 0, 0));
         hud = new HUD(handler.getPlayer(), Game.WIDTH);

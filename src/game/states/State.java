@@ -12,14 +12,15 @@ public abstract class State {
     /** The game display. */
     protected static Display display;
 
-    protected final Handler handler;
+    /** The object handler. */
+    protected static Handler handler;
 
     /** Background image. */
     protected Background bg;
 
     /** Constructor. */
     public State(Handler handler) {
-        this.handler = handler;
+        State.handler = handler;
         display = handler.getDisplay();
     }
 

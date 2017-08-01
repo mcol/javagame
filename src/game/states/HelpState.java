@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import game.Game;
-import game.Handler;
 import game.input.KeyManager;
 import gfx.Background;
 import gfx.Font;
@@ -26,7 +25,7 @@ public class HelpState extends State {
     final State previousState;
 
     /** Constructor. */
-    public HelpState(Handler handler, State previousState) {
+    public HelpState(State previousState) {
         super(handler);
         this.previousState = previousState;
         bg = new Background("/textures/menubg.png", -0.1f,
