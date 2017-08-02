@@ -36,10 +36,22 @@ public class Poop extends Creature {
         float dy = getMovementY();
         if (dy < -Tile.TILESIZE / 2) // don't let it reach the tile above
             dy = 1;
-        if (dy == 0 || collisionWithEntity(0f, yMove) || collisionWithPlayer())
+        if (dy == 0 || collisionWithStaticEntity() || collisionWithPlayer())
            setImpact();
         y += dy;
         checkPoopDamage();
+    }
+
+    /** Returns whether the poop collides with a static entity. */
+    protected boolean collisionWithStaticEntity() {
+        for (Entity e : handler.getEntities()) {
+            if (!(e instanceof StaticEntity))
+                continue;
+            if (e.getCollisionRectangle(0f, 0f)
+                 .intersects(getCollisionRectangle(0f, yMove)))
+                return true;
+        }
+        return false;
     }
 
     /** Returns whether the player collides with the poop. */
