@@ -58,14 +58,11 @@ public class Player extends Creature {
     /** Whether the player is allowed to poop. */
     private boolean canPoop = false;
 
-    /** Whether the player has fired any poop. */
-    private boolean hasPooped = false;
-
     /** Time of the last poop fire in ticks. */
     private long poopFireTime = 0;
 
     /** Time of the last poop increase in ticks. */
-    private long poopRestoreTime = 0;
+    private long poopRestoreTime;
 
     /** Constructor. */
     public Player(Handler handler, int x, int y) {
@@ -87,6 +84,7 @@ public class Player extends Creature {
         time = 0;
         health = MAX_HEALTH;
         poop = MAX_POOP;
+        poopRestoreTime = now;
 
         // start by falling
         yMove = MIN_SPEED;
@@ -178,11 +176,6 @@ public class Player extends Creature {
                 if (yMove < -MAX_SPEED)
                     yMove = -MAX_SPEED;
             }
-        }
-
-        if (!hasPooped) {
-            poopRestoreTime = now;
-            hasPooped = true;
         }
     }
 
