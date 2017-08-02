@@ -32,7 +32,7 @@ public class HighScoreState extends State {
         Font.setColour(Color.WHITE);
         for (int i = 0; i < scores.length; i++)
             Font.renderMessage(g, scores[i],
-                               100 + 450 * (i / 5), 90 + 85 * (i % 5 + 1),
+                               100 + 500 * (i / 5), 90 + 85 * (i % 5 + 1),
                                Font.Size.MEDIUM, true);
     }
 

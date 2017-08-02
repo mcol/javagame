@@ -79,7 +79,7 @@ public class HighScoreManager {
         String[] highScores = new String[nscores];
         for (int i = 0; i < nscores; i++) {
             Score score = scores.get(i);
-            highScores[i] = String.format("%-5s %4d",
+            highScores[i] = String.format("%-" + Score.MAX_NAME_LENGTH + "s %4d",
                                           score.getName(), score.getScore());
         }
         return highScores;

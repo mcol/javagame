@@ -7,7 +7,7 @@ public class Score implements Serializable, Comparable<Score> {
     private static final long serialVersionUID = 1L;
 
     /** Maximum name length returned by the class. */
-    private static final int MAX_NAME_LENGTH = 5;
+    public static final int MAX_NAME_LENGTH = 6;
 
     /** Name of the player. */
     private final String name;
