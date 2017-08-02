@@ -12,7 +12,7 @@ import gfx.Font;
 public class MenuState extends State {
 
     /** Menu choices. */
-    private static final String[] options = { "Start", "Help", "Quit" };
+    private static final String[] options = { "Start", "High scores", "Help", "Quit" };
 
     /** Menu title. */
     private final String title;
@@ -81,8 +81,10 @@ public class MenuState extends State {
         if (currentChoice == 0)
             Game.setGameState();
         else if (currentChoice == 1)
-            Game.setHelpState();
+            Game.setHighScoreState();
         else if (currentChoice == 2)
+            Game.setHelpState();
+        else if (currentChoice == 3)
             System.exit(0);
     }
 }

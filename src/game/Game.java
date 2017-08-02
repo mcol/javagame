@@ -1,8 +1,10 @@
 package game;
 
 import assets.Assets;
+import game.scores.HighScoreManager;
 import game.states.GameState;
 import game.states.HelpState;
+import game.states.HighScoreState;
 import game.states.MenuState;
 import game.states.State;
 import gfx.Camera;
@@ -26,6 +28,9 @@ public class Game implements Runnable {
 
     /** The camera. */
     private static Camera camera;
+
+    /** List of high scores. */
+    private static HighScoreManager highScoreManager;
 
     /** The main thread. */
     private Thread thread;
@@ -52,6 +57,7 @@ public class Game implements Runnable {
 
         handler = new Handler();
         camera = new Camera(handler);
+        highScoreManager = new HighScoreManager();
 
         setMenuState(-1);
     }
@@ -119,6 +125,11 @@ public class Game implements Runnable {
         }
     }
 
+    /** Adds a score to the highscore list. */
+    public static boolean addHighScore() {
+        return highScoreManager.addScore(handler.getPlayer().getScore());
+    }
+
     // getters and setters
 
     /** Returns the game display. */
@@ -141,12 +152,21 @@ public class Game implements Runnable {
         return title;
     }
 
+    /** Returns the list of high scores. */
+    public static String[] getHighScores() {
+        return highScoreManager.getHighScores();
+    }
+
     public static void setGameState() {
         State.setState(new GameState());
     }
 
     public static void setHelpState() {
         State.setState(new HelpState(State.getState()));
+    }
+
+    public static void setHighScoreState() {
+        State.setState(new HighScoreState());
     }
 
     public static void setMenuState(int score) {
