@@ -8,7 +8,7 @@ public class Font {
 
     /** Characters stored in the font sheet. */
     private static final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                                      + "0123456789.,:;'\"!?$%()-=+/ ";
+                                      + "0123456789.,:;'!?()-=+/_~<|";
 
     /** Number of characters in each row. */
     private static final int rowlength = chars.length() / 2;
