@@ -296,7 +296,7 @@ public class Player extends Creature {
                                  (e) -> right = true, (e) -> right = false);
 
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_SPACE,
-                                 (e) -> firePoop(), null);
+                                 (e) -> firePoop());
     }
 
     // getters and setters

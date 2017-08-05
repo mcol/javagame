@@ -64,11 +64,11 @@ public class GameState extends State {
     public void setKeyBindings() {
         World.getEntityManager().getPlayer().addKeyBindings();
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_H,
-                                 (e) -> help(), null);
+                                 (e) -> help());
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_P,
-                                 (e) -> pause = !pause, null);
+                                 (e) -> pause = !pause);
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
-                                 (e) -> quit(), null);
+                                 (e) -> quit());
         KeyManager.removeKeyBindings(display, new int[] { KeyEvent.VK_ENTER });
     }
 }

@@ -45,6 +45,12 @@ public class KeyManager {
         }
     }
 
+    /** Associates an action to a keystroke press. */
+    public static void addKeyBinding(JPanel panel, int keyStroke,
+                                     ActionListener actionPressed) {
+        addKeyBinding(panel, keyStroke, actionPressed, null);
+    }
+
     /** Disables the actions associated to the given keystrokes. */
     public static void removeKeyBindings(JPanel panel, int[] keyStrokes) {
         InputMap im = panel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);

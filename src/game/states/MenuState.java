@@ -50,22 +50,22 @@ public class MenuState extends State {
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_UP,
-                                 (e) -> chooseOption(true), null);
+                                 (e) -> chooseOption(true));
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_DOWN,
-                                 (e) -> chooseOption(false), null);
+                                 (e) -> chooseOption(false));
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
-                                 (e) -> activateChoice(), null);
+                                 (e) -> activateChoice());
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
-                                 (e) -> activateChoice(), null);
+                                 (e) -> activateChoice());
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_H,
-                                 (e) -> Game.setHelpState(), null);
+                                 (e) -> Game.setHelpState());
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
-                                 (e) -> System.exit(0), null);
+                                 (e) -> System.exit(0));
     }
 
     /** Selects the menu option. */

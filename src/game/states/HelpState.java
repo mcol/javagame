@@ -57,13 +57,13 @@ public class HelpState extends State {
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_H,
-                                 (e) -> exit(), null);
+                                 (e) -> exit());
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
-                                 (e) -> exit(), null);
+                                 (e) -> exit());
         KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
-                                 (e) -> exit(), null);
+                                 (e) -> exit());
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
-                                 (e) -> exit(), null);
+                                 (e) -> exit());
         KeyManager.removeKeyBindings(display,
                                      new int[] { KeyEvent.VK_P,
                                                  KeyEvent.VK_UP,

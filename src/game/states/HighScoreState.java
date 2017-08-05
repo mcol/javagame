@@ -39,9 +39,9 @@ public class HighScoreState extends State {
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
-                                 (e) -> Game.setMenuState(-1), null);
+                                 (e) -> Game.setMenuState(-1));
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
-                                 (e) -> Game.setMenuState(-1), null);
+                                 (e) -> Game.setMenuState(-1));
         KeyManager.removeKeyBindings(display, new int[] { KeyEvent.VK_ENTER });
     }
 }
