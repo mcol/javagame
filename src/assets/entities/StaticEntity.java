@@ -9,7 +9,7 @@ public abstract class StaticEntity extends Entity {
     protected BufferedImage image;
 
     /** Constructor. */
-    public StaticEntity(BufferedImage image, int x, int y,
+    public StaticEntity(BufferedImage image, float x, float y,
                         int width, int height) {
         super(handler, x, y, width, height);
         this.image = image;
