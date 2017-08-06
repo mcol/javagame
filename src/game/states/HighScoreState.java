@@ -10,11 +10,15 @@ import gfx.Font;
 
 public class HighScoreState extends State {
 
+    /** The highscore list. */
+    String[] scores;
+
     /** Constructor. */
     public HighScoreState() {
         super(handler);
         bg = new Background("/textures/menubg.png", -0.1f,
                             Game.WIDTH, Game.HEIGHT);
+        scores = Game.getHighScores();
     }
 
     @Override
@@ -28,7 +32,6 @@ public class HighScoreState extends State {
         Font.renderMessage(g, "High scores", 40, 50,
                            Font.Size.TITLE, true);
 
-        String[] scores = Game.getHighScores();
         Font.setColour(Color.WHITE);
         for (int i = 0; i < scores.length; i++)
             Font.renderMessage(g, scores[i],
