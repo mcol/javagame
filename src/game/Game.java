@@ -94,6 +94,7 @@ public class Game implements Runnable {
                 delta--;
             }
             render();
+            sleep();
 
             if (timer > 1_000_000_000) {
                 display.setTitle(title + " | " + ticks + " ups, " +
@@ -121,6 +122,14 @@ public class Game implements Runnable {
         running = false;
         try {
             thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private synchronized void sleep() {
+        try {
+            Thread.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
