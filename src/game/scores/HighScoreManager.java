@@ -1,15 +1,11 @@
 package game.scores;
 
-import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
-import game.Game;
-import game.input.KeyManager;
 
 public class HighScoreManager {
 
@@ -21,9 +17,6 @@ public class HighScoreManager {
 
     /** List of scores. */
     private ArrayList<Score> scores;
-
-    /** */
-    private static final Scanner scanner = new Scanner(System.in);
 
     /** Constructor. */
     @SuppressWarnings("unchecked")
@@ -40,18 +33,19 @@ public class HighScoreManager {
         }
     }
 
-    /** Adds a new score to the highscore list. */
-    public boolean addScore(int score) {
-
-        // check if the score can enter the list
+    /** Returns whether the score can enter the highscore list. */
+    public boolean isHighScore(int score) {
         if (scores.size() >= MAX_SCORES &&
             score <= scores.get(MAX_SCORES - 1).getScore())
             return false;
+        return true;
+    }
 
-        // get the player's name
-        KeyManager.removeKeyBindings(Game.getDisplay(), new int[] { KeyEvent.VK_Q });
-        System.out.print("Enter name: ");
-        String name = scanner.next();
+    /** Adds a new score to the highscore list. */
+    public boolean addScore(String name, int score) {
+
+        if (!isHighScore(score))
+            return false;
 
         // add the score to the list
         scores.add(new Score(name, score));

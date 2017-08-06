@@ -33,10 +33,11 @@ public class GameState extends State {
 
     /** Quits the current game. */
     private void quit() {
-        if (Game.addHighScore())
-            Game.setHighScoreState();
+        int score = handler.getPlayer().getScore();
+        if (Game.isHighScore(score))
+            State.setState(new GameOverState(score));
         else
-            Game.setMenuState(handler.getPlayer().getScore());
+            Game.setMenuState(score);
     }
 
     @Override

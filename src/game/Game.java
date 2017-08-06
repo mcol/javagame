@@ -2,6 +2,7 @@ package game;
 
 import assets.Assets;
 import game.scores.HighScoreManager;
+import game.states.GameOverState;
 import game.states.GameState;
 import game.states.HelpState;
 import game.states.HighScoreState;
@@ -126,8 +127,8 @@ public class Game implements Runnable {
     }
 
     /** Adds a score to the highscore list. */
-    public static boolean addHighScore() {
-        return highScoreManager.addScore(handler.getPlayer().getScore());
+    public static boolean addHighScore(String name) {
+        return highScoreManager.addScore(name, handler.getPlayer().getScore());
     }
 
     // getters and setters
@@ -152,6 +153,11 @@ public class Game implements Runnable {
         return title;
     }
 
+    /** Returns whether the score can enter the highscore list. */
+    public static boolean isHighScore(int score) {
+        return highScoreManager.isHighScore(score);
+    }
+
     /** Returns the list of high scores. */
     public static String[] getHighScores() {
         return highScoreManager.getHighScores();
@@ -159,6 +165,10 @@ public class Game implements Runnable {
 
     public static void setGameState() {
         State.setState(new GameState());
+    }
+
+    public static void setGameOverState(int score) {
+        State.setState(new GameOverState(score));
     }
 
     public static void setHelpState() {
