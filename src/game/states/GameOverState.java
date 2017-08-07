@@ -51,6 +51,8 @@ public class GameOverState extends State {
 
     /** Leaves this state and shows the highscore list. */
     private void exit() {
+        if (name == "")
+            name = "...";
         Game.addHighScore(name);
         Game.setHighScoreState();
     }
