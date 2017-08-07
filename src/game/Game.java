@@ -19,7 +19,7 @@ public class Game implements Runnable {
     public static final int FPS = 60;
 
     /** The name of the game. */
-    private static final String title = "Poop game";
+    public static final String TITLE = "Poop game";
 
     /** The game display. */
     private static Display display;
@@ -50,7 +50,7 @@ public class Game implements Runnable {
 
     /** Constructor. */
     public Game() {
-        display = new Display(title, WIDTH, HEIGHT);
+        display = new Display(TITLE, WIDTH, HEIGHT);
     }
 
     private void init() {
@@ -97,7 +97,7 @@ public class Game implements Runnable {
             sleep();
 
             if (timer > 1_000_000_000) {
-                display.setTitle(title + " | " + ticks + " ups, " +
+                display.setTitle(TITLE + " | " + ticks + " ups, " +
                                  display.frames + " fps");
                 ticks = 0;
                 timer = 0;
@@ -157,11 +157,6 @@ public class Game implements Runnable {
         return now;
     }
 
-    /** Returns the title of the game. */
-    public String getTitle() {
-        return title;
-    }
-
     /** Returns whether the score can enter the highscore list. */
     public static boolean isHighScore(int score) {
         return highScoreManager.isHighScore(score);
@@ -189,7 +184,7 @@ public class Game implements Runnable {
     }
 
     public static void setMenuState(int score) {
-        State.setState(new MenuState(handler, score == -1 ? title
+        State.setState(new MenuState(handler, score == -1 ? TITLE
                                                           : "Score: " + score));
     }
 }
