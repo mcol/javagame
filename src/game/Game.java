@@ -139,7 +139,7 @@ public class Game implements Runnable {
     }
 
     /** Adds a score to the highscore list. */
-    public static boolean addHighScore(String name) {
+    public static int addHighScore(String name) {
         return highScoreManager.addScore(name, handler.getPlayer().getScore());
     }
 
@@ -182,8 +182,8 @@ public class Game implements Runnable {
         State.setState(new HelpState(State.getState()));
     }
 
-    public static void setHighScoreState(int score) {
-        State.setState(new HighScoreState(score));
+    public static void setHighScoreState(int score, int index) {
+        State.setState(new HighScoreState(score, index));
     }
 
     public static void setMenuState() {

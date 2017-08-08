@@ -42,16 +42,17 @@ public class HighScoreManager {
     }
 
     /** Adds a new score to the highscore list. */
-    public boolean addScore(String name, int score) {
+    public int addScore(String name, int score) {
 
         if (!isHighScore(score))
-            return false;
+            return -1;
 
         // add the score to the list
-        scores.add(new Score(name, score));
+        Score newscore = new Score(name, score);
+        scores.add(newscore);
         Collections.sort(scores);
         updateHighScoreFile();
-        return true;
+        return scores.indexOf(newscore);
     }
 
     /** Writes the current highscore list to file. */

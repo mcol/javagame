@@ -77,7 +77,7 @@ public class MenuState extends State {
         if (currentChoice == 0)
             Game.setGameState();
         else if (currentChoice == 1)
-            Game.setHighScoreState(-1);
+            Game.setHighScoreState(-1, -1);
         else if (currentChoice == 2)
             Game.setHelpState();
         else if (currentChoice == 3)
