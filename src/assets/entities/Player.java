@@ -209,7 +209,7 @@ public class Player extends Creature {
     private void chooseAnimation() {
         if (xMove != 0 || yMove < 0)
             animation = animFlying;
-        else if (yMove > 0)
+        else if (animation != animStill && yMove > 0)
             animation = animFalling;
         else
             animation = animStill;
