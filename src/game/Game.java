@@ -33,6 +33,9 @@ public class Game implements Runnable {
     /** List of high scores. */
     private static HighScoreManager highScoreManager;
 
+    /** The menu state. */
+    private static MenuState menuState;
+
     /** The main thread. */
     private Thread thread;
 
@@ -59,7 +62,7 @@ public class Game implements Runnable {
         handler = new Handler();
         camera = new Camera(handler);
         highScoreManager = new HighScoreManager();
-
+        menuState = new MenuState(handler);
         setMenuState();
     }
 
@@ -184,6 +187,6 @@ public class Game implements Runnable {
     }
 
     public static void setMenuState() {
-        State.setState(new MenuState(handler));
+        State.setState(menuState);
     }
 }
