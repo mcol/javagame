@@ -54,7 +54,7 @@ public class GameOverState extends State {
         if (name == "")
             name = "...";
         Game.addHighScore(name);
-        Game.setHighScoreState();
+        Game.setHighScoreState(score);
     }
 
     @Override
@@ -66,6 +66,9 @@ public class GameOverState extends State {
     public void render(Graphics g) {
         // background
         bg.render(g);
+
+        if (!Game.isHighScore(score))
+            Game.setHighScoreState(score);
 
         // title
         Font.setColour(Color.ORANGE);

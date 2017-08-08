@@ -60,7 +60,7 @@ public class Game implements Runnable {
         camera = new Camera(handler);
         highScoreManager = new HighScoreManager();
 
-        setMenuState(-1);
+        setMenuState();
     }
 
     private void tick() {
@@ -179,12 +179,11 @@ public class Game implements Runnable {
         State.setState(new HelpState(State.getState()));
     }
 
-    public static void setHighScoreState() {
-        State.setState(new HighScoreState());
+    public static void setHighScoreState(int score) {
+        State.setState(new HighScoreState(score));
     }
 
-    public static void setMenuState(int score) {
-        State.setState(new MenuState(handler, score == -1 ? TITLE
-                                                          : "Score: " + score));
+    public static void setMenuState() {
+        State.setState(new MenuState(handler));
     }
 }

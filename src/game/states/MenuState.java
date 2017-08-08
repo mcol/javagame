@@ -14,18 +14,14 @@ public class MenuState extends State {
     /** Menu choices. */
     private static final String[] options = { "Start", "High scores", "Help", "Quit" };
 
-    /** Menu title. */
-    private final String title;
-
     /** Current menu choice. */
     private int currentChoice;
 
     /** Constructor. */
-    public MenuState(Handler handler, String title) {
+    public MenuState(Handler handler) {
         super(handler);
         bg = new Background("/textures/menubg.png", -0.1f,
                             Game.WIDTH, Game.HEIGHT);
-        this.title = title;
     }
 
     @Override
@@ -36,7 +32,7 @@ public class MenuState extends State {
 
         // title
         Font.setColour(Color.ORANGE);
-        Font.renderMessage(g, title, 40, 50,
+        Font.renderMessage(g, Game.TITLE, 40, 50,
                            Font.Size.TITLE, true);
 
         // options
@@ -81,7 +77,7 @@ public class MenuState extends State {
         if (currentChoice == 0)
             Game.setGameState();
         else if (currentChoice == 1)
-            Game.setHighScoreState();
+            Game.setHighScoreState(-1);
         else if (currentChoice == 2)
             Game.setHelpState();
         else if (currentChoice == 3)

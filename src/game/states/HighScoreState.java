@@ -10,15 +10,19 @@ import gfx.Font;
 
 public class HighScoreState extends State {
 
+    /** The title text. */
+    private final String title;
+
     /** The highscore list. */
-    String[] scores;
+    private final String[] scores;
 
     /** Constructor. */
-    public HighScoreState() {
+    public HighScoreState(int score) {
         super(handler);
         bg = new Background("/textures/menubg.png", -0.1f,
                             Game.WIDTH, Game.HEIGHT);
-        scores = Game.getHighScores();
+        this.title = score == -1 ? "High scores" : "Score: " + score;
+        this.scores = Game.getHighScores();
     }
 
     @Override
@@ -29,7 +33,7 @@ public class HighScoreState extends State {
 
         // title
         Font.setColour(Color.ORANGE);
-        Font.renderMessage(g, "High scores", 40, 50,
+        Font.renderMessage(g, title, 40, 50,
                            Font.Size.TITLE, true);
 
         Font.setColour(Color.WHITE);
@@ -42,10 +46,10 @@ public class HighScoreState extends State {
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
-                                 (e) -> Game.setMenuState(-1));
+                                 (e) -> Game.setMenuState());
         KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
-                                 (e) -> Game.setMenuState(-1));
+                                 (e) -> Game.setMenuState());
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
-                                 (e) -> Game.setMenuState(-1));
+                                 (e) -> Game.setMenuState());
     }
 }
