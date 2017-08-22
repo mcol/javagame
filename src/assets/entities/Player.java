@@ -254,7 +254,7 @@ public class Player extends Creature {
     /** Increases the current level. */
     public void increaseLevel() {
         level += 1;
-        increaseScore(25 + time / Game.FPS);
+        increaseScore(time / Game.FPS);
         increaseHealth(MAX_HEALTH / 4);
         increasePoop(MAX_POOP / 4);
         handler.getWorld().loadWorld(level);

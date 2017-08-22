@@ -18,6 +18,9 @@ public class EntityManager {
     /** Number of items to be collected. */
     private int itemCount;
 
+    /** The exit item. */
+    private ExitItem exit;
+
     /** Class to decide render order of entities. */
     private final Comparator<Entity> renderSorter = new Comparator<Entity>() {
         @Override
@@ -64,6 +67,8 @@ public class EntityManager {
             enemyCount++;
         else if (e instanceof CollectableItem)
             itemCount++;
+        else if (e instanceof ExitItem)
+            exit = (ExitItem) e;
     }
 
     /** Removes an entity from the list of alive entities. */
@@ -73,6 +78,16 @@ public class EntityManager {
             enemyCount--;
         else if (e instanceof CollectableItem)
             itemCount--;
+    }
+
+    /** Displays the exit. */
+    public void showExit() {
+        exit.show();
+    }
+
+    /** Returns whether the exit has been taken. */
+    public boolean isExitTaken() {
+        return exit.isTaken();
     }
 
     // getters and setters

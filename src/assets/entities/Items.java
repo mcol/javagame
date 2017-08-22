@@ -62,7 +62,7 @@ public enum Items {
     WATCH       ( 1,  3,  3, 15),
     YARN        (17,  5,  5,  5),
     EMPTY_5_2   ( 0,  0,  0,  0),
-    EMPTY_5_1   ( 0,  0,  0,  0);
+    EXIT        (25,  0,  0,  0);
 
     /** Number of items in each row of the spritesheet. */
     public static final int rowlength = 10;

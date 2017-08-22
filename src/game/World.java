@@ -6,6 +6,7 @@ import java.util.Properties;
 import assets.entities.Boo;
 import assets.entities.CollectableItem;
 import assets.entities.EntityManager;
+import assets.entities.ExitItem;
 import assets.entities.Items;
 import assets.entities.Launcher;
 import assets.entities.Player;
@@ -74,7 +75,9 @@ public class World {
         bg.tick();
         entityManager.tick();
         messageManager.tick();
-        if (!this.isSafe())
+        if (this.isSafe())
+            entityManager.showExit();
+        else
             spawnItem();
     }
 
@@ -157,9 +160,20 @@ public class World {
                     damageTiles = true;
             }
 
+        // exit
+        addExit(props);
+
         // enemies and entities
         addEnemies(props);
         addEntities(props);
+    }
+
+    /** Adds the exit to the world. */
+    private void addExit(Properties props) {
+        String[] tokens = props.getProperty("exit").split("\\s+");
+        int x = Utils.parseInt(tokens[0]) * Tile.TILESIZE;
+        int y = Utils.parseInt(tokens[1]) * Tile.TILESIZE;
+        entityManager.addEntity(new ExitItem(x, y));
     }
 
     /** Adds enemies to the world. */
@@ -262,7 +276,7 @@ public class World {
     /** Returns whether the current world has been cleared. */
     public boolean isCleared() {
         return entityManager.getEnemyCount() == 0 &&
-               entityManager.getItemCount() == 0 &&
+               entityManager.isExitTaken() &&
                messageManager.getMessageCount() == 0;
     }
 }

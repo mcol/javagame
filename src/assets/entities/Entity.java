@@ -67,6 +67,10 @@ public abstract class Entity {
                     else if (this instanceof Enemy)
                         return false;
                 }
+                else if (e instanceof ExitItem) {
+                    if (this instanceof Player)
+                        ((ExitItem) e).take((Player) this);
+                }
 
                 return true;
             }
