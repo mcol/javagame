@@ -259,6 +259,7 @@ public class Player extends Creature {
         increasePoop(MAX_POOP / 4);
         handler.getWorld().loadWorld(level);
         yMove = MIN_SPEED;
+        animation = animFalling;
     }
 
     /** Updates the player's score. */
