@@ -46,14 +46,12 @@ public class Tank extends Enemy {
 
         if (xMove > 0) { // moving right
 
-            // right coordinate of bounding box
-            float tx = getRightBound() + xMove;
-
             int rightEdge = handler.getWorld().getWidth() * Tile.TILESIZE;
             if (getRightBound() + xMove > rightEdge)
                 return rightEdge - getRightBound();
 
-            tx /= Tile.TILESIZE;
+            // right coordinate of bounding box
+            float tx = (getRightBound() + xMove) / Tile.TILESIZE;
 
             if (collisionWithTile(tx, bb / Tile.TILESIZE) ||
                 !collisionWithTile(tx, (bb + Tile.TILESIZE / 2) / Tile.TILESIZE))
@@ -62,13 +60,11 @@ public class Tank extends Enemy {
         else if (xMove < 0) { // moving left
 
             // left coordinate of bounding box
-            float tx = getLeftBound() + xMove;
+            float tx = (getLeftBound() + xMove) / Tile.TILESIZE;
 
             // check the left edge of the map and align to it
             if (tx < 0)
                 return -getLeftBound();
-
-            tx /= Tile.TILESIZE;
 
             if (collisionWithTile(tx, bb / Tile.TILESIZE) ||
                 !collisionWithTile(tx, (bb + Tile.TILESIZE / 2) / Tile.TILESIZE))
