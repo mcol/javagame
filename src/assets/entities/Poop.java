@@ -69,7 +69,7 @@ public class Poop extends Creature {
             if (enemy.isDead())
                 continue;
 
-            float enemyMove = enemy.getxMove();
+            float enemyMove = enemy.getXMove();
             if (getCollisionRectangle(0f, yMove)
                     .intersects(enemy.getCollisionRectangle(enemyMove, 0f))) {
                 enemy.setDamage(damage);

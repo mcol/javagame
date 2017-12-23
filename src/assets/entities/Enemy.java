@@ -154,7 +154,7 @@ public abstract class Enemy extends Creature {
             return;
 
         Player p = handler.getPlayer();
-        if (p.getCollisionRectangle(p.getxMove(), p.getyMove())
+        if (p.getCollisionRectangle(p.getXMove(), p.getYMove())
              .intersects(getCollisionRectangle(xMove, yMove))) {
             p.setDamage(damage);
             this.setDamage(1);

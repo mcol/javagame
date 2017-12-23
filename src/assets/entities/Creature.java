@@ -175,12 +175,12 @@ public abstract class Creature extends Entity {
     }
 
     /** Returns the desired movement in the horizontal direction. */
-    public float getxMove() {
+    public float getXMove() {
         return xMove;
     }
 
     /** Returns the desired movement in the vertical direction. */
-    public float getyMove() {
+    public float getYMove() {
         return yMove;
     }
 
