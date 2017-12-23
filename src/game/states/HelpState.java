@@ -60,9 +60,11 @@ public class HelpState extends State {
                                  (e) -> exit());
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
                                  (e) -> exit());
-        KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
-                                 (e) -> exit());
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
+                                 (e) -> exit());
+        KeyManager.addKeyBinding(display, KeyEvent.VK_ESCAPE,
+                                 (e) -> exit());
+        KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
                                  (e) -> exit());
         KeyManager.removeKeyBindings(display,
                                      new int[] { KeyEvent.VK_P,

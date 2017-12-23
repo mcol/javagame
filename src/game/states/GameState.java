@@ -70,6 +70,8 @@ public class GameState extends State {
                                  (e) -> pause = !pause);
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
                                  (e) -> quit());
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_ESCAPE,
+                                 (e) -> quit());
         KeyManager.removeKeyBindings(display, new int[] { KeyEvent.VK_ENTER });
     }
 }

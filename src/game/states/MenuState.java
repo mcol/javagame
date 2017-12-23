@@ -62,6 +62,9 @@ public class MenuState extends State {
 
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
                                  (e) -> System.exit(0));
+
+        KeyManager.addKeyBinding(display, KeyEvent.VK_ESCAPE,
+                                 (e) -> System.exit(0));
     }
 
     /** Selects the menu option. */

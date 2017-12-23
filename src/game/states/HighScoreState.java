@@ -60,6 +60,8 @@ public class HighScoreState extends State {
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
                                  (e) -> Game.setMenuState());
+        KeyManager.addKeyBinding(display, KeyEvent.VK_ESCAPE,
+                                 (e) -> Game.setMenuState());
         KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
                                  (e) -> Game.setMenuState());
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
