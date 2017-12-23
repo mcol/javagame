@@ -37,7 +37,7 @@ public class Handler {
         return World.getEntityManager().getEntities();
     }
 
-    /** Add a message to the list of messages to be displayed. */
+    /** Adds a message to the list of messages to be displayed. */
     public void addMessage(String message, float x, float y) {
         World.getMessageManager()
              .addMessage(message,

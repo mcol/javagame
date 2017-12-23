@@ -68,7 +68,7 @@ public class HighScoreManager {
         }
     }
 
-    /** Creates the high score string. */
+    /** Creates the highscore string. */
     public String[] getHighScores() {
         int nscores = Math.min(scores.size(), MAX_SCORES);
         String[] highScores = new String[nscores];

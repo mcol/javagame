@@ -165,7 +165,7 @@ public class Game implements Runnable {
         return highScoreManager.isHighScore(score);
     }
 
-    /** Returns the list of high scores. */
+    /** Returns the highscore list. */
     public static String[] getHighScores() {
         return highScoreManager.getHighScores();
     }
