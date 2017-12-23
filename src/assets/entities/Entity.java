@@ -99,6 +99,11 @@ public abstract class Entity {
                              bounds.width, bounds.height);
     }
 
+    /** Returns whether there is a collision with a solid tile. */
+    protected boolean collisionWithTile(float x, float y) {
+        return handler.getWorld().getTile((int) x, (int) y).isSolid();
+    }
+
     /** Returns whether the entity is currently outside of the visible area. */
     public boolean offScreen() {
         return  getGameX() + width < 0 || getGameX() > Game.WIDTH ||

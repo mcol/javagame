@@ -154,11 +154,6 @@ public abstract class Creature extends Entity {
                         -width, height, null);
     }
 
-    /** Returns whether there is a collision with a solid tile. */
-    protected boolean collisionWithTile(float x, float y) {
-        return handler.getWorld().getTile((int) x, (int) y).isSolid();
-    }
-
     /** Decreases the creature's health according to the damage received. */
     protected void setDamage(int damage) {
         health -= damage;
