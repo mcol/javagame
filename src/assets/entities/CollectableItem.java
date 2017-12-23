@@ -40,6 +40,7 @@ public class CollectableItem extends StaticEntity {
     public void collectItem(Player player) {
         collectItem();
         player.increaseScore(item.getValue());
+        player.increaseTime(item.getTime());
         player.increaseHealth(item.getHealth());
         player.increasePoop(item.getPoop());
         handler.addMessage("" + item.getValue(), x, y);

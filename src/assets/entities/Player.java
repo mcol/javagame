@@ -267,6 +267,13 @@ public class Player extends Creature {
         score += points;
     }
 
+    /** Increases the available time. */
+    public void increaseTime(int amount) {
+        time += amount * Game.FPS;
+        if (time > MAX_TIME)
+            time = MAX_TIME;
+    }
+
     /** Increases the health of the player. */
     public void increaseHealth(int amount) {
         health += amount;
