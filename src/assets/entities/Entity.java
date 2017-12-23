@@ -78,6 +78,20 @@ public abstract class Entity {
         return false;
     }
 
+    /** Returns whether the entity collides with a static entity. */
+    protected boolean collisionWithStaticEntity(float xOffset, float yOffset) {
+        for (Entity e : handler.getEntities()) {
+            // don't check for collisions with moving entities or with itself
+            if (!(e instanceof StaticEntity) || e.equals(this))
+                continue;
+            if (e.getCollisionRectangle(0f, 0f)
+                 .intersects(getCollisionRectangle(xOffset, yOffset))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /** Returns the collision rectangle at the given position offset. */
     protected Rectangle getCollisionRectangle(float xOffset, float yOffset) {
         return new Rectangle((int) (x + bounds.x + xOffset),
