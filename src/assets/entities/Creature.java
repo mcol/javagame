@@ -18,9 +18,6 @@ public abstract class Creature extends Entity {
     /** Time of the last check for damage in ticks. */
     protected long damageCheckTime;
 
-    // movement
-    protected float xMove, yMove;
-
     /** Whether the creature faces right. */
     protected boolean facingRight;
 
@@ -172,16 +169,6 @@ public abstract class Creature extends Entity {
 
     public void setHealth(int health) {
         this.health = health;
-    }
-
-    /** Returns the desired movement in the horizontal direction. */
-    public float getXMove() {
-        return xMove;
-    }
-
-    /** Returns the desired movement in the vertical direction. */
-    public float getYMove() {
-        return yMove;
     }
 
     /** Returns whether the creature is dead. */

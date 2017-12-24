@@ -18,6 +18,12 @@ public abstract class Entity {
     /** Collision bounding box. */
     protected Rectangle bounds;
 
+    /** Horizontal movement. */
+    protected float xMove;
+
+    /** Vertical movement. */
+    protected float yMove;
+
     /** Current time in ticks. */
     protected long now;
 
@@ -31,6 +37,8 @@ public abstract class Entity {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.xMove = 0;
+        this.yMove = 0;
         this.now = Game.getTicksTime();
         this.spawnTime = now;
 
@@ -122,6 +130,11 @@ public abstract class Entity {
         return x - handler.getCamera().getxOffset();
     }
 
+    /** Returns the horizontal movement of the entity in pixels. */
+    public float getXMove() {
+        return xMove;
+    }
+
     /** Returns the vertical coordinate of the entity in pixels. */
     public float getY() {
         return y;
@@ -130,6 +143,11 @@ public abstract class Entity {
     /** Returns the vertical game coordinate of the entity in pixels. */
     public float getGameY() {
         return y - handler.getCamera().getyOffset();
+    }
+
+    /** Returns the vertical movement of the entity in pixels. */
+    public float getYMove() {
+        return yMove;
     }
 
     /** Sets the entity coordinates in pixels. */
