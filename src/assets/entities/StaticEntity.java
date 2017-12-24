@@ -19,7 +19,7 @@ public abstract class StaticEntity extends Entity {
     public void render(Graphics g) {
 
         // avoid unnecessary rendering
-        if (offScreen())
+        if (isOffScreen())
             return;
 
         g.drawImage(image, (int) getGameX(), (int) getGameY(),

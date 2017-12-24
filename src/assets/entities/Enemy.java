@@ -112,7 +112,7 @@ public abstract class Enemy extends Creature {
     public void render(Graphics g) {
 
         // avoid unnecessary rendering
-        if (offScreen())
+        if (isOffScreen())
             return;
 
         super.render(g);

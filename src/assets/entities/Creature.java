@@ -138,7 +138,7 @@ public abstract class Creature extends Entity {
     public void render(Graphics g) {
 
         // avoid unnecessary rendering
-        if (offScreen())
+        if (isOffScreen())
             return;
 
         if (facingRight)

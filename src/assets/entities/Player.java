@@ -233,7 +233,7 @@ public class Player extends Creature {
 
     /** The player is always visible by default. */
     @Override
-    public boolean offScreen() {
+    public boolean isOffScreen() {
         return false;
     }
 
