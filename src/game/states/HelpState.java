@@ -54,6 +54,7 @@ public class HelpState extends State {
                                Font.Size.LARGE, true);
     }
 
+    /** Adds the key bindings to control the state. */
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_H,

@@ -16,10 +16,10 @@ public class GameOverState extends State {
                                          + "klmnopqrst"
                                          + "uvwxyz!~<|";
 
-    /** The name of the player. */
+    /** Name of the player. */
     private String name;
 
-    /** The score achieved by the player. */
+    /** Score achieved by the player. */
     private final int score;
 
     /** Index of the cursor in the list of characters. */
@@ -94,6 +94,7 @@ public class GameOverState extends State {
                            Font.Size.LARGE, true);
     }
 
+    /** Adds the key bindings to control the state. */
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_UP,

@@ -10,7 +10,7 @@ import game.input.KeyManager;
 
 public class GameState extends State {
 
-    /** The world currently loaded. */
+    /** World currently loaded. */
     private final World world;
 
     /** Heads-up display. */
@@ -61,6 +61,7 @@ public class GameState extends State {
         hud.render(g);
     }
 
+    /** Adds the key bindings to control the state. */
     @Override
     public void setKeyBindings() {
         World.getEntityManager().getPlayer().addKeyBindings();

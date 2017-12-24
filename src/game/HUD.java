@@ -38,10 +38,10 @@ public class HUD {
     /** Distance from the left side of the display. */
     private final int offset;
 
-    /** The active player. */
+    /** Current player. */
     private final Player player;
 
-    /** Images used in the hud. */
+    /** Images used in the HUD. */
     private BufferedImage hudBar, timeIcon, healthIcon, poopIcon;
 
     /** Values currently displayed. */
@@ -85,7 +85,7 @@ public class HUD {
 
     public void render(Graphics g) {
 
-        // make the hud transparent when the player goes under it
+        // make the HUD transparent when the player goes under it
         boolean transparent = player.getGameX() + player.getWidth() > offset - icon &&
                               player.getY() < 25;
         int barOffset;

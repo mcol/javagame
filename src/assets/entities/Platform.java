@@ -9,7 +9,9 @@ public class Platform extends StaticEntity {
     /** Constructor. */
     public Platform(float x, float y) {
         super(Assets.platform, x, y, 95, 32);
-        this.xMove = Utils.randomInteger(1,  3) * (Utils.randomBoolean() ? 1 : -1);
+
+        // movement
+        xMove = Utils.randomInteger(1, 3) * (Utils.randomBoolean() ? 1 : -1);
     }
 
     @Override

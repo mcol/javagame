@@ -18,25 +18,25 @@ public class Game implements Runnable {
     /** Number of frames to be rendered per second. */
     public static final int FPS = 60;
 
-    /** The name of the game. */
+    /** Name of the game. */
     public static final String TITLE = "Poop game";
 
-    /** The game display. */
+    /** Game display. */
     private static Display display;
 
-    /** The object handler. */
+    /** Object handler. */
     private static Handler handler;
 
-    /** The camera. */
+    /** Active camera. */
     private static Camera camera;
 
     /** List of high scores. */
     private static HighScoreManager highScoreManager;
 
-    /** The menu state. */
+    /** Menu state. */
     private static MenuState menuState;
 
-    /** The main thread. */
+    /** Main thread. */
     private Thread thread;
 
     /** Whether the game loop is running. */
@@ -170,22 +170,27 @@ public class Game implements Runnable {
         return highScoreManager.getHighScores();
     }
 
+    /** Sets the game state. */
     public static void setGameState() {
         State.setState(new GameState());
     }
 
+    /** Sets the game over state. */
     public static void setGameOverState(int score) {
         State.setState(new GameOverState(score));
     }
 
+    /** Sets the help state. */
     public static void setHelpState() {
         State.setState(new HelpState(State.getState()));
     }
 
+    /** Sets the highscore state. */
     public static void setHighScoreState(int score, int index) {
         State.setState(new HighScoreState(score, index));
     }
 
+    /** Sets the menu state. */
     public static void setMenuState() {
         State.setState(menuState);
     }

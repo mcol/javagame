@@ -10,10 +10,10 @@ import gfx.Font;
 
 public class HighScoreState extends State {
 
-    /** The title text. */
+    /** Title text in the highscore page. */
     private final String title;
 
-    /** The highscore list. */
+    /** Highscore list. */
     private final String[] scores;
 
     /** Index of the most recently added score. */
@@ -56,6 +56,7 @@ public class HighScoreState extends State {
         }
     }
 
+    /** Adds the key bindings to control the state. */
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,

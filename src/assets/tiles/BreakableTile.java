@@ -4,7 +4,10 @@ import java.awt.Graphics;
 
 public class BreakableTile extends Tile {
 
+    /** Whether the tile has been destroyed. */
     protected boolean broken = false;
+
+    /** Texture to be used for the tile when destroyed. */
     protected final Tiles brokenTile;
 
     /** Constructor. */
@@ -19,11 +22,13 @@ public class BreakableTile extends Tile {
                     x, y, TILESIZE, TILESIZE, null);
     }
 
+    /** Returns whether the tile can collide with an entity. */
     @Override
     public boolean isSolid() {
         return !broken;
     }
 
+    /** Returns whether the tile can be destroyed. */
     @Override
     public boolean isBreakable() {
         if (broken)

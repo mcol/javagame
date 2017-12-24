@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 
 public class SpriteSheet {
 
+    /** Image containing the sprite sheet. */
     private final BufferedImage sheet;
 
     /** Constructor. */

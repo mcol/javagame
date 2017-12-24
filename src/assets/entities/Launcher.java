@@ -19,7 +19,7 @@ public class Launcher extends Enemy {
     /** Movement of the launcher. */
     private static final float LAUNCHER_SPEED = 0.00000001f;
 
-    /** Animations. */
+    /** Animation states. */
     private final Animation animStill, animFiring;
 
     /** Original horizontal coordinate. */

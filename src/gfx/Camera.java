@@ -8,6 +8,7 @@ import utils.Utils;
 
 public class Camera {
 
+    /** Object handler. */
     private final Handler handler;
 
     /** Offset of the camera in pixels with respect to the game coordinates. */
@@ -50,6 +51,7 @@ public class Camera {
         return (int) xOffset;
     }
 
+    /** Sets the horizontal camera offset in pixels. */
     public void setxOffset(float xOffset) {
         this.xOffset = xOffset;
     }
@@ -59,6 +61,7 @@ public class Camera {
         return (int) yOffset;
     }
 
+    /** Sets the vertical camera offset in pixels. */
     public void setyOffset(float yOffset) {
         this.yOffset = yOffset;
     }

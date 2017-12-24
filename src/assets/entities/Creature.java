@@ -7,12 +7,18 @@ import gfx.Animation;
 
 public abstract class Creature extends Entity {
 
+    /** Initial health amount. */
     public static final int DEFAULT_HEALTH = 40;
+
+    /** Available movement speeds. */
     public static final float DEFAULT_SPEED = 3.0f,
                               SLOW_SPEED = 2.0f,
                               FAST_SPEED = 6.0f;
 
+    /** Health status. */
     protected int health;
+
+    /** Amount of damage produced. */
     protected int damage;
 
     /** Time of the last check for damage in ticks. */

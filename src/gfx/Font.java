@@ -16,8 +16,10 @@ public class Font {
     /** Font sheet. */
     private static final SpriteSheet font = new SpriteSheet("/textures/font.png");
 
-    /** Dimensions of the font sheet. */
+    /** Width of the font sheet. */
     private static final int width = font.getSheet().getWidth();
+
+    /** Height of the font sheet. */
     private static final int height = font.getSheet().getHeight();
 
     /** Size of each character in the font sheet. */

@@ -11,13 +11,13 @@ public class Display extends JPanel {
     private static final long serialVersionUID = 1L;
     private JFrame frame;
 
-    /** The title string to be displayed. */
+    /** Title string to be displayed. */
     private final String title;
 
     /** Dimensions of the window in pixels. */
     private final int width, height;
 
-    /** The current game state. */
+    /** Current game state. */
     private State state;
 
     /** Number of frames rendered per second. */

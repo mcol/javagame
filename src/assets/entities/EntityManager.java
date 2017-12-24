@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 public class EntityManager {
 
-    /** The player. */
+    /** Current player. */
     private final Player player;
 
     /** List of alive entities. */
@@ -18,7 +18,7 @@ public class EntityManager {
     /** Number of items to be collected. */
     private int itemCount;
 
-    /** The exit item. */
+    /** Exit item. */
     private ExitItem exit;
 
     /** Class to decide render order of entities. */

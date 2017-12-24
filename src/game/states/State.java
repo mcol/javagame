@@ -7,12 +7,13 @@ import gfx.Background;
 
 public abstract class State {
 
+    /** Current state. */
     private static State currentState = null;
 
-    /** The game display. */
+    /** Game display. */
     protected static Display display;
 
-    /** The object handler. */
+    /** Object handler. */
     protected static Handler handler;
 
     /** Background image. */

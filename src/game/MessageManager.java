@@ -13,7 +13,7 @@ public class MessageManager {
         /** Offset in pixels to centre the message. */
         private final static int OFFSET = 16;
 
-        /** The message to be displayed. */
+        /** Message to be displayed. */
         public final String message;
 
         /** Coordinates where the message should be displayed. */
@@ -34,7 +34,7 @@ public class MessageManager {
     /** Interval for which the message is displayed in ticks. */
     private static final int MESSAGE_DISPLAY_INTERVAL = 1 * Game.FPS;
 
-    /** The list of messages. */
+    /** List of messages. */
     private static final ArrayList<Message> messages = new ArrayList<Message>();
 
     /** Number of messages in the list. */

@@ -24,7 +24,7 @@ public class Tile {
         /** Number of items in each row of the spritesheet. */
         public static final int rowlength = 4;
 
-        /** The texture to be used for the tile. */
+        /** Texture to be used for the tile. */
         private BufferedImage texture;
 
         /** Whether the tile can collide with an entity. */
@@ -52,7 +52,7 @@ public class Tile {
     public static final Tile metalTile = new Tile(Tiles.METAL);
     public static final Tile voidTile = new Tile(Tiles.VOID);
 
-    /** The type of this tile. */
+    /** Type of this tile. */
     protected final Tiles tile;
 
     /** Constructor. */

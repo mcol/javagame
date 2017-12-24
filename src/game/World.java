@@ -23,12 +23,13 @@ public class World {
     /** Number of available worlds. */
     public static final int MAX_WORLDS = 10;
 
+    /** Object handler. */
     private final Handler handler;
 
-    /** The player. */
+    /** Current player. */
     private final Player player;
 
-    /** The background image. */
+    /** Background image. */
     private static Background bg;
 
     /** Array of tiles that define the world. */

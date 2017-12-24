@@ -40,7 +40,7 @@ public class Player extends Creature {
     /** Keys pressed. */
     private boolean up, down, left, right;
 
-    // Animations
+    /** Animation states. */
     private final Animation animFlying, animFalling, animStill;
 
     /** Current level. */

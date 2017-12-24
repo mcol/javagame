@@ -8,10 +8,12 @@ import gfx.Camera;
 
 public class Handler {
 
+    /** Current world. */
     private World world;
 
     // getters and setters
 
+    /** Returns the game display. */
     public Display getDisplay() {
         return Game.getDisplay();
     }
@@ -21,18 +23,22 @@ public class Handler {
         return Game.getCamera();
     }
 
+    /** Returns the current world. */
     public World getWorld() {
         return world;
     }
 
+    /** Sets the current world. */
     public void setWorld(World world) {
         this.world = world;
     }
 
+    /** Returns the entity manager. */
     public EntityManager getEntityManager() {
         return World.getEntityManager();
     }
 
+    /** Returns the list of alive entities. */
     public ArrayList<Entity> getEntities() {
         return World.getEntityManager().getEntities();
     }

@@ -31,7 +31,7 @@ public abstract class Enemy extends Creature {
     /** Speed of movement when in a frenzy state. */
     protected float frenzySpeed;
 
-    /** The damage produced when in a frenzy state. */
+    /** Damage produced when in a frenzy state. */
     protected int frenzyDamage;
 
     /** Whether the enemy is affected by gravity. */
@@ -44,6 +44,8 @@ public abstract class Enemy extends Creature {
     public Enemy(int x, int y, int width, int height,
                  int health, int damage, int score, int colour) {
         super(handler, x, y, width, height);
+
+        // enemy parameters
         this.health = health;
         this.damage = damage;
         this.score = score;
@@ -56,6 +58,7 @@ public abstract class Enemy extends Creature {
         this.hasGravity = true;
         this.findSolidGround = true;
 
+        // movement
         yMove = DEFAULT_SPEED;
         xMove = DEFAULT_SPEED;
     }
@@ -126,6 +129,7 @@ public abstract class Enemy extends Creature {
                    health > 0 ? (int) hbar + 5 : 0, 10);
     }
 
+    /** Decreases the enemy's health according to the damage received. */
     @Override
     protected void setDamage(int damage) {
 

@@ -70,7 +70,7 @@ public class MenuState extends State {
     /** Selects the menu option. */
     private void chooseOption(boolean up) {
         currentChoice = up ? currentChoice - 1
-                           : (currentChoice  + 1) % options.length;
+                           : (currentChoice + 1) % options.length;
         if (currentChoice < 0)
             currentChoice = options.length - 1;
     }

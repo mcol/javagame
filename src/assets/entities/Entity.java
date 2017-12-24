@@ -7,6 +7,7 @@ import game.Handler;
 
 public abstract class Entity {
 
+    /** Object handler. */
     protected static Handler handler;
 
     /** Coordinates of the top left corner of the entity in pixels. */
