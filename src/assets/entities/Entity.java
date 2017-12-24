@@ -104,6 +104,22 @@ public abstract class Entity {
         return false;
     }
 
+    /** Returns the horizontal movement of the entity at the given offset. */
+    protected float getEntityMovementX(float xOffset, float yOffset) {
+        for (Entity e : handler.getEntities()) {
+            // don't check for collisions against itself
+            if (e.equals(this))
+                continue;
+
+            if (e.getCollisionRectangle(0f, 0f)
+                 .intersects(getCollisionRectangle(xOffset, yOffset))) {
+                if (e instanceof Enemy || e instanceof Platform)
+                    return e.getXMove();
+            }
+        }
+        return 0;
+    }
+
     /** Returns the collision rectangle at the given position offset. */
     protected Rectangle getCollisionRectangle(float xOffset, float yOffset) {
         return new Rectangle((int) (x + bounds.x + xOffset),
