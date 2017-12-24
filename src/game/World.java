@@ -44,6 +44,9 @@ public class World {
     /** Container for all messages. */
     private static MessageManager messageManager;
 
+    /** Current level. */
+    private int level;
+
     /** Time of the next item spawn in ticks. */
     private long nextItemSpawnTime;
 
@@ -54,12 +57,13 @@ public class World {
     public World(Handler handler, Player player) {
         this.handler = handler;
         this.player = player;
+        this.level = 1;
         handler.setWorld(this);
-        loadWorld(1);
+        loadWorld();
     }
 
     /** Loads a new world. */
-    public void loadWorld(int level) {
+    public void loadWorld() {
 
         // initialize the lists of alive entities and messages
         entityManager = new EntityManager(player);
@@ -71,6 +75,12 @@ public class World {
         player.setPosition(0, 0);
         nextItemSpawnTime = Game.getTicksTime() +
                             Utils.randomInteger(10, 15) * Game.FPS;
+    }
+
+    /** Increases the level and loads the corresponding world. */
+    public void increaseLevel() {
+        level++;
+        loadWorld();
     }
 
     public void tick() {
@@ -266,6 +276,11 @@ public class World {
     /** Returns the message manager. */
     public static MessageManager getMessageManager() {
         return messageManager;
+    }
+
+    /** Returns the current level. */
+    public int getLevel() {
+        return level;
     }
 
     /** Returns whether the world contains damage tiles. */

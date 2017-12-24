@@ -43,9 +43,6 @@ public class Player extends Creature {
     /** Animation states. */
     private final Animation animFlying, animFalling, animStill;
 
-    /** Current level. */
-    private int level;
-
     /** Current score. */
     private int score;
 
@@ -79,7 +76,6 @@ public class Player extends Creature {
         // current animation
         animation = animFalling;
 
-        level = 1;
         score = 0;
         time = 0;
         health = MAX_HEALTH;
@@ -256,11 +252,10 @@ public class Player extends Creature {
 
     /** Increases the current level. */
     public void increaseLevel() {
-        level += 1;
         increaseScore(time / Game.FPS);
         increaseHealth(MAX_HEALTH / 4);
         increasePoop(MAX_POOP / 4);
-        handler.getWorld().loadWorld(level);
+        handler.getWorld().increaseLevel();
         yMove = MIN_SPEED;
         animation = animFalling;
     }
@@ -314,7 +309,7 @@ public class Player extends Creature {
 
     /** Returns the current level. */
     public int getLevel() {
-        return level;
+        return handler.getWorld().getLevel();
     }
 
     /** Returns the current score. */
