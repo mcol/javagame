@@ -9,6 +9,7 @@ import assets.entities.EntityManager;
 import assets.entities.ExitItem;
 import assets.entities.Items;
 import assets.entities.Launcher;
+import assets.entities.Platform;
 import assets.entities.Player;
 import assets.entities.Ram;
 import assets.entities.Tank;
@@ -211,6 +212,9 @@ public class World {
             int x = Utils.parseInt(tokens[i * nFields + 1]);
             int y = Utils.parseInt(tokens[i * nFields + 2]);
             switch (type) {
+                case "platform":
+                    entityManager.addEntity(new Platform(x, y));
+                    break;
                 case "tree":
                     entityManager.addEntity(new Tree(x, y));
                     break;

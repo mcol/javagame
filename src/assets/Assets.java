@@ -15,6 +15,7 @@ public class Assets {
 
     // entities
     public static BufferedImage tree;
+    public static BufferedImage platform;
 
     // items
     public static BufferedImage items[] = new BufferedImage[Items.values().length];
@@ -50,6 +51,13 @@ public class Assets {
         //
         SpriteSheet trees = new SpriteSheet("/textures/trees.png");
         tree = trees.crop(240, 0, 80, 120);
+
+
+        //
+        // platforms
+        //
+        SpriteSheet platforms = new SpriteSheet("/textures/platforms.png");
+        platform = platforms.crop(0, 0, 95, 32);
 
         //
         // items
