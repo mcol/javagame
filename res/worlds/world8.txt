@@ -19,4 +19,6 @@ enemies: \
    tank 250 150 15 \
    tank 600 500 15 \
    tank 750 50 15
-entities:
+entities: \
+   platform 600 384 \
+   platform 850 384

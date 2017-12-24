@@ -18,8 +18,9 @@ tiles: \
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
 exit: 2 8
 enemies: \
-   tank 250 150 20 \
+   tank 300 150 20 \
    tank 600 500 15 \
    tank 700 50 20 \
    tank 750 250 20
-entities:
+entities: \
+   platform 100 192
