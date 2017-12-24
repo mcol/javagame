@@ -55,6 +55,9 @@ public class Launcher extends Enemy {
         animStill = new Animation(Assets.launcher_still, 300);
         animFiring = new Animation(Assets.launcher_firing, 100);
         animDying = new Animation(Assets.launcher_dying, 150);
+
+        // movement
+        xMove = 0;
     }
 
     @Override

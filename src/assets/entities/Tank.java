@@ -35,7 +35,7 @@ public class Tank extends Enemy {
         animDying = new Animation(Assets.tank_dying, 100);
 
         // movement
-        xMove = SLOW_SPEED / 4 * (facingRight ? -1.0f : 1.0f);
+        xMove = Utils.randomInteger(1, 2) * (facingRight ? -1 : 1);
     }
 
     // no fall from solid tiles

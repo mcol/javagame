@@ -34,7 +34,7 @@ public class Boo extends Enemy {
 
         // movement
         xMove = SLOW_SPEED * (facingRight ? 1.0f : -1.0f)
-              + Utils.randomFloat(-1f, 1f);
+              + Utils.randomInteger(-1, 1);
     }
 
     // no collisions with solid tiles
