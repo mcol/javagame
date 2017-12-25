@@ -3,6 +3,7 @@ package assets.entities;
 import java.awt.Graphics;
 import assets.Assets;
 import gfx.Animation;
+import utils.Utils;
 
 public class Missile extends Creature {
 
@@ -11,6 +12,9 @@ public class Missile extends Creature {
 
     /** Interval before the animation should start in ticks. */
     private static final int ANIMATION_WAIT_INTERVAL = 15;
+
+    /** Acceleration of the missile. */
+    private final float speedIncrease;
 
     /** Whether the missile needs to show the explosion animation. */
     private boolean explosion;
@@ -21,6 +25,7 @@ public class Missile extends Creature {
 
         // missile parameters
         this.facingRight = facingRight;
+        this.speedIncrease = 1 + Utils.randomFloat(0.01f, 0.05f);
         this.explosion = false;
 
         // bounding box
@@ -40,7 +45,8 @@ public class Missile extends Creature {
 
         // movement
         xMove = facingRight ? FAST_SPEED : -FAST_SPEED;
-        yMove = -FAST_SPEED / 2;
+        xMove *= Utils.randomFloat(1.0f, 1.2f);
+        yMove = -FAST_SPEED / Utils.randomFloat(1.2f, 6);
     }
 
     /** Checks if the missile collides with the player. */
@@ -59,8 +65,8 @@ public class Missile extends Creature {
             return;
 
         // increase speed
-        xMove *= 1.01f;
-        yMove *= 1.01f;
+        xMove *= speedIncrease;
+        yMove *= speedIncrease;
 
         // move in one direction before the other to deal with corner collisions
         float dx = getMovementX();
