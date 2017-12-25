@@ -27,6 +27,9 @@ public abstract class Creature extends Entity {
     /** Whether the creature faces right. */
     protected boolean facingRight;
 
+    /** Shift of the image in pixels to be applied when it's mirrored. */
+    protected int imageShift;
+
     /** Animation representing the entity. */
     protected Animation animation;
 
@@ -38,6 +41,7 @@ public abstract class Creature extends Entity {
         super(handler, x, y, width, height);
         health = DEFAULT_HEALTH;
         facingRight = true;
+        imageShift = 0;
         damageCheckTime = 0;
     }
 
@@ -153,7 +157,7 @@ public abstract class Creature extends Entity {
                         width, height, null);
         else
             g.drawImage(animation.getCurrentFrame(),
-                        (int) getGameX() + width, (int) getGameY(),
+                        (int) getGameX() + width + imageShift, (int) getGameY(),
                         -width, height, null);
     }
 

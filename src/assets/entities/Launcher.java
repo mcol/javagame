@@ -22,9 +22,6 @@ public class Launcher extends Enemy {
     /** Animation states. */
     private final Animation animStill, animFiring;
 
-    /** Original horizontal coordinate. */
-    private final int origX;
-
     /** Time of the next launcher fire in ticks. */
     private long nextFireTime;
 
@@ -40,15 +37,15 @@ public class Launcher extends Enemy {
 
         // enemy parameters
         this.facingRight = Utils.randomBoolean();
+        this.imageShift = -48;
         this.switchOnCollision = false;
         this.hasGravity = false;
-        this.origX = x;
         this.canSwitch = false;
         this.nextFireTime = now + Utils.randomInteger(1, 4) * Game.FPS;
         this.nextSwitchTime = now + (nextFireTime - now) * 2 / 3;
 
         // bounding box
-        setBoundingBox();
+        setBounds(3, 38, 70, height - 40);
 
         // animations
         animation = new Animation(Assets.launcher_still, 300);
@@ -95,20 +92,7 @@ public class Launcher extends Enemy {
     private void switchDirection() {
         if (canSwitch && now > nextSwitchTime) {
             facingRight = Utils.randomBoolean();
-            setBoundingBox();
             canSwitch = false;
-        }
-    }
-
-    /** Sets the collision bounding box. */
-    private void setBoundingBox() {
-        if (facingRight) {
-            x = origX;
-            setBounds(3, 38, 70, height - 40);
-        }
-        else {
-            x = origX - 48;
-            setBounds(52, 38, 70, height - 40);
         }
     }
 }
