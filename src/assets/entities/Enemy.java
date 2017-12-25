@@ -125,7 +125,7 @@ public abstract class Enemy extends Creature {
         final int health = getHealth();
         final double hbar = (double) health / DEFAULT_HEALTH * 35;
         g.setColor(colour);
-        g.fillRect((int) getGameX() + xAdj, (int) getGameY() + bounds.y - 20,
+        g.fillRect(getGameX() + xAdj, getGameY() + bounds.y - 20,
                    health > 0 ? (int) hbar + 5 : 0, 10);
     }
 

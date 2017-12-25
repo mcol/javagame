@@ -153,11 +153,11 @@ public abstract class Creature extends Entity {
 
         if (facingRight)
             g.drawImage(animation.getCurrentFrame(),
-                        (int) getGameX(), (int) getGameY(),
+                        getGameX(), getGameY(),
                         width, height, null);
         else
             g.drawImage(animation.getCurrentFrame(),
-                        (int) getGameX() + width + imageShift, (int) getGameY(),
+                        getGameX() + width + imageShift, getGameY(),
                         -width, height, null);
     }
 

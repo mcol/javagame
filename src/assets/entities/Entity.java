@@ -147,8 +147,8 @@ public abstract class Entity {
     }
 
     /** Returns the horizontal game coordinate of the entity in pixels. */
-    public float getGameX() {
-        return x - handler.getCamera().getxOffset();
+    public int getGameX() {
+        return (int) x - handler.getCamera().getxOffset();
     }
 
     /** Returns the horizontal movement of the entity in pixels. */
@@ -162,8 +162,8 @@ public abstract class Entity {
     }
 
     /** Returns the vertical game coordinate of the entity in pixels. */
-    public float getGameY() {
-        return y - handler.getCamera().getyOffset();
+    public int getGameY() {
+        return (int) y - handler.getCamera().getyOffset();
     }
 
     /** Returns the vertical movement of the entity in pixels. */

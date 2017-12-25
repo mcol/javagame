@@ -22,7 +22,6 @@ public abstract class StaticEntity extends Entity {
         if (isOffScreen())
             return;
 
-        g.drawImage(image, (int) getGameX(), (int) getGameY(),
-                    width, height, null);
+        g.drawImage(image, getGameX(), getGameY(), width, height, null);
     }
 }
