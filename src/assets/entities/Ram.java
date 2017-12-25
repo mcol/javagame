@@ -18,11 +18,12 @@ public class Ram extends Enemy {
     public Ram(int x, int y, int health) {
         super(x, y, 90, 64, health, RAM_DAMAGE, RAM_SCORE, BAR_COLOUR);
 
-        // bounding box
-        setBounds(5, 8, width - 11, height - 10);
-
         // enemy parameters
+        this.imageShift = 25;
         this.frenzyThreshold = health / 3;
+
+        // bounding box
+        setBounds(30, 8, width - 35, height - 10);
 
         // animations
         animation = new Animation(Assets.ram_moving, 125);
