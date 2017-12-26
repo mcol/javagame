@@ -77,6 +77,7 @@ public class Launcher extends Enemy {
     private void fireLauncher() {
         if (now > nextFireTime) {
             animation.assign(animFiring);
+            float x = this.x + (facingRight ? 0 : imageShift);
             Missile m = new Missile(x, y, facingRight);
             handler.getEntityManager().addEntity(m);
             nextFireTime = now + Utils.randomInteger(1, 4) * Game.FPS;
