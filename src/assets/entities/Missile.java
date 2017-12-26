@@ -50,12 +50,15 @@ public class Missile extends Creature {
     }
 
     /** Checks if the missile collides with the player. */
-    private void checkDamageToPlayer() {
+    private boolean checkDamageToPlayer() {
         Player p = handler.getPlayer();
+
         if (p.getCollisionRectangle(p.getXMove(), p.getYMove())
              .intersects(getCollisionRectangle(xMove, yMove))) {
             p.setDamage(MISSILE_DAMAGE);
+            return true;
         }
+        return false;
     }
 
     @Override
@@ -73,10 +76,11 @@ public class Missile extends Creature {
         x += dx;
         float dy = getMovementY();
         y += dy;
-        if (dx == 0 || dy == 0 || collisionWithEntity(xMove, yMove))
-            setExplosion();
 
-        checkDamageToPlayer();
+        // check if the missile has collided with anything
+        boolean hit = checkDamageToPlayer();
+        if (dx == 0 || dy == 0 || hit || collisionWithEntity(xMove, yMove))
+            setExplosion();
     }
 
     @Override
