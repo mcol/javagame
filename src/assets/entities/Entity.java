@@ -77,7 +77,7 @@ public abstract class Entity {
                         return false;
 
                     // no collision between platforms and collectable items
-                    else if (this instanceof Platform)
+                    else if (this instanceof MovingSurface)
                         return false;
                 }
                 else if (e instanceof ExitItem) {
@@ -112,10 +112,13 @@ public abstract class Entity {
             if (e.equals(this))
                 continue;
 
+            // only enemies or moving surfaces can pass on their movement
+            if (!(e instanceof Enemy || e instanceof MovingSurface))
+                continue;
+
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(getCollisionRectangle(xOffset, yOffset))) {
-                if (e instanceof Enemy || e instanceof Platform)
-                    return e.getXMove();
+                return e.getXMove();
             }
         }
         return 0;

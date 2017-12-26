@@ -20,5 +20,5 @@ enemies: \
    tank 600 500 15 \
    tank 750 50 15
 entities: \
-   platform 600 384 \
+   elevator 32 384 \
    platform 850 384

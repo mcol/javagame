@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 import assets.entities.Boo;
 import assets.entities.CollectableItem;
+import assets.entities.Elevator;
 import assets.entities.EntityManager;
 import assets.entities.ExitItem;
 import assets.entities.Items;
@@ -223,6 +224,9 @@ public class World {
             int x = Utils.parseInt(tokens[i * nFields + 1]);
             int y = Utils.parseInt(tokens[i * nFields + 2]);
             switch (type) {
+                case "elevator":
+                    entityManager.addEntity(new Elevator(x, y));
+                    break;
                 case "platform":
                     entityManager.addEntity(new Platform(x, y));
                     break;
