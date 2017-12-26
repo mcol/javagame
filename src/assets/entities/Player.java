@@ -150,6 +150,7 @@ public class Player extends Creature {
 
             // apply movement from entity below if any
             x += getEntityMovementX(0f, yMove);
+            y += getEntityMovementY(xMove, 0f);
         }
         x = (int) x;
         y = (int) y;

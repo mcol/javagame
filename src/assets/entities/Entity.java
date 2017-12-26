@@ -124,6 +124,25 @@ public abstract class Entity {
         return 0;
     }
 
+    /** Returns the vertical movement of the entity at the given offset. */
+    protected float getEntityMovementY(float xOffset, float yOffset) {
+        for (Entity e : handler.getEntities()) {
+            // don't check for collisions against itself
+            if (e.equals(this))
+                continue;
+
+            // only enemies or moving surfaces can pass on their movement
+            if (!(e instanceof Enemy || e instanceof MovingSurface))
+                continue;
+
+            if (e.getCollisionRectangle(0f, 0f)
+                 .intersects(getCollisionRectangle(xOffset, yOffset))) {
+                return e.getYMove();
+            }
+        }
+        return 0;
+    }
+
     /** Returns the collision rectangle at the given position offset. */
     protected Rectangle getCollisionRectangle(float xOffset, float yOffset) {
         return new Rectangle((int) (x + bounds.x + xOffset),
