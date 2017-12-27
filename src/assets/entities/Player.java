@@ -26,7 +26,7 @@ public class Player extends Creature {
     private static final long POOP_RESTORE_INTERVAL = 15 * Game.FPS;
 
     /** Minimum speed allowed. */
-    private static final float MIN_SPEED = 0.4f;
+    private static final float MIN_SPEED = 2.0f;
 
     /** Maximum speed allowed. */
     private static final float MAX_SPEED = 4.0f;
