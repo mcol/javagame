@@ -42,7 +42,7 @@ public class Boo extends Enemy {
     protected float getMovementX() {
         if (xMove > 0) {
             int rightEdge = handler.getWorld().getWidth() * Tile.TILESIZE;
-            if (getRightBound() + xMove >  rightEdge)
+            if (getRightBound() + xMove > rightEdge)
                 return rightEdge - getRightBound();
         }
         else if (xMove < 0) {

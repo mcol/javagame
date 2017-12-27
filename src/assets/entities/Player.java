@@ -215,7 +215,7 @@ public class Player extends Creature {
             animation = animStill;
     }
 
-    /** Decrease the player's health if it touches a damage tile. */
+    /** Decreases the player's health if it touches a damage tile. */
     private void checkDamageTiles() {
         if (now - damageCheckTime < 8)
             return;

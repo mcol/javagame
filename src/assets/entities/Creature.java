@@ -177,6 +177,7 @@ public abstract class Creature extends Entity {
         return health;
     }
 
+    /** Sets the health status of the creature. */
     public void setHealth(int health) {
         this.health = health;
     }

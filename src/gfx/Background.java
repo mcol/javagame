@@ -72,7 +72,7 @@ public class Background {
             }
         }
         else if (dx > 0) {
-            // right-align  the images
+            // right-align the images
             subWidth = Math.min(imageWidth - x0, minWidth);
             x1 = gameWidth - subWidth;
             sub = image.getSubimage(imageWidth - subWidth - x0, 0,

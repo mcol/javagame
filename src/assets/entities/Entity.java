@@ -157,8 +157,8 @@ public abstract class Entity {
 
     /** Returns whether the entity is currently outside of the visible area. */
     public boolean isOffScreen() {
-        return  getGameX() + width < 0 || getGameX() > Game.WIDTH ||
-                getGameY() + height < 0 || getGameY() > Game.HEIGHT;
+        return getGameX() + width < 0 || getGameX() > Game.WIDTH ||
+               getGameY() + height < 0 || getGameY() > Game.HEIGHT;
     }
 
     // getters and setters

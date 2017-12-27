@@ -112,7 +112,7 @@ public class HUD {
         int pbar = poop * (width - border) / Player.MAX_POOP + minbar;
         barOffset += width + icon + gap;
         g.drawImage(poopIcon, barOffset - icon - 5, 20, icon, icon, null);
-        g.drawImage(hudBar, barOffset, 20, width  + minbar, height, null);
+        g.drawImage(hudBar, barOffset, 20, width + minbar, height, null);
         g.setColor(transparent ? poopTransparentColor : poopColor);
         g.fillRect(barOffset + border, 20 + border,
                    poop > 0 ? pbar - border : 0, height - 2 * border);

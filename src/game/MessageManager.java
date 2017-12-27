@@ -40,7 +40,7 @@ public class MessageManager {
     /** Number of messages in the list. */
     private int messageCount;
 
-    /** Add a message to the list. */
+    /** Adds a message to the list. */
     public void addMessage(String message, float x, float y) {
         messages.add(new Message(message, (int) x, (int) y));
         messageCount++;
