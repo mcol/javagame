@@ -128,8 +128,7 @@ public class Player extends Creature {
 
         // gravity
         if (!left && !right && !up && !down) {
-            if (yMove != 0 || xMove != 0) // no gravity when still
-                yMove += SPEED_CHANGE;
+            yMove += SPEED_CHANGE;
             if (yMove > SLOW_SPEED)
                 yMove = SLOW_SPEED;
         }
