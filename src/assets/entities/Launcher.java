@@ -39,7 +39,7 @@ public class Launcher extends Enemy {
         this.facingRight = Utils.randomBoolean();
         this.imageShift = -48;
         this.switchOnCollision = false;
-        this.hasGravity = false;
+        this.hasGravity = true;
         this.canSwitch = false;
         this.nextFireTime = now + Utils.randomInteger(1, 4) * Game.FPS;
         this.nextSwitchTime = now + (nextFireTime - now) * 2 / 3;
