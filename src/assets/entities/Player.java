@@ -112,7 +112,7 @@ public class Player extends Creature {
         yMove = Utils.clampAbsValue(yMove / SPEED_CHANGE_FACTOR, MAX_SPEED);
 
         // facing direction
-        if (!(left && right))
+        if (!(left && right) && xMove != 0)
             facingRight = xMove > 0 ? true : false;
 
         // convergence to horizontal flight
