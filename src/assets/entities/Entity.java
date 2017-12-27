@@ -155,6 +155,17 @@ public abstract class Entity {
         return handler.getWorld().getTile((int) x, (int) y).isSolid();
     }
 
+    /** Returns whether there is a collision with any tile in the interval. */
+    protected boolean collisionWithTiles(float xMin, float xMax,
+                                         float yMin, float yMax) {
+        for (int x = (int) xMin; x <= (int) xMax; x++) {
+            for (int y = (int) yMin; y <= (int) yMax; y++)
+                if (collisionWithTile(x, y))
+                    return true;
+        }
+        return false;
+    }
+
     /** Returns whether the entity is currently outside of the visible area. */
     public boolean isOffScreen() {
         return getGameX() + width < 0 || getGameX() > Game.WIDTH ||

@@ -58,9 +58,10 @@ public abstract class Creature extends Entity {
                 return (int) tx * Tile.TILESIZE - getRightBound();
             }
 
-            // check tiles at top right and bottom right corners of the creature's bounding box
-            if (!collisionWithTile(tx, getTopBound() / Tile.TILESIZE) &&
-                !collisionWithTile(tx, getBottomBound() / Tile.TILESIZE)) {
+            // check tiles at right of the creature's bounding box
+            if (!collisionWithTiles(tx, tx,
+                                    getTopBound() / Tile.TILESIZE,
+                                    getBottomBound() / Tile.TILESIZE)) {
                 return xMove;
             }
 
@@ -77,9 +78,10 @@ public abstract class Creature extends Entity {
                 return -getLeftBound();
             }
 
-            // check tiles at the top left and bottom left corners of the creature's bounding box
-            if (!collisionWithTile(tx, getTopBound() / Tile.TILESIZE) &&
-                !collisionWithTile(tx, getBottomBound() / Tile.TILESIZE)) {
+            // check tiles at the left of the creature's bounding box
+            if (!collisionWithTiles(tx, tx,
+                                    getTopBound() / Tile.TILESIZE,
+                                    getBottomBound() / Tile.TILESIZE)) {
                 return xMove;
             }
 
@@ -104,9 +106,10 @@ public abstract class Creature extends Entity {
                 return -getTopBound();
             }
 
-            // check tiles at the top left and top right corners of the creature's bounding box
-            if (!collisionWithTile(getLeftBound() / Tile.TILESIZE, ty) &&
-                !collisionWithTile(getRightBound() / Tile.TILESIZE, ty)) {
+            // check tiles at the top of the creature's bounding box
+            if (!collisionWithTiles(getLeftBound() / Tile.TILESIZE,
+                                    getRightBound() / Tile.TILESIZE,
+                                    ty, ty)) {
                 return yMove;
             }
 
@@ -124,9 +127,10 @@ public abstract class Creature extends Entity {
                 return (int) ty * Tile.TILESIZE - getBottomBound();
             }
 
-            // check tiles at bottom left and bottom right corners of the creature's bounding box
-            if (!collisionWithTile(getLeftBound() / Tile.TILESIZE, ty) &&
-                !collisionWithTile(getRightBound() / Tile.TILESIZE, ty)) {
+            // check tiles at bottom of the creature's bounding box
+            if (!collisionWithTiles(getLeftBound() / Tile.TILESIZE,
+                                    getRightBound() / Tile.TILESIZE,
+                                    ty, ty)) {
                 return yMove;
             }
 
