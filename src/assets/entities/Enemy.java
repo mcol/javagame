@@ -108,6 +108,9 @@ public abstract class Enemy extends Creature {
         else
             x += dx;
 
+        // apply movement from entity below if any
+        x += getEntityMovementX(0f, yMove);
+        y += getEntityMovementY(xMove, 0f);
         checkPlayerDamage();
     }
 
