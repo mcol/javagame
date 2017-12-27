@@ -138,7 +138,7 @@ public class Player extends Creature {
     }
 
     private void move() {
-        if (!collisionWithEntity(xMove, 0f))
+        if (!collisionWithEntity(xMove, -3f))
             x += getMovementX();
         if (!collisionWithEntity(0f, yMove))
             y += getMovementY();
