@@ -16,7 +16,7 @@ tiles: \
 2 2 2 2 2 2 2 2 2 2 - - - - - - - -
 exit: 14 8
 enemies: \
-   ram 50 150 10 \
+   ram 150 550 10 \
    ram 750 450 15
 entities: \
    tree 400 543 \
