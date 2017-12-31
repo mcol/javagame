@@ -284,6 +284,12 @@ public class Player extends Creature {
             poop = MAX_POOP;
     }
 
+    /** Returns whether the player should be removed. */
+    @Override
+    public boolean shouldRemove() {
+        return false;
+    }
+
     /** Adds the key bindings to control the player. */
     public void addKeyBindings() {
 
