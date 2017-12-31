@@ -72,7 +72,7 @@ public class EntityManager {
     }
 
     /** Removes an entity from the list of alive entities. */
-    public void removeEntity(Entity e) {
+    private void removeEntity(Entity e) {
         entities.remove(e);
         if (e instanceof Enemy)
             enemyCount--;
