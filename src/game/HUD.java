@@ -128,4 +128,9 @@ public class HUD {
         Font.renderMessage(g, "Lev " + player.getLevel(), gap, 17,
                            Font.Size.SMALL, true);
     }
+
+    // Returns whether the health bar reports the current value
+    public boolean isHealthCurrent() {
+        return health == player.getHealth();
+    }
 }

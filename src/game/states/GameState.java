@@ -47,8 +47,11 @@ public class GameState extends State {
             hud.tick();
         }
 
-        if (handler.getPlayer().isDead())
-            quit();
+        if (handler.getPlayer().isDead()) {
+            if (hud.isHealthCurrent())
+                quit();
+            return;
+        }
 
         if (world.isCleared()) {
             handler.getPlayer().increaseLevel();
