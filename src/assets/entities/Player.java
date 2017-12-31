@@ -153,6 +153,7 @@ public class Player extends Creature {
         }
         x = (int) x;
         y = (int) y;
+        handler.getCamera().centreOnEntity(this);
     }
 
     private void firePoop() {
@@ -187,10 +188,7 @@ public class Player extends Creature {
 
         // input handling
         getInput();
-
-        // movement
         move();
-        handler.getCamera().centreOnEntity(this);
 
         if (handler.getWorld().hasDamageTiles())
             checkDamageTiles();
