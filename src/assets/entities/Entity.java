@@ -105,42 +105,18 @@ public abstract class Entity {
         return false;
     }
 
-    /** Returns the horizontal movement of the entity at the given offset. */
-    protected float getEntityMovementX(float xOffset, float yOffset) {
+    /** Returns the entity immediately below if any. */
+    public Entity getEntityBelow() {
+        Rectangle bottom = new Rectangle((int) getLeftBound() + 1,
+                                         (int) getBottomBound() + 1,
+                                         bounds.width - 2, 1);
         for (Entity e : handler.getEntities()) {
-            // don't check for collisions against itself
-            if (e.equals(this))
-                continue;
-
-            // only enemies or moving surfaces can pass on their movement
-            if (!(e instanceof Enemy || e instanceof MovingSurface))
-                continue;
-
             if (e.getCollisionRectangle(0f, 0f)
-                 .intersects(getCollisionRectangle(xOffset, yOffset))) {
-                return e.getXMove();
-            }
+                 .intersects(bottom))
+                return e;
         }
-        return 0;
-    }
 
-    /** Returns the vertical movement of the entity at the given offset. */
-    protected float getEntityMovementY(float xOffset, float yOffset) {
-        for (Entity e : handler.getEntities()) {
-            // don't check for collisions against itself
-            if (e.equals(this))
-                continue;
-
-            // only enemies or moving surfaces can pass on their movement
-            if (!(e instanceof Enemy || e instanceof MovingSurface))
-                continue;
-
-            if (e.getCollisionRectangle(0f, 0f)
-                 .intersects(getCollisionRectangle(xOffset, yOffset))) {
-                return e.getYMove();
-            }
-        }
-        return 0;
+        return null;
     }
 
     /** Returns the collision rectangle at the given position offset. */

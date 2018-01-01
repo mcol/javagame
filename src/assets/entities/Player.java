@@ -138,19 +138,20 @@ public class Player extends Creature {
     }
 
     private void move() {
-        if (!collisionWithEntity(xMove, -3f))
+        if (!collisionWithEntity(xMove, 0f))
             x += getMovementX();
         if (!collisionWithEntity(0f, yMove))
             y += getMovementY();
-        else if (yMove >=0) {
-            // stop falling when colliding vertically with an entity
+
+        // apply movement from the entity immediately below if any
+        Entity e = getEntityBelow();
+        if (e != null) {
             animation = animStill;
             canPoop = false;
-
-            // apply movement from entity below if any
-            x += getEntityMovementX(0f, yMove);
-            y += getEntityMovementY(xMove, 0f);
+            x += e.getXMove();
+            y += e.getYMove();
         }
+
         x = (int) x;
         y = (int) y;
         handler.getCamera().centreOnEntity(this);
