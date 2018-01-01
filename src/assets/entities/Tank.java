@@ -23,7 +23,7 @@ public class Tank extends Enemy {
         // enemy parameters
         this.facingRight = Utils.randomBoolean();
         this.frenzyThreshold = health / 2;
-        this.frenzySpeed = SLOW_SPEED / 1.5f;
+        this.frenzySpeed = SLOW_SPEED;
 
         // bounding box
         setBounds(10, 10, width - 20, height - 15);
