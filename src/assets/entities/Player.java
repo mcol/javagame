@@ -152,8 +152,8 @@ public class Player extends Creature {
             y += e.getYMove();
         }
 
-        x = (int) x;
-        y = (int) y;
+        x = (int) Math.floor(x);
+        y = (int) Math.floor(y);
         handler.getCamera().centreOnEntity(this);
     }
 
