@@ -142,7 +142,7 @@ public class Player extends Creature {
             x += getMovementX();
         if (!collisionWithEntity(0f, yMove))
             y += getMovementY();
-        else {
+        else if (yMove >=0) {
             // stop falling when colliding vertically with an entity
             animation = animStill;
             canPoop = false;
