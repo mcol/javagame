@@ -10,7 +10,7 @@ public class Elevator extends MovingSurface {
         super(x, y);
 
         // movement
-        yMove = Utils.randomInteger(1, 3) * (Utils.randomBoolean() ? 1 : -1);
+        yMove = Utils.randomInteger(1, 3) * Utils.randomSign();
     }
 
     @Override

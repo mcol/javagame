@@ -10,7 +10,7 @@ public class Platform extends MovingSurface {
         super(x, y);
 
         // movement
-        xMove = Utils.randomInteger(1, 3) * (Utils.randomBoolean() ? 1 : -1);
+        xMove = Utils.randomInteger(1, 3) * Utils.randomSign();
     }
 
     @Override

@@ -25,6 +25,11 @@ public class Utils {
         return random.nextBoolean();
     }
 
+    /** Returns a random sign. */
+    public static int randomSign() {
+        return random.nextBoolean() ? 1 : -1;
+    }
+
     /** Reads the content of a file into a string. */
     public static String loadFileAsString(String path) {
         StringBuilder builder = new StringBuilder();
