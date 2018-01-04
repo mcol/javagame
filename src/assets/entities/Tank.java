@@ -8,7 +8,7 @@ import utils.Utils;
 public class Tank extends Enemy {
 
     /** Damage procured by the enemy. */
-    private static final int TANK_DAMAGE = 10;
+    private static final int TANK_DAMAGE = 8;
 
     /** Score awarded when killed. */
     private static final int TANK_SCORE = 15;

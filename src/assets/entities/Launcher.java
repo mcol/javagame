@@ -8,7 +8,7 @@ import utils.Utils;
 public class Launcher extends Enemy {
 
     /** Damage procured by the enemy. */
-    private static final int LAUNCHER_DAMAGE = 12;
+    private static final int LAUNCHER_DAMAGE = 7;
 
     /** Score awarded when killed. */
     private static final int LAUNCHER_SCORE = 20;
