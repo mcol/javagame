@@ -106,6 +106,8 @@ public class GameOverState extends State {
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_RIGHT,
                                  (e) -> index = (index + 1) % 30);
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_ENTER,
+                                 (e) -> addCharacter());
+        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_ESCAPE,
                                  (e) -> exit());
         KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_SPACE,
                                  (e) -> addCharacter());
