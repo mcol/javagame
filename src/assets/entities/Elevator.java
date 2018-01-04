@@ -28,8 +28,9 @@ public class Elevator extends MovingSurface {
         if (yMove < 0) { // moving up
 
             // check the top edge of the map
-            if (getTopBound() + yMove < 0)
-                return -getTopBound();
+            int paddingTop = 33;
+            if (getTopBound() + yMove < paddingTop)
+                return paddingTop - getTopBound();
 
             // top coordinate of bounding box
             float ty = (getTopBound() + yMove) / Tile.TILESIZE;
