@@ -110,7 +110,8 @@ public abstract class Entity {
         Rectangle bottom = new Rectangle((int) getLeftBound() + 1,
                                          (int) getBottomBound() + 1,
                                          bounds.width - 2, 1);
-        for (Entity e : handler.getEntities()) {
+        for (int i = 0; i < handler.getEntities().size(); i++) {
+            Entity e = handler.getEntities().get(i);
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(bottom))
                 return e;
