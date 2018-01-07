@@ -106,7 +106,7 @@ public abstract class Entity {
     }
 
     /** Returns the entity immediately below if any. */
-    public Entity getEntityBelow() {
+    public Entity findEntityBelow() {
         Rectangle bottom = new Rectangle((int) getLeftBound() + 1,
                                          (int) getBottomBound() + 1,
                                          bounds.width - 2, 1);

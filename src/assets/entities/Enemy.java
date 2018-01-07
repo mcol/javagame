@@ -109,7 +109,7 @@ public abstract class Enemy extends Creature {
             x += dx;
 
         // apply movement from entity below if any
-        Entity e = getEntityBelow();
+        Entity e = findEntityBelow();
         if (e != null) {
             x += e.getXMove();
             y += e.getYMove();
@@ -164,6 +164,11 @@ public abstract class Enemy extends Creature {
             return;
 
         Player p = handler.getPlayer();
+
+        // the player can't be damaged by an enemy immediately below
+        if (p.getEntityBelow() == this)
+            return;
+
         if (p.getCollisionRectangle(p.getXMove(), p.getYMove())
              .intersects(getCollisionRectangle(xMove, yMove))) {
             p.setDamage(damage);
