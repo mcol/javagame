@@ -51,9 +51,6 @@ public class World {
     /** Time of the next item spawn in ticks. */
     private long nextItemSpawnTime;
 
-    /** Whether the world contains damage tiles. */
-    private boolean damageTiles;
-
     /** Constructor. */
     public World(Handler handler, Player player) {
         this.handler = handler;
@@ -169,8 +166,6 @@ public class World {
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++) {
                 tiles[x][y] = Tile.getTile(tokens[x + y * width].charAt(0));
-                if (tiles[x][y].getDamage() > 0)
-                    damageTiles = true;
             }
 
         // exit
@@ -285,11 +280,6 @@ public class World {
     /** Returns the current level. */
     public int getLevel() {
         return level;
-    }
-
-    /** Returns whether the world contains damage tiles. */
-    public boolean hasDamageTiles() {
-        return damageTiles;
     }
 
     /** Returns whether all enemies have been killed. */

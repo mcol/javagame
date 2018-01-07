@@ -194,8 +194,6 @@ public class Player extends Creature {
         getInput();
         move();
 
-        if (handler.getWorld().hasDamageTiles())
-            checkDamageTiles();
         restorePoop();
 
         // decrease the remaining time
@@ -214,22 +212,6 @@ public class Player extends Creature {
             animation = animFalling;
         else
             animation = animStill;
-    }
-
-    /** Decreases the player's health if it touches a damage tile. */
-    private void checkDamageTiles() {
-        if (now - damageCheckTime < 8)
-            return;
-
-        float lb = getLeftBound(), rb = getRightBound();
-        float tb = getTopBound(), bb = getBottomBound();
-        int damage = handler.getWorld().getTile(lb, tb).getDamage()
-                   + handler.getWorld().getTile(lb, bb).getDamage()
-                   + handler.getWorld().getTile(rb, tb).getDamage()
-                   + handler.getWorld().getTile(rb, bb).getDamage();
-
-        setDamage((int) Math.ceil((double) damage / 2));
-        damageCheckTime = now;
     }
 
     /** The player is always visible by default. */

@@ -47,7 +47,7 @@ public class Tile {
     public static final Tile dirtTile = new Tile(Tiles.DIRT);
     public static final Tile wallTile = new Tile(Tiles.WALL);
     public static final Tile waterTile = new Tile(Tiles.WATER);
-    public static final Tile fireTile = new DamageTile(Tiles.FIRE, 1);
+    public static final Tile fireTile = new Tile(Tiles.FIRE);
     public static final Tile carpetTile = new Tile(Tiles.CARPET);
     public static final Tile metalTile = new Tile(Tiles.METAL);
     public static final Tile voidTile = new Tile(Tiles.VOID);
@@ -98,10 +98,5 @@ public class Tile {
     /** Returns whether the tile can be destroyed. */
     public boolean isBreakable() {
         return false;
-    }
-
-    /** Returns the damage produced by the tile. */
-    public int getDamage() {
-        return 0;
     }
 }
