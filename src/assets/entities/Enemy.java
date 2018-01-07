@@ -72,11 +72,7 @@ public abstract class Enemy extends Creature {
 
         // find solid ground
         if (findSolidGround) {
-            float dy = getMovementY(yMove);
-            while (dy != 0) {
-                y += dy;
-                dy = getMovementY(yMove);
-            }
+            moveToSolidGround();
             findSolidGround = false;
         }
 
@@ -133,6 +129,15 @@ public abstract class Enemy extends Creature {
         g.setColor(colour);
         g.fillRect(getGameX() + xAdj, getGameY() + bounds.y - 20,
                    health > 0 ? (int) hbar + 5 : 0, 10);
+    }
+
+    /** Moves the enemy vertically until it finds solid ground. */
+    protected void moveToSolidGround() {
+        float dy = getMovementY(yMove);
+        while (dy != 0) {
+            y += dy;
+            dy = getMovementY(yMove);
+        }
     }
 
     /** Decreases the enemy's health according to the damage received. */
