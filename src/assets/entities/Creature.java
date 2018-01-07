@@ -46,7 +46,7 @@ public abstract class Creature extends Entity {
     }
 
     /** Computes the allowed movement in the horizontal direction. */
-    protected float getMovementX() {
+    protected float getMovementX(float xMove) {
 
         if (xMove > 0) { // moving right
 
@@ -94,7 +94,7 @@ public abstract class Creature extends Entity {
     }
 
     /** Computes the allowed movement in the vertical direction. */
-    protected float getMovementY() {
+    protected float getMovementY(float yMove) {
 
         if (yMove < 0) { // moving up
 
@@ -123,7 +123,7 @@ public abstract class Creature extends Entity {
 
             // check the bottom edge of the map and align to it
             if (ty > handler.getWorld().getHeight()) {
-                yMove = 0;
+                this.yMove = 0;
                 return (int) ty * Tile.TILESIZE - getBottomBound();
             }
 
@@ -135,7 +135,7 @@ public abstract class Creature extends Entity {
             }
 
             // align the bounding box of the creature to the edge of the tile
-            yMove = 0;
+            this.yMove = 0;
             return (int) ty * Tile.TILESIZE - getBottomBound() - 1;
         }
 

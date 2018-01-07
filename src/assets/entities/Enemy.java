@@ -72,10 +72,10 @@ public abstract class Enemy extends Creature {
 
         // find solid ground
         if (findSolidGround) {
-            float dy = getMovementY();
+            float dy = getMovementY(yMove);
             while (dy != 0) {
                 y += dy;
-                dy = getMovementY();
+                dy = getMovementY(yMove);
             }
             findSolidGround = false;
         }
@@ -84,7 +84,7 @@ public abstract class Enemy extends Creature {
         if (hasGravity) {
             if (!collisionWithEntity(0f, DEFAULT_SPEED)) {
                 yMove = DEFAULT_SPEED;
-                y += getMovementY();
+                y += getMovementY(yMove);
             }
         }
 
@@ -96,7 +96,7 @@ public abstract class Enemy extends Creature {
         }
 
         // compute the allowed horizontal movement
-        float dx = getMovementX();
+        float dx = getMovementX(xMove);
 
         // switch direction if no movement is possible or there is a collision with another entity
         if (switchOnCollision && (dx == 0 || collisionWithEntity(xMove, 0f)) &&

@@ -33,7 +33,7 @@ public class Poop extends Creature {
         if (impact)
             return;
 
-        float dy = getMovementY();
+        float dy = getMovementY(yMove);
         if (dy < -Tile.TILESIZE / 2) // don't let it reach the tile above
             dy = 1;
         if (dy == 0 || collisionWithStaticEntity(0f, yMove) || collisionWithPlayer())

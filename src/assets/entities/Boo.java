@@ -39,7 +39,7 @@ public class Boo extends Enemy {
 
     // no collisions with solid tiles
     @Override
-    protected float getMovementX() {
+    protected float getMovementX(float xMove) {
         if (xMove > 0) {
             int rightEdge = handler.getWorld().getWidth() * Tile.TILESIZE;
             if (getRightBound() + xMove > rightEdge)

@@ -58,7 +58,7 @@ public class Launcher extends Enemy {
     }
 
     @Override
-    public float getMovementX() {
+    public float getMovementX(float xMove) {
         return LAUNCHER_SPEED;
     }
 

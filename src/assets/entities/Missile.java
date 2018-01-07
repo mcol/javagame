@@ -72,9 +72,9 @@ public class Missile extends Creature {
         yMove *= speedIncrease;
 
         // move in one direction before the other to deal with corner collisions
-        float dx = getMovementX();
+        float dx = getMovementX(xMove);
         x += dx;
-        float dy = getMovementY();
+        float dy = getMovementY(yMove);
         y += dy;
 
         // check if the missile has collided with anything

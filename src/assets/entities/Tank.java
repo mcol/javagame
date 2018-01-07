@@ -39,7 +39,7 @@ public class Tank extends Enemy {
 
     // no fall from solid tiles
     @Override
-    protected float getMovementX() {
+    protected float getMovementX(float xMove) {
 
         float bb = getBottomBound();
 

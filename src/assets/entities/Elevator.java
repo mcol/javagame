@@ -16,14 +16,14 @@ public class Elevator extends MovingSurface {
     @Override
     public void tick() {
         super.tick();
-        float dy = getMovementY();
+        float dy = getMovementY(yMove);
         if (dy == 0)
             yMove = -yMove;
         y += dy;
     }
 
     /** Computes the allowed movement in the vertical direction. */
-    private float getMovementY() {
+    private float getMovementY(float yMove) {
 
         if (yMove < 0) { // moving up
 

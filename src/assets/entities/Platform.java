@@ -16,14 +16,14 @@ public class Platform extends MovingSurface {
     @Override
     public void tick() {
         super.tick();
-        float dx = getMovementX();
+        float dx = getMovementX(xMove);
         if (dx == 0)
             xMove = -xMove;
         x += dx;
     }
 
     /** Computes the allowed movement in the horizontal direction. */
-    private float getMovementX() {
+    private float getMovementX(float xMove) {
 
         if (collisionWithEntity(xMove, 0f))
             return 0;

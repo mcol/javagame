@@ -142,9 +142,9 @@ public class Player extends Creature {
 
     private void move() {
         if (!collisionWithEntity(xMove, 0f))
-            x += getMovementX();
+            x += getMovementX(xMove);
         if (!collisionWithEntity(0f, yMove))
-            y += getMovementY();
+            y += getMovementY(yMove);
 
         // apply movement from the entity immediately below if any
         entityBelow = findEntityBelow();
