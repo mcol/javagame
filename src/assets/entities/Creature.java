@@ -186,6 +186,11 @@ public abstract class Creature extends Entity {
         this.health = health;
     }
 
+    /** Returns whether the creature is facing right. */
+    public boolean getFacingRight() {
+        return facingRight;
+    }
+
     /** Returns whether the creature is dead. */
     public boolean isDead() {
         return health == 0;
