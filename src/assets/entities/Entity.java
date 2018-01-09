@@ -112,6 +112,8 @@ public abstract class Entity {
                                          bounds.width - 2, 1);
         for (int i = 0; i < handler.getEntities().size(); i++) {
             Entity e = handler.getEntities().get(i);
+            if (e instanceof CollectableItem || e instanceof ExitItem)
+                continue;
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(bottom))
                 return e;
