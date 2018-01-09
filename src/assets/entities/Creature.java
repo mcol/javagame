@@ -15,6 +15,9 @@ public abstract class Creature extends Entity {
                               SLOW_SPEED = 2.0f,
                               FAST_SPEED = 6.0f;
 
+    /** Interval between each damage check in ticks. */
+    private static final int DAMAGE_CHECK_INTERVAL = 25;
+
     /** Health status. */
     protected int health;
 
@@ -171,6 +174,26 @@ public abstract class Creature extends Entity {
         if (health < 0) {
             health = 0;
             xMove = 0;
+        }
+    }
+
+    /** Checks if the creature damages the player. */
+    protected void checkPlayerDamage() {
+
+        if (now - damageCheckTime < DAMAGE_CHECK_INTERVAL)
+            return;
+
+        Player p = handler.getPlayer();
+
+        // the player can't be damaged by an entity immediately below
+        if (p.getEntityBelow() == this)
+            return;
+
+        if (p.getCollisionRectangle(p.getXMove(), p.getYMove())
+             .intersects(getCollisionRectangle(xMove, yMove))) {
+            p.setDamage(damage);
+            this.setDamage(1);
+            damageCheckTime = now;
         }
     }
 

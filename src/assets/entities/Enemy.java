@@ -7,9 +7,6 @@ import utils.Utils;
 
 public abstract class Enemy extends Creature {
 
-    /** Interval between each damage check in ticks. */
-    private static final int DAMAGE_CHECK_INTERVAL = 25;
-
     /** Score awarded when killed. */
     protected int score;
 
@@ -159,26 +156,6 @@ public abstract class Enemy extends Creature {
 
             // avoid generating collisions
             setBounds(0, 0, 0, 0);
-        }
-    }
-
-    /** Checks if the enemy collides with the player. */
-    private void checkPlayerDamage() {
-
-        if (now - damageCheckTime < DAMAGE_CHECK_INTERVAL)
-            return;
-
-        Player p = handler.getPlayer();
-
-        // the player can't be damaged by an enemy immediately below
-        if (p.getEntityBelow() == this)
-            return;
-
-        if (p.getCollisionRectangle(p.getXMove(), p.getYMove())
-             .intersects(getCollisionRectangle(xMove, yMove))) {
-            p.setDamage(damage);
-            this.setDamage(1);
-            damageCheckTime = now;
         }
     }
 
