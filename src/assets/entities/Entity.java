@@ -80,11 +80,11 @@ public abstract class Entity {
 
                     // no collision between enemies and collectable items
                     else if (this instanceof Enemy)
-                        return false;
+                        continue;
 
                     // no collision between platforms and collectable items
                     else if (this instanceof MovingSurface)
-                        return false;
+                        continue;
                 }
                 else if (e instanceof ExitItem) {
                     if (this instanceof Player)
