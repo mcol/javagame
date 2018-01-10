@@ -9,6 +9,7 @@ import assets.entities.Elevator;
 import assets.entities.EntityManager;
 import assets.entities.ExitItem;
 import assets.entities.Items;
+import assets.entities.Laser;
 import assets.entities.Launcher;
 import assets.entities.Platform;
 import assets.entities.Player;
@@ -196,6 +197,9 @@ public class World {
             switch (type) {
                 case "boo":
                     entityManager.addEntity(new Boo(x, y, health));
+                    break;
+                case "laser":
+                    entityManager.addEntity(new Laser(x, y, health));
                     break;
                 case "launcher":
                     entityManager.addEntity(new Launcher(x, y, health));

@@ -2,6 +2,7 @@ package assets.entities;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import assets.tiles.Tile;
 import game.Game;
 import game.Handler;
 
@@ -60,6 +61,11 @@ public abstract class Entity {
             if (e.equals(this)) {
                 continue;
             }
+
+            // beams collide only with the player
+            if (e instanceof Beam && this != handler.getPlayer())
+                continue;
+
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(getCollisionRectangle(xOffset, yOffset))) {
 
@@ -95,7 +101,7 @@ public abstract class Entity {
     protected boolean collisionWithStaticEntity(float xOffset, float yOffset) {
         for (Entity e : handler.getEntities()) {
             // don't check for collisions with moving entities or with itself
-            if (!(e instanceof StaticEntity) || e.equals(this))
+            if (!(e instanceof StaticEntity || e instanceof Beam) || e.equals(this))
                 continue;
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(getCollisionRectangle(xOffset, yOffset))) {
@@ -143,6 +149,44 @@ public abstract class Entity {
                     return true;
         }
         return false;
+    }
+
+    /** Computes the horizontal distance to the closest entity. */
+    public float distanceToEntityX(float xOrig, float yOrig, boolean right) {
+        float dist = Game.WIDTH;
+        Rectangle ray = new Rectangle((int) xOrig, (int) yOrig, (int) dist, 1);
+        if (!right)
+            ray.x = (int) (xOrig - dist);
+        for (int i = 0; i < handler.getEntities().size(); i++) {
+            Entity e = handler.getEntities().get(i);
+            if (e.equals(this) || e instanceof CollectableItem || e instanceof Player)
+                continue;
+            if (e.getCollisionRectangle(0f, 0f)
+                 .intersects(ray)) {
+                dist = right ? Math.min(dist, e.getLeftBound() - xOrig)
+                             : Math.min(dist, xOrig - e.getRightBound());
+                ray.width = (int) dist;
+                if (!right)
+                    ray.x = (int) (xOrig - dist);
+            }
+        }
+        return dist;
+    }
+
+    /** Computes the horizontal distance to the closest tile. */
+    public float distanceToTileX(float xOrig, float yOrig, boolean right) {
+        float dist = Game.WIDTH;
+        int txFrom = (int) (right ? xOrig / Tile.TILESIZE : 0);
+        int txTo = (int) (right ? Game.WIDTH : xOrig) / Tile.TILESIZE;
+        float ty = y / Tile.TILESIZE;
+        for (int i = txFrom; i <= txTo; i++) {
+            if (collisionWithTile(i, ty))
+                dist = right ? Math.min(dist, i * Tile.TILESIZE - xOrig)
+                             : Math.min(dist, xOrig - (i + 1) * Tile.TILESIZE);
+        }
+        if (dist < 0)
+            dist = 0;
+        return dist;
     }
 
     /** Returns whether the entity is currently outside of the visible area. */

@@ -15,6 +15,7 @@ public class Assets {
 
     // entities
     public static BufferedImage tree;
+    public static BufferedImage[] beams;
     public static BufferedImage platform;
 
     // items
@@ -28,6 +29,7 @@ public class Assets {
 
     // enemies
     public static BufferedImage[] boo_moving, boo_dying;
+    public static BufferedImage[] laser_still, laser_dying;
     public static BufferedImage[] launcher_still, launcher_firing, launcher_dying;
     public static BufferedImage[] missile_moving, missile_explosion;
     public static BufferedImage[] ram_moving, ram_frenzy, ram_dying;
@@ -52,6 +54,15 @@ public class Assets {
         SpriteSheet trees = new SpriteSheet("/textures/trees.png");
         tree = trees.crop(240, 0, 80, 120);
 
+        //
+        // beams
+        //
+        SpriteSheet beamSheet = new SpriteSheet("/textures/beams.png");
+        w = 15;
+        h = 5;
+        beams = new BufferedImage[10];
+        for (int i = 0; i < beams.length; i++)
+            beams[i] = beamSheet.crop(w * i, 0, w, h);
 
         //
         // platforms
@@ -101,6 +112,19 @@ public class Assets {
         boo_dying = new BufferedImage[8];
         for (int i = 0; i < boo_dying.length; i++)
             boo_dying[i] = boo.crop(boowidth * i, booheight, boowidth, booheight);
+
+        //
+        // laser animations
+        //
+        SpriteSheet laser = new SpriteSheet("/textures/laser.png");
+        w = 50;
+        h = 46;
+        laser_still = new BufferedImage[2];
+        for (int i = 0; i < laser_still.length; i++)
+            laser_still[i] = laser.crop(w * i, 0, w, h);
+        laser_dying = new BufferedImage[6];
+        for (int i = 0; i < laser_dying.length; i++)
+            laser_dying[i] = laser.crop(w * (i % 2), h * (i / 2 + 1), w, h);
 
         //
         // launcher animations

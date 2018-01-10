@@ -185,8 +185,9 @@ public abstract class Creature extends Entity {
 
         Player p = handler.getPlayer();
 
-        // the player can't be damaged by an entity immediately below
-        if (p.getEntityBelow() == this)
+        // the player can't be damaged by an entity immediately below, unless
+        // it's a beam
+        if (p.getEntityBelow() == this && !(this instanceof Beam))
             return;
 
         if (p.getCollisionRectangle(p.getXMove(), p.getYMove())
