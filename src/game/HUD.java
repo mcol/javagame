@@ -2,8 +2,7 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
+import assets.Assets;
 import assets.entities.Player;
 import gfx.Font;
 
@@ -41,26 +40,12 @@ public class HUD {
     /** Current player. */
     private final Player player;
 
-    /** Images used in the HUD. */
-    private BufferedImage hudBar, timeIcon, healthIcon, poopIcon;
-
     /** Values currently displayed. */
     private int score, time, health, poop;
 
     /** Constructor. */
     public HUD(Player player, int gameWidth) {
-        BufferedImage image;
         this.player = player;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/textures/hud.png"));
-            hudBar = image.getSubimage(0, 0, 200, 50);
-            timeIcon = image.getSubimage(200, 0, 50, 50);
-            healthIcon = image.getSubimage(250, 0, 50, 50);
-            poopIcon = image.getSubimage(300, 0, 50, 50);
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
         offset = gameWidth - 3 * (width + icon + gap);
     }
 
@@ -88,14 +73,15 @@ public class HUD {
         // make the HUD transparent when the player goes under it
         boolean transparent = player.getGameX() + player.getWidth() > offset - icon &&
                               player.getY() < 25;
+        int idx = transparent ? 1 : 0;
         int barOffset;
 
         // time bar
         int tbar = time * (width - border) / Player.MAX_TIME + minbar;
         barOffset = offset + icon;
         if (player.getTime() > 10 * Game.FPS || Game.getTicksTime() % 50 > 10)
-            g.drawImage(timeIcon, barOffset - icon - 5, 20, icon, icon, null);
-        g.drawImage(hudBar, barOffset, 20, width + minbar, height, null);
+            g.drawImage(Assets.tIcon[idx], barOffset - icon - 5, 20, icon, icon, null);
+        g.drawImage(Assets.hudBar[idx], barOffset, 20, width + minbar, height, null);
         g.setColor(transparent ? timeTransparentColor : timeColor);
         g.fillRect(barOffset + border, 20 + border,
                    tbar - border, height - 2 * border);
@@ -104,8 +90,8 @@ public class HUD {
         int hbar = health * (width - border) / Player.MAX_HEALTH + minbar;
         barOffset += width + icon + gap;
         if (player.getHealth() > 10 || Game.getTicksTime() % 50 > 10)
-            g.drawImage(healthIcon, barOffset - icon - 5, 20, icon, icon, null);
-        g.drawImage(hudBar, barOffset, 20, width + minbar, height, null);
+            g.drawImage(Assets.hIcon[idx], barOffset - icon - 5, 20, icon, icon, null);
+        g.drawImage(Assets.hudBar[idx], barOffset, 20, width + minbar, height, null);
         g.setColor(transparent ? healthTransparentColor : healthColor);
         g.fillRect(barOffset + border, 20 + border,
                    health > 0 ? hbar - border : 0, height - 2 * border);
@@ -114,8 +100,8 @@ public class HUD {
         int pbar = poop * (width - border) / Player.MAX_POOP + minbar;
         barOffset += width + icon + gap;
         if (player.getPoop() > 5 || Game.getTicksTime() % 50 > 10)
-            g.drawImage(poopIcon, barOffset - icon - 5, 20, icon, icon, null);
-        g.drawImage(hudBar, barOffset, 20, width + minbar, height, null);
+            g.drawImage(Assets.pIcon[idx], barOffset - icon - 5, 20, icon, icon, null);
+        g.drawImage(Assets.hudBar[idx], barOffset, 20, width + minbar, height, null);
         g.setColor(transparent ? poopTransparentColor : poopColor);
         g.fillRect(barOffset + border, 20 + border,
                    poop > 0 ? pbar - border : 0, height - 2 * border);

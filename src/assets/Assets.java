@@ -13,6 +13,9 @@ public class Assets {
     // tiles
     public static BufferedImage tiles[] = new BufferedImage[8];
 
+    // hud
+    public static BufferedImage[] hudBar, tIcon, hIcon, pIcon;
+
     // entities
     public static BufferedImage tree;
     public static BufferedImage[] beams;
@@ -47,6 +50,22 @@ public class Assets {
             tiles[i] = tileSheet.crop((i % Tiles.rowlength) * tilesize,
                                       (i / Tiles.rowlength) * tilesize,
                                       tilesize, tilesize);
+
+        //
+        // hud
+        //
+        SpriteSheet hudSheet = new SpriteSheet("/textures/hud.png");
+        h = 50;
+        hudBar = new BufferedImage[2];
+        tIcon = new BufferedImage[2];
+        hIcon = new BufferedImage[2];
+        pIcon = new BufferedImage[2];
+        for (int i = 0; i < hudBar.length; i++) {
+            hudBar[i] = hudSheet.crop(0, h * i, 200, h);
+            tIcon[i] = hudSheet.crop(200, h * i, 50, h);
+            hIcon[i] = hudSheet.crop(250, h * i, 50, h);
+            pIcon[i] = hudSheet.crop(300, h * i, 50, h);
+        }
 
         //
         // trees
