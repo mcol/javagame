@@ -17,7 +17,7 @@ public class Launcher extends Enemy {
     private static final int BAR_COLOUR = 0xc8c8b8;
 
     /** Movement of the launcher. */
-    private static final float LAUNCHER_SPEED = 0.00000001f;
+    private static final float LAUNCHER_SPEED = 0;
 
     /** Animation states. */
     private final Animation animStill, animFiring;
@@ -54,7 +54,7 @@ public class Launcher extends Enemy {
         animDying = new Animation(Assets.launcher_dying, 150);
 
         // movement
-        xMove = 0;
+        xMove = LAUNCHER_SPEED;
     }
 
     @Override
