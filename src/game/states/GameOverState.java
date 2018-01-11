@@ -97,21 +97,21 @@ public class GameOverState extends State {
     /** Adds the key bindings to control the state. */
     @Override
     public void setKeyBindings() {
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_UP,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_UP,
                                  (e) -> index = Math.floorMod(index - 10, 30));
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_DOWN,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_DOWN,
                                  (e) -> index = (index + 10) % 30);
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_LEFT,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_LEFT,
                                  (e) -> index = (index / 10) * 10 + Math.floorMod(index - 1, 10));
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_RIGHT,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_RIGHT,
                                  (e) -> index = (index / 10) * 10 + (index + 1) % 10);
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_ENTER,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
                                  (e) -> addCharacter());
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_ESCAPE,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_ESCAPE,
                                  (e) -> exit());
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_SPACE,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_SPACE,
                                  (e) -> addCharacter());
-        KeyManager.addKeyBinding(handler.getDisplay(), KeyEvent.VK_Q,
+        KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
                                  (e) -> exit());
     }
 }
