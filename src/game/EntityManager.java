@@ -1,8 +1,13 @@
-package assets.entities;
+package game;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
+import assets.entities.CollectableItem;
+import assets.entities.Enemy;
+import assets.entities.Entity;
+import assets.entities.ExitItem;
+import assets.entities.Player;
 
 public class EntityManager {
 

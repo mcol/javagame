@@ -2,7 +2,6 @@ package game;
 
 import java.util.ArrayList;
 import assets.entities.Entity;
-import assets.entities.EntityManager;
 import assets.entities.Player;
 import gfx.Camera;
 

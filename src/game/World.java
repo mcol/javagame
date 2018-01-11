@@ -6,7 +6,6 @@ import java.util.Properties;
 import assets.entities.Boo;
 import assets.entities.CollectableItem;
 import assets.entities.Elevator;
-import assets.entities.EntityManager;
 import assets.entities.ExitItem;
 import assets.entities.Items;
 import assets.entities.Laser;
