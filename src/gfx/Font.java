@@ -84,7 +84,7 @@ public class Font {
         BufferedImage sheet = font.getSheet();
         int[] pixels = sheet.getRGB(0, 0, width, height, null, 0, width);
         for (int i = 0; i < pixels.length; i++)
-            pixels[i] = toRGB(pixels[i], rgb, transparent ? 0x88000000 : 0);
+            pixels[i] = toRGB(pixels[i], rgb, transparent ? 0x99000000 : 0);
         sheet.setRGB(0, 0, width, height, pixels, 0, width);
     }
 

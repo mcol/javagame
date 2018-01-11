@@ -27,12 +27,12 @@ public class HUD {
     private static final int minbar = 5;
 
     /** Bar colours. */
-    private static final Color timeColor = new Color(0xeebb22);
-    private static final Color timeTransparentColor = new Color(0x99eebb22, true);
-    private static final Color healthColor = new Color(0xcc0000);
-    private static final Color healthTransparentColor = new Color(0x99cc0000, true);
-    private static final Color poopColor = new Color(0x774824);
-    private static final Color poopTransparentColor = new Color(0x99774824, true);
+    private static final Color[] tColor = {new Color(0xeebb22),
+                                           new Color(0x88eebb22, true)};
+    private static final Color[] hColor = {new Color(0xcc0000),
+                                           new Color(0x88cc0000, true)};
+    private static final Color[] pColor = {new Color(0x774824, true),
+                                           new Color(0x88774824, true)};
 
     /** Distance from the left side of the display. */
     private final int offset;
@@ -82,7 +82,7 @@ public class HUD {
         if (player.getTime() > 10 * Game.FPS || Game.getTicksTime() % 50 > 10)
             g.drawImage(Assets.tIcon[idx], barOffset - icon - 5, 20, icon, icon, null);
         g.drawImage(Assets.hudBar[idx], barOffset, 20, width + minbar, height, null);
-        g.setColor(transparent ? timeTransparentColor : timeColor);
+        g.setColor(tColor[idx]);
         g.fillRect(barOffset + border, 20 + border,
                    tbar - border, height - 2 * border);
 
@@ -92,7 +92,7 @@ public class HUD {
         if (player.getHealth() > 10 || Game.getTicksTime() % 50 > 10)
             g.drawImage(Assets.hIcon[idx], barOffset - icon - 5, 20, icon, icon, null);
         g.drawImage(Assets.hudBar[idx], barOffset, 20, width + minbar, height, null);
-        g.setColor(transparent ? healthTransparentColor : healthColor);
+        g.setColor(hColor[idx]);
         g.fillRect(barOffset + border, 20 + border,
                    health > 0 ? hbar - border : 0, height - 2 * border);
 
@@ -102,7 +102,7 @@ public class HUD {
         if (player.getPoop() > 5 || Game.getTicksTime() % 50 > 10)
             g.drawImage(Assets.pIcon[idx], barOffset - icon - 5, 20, icon, icon, null);
         g.drawImage(Assets.hudBar[idx], barOffset, 20, width + minbar, height, null);
-        g.setColor(transparent ? poopTransparentColor : poopColor);
+        g.setColor(pColor[idx]);
         g.fillRect(barOffset + border, 20 + border,
                    poop > 0 ? pbar - border : 0, height - 2 * border);
 
@@ -112,7 +112,7 @@ public class HUD {
                            Font.Size.SMALL, false);
 
         // level
-        transparent = player.getGameX() < 125 && player.getY() < 25;
+        transparent = player.getGameX() < 165 && player.getY() < 25;
         Font.setColour(Color.WHITE, transparent);
         Font.renderMessage(g, "Lev " + player.getLevel(), gap, 17,
                            Font.Size.SMALL, true);
