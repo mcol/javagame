@@ -31,7 +31,7 @@ public class HUD {
                                            new Color(0x88eebb22, true)};
     private static final Color[] hColor = {new Color(0xcc0000),
                                            new Color(0x88cc0000, true)};
-    private static final Color[] pColor = {new Color(0x774824, true),
+    private static final Color[] pColor = {new Color(0x774824),
                                            new Color(0x88774824, true)};
 
     /** Distance from the left side of the display. */
