@@ -59,6 +59,14 @@ public abstract class Entity {
 
     /** Returns whether the entity collides with another at the given offset. */
     protected boolean collisionWithEntity(float xOffset, float yOffset) {
+        Rectangle rect = getCollisionRectangle(xOffset, yOffset);
+
+        // reduce the size of the collision rectangle when going down
+        if (yOffset > 0) {
+            rect.y += bounds.height - 2;
+            rect.height = 2;
+        }
+
         for (Entity e : handler.getEntities()) {
             // don't check for collisions against itself
             if (e.equals(this)) {
@@ -70,7 +78,7 @@ public abstract class Entity {
                 continue;
 
             if (e.getCollisionRectangle(0f, 0f)
-                 .intersects(getCollisionRectangle(xOffset, yOffset))) {
+                 .intersects(rect)) {
 
                 if (e instanceof CollectableItem) {
                     // collect the item
