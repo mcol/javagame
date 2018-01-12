@@ -61,9 +61,6 @@ public class Player extends Creature {
     /** Time of the last poop increase in ticks. */
     private long poopRestoreTime;
 
-    /** Entity upon which the player has landed. */
-    private Entity entityBelow;
-
     /** Constructor. */
     public Player(Handler handler, int x, int y) {
         super(handler, x, y, 75, 75);
@@ -147,7 +144,6 @@ public class Player extends Creature {
             y += getMovementY(yMove);
 
         // apply movement from the entity immediately below if any
-        entityBelow = findEntityBelow();
         if (entityBelow != null) {
             animation = animStill;
             canPoop = false;
@@ -320,10 +316,5 @@ public class Player extends Creature {
     /** Returns the amount of available poop. */
     public int getPoop() {
         return poop;
-    }
-
-    /** Returns the entity upon which the player has landed. */
-    public Entity getEntityBelow() {
-        return entityBelow;
     }
 }

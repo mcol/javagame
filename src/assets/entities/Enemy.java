@@ -102,10 +102,9 @@ public abstract class Enemy extends Creature {
             x += dx;
 
         // apply movement from entity below if any
-        Entity e = findEntityBelow();
-        if (e != null) {
-            x += e.getXMove();
-            y += e.getYMove();
+        if (entityBelow != null) {
+            x += entityBelow.getXMove();
+            y += entityBelow.getYMove();
         }
         checkPlayerDamage();
     }

@@ -26,6 +26,9 @@ public abstract class Entity {
     /** Vertical movement. */
     protected float yMove;
 
+    /** Entity immediately below. */
+    protected Entity entityBelow;
+
     /** Current time in ticks. */
     protected long now;
 
@@ -261,6 +264,11 @@ public abstract class Entity {
     /** Returns the bottom coordinate of the entity's bounding box in pixels. */
     protected float getBottomBound() {
         return y + bounds.y + bounds.height;
+    }
+
+    /** Returns the entity immediately below. */
+    public Entity getEntityBelow() {
+        return entityBelow;
     }
 
     /** Returns whether the entity should be removed. */

@@ -149,6 +149,7 @@ public abstract class Creature extends Entity {
     public void tick() {
         super.tick();
         animation.tick();
+        entityBelow = findEntityBelow();
     }
 
     @Override
