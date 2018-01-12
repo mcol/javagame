@@ -98,13 +98,13 @@ public class GameOverState extends State {
     @Override
     public void setKeyBindings() {
         KeyManager.addKeyBinding(display, KeyEvent.VK_UP,
-                                 (e) -> index = Math.floorMod(index - 10, 30));
+                                 (e) -> { if (index / 10 > 0) index -= 10; });
         KeyManager.addKeyBinding(display, KeyEvent.VK_DOWN,
-                                 (e) -> index = (index + 10) % 30);
+                                 (e) -> { if (index / 10 < 2) index += 10; });
         KeyManager.addKeyBinding(display, KeyEvent.VK_LEFT,
-                                 (e) -> index = (index / 10) * 10 + Math.floorMod(index - 1, 10));
+                                 (e) -> { if (index % 10 != 0) index -= 1; });
         KeyManager.addKeyBinding(display, KeyEvent.VK_RIGHT,
-                                 (e) -> index = (index / 10) * 10 + (index + 1) % 10);
+                                 (e) -> { if (index % 10 != 9) index += 1; });
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
                                  (e) -> addCharacter());
         KeyManager.addKeyBinding(display, KeyEvent.VK_ESCAPE,
