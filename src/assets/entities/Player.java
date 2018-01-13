@@ -138,18 +138,24 @@ public class Player extends Creature {
     }
 
     private void move() {
-        if (!collisionWithEntity(xMove, 0f))
-            x += getMovementX(xMove);
-        if (!collisionWithEntity(0f, yMove))
-            y += getMovementY(yMove);
+        float xDir = xMove;
+        float yDir = yMove;
 
         // apply movement from the entity immediately below if any
         if (entityBelow != null) {
             animation = animStill;
             canPoop = false;
-            x += entityBelow.getXMove();
-            y += entityBelow.getYMove();
+            xDir += entityBelow.getXMove();
+
+            // the entity is going up faster than the player
+            if (entityBelow.getYMove() < yMove)
+                yDir = entityBelow.getYMove();
         }
+
+        if (!collisionWithEntity(xDir, 0f))
+            x += getMovementX(xDir);
+        if (!collisionWithEntity(0f, yDir))
+            y += getMovementY(yDir);
 
         x = (int) Math.floor(x);
         y = (int) Math.floor(y);
