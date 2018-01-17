@@ -73,14 +73,6 @@ public abstract class Enemy extends Creature {
             findSolidGround = false;
         }
 
-        // check if it's possible to move down
-        if (hasGravity) {
-            if (!collisionWithEntity(0f, DEFAULT_SPEED)) {
-                yMove = DEFAULT_SPEED;
-                y += getMovementY(yMove);
-            }
-        }
-
         // frenzy state
         if (health < frenzyThreshold) {
             animation = animFrenzy;
@@ -98,14 +90,8 @@ public abstract class Enemy extends Creature {
             xMove = -xMove;
             switchTime = now;
         }
-        else
-            x += dx;
 
-        // apply movement from entity below if any
-        if (entityBelow != null) {
-            x += entityBelow.getXMove();
-            y += entityBelow.getYMove();
-        }
+        move();
         checkPlayerDamage();
     }
 
@@ -125,6 +111,23 @@ public abstract class Enemy extends Creature {
         g.setColor(colour);
         g.fillRect(getGameX() + xAdj, getGameY() + bounds.y - 20,
                    health > 0 ? (int) hbar + 5 : 0, 10);
+    }
+
+    /** Moves the enemy. */
+    private void move() {
+        float xDir = xMove;
+        float yDir = hasGravity ? DEFAULT_SPEED : yMove;
+
+        // apply movement from the entity immediately below if any
+        if (entityBelow != null) {
+            xDir += entityBelow.getXMove();
+            yDir = entityBelow.getYMove();
+        }
+
+        if (!collisionWithEntity(xDir, 0f))
+            x += getMovementX(xDir);
+        if (!collisionWithEntity(0f, yDir))
+            y += getMovementY(yDir);
     }
 
     /** Moves the enemy vertically until it finds solid ground. */
