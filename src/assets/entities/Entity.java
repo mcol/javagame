@@ -131,6 +131,11 @@ public abstract class Entity {
             Entity e = handler.getEntities().get(i);
             if (e instanceof CollectableItem || e instanceof ExitItem)
                 continue;
+
+            // beams can become entity below only for the player
+            if (e instanceof Beam && this != handler.getPlayer())
+                continue;
+
             if (e.getCollisionRectangle(0f, 0f)
                  .intersects(bottom))
                 return e;
