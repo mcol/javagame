@@ -26,11 +26,6 @@ public class GameState extends State {
         hud = new HUD(handler.getPlayer(), Game.WIDTH);
     }
 
-    /** Shows the help page. */
-    private void help() {
-        Game.setHelpState();
-    }
-
     /** Quits the current game. */
     private void quit() {
         int score = handler.getPlayer().getScore();
@@ -68,8 +63,6 @@ public class GameState extends State {
     @Override
     public void setKeyBindings() {
         World.getEntityManager().getPlayer().addKeyBindings();
-        KeyManager.addKeyBinding(display, KeyEvent.VK_H,
-                                 (e) -> help());
         KeyManager.addKeyBinding(display, KeyEvent.VK_P,
                                  (e) -> pause = !pause);
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,

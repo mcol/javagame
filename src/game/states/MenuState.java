@@ -57,9 +57,6 @@ public class MenuState extends State {
         KeyManager.addKeyBinding(display, KeyEvent.VK_ENTER,
                                  (e) -> activateChoice());
 
-        KeyManager.addKeyBinding(display, KeyEvent.VK_H,
-                                 (e) -> Game.setHelpState());
-
         KeyManager.addKeyBinding(display, KeyEvent.VK_Q,
                                  (e) -> System.exit(0));
 
