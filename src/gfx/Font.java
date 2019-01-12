@@ -38,11 +38,6 @@ public class Font {
         Size(double scale) {
             this.scale = scale;
         }
-
-        /** Returns the scaling to be applied to the font. */
-        private double getScale() {
-            return scale;
-        }
     }
 
     /** Renders a message using the font characters. */
@@ -50,7 +45,7 @@ public class Font {
                                      Size size, boolean leftAligned) {
 
         // size of the font in pixels
-        int fontsize = (int) (charsize * size.getScale());
+        int fontsize = (int) (charsize * size.scale);
 
         // adjust the position if the message is right aligned
         if (!leftAligned)
