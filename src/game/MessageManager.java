@@ -37,13 +37,9 @@ public class MessageManager {
     /** List of messages. */
     private static final ArrayList<Message> messages = new ArrayList<Message>();
 
-    /** Number of messages in the list. */
-    private int messageCount;
-
     /** Adds a message to the list. */
     public void addMessage(String message, float x, float y) {
         messages.add(new Message(message, (int) x, (int) y));
-        messageCount++;
     }
 
     public void tick() {
@@ -54,7 +50,6 @@ public class MessageManager {
             msg.x += Utils.randomInteger(-1, 1);
             if (now - msg.time > MESSAGE_DISPLAY_INTERVAL) {
                 messages.remove(i);
-                messageCount--;
                 i--;
             }
         }
@@ -73,6 +68,6 @@ public class MessageManager {
 
     /** Returns the number of messages in the list. */
     public int getMessageCount() {
-        return messageCount;
+        return messages.size();
     }
 }
