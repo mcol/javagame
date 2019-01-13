@@ -43,7 +43,7 @@ public class CollectableItem extends StaticEntity {
         player.increaseTime(item.getTime());
         player.increaseHealth(item.getHealth());
         player.increasePoop(item.getPoop());
-        handler.addMessage("" + item.getValue(), x, y);
+        handler.addMessage(Integer.toString(item.getValue()), x, y);
     }
 
     /** Returns whether the item should be removed. */

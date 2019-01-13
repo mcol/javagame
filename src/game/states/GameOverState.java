@@ -83,13 +83,13 @@ public class GameOverState extends State {
         // available characters
         Font.setColour(Color.DARK_GRAY);
         for (int i = 0; i < keyboard.length(); i++)
-            Font.renderMessage(g, "" + keyboard.charAt(i),
+            Font.renderMessage(g, Character.toString(keyboard.charAt(i)),
                                100 + 95 * (i % 10), 275 + 100 * (i / 10),
                                Font.Size.LARGE, true);
 
         // highlighted character
         Font.setColour(Color.WHITE);
-        Font.renderMessage(g, "" + keyboard.charAt(index),
+        Font.renderMessage(g, Character.toString(keyboard.charAt(index)),
                            100 + 95 * (index % 10), 275 + 100 * (index / 10),
                            Font.Size.LARGE, true);
     }

@@ -108,7 +108,7 @@ public class HUD {
 
         // score
         Font.setColour(Color.WHITE, transparent);
-        Font.renderMessage(g, "" + score, offset - gap, 17,
+        Font.renderMessage(g, Integer.toString(score), offset - gap, 17,
                            Font.Size.SMALL, false);
 
         // level

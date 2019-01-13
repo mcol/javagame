@@ -38,7 +38,7 @@ public class ExitItem extends StaticEntity {
     public void take(Player player) {
         int value = Items.EXIT.getValue();
         player.increaseScore(value);
-        handler.addMessage("" + value, x, y);
+        handler.addMessage(Integer.toString(value), x, y);
         taken = true;
     }
 
