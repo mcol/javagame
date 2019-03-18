@@ -57,11 +57,6 @@ public class GameOverState extends State {
     }
 
     @Override
-    public void tick() {
-        super.tick();
-    }
-
-    @Override
     public void render(Graphics g) {
         // background
         bg.render(g);

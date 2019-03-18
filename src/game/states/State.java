@@ -46,5 +46,5 @@ public abstract class State {
     }
 
     /** Sets the key bindings for the state. */
-    public abstract void setKeyBindings();
+    protected abstract void setKeyBindings();
 }

@@ -113,7 +113,7 @@ public class Player extends Creature {
 
         // facing direction
         if (!(left && right) && xMove != 0)
-            facingRight = xMove > 0 ? true : false;
+            facingRight = xMove > 0;
 
         // convergence to horizontal flight
         if (!up && !down) {
@@ -134,7 +134,7 @@ public class Player extends Creature {
         }
 
         // pooping
-        canPoop = animation == animStill || yMove > SLOW_SPEED ? false : true;
+        canPoop = animation != animStill && !(yMove > SLOW_SPEED);
     }
 
     private void move() {

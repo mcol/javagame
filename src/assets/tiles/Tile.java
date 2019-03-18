@@ -25,10 +25,10 @@ public class Tile {
         public static final int rowlength = 4;
 
         /** Texture to be used for the tile. */
-        private BufferedImage texture;
+        private final BufferedImage texture;
 
         /** Whether the tile can collide with an entity. */
-        private boolean solid;
+        private final boolean solid;
 
         /** Constructor. */
         Tiles(BufferedImage texture, boolean solid) {
@@ -43,13 +43,13 @@ public class Tile {
     }
 
     /** Basic tiles. */
-    public static final Tile grassTile = new Tile(Tiles.GRASS);
-    public static final Tile dirtTile = new Tile(Tiles.DIRT);
-    public static final Tile wallTile = new Tile(Tiles.WALL);
-    public static final Tile waterTile = new Tile(Tiles.WATER);
-    public static final Tile fireTile = new Tile(Tiles.FIRE);
-    public static final Tile carpetTile = new Tile(Tiles.CARPET);
-    public static final Tile metalTile = new Tile(Tiles.METAL);
+    private static final Tile grassTile = new Tile(Tiles.GRASS);
+    private static final Tile dirtTile = new Tile(Tiles.DIRT);
+    private static final Tile wallTile = new Tile(Tiles.WALL);
+    private static final Tile waterTile = new Tile(Tiles.WATER);
+    private static final Tile fireTile = new Tile(Tiles.FIRE);
+    private static final Tile carpetTile = new Tile(Tiles.CARPET);
+    private static final Tile metalTile = new Tile(Tiles.METAL);
     public static final Tile voidTile = new Tile(Tiles.VOID);
 
     /** Type of this tile. */
@@ -83,8 +83,6 @@ public class Tile {
             return voidTile;
         }
     }
-
-    public void tick() { /* nothing to do */ }
 
     public void render(Graphics g, int x, int y) {
         g.drawImage(tile.texture, x, y, TILESIZE, TILESIZE, null);

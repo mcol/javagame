@@ -12,7 +12,7 @@ public class CollectableItem extends StaticEntity {
     private final Items item;
 
     /** Whether the item has been collected. */
-    protected boolean collected = false;
+    private boolean collected = false;
 
     /** Constructor. */
     public CollectableItem(Items item, int x, int y) {

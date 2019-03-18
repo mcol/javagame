@@ -22,7 +22,7 @@ import utils.Utils;
 public class World {
 
     /** Number of available worlds. */
-    public static final int MAX_WORLDS = 14;
+    private static final int MAX_WORLDS = 14;
 
     /** Object handler. */
     private final Handler handler;
@@ -61,7 +61,7 @@ public class World {
     }
 
     /** Loads a new world. */
-    public void loadWorld() {
+    private void loadWorld() {
 
         // initialize the lists of alive entities and messages
         entityManager = new EntityManager(player);

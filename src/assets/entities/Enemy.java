@@ -8,10 +8,10 @@ import utils.Utils;
 public abstract class Enemy extends Creature {
 
     /** Score awarded when killed. */
-    protected int score;
+    private final int score;
 
     /** Health bar colour. */
-    protected final Color colour;
+    private final Color colour;
 
     /** Animation when in a frenzy state. */
     protected Animation animFrenzy;
@@ -29,7 +29,7 @@ public abstract class Enemy extends Creature {
     protected float frenzySpeed;
 
     /** Damage produced when in a frenzy state. */
-    protected int frenzyDamage;
+    private final int frenzyDamage;
 
     /** Whether the enemy is affected by gravity. */
     protected boolean hasGravity;

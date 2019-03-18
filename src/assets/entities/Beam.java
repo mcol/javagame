@@ -17,9 +17,6 @@ public class Beam extends Creature {
     /** Whether the laser is facing right. */
     private final boolean facingRight;
 
-    /** Horizontal coordinate of the laser nozzle. */
-    private float xOrig;
-
     /** Constructor. */
     public Beam(Laser laser) {
         super(handler, 0, 0, 0, 5);
@@ -46,7 +43,8 @@ public class Beam extends Creature {
 
     /** Computes the width of the beam. */
     private void computeWidth() {
-        xOrig = facingRight ? laser.getRightBound() : laser.getLeftBound();
+        // horizontal coordinate of the laser nozzle
+        float xOrig = facingRight ? laser.getRightBound() : laser.getLeftBound();
         y = laser.getY() + 10;
         width = (int) Math.min(distanceToEntityX(xOrig, y, facingRight),
                                distanceToTileX(xOrig, y, facingRight));

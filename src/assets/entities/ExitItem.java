@@ -22,7 +22,7 @@ public class ExitItem extends StaticEntity {
     /** Returns whether the entity collides with another at the given offset. */
     @Override
     protected boolean collisionWithEntity(float xOffset, float yOffset) {
-        taken = visible ? super.collisionWithEntity(xOffset, yOffset) : false;
+        taken = visible && super.collisionWithEntity(xOffset, yOffset);
         return taken;
     }
 

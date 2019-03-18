@@ -35,7 +35,7 @@ public class MessageManager {
     private static final int MESSAGE_DISPLAY_INTERVAL = 1 * Game.FPS;
 
     /** List of messages. */
-    private static final ArrayList<Message> messages = new ArrayList<Message>();
+    private static final ArrayList<Message> messages = new ArrayList<>();
 
     /** Adds a message to the list. */
     public void addMessage(String message, float x, float y) {
@@ -56,8 +56,7 @@ public class MessageManager {
     }
 
     public void render(Graphics g) {
-        for (int i = 0; i < messages.size(); i++) {
-            Message msg = messages.get(i);
+        for (Message msg : messages) {
             Font.setColour(Color.WHITE, false);
             Font.renderMessage(g, msg.message, msg.x, msg.y,
                                Font.Size.MICRO, true);

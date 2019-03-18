@@ -37,7 +37,7 @@ public class Utils {
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null)
-                builder.append(line + "\n");
+                builder.append(line).append("\n");
             br.close();
         } catch(IOException e) {
             e.printStackTrace();

@@ -18,9 +18,6 @@ public class Laser extends Enemy {
     /** Movement of the laser. */
     private static final float LASER_SPEED = 0;
 
-    /** Beam fired by the laser. */
-    private Beam beam;
-
     /** Constructor. */
     public Laser(int x, int y, int health) {
         super(x, y, 50, 46, health, LASER_DAMAGE, LASER_SCORE, BAR_COLOUR);
@@ -47,8 +44,7 @@ public class Laser extends Enemy {
         super.moveToSolidGround();
 
         // start the laser beam
-        beam = new Beam(this);
-        handler.getEntityManager().addEntity(beam);
+        handler.getEntityManager().addEntity(new Beam(this));
     }
 
     @Override

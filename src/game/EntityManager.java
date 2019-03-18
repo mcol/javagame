@@ -27,20 +27,17 @@ public class EntityManager {
     private ExitItem exit;
 
     /** Class to decide render order of entities. */
-    private final Comparator<Entity> renderSorter = new Comparator<Entity>() {
-        @Override
-        public int compare(Entity e1, Entity e2) {
-            if (e1.getY() + e1.getHeight() / 2 < e2.getY() + e2.getHeight() / 2)
-                return -1;
-            else
-                return 1;
-        }
+    private final Comparator<Entity> renderSorter = (e1, e2) -> {
+        if (e1.getY() + e1.getHeight() / 2 < e2.getY() + e2.getHeight() / 2)
+            return -1;
+        else
+            return 1;
     };
 
     /** Constructor. */
     public EntityManager(Player player) {
         this.player = player;
-        entities = new ArrayList<Entity>();
+        entities = new ArrayList<>();
         enemyCount = 0;
         itemCount = 0;
         addEntity(player);

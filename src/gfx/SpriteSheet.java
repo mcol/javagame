@@ -15,7 +15,7 @@ public class SpriteSheet {
     }
 
     /**	Loads an image file into a BufferedImage. */
-    public static BufferedImage loadImage(String path) {
+    private static BufferedImage loadImage(String path) {
         try {
             return ImageIO.read(SpriteSheet.class.getResource(path));
         } catch (IOException e) {

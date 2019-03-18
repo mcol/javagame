@@ -25,7 +25,7 @@ public abstract class Creature extends Entity {
     protected int damage;
 
     /** Time of the last check for damage in ticks. */
-    protected long damageCheckTime;
+    private long damageCheckTime;
 
     /** Whether the creature faces right. */
     protected boolean facingRight;
@@ -204,11 +204,6 @@ public abstract class Creature extends Entity {
     /** Returns the current health of the creature. */
     public int getHealth() {
         return health;
-    }
-
-    /** Sets the health status of the creature. */
-    public void setHealth(int health) {
-        this.health = health;
     }
 
     /** Returns whether the creature is facing right. */

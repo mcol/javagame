@@ -22,7 +22,7 @@ public class HelpState extends State {
                                            };
 
     /** State active before entering the help state. */
-    final State previousState;
+    private final State previousState;
 
     /** Constructor. */
     public HelpState(State previousState) {

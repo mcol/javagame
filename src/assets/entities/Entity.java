@@ -18,7 +18,7 @@ public abstract class Entity {
     protected int width, height;
 
     /** Collision bounding box. */
-    protected Rectangle bounds;
+    protected final Rectangle bounds;
 
     /** Horizontal movement. */
     protected float xMove;
@@ -33,7 +33,7 @@ public abstract class Entity {
     protected long now;
 
     /** Time when the entity was generated in ticks. */
-    protected long spawnTime;
+    protected final long spawnTime;
 
     /** Constructor. */
     public Entity(Handler handler, float x, float y, int width, int height) {

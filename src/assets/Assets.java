@@ -11,7 +11,7 @@ public class Assets {
     private static final int itemsize = 32;
 
     // tiles
-    public static BufferedImage tiles[] = new BufferedImage[8];
+    public static final BufferedImage[] tiles = new BufferedImage[8];
 
     // hud
     public static BufferedImage[] hudBar, tIcon, hIcon, pIcon;
@@ -22,7 +22,7 @@ public class Assets {
     public static BufferedImage platform;
 
     // items
-    public static BufferedImage items[] = new BufferedImage[Items.values().length];
+    public static final BufferedImage[] items = new BufferedImage[Items.values().length];
 
     // player
     public static BufferedImage[] player_moving, player_still, player_falling;

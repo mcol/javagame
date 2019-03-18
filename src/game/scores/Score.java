@@ -24,7 +24,7 @@ public class Score implements Serializable, Comparable<Score> {
     /** Comparator function. */
     @Override
     public int compareTo(Score score) {
-        return ((Integer) score.getScore()).compareTo(getScore());
+        return Integer.compare(score.getScore(), getScore());
     }
 
     // getters and setters

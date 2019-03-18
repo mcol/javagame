@@ -5,10 +5,10 @@ import java.awt.Graphics;
 public class BreakableTile extends Tile {
 
     /** Whether the tile has been destroyed. */
-    protected boolean broken = false;
+    private boolean broken = false;
 
     /** Texture to be used for the tile when destroyed. */
-    protected final Tiles brokenTile;
+    private final Tiles brokenTile;
 
     /** Constructor. */
     public BreakableTile(Tiles tile, Tiles brokenTile) {

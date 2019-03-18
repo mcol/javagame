@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 public abstract class StaticEntity extends Entity {
 
     /** Image representing the entity. */
-    protected BufferedImage image;
+    private final BufferedImage image;
 
     /** Constructor. */
     public StaticEntity(BufferedImage image, float x, float y,

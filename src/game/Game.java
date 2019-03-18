@@ -52,7 +52,7 @@ public class Game implements Runnable {
     }
 
     /** Constructor. */
-    public Game() {
+    private Game() {
         display = new Display(TITLE, WIDTH, HEIGHT);
     }
 
@@ -111,7 +111,7 @@ public class Game implements Runnable {
         stop();
     }
 
-    public synchronized void start() {
+    private synchronized void start() {
         if (running)
             return;
         running = true;
@@ -119,7 +119,7 @@ public class Game implements Runnable {
         thread.start();
     }
 
-    public synchronized void stop() {
+    private synchronized void stop() {
         if (!running)
             return;
         running = false;

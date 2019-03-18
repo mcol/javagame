@@ -29,16 +29,14 @@ public class HighScoreManager {
         }
         catch (Exception e) {
             e.printStackTrace();
-            scores = new ArrayList<Score>();
+            scores = new ArrayList<>();
         }
     }
 
     /** Returns whether the score can enter the highscore list. */
     public boolean isHighScore(int score) {
-        if (scores.size() >= MAX_SCORES &&
-            score <= scores.get(MAX_SCORES - 1).getScore())
-            return false;
-        return true;
+        return scores.size() < MAX_SCORES ||
+               score > scores.get(MAX_SCORES - 1).getScore();
     }
 
     /** Adds a new score to the highscore list. */

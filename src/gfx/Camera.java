@@ -14,9 +14,6 @@ public class Camera {
     /** Offset of the camera in pixels with respect to the game coordinates. */
     private float xOffset, yOffset;
 
-    /** Speed at which the camera follows the player. */
-    private final float tween = 0.05f;
-
     /** Constructor. */
     public Camera(Handler handler) {
         this.handler = handler;
@@ -40,6 +37,7 @@ public class Camera {
                                    Game.HEIGHT);
 
         // move gradually towards the target
+        float tween = 0.05f;
         xOffset += tween * (xTarget - xOffset);
         yOffset += tween * (yTarget - yOffset);
     }

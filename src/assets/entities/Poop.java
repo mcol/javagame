@@ -91,7 +91,7 @@ public class Poop extends Creature {
     }
 
     /** Sets the impact animation. */
-    public void setImpact() {
+    private void setImpact() {
         impact = true;
         animation.setFrames(Assets.poop_impact, 100);
 
@@ -100,7 +100,7 @@ public class Poop extends Creature {
     }
 
     /** Sets the explosion animation. */
-    public void setExplosion() {
+    private void setExplosion() {
         setImpact();
         animation.setFrames(Assets.poop_explosion, 100);
     }
