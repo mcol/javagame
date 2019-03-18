@@ -3,7 +3,6 @@ package game;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
-import assets.entities.CollectableItem;
 import assets.entities.Enemy;
 import assets.entities.Entity;
 import assets.entities.ExitItem;
@@ -19,9 +18,6 @@ public class EntityManager {
 
     /** Number of alive enemies. */
     private int enemyCount;
-
-    /** Number of items to be collected. */
-    private int itemCount;
 
     /** Exit item. */
     private ExitItem exit;
@@ -39,7 +35,6 @@ public class EntityManager {
         this.player = player;
         entities = new ArrayList<>();
         enemyCount = 0;
-        itemCount = 0;
         addEntity(player);
     }
 
@@ -67,8 +62,6 @@ public class EntityManager {
         entities.add(e);
         if (e instanceof Enemy)
             enemyCount++;
-        else if (e instanceof CollectableItem)
-            itemCount++;
         else if (e instanceof ExitItem)
             exit = (ExitItem) e;
     }
@@ -78,8 +71,6 @@ public class EntityManager {
         entities.remove(e);
         if (e instanceof Enemy)
             enemyCount--;
-        else if (e instanceof CollectableItem)
-            itemCount--;
     }
 
     /** Displays the exit. */
@@ -107,10 +98,5 @@ public class EntityManager {
     /** Returns the number of alive enemies. */
     public int getEnemyCount() {
         return enemyCount;
-    }
-
-    /** Returns the number of items to be collected. */
-    public int getItemCount() {
-        return itemCount;
     }
 }
